@@ -16,5 +16,12 @@
 @import "https://unpkg.com/open-props/src/extra/normalize.css";
 
 :root {
+  --primary-color-0: hsl(252, 26%, 93%);
+  --primary-color-1: hsl(252, 20%, 72%);
+  --primary-color-2: hsl(252, 10%, 50%);
+  --primary-color-3: hsl(252, 100%, 50%);
+  --primary-color-4: hsl(252, 100%, 20%);
+
+  --primary-color-base: var(--primary-color-3);
 
 }
