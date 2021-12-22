@@ -1,20 +1,3 @@
 /* Write your global styles here, in PostCSS syntax */
-@import './styles/reset.css';
 @import './styles/globals.css';
 @import './styles/props.css';
-
-/* :where(html) {
-	color: red;
-
-	&:dir(rtl) {
-    color: orange;
-  }
-
-	&:dir(ltr) {
-		color: green;
-	}
-} */
-
-:where(html):dir(ltr) {
-	color: pink;
-}
