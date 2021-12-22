@@ -41,6 +41,11 @@
 
   .name {
     font-size: var(--font-size-4);
-    font-weight: var(--font-weight-7);
+    font-weight: var(--font-weight-5);
+    color: var(--primary-color-base);
+  }
+
+  .role {
+    color: var(--primary-color-2);
   }
 </style>
