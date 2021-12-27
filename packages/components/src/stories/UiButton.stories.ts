@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/web-components';
-import '../ui-button';
+import './ui-button';
 import { html } from 'lit-html';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
