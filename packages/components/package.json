@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
+    "@custom-elements-manifest/analyzer": "^0.5.7",
     "@open-wc/eslint-config": "^7.0.0",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
@@ -43,5 +44,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "customElements": "custom-elements.json"
 }
