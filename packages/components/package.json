@@ -11,9 +11,9 @@
     "types"
   ],
   "scripts": {
-    "dev": "vite",
+    "vite:dev": "vite",
     "build": "tsc && vite build",
-    "storybook": "start-storybook -p 6006",
+    "dev": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
