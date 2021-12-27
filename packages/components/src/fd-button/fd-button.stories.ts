@@ -5,6 +5,8 @@ import { html } from 'lit-html';
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
   title: 'fd-button',
+  // https://github.com/storybookjs/storybook/blob/88e5774dd94888c4d775695acfd74db824c22346/addons/docs/web-components/README.md
+  component: 'fd-button', // which is also found in the `custom-elements.json`
   // More on argTypes: https://storybook.js.org/docs/web-components/api/argtypes
 } as Meta;
 
