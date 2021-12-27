@@ -299,8 +299,17 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "An example element.",
           "name": "Button",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the background-color",
+              "name": "--fd-button-background-color"
+            }
+          ],
           "cssParts": [
             {
               "description": "The button",
