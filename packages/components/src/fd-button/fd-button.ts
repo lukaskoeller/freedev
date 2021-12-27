@@ -1,19 +1,20 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
-// See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/
+//See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
+// See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
 /**
- * @tag fd-button
- * 
- * @description An example element.
+ * An example element.
  *
  * @slot - This element has a slot
  * @csspart button - The button
+ * @cssprop {string} --fd-button-background-color - Adjusts the background-color
  */
 @customElement('fd-button')
 export class Button extends LitElement {
   static styles = css`
     :host {
+      background-color: var(--fd-button-background-color, blue);
       display: block;
       border: solid 1px gray;
       padding: 16px;
