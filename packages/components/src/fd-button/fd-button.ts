@@ -1,14 +1,17 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
+// See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/
 /**
- * An example element.
+ * @tag fd-button
+ * 
+ * @description An example element.
  *
  * @slot - This element has a slot
  * @csspart button - The button
  */
 @customElement('fd-button')
-export class MyElement extends LitElement {
+export class Button extends LitElement {
   static styles = css`
     :host {
       display: block;
@@ -51,6 +54,6 @@ export class MyElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'fd-button': MyElement
+    'fd-button': Button
   }
 }
