@@ -1,4 +1,8 @@
 <script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('components');
+  });
   const profileImgSrc = 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80';
 </script>
 
@@ -15,6 +19,9 @@
       <h1 class="name">Lukas Köller</h1>
       <div class="role">React Frontend Developer</div>
       <button>Schedule</button>
+      <my-element>
+        <p>This is child content</p>
+      </my-element>
     </div>
   </div>
 </div>
