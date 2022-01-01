@@ -4,6 +4,21 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./my-element"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/my-element.ts",
       "declarations": [
         {
