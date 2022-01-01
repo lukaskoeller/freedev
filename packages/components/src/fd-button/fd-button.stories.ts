@@ -17,6 +17,8 @@ const Template: Story = (args) => html`
     style="--fd-button-background-color: ${args['--fd-button-background-color']}"
   />
 `;
-
+/**
+ * Some documentation on this story
+ */
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
