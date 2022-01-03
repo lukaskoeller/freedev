@@ -1,1 +1,1 @@
-export * from './src/my-element';
+export * from './src/index';
