@@ -25,9 +25,7 @@
 
 		to your new<br />SvelteKit app
 	</h1>
-	<my-element>
-		Some child content!
-	</my-element>
+	<fd-button>freedev button demo</fd-button>
 	<h2>
 		try editing <strong>src/routes/index.svelte</strong>
 	</h2>
