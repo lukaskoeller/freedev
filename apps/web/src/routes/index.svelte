@@ -4,6 +4,10 @@
 
 <script lang="ts">
 	import Counter from '$lib/Counter.svelte';
+	import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('ui');
+  });
 </script>
 
 <svelte:head>
@@ -21,7 +25,9 @@
 
 		to your new<br />SvelteKit app
 	</h1>
-
+	<my-element>
+		Some child content!
+	</my-element>
 	<h2>
 		try editing <strong>src/routes/index.svelte</strong>
 	</h2>
