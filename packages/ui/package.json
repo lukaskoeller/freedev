@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "dev": "concurrently npm:dev:*",
-    "vite": "vite --port 6005",
+    "dev:vite": "vite --port 6005",
     "dev:custom-elements": "custom-elements-manifest analyze",
     "build": "tsc && vite build",
-    "dev:storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
