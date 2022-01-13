@@ -1,6 +1,6 @@
-# Turborepo starter with NPM
+# freedev
 
-This is an official starter turborepo.
+![We are freedev](freedev-og-image.png)
 
 ## What's inside?
 
