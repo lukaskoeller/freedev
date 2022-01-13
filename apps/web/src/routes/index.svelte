@@ -4,6 +4,10 @@
 
 <script lang="ts">
 	import Counter from '$lib/Counter.svelte';
+	import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('ui');
+  });
 </script>
 
 <svelte:head>
@@ -27,6 +31,7 @@
 	</h2>
 
 	<Counter />
+	<fd-button>Hallodri</fd-button>
 </section>
 
 <style>
