@@ -31,7 +31,7 @@
 	</h2>
 
 	<Counter />
-	<fd-button>Hallodri</fd-button>
+	<fd-button>Hallodri Kalodri</fd-button>
 </section>
 
 <style>
