@@ -1,6 +1,6 @@
-# freedev
-
 ![We are freedev](freedev-og-image.png)
+
+# freedev
 
 ## What's inside?
 
