@@ -12,7 +12,9 @@
   ],
   "scripts": {
     "dev": "vite --port 6005",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "lit": "^2.0.2"
