@@ -24,4 +24,6 @@
 
   --primary-color-base: var(--primary-color-3);
 
+  --light-color-base: hsl(0, 100%, 100%);
+
 }
