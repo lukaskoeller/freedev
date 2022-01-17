@@ -15,7 +15,6 @@ module.exports = {
       stage: 1,
       preserve: true,
       importFrom: [
-        '../../packages/theme/src/global.css',
         { customMedia: { '--mobile': '(min-width: 320px)' } },
         { customMedia: { '--large-mobile': '(min-width: 480px)' } },
         { customMedia: { '--tablet': '(min-width: 768px)' } },
