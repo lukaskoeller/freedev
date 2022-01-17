@@ -12,10 +12,9 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story = (args) => html`
-  <fd-button
-    .name=${args.name}
-    style="--fd-button-background-color: ${args['--fd-button-background-color']}"
-  />
+  <fd-button>
+    Button Label
+  </fd-button>
 `;
 /**
  * Some documentation on this story
