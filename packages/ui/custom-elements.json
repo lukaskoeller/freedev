@@ -172,7 +172,44 @@
               "name": ""
             }
           ],
-          "members": [],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"light\" | \"stealth\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "\"default\" | \"small\""
+              },
+              "default": "\"default\"",
+              "attribute": "size"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"light\" | \"stealth\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"default\" | \"small\""
+              },
+              "default": "\"default\"",
+              "fieldName": "size"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"

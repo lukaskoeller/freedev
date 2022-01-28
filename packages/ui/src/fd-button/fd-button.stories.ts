@@ -12,7 +12,7 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story = (args) => html`
-  <fd-button>
+  <fd-button .variant="${args.variant}" .size="${args.size}">
     Button Label
   </fd-button>
 `;
@@ -21,4 +21,17 @@ const Template: Story = (args) => html`
  * Some documentation on this story
  */
 export const Primary = Template.bind({});
+export const Light = Template.bind({});
+Light.args = {
+  variant: "light"
+}
+export const Stealth = Template.bind({});
+Stealth.args = {
+  variant: "stealth"
+}
+
+export const Small = Template.bind({});
+Small.args = {
+  size: "small"
+}
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
