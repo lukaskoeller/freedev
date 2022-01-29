@@ -32,6 +32,11 @@
 
 	<Counter />
 	<fd-button>Hallodri Kalodri</fd-button>
+	<fd-gallery>
+		<div>Test 1</div>
+		<div>Test 2</div>
+		<div>Test 3</div>
+	</fd-gallery>
 </section>
 
 <style>
