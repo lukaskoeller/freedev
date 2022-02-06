@@ -37,6 +37,14 @@
             "name": "*",
             "package": "./fd-gallery/fd-gallery"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-label/fd-label"
+          }
         }
       ]
     },
@@ -375,6 +383,109 @@
           "declaration": {
             "name": "Gallery",
             "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-label/fd-label.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Label component for inputs or as usual div or span",
+          "name": "Label",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-label-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-label-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "type": {
+                "text": "Tags"
+              },
+              "attribute": "tag"
+            },
+            {
+              "kind": "method",
+              "name": "getTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": {
+                    "text": "Tags"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "tag",
+              "type": {
+                "text": "Tags"
+              },
+              "fieldName": "tag"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-label",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "src/fd-label/fd-label.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-label",
+          "declaration": {
+            "name": "Label",
+            "module": "src/fd-label/fd-label.ts"
           }
         }
       ]
