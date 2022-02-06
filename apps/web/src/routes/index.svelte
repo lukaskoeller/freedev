@@ -27,9 +27,5 @@
 <style lang="postcss">
 	.kpi {
 		text-align: center;
-
-		& > span {
-			color: red;
-		}
 	}
 </style>
