@@ -5,6 +5,9 @@
 ## Design
 The screendesigns are hosted in Figma (see [Figma Designs](https://www.figma.com/file/6XVMGp0k7nCGlJ85Nrip5f/freedev?node-id=0%3A1))
 
+## Development Workflow
+When running `npx` in a workspace, make sure running its command does not install any missing modules. Since must happen only from root using the `-w <name-of-packge | name-of-app>` flag. If you run `npx`, run it with `--no-install` so npx try to omit any install of missing modules.
+
 ## What's inside?
 
 This turborepo uses [NPM](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
