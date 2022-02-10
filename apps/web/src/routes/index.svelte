@@ -15,16 +15,83 @@
 </svelte:head>
 
 <section>
-	<fd-button>Hallodri Kalodri</fd-button>
-	<fd-gallery>
+	<div class="header">
+		<div class="avatar"></div>
+		<div class="base-info">
+			<div class="base-title">
+				<h4>Lukas Köller</h4>
+				<div>React Frontend Developer</div>
+			</div>
+			<fd-button size="small">Scedule</fd-button>
+		</div>
+	</div>
+	<fd-gallery class="section-end">
 		<div class="kpi">
 			<fd-label tag="div">Hourly Rate</fd-label>
 			<span>123 €</span>
+		</div>
+		<div class="kpi">
+			<fd-label tag="div">Available From</fd-label>
+			<span>Feb 12</span>
+		</div>
+		<div class="kpi">
+			<fd-label tag="div">Projects</fd-label>
+			<span>42</span>
+		</div>
+		<div class="kpi">
+			<fd-label tag="div">Happiness</fd-label>
+			<span>4.3 (27)</span>
+		</div>
+		<div class="kpi">
+			<fd-label tag="div">Capacity</fd-label>
+			<span>30h/week</span>
 		</div>
 	</fd-gallery>
 </section>
 
 <style lang="postcss">
+	.header {
+		display: flex;
+		gap: var(--size-7);
+		padding-block: var(--size-5);
+		padding-inline: var(--global-spacing);
+	}
+
+	.base-info {
+		display: grid;
+		gap: var(--size-5);
+		padding-block-start: var(--size-1);
+	}
+
+	.base-title {
+		
+		& > h4 {
+			font-weight: var(--font-weight-7);
+			color: var(--primary-color-base);
+		}
+
+		& > div {
+			font-weight: var(--font-weight-5);
+			color: var(--primary-color-2);
+		}
+	}
+
+	.avatar {
+		--size: min(100px, 40vw);
+		aspect-ration: 1/1;
+		inline-size: var(--size);
+		block-size: var(--size);
+		border-radius: 100%;
+		background-color: var(--primary-color-0);
+	}
+
+	.section-end {
+		display: block;
+		padding-block: var(--global-spacing);
+		margin-inline-start: var(--global-spacing);
+		margin-inline-end: 0;
+		border-top: 1px solid var(--primary-color-0);
+	}
 	.kpi {
 		text-align: center;
 	}
