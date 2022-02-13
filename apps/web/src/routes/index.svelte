@@ -4,7 +4,8 @@
 
 <script lang="ts">
 	// import Counter from '$lib/Counter.svelte';
-	import { onMount } from 'svelte';
+	import Section from '$lib/section/Section.svelte';
+import { onMount } from 'svelte';
   onMount(async () => {
     await import('ui');
   });
@@ -47,6 +48,11 @@
 			<span>30h/week</span>
 		</div>
 	</fd-gallery>
+	<Section heading="About Me">
+		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+		ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+		dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	</Section>
 </section>
 
 <style lang="postcss">
@@ -64,9 +70,9 @@
 	}
 
 	.base-title {
-		
 		& > h4 {
-			font-weight: var(--font-weight-7);
+			font-size: var(--font-size-fluid-2);
+			font-weight: var(--font-weight-6);
 			color: var(--primary-color-base);
 		}
 
@@ -92,7 +98,15 @@
 		margin-inline-end: 0;
 		border-top: 1px solid var(--primary-color-0);
 	}
-	.kpi {
-		text-align: center;
+
+	fd-gallery {
+		& .kpi {
+			text-align: center;
+		}
+
+		& fd-label {
+			--fd-label-color: red;
+			--fd-label-font-size: var(--font-size-fluid-0);
+		}
 	}
 </style>
