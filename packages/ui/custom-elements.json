@@ -324,71 +324,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-gallery/fd-gallery.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An example element.",
-          "name": "Gallery",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the background-color",
-              "name": "--fd-button-background-color"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The button",
-              "name": "button"
-            }
-          ],
-          "slots": [
-            {
-              "description": "This element has a slot",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "_listItems",
-              "type": {
-                "text": "HTMLElement[]"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Gallery",
-          "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-gallery",
-          "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/fd-label/fd-label.ts",
       "declarations": [
         {
@@ -486,6 +421,71 @@
           "declaration": {
             "name": "Label",
             "module": "src/fd-label/fd-label.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-gallery/fd-gallery.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An example element.",
+          "name": "Gallery",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the background-color",
+              "name": "--fd-button-background-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The button",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "_listItems",
+              "type": {
+                "text": "HTMLElement[]"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
           }
         }
       ]
