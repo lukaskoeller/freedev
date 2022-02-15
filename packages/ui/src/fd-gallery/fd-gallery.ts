@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit'
+import { html, css, LitElement, PropertyValues } from 'lit'
 import { customElement, queryAssignedElements } from 'lit/decorators.js'
 
 //See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
@@ -49,22 +49,18 @@ export class Gallery extends LitElement {
       }
     `
 
-    @queryAssignedElements() _listItems!: HTMLElement[];
-
-    firstUpdated() {
-        this.requestUpdate()
+    _listItems(): Node[] {
+        return Array.from(this.querySelectorAll("*")).map(x => x.cloneNode(true));
     }
-
 
     render() {
         return html`
             <ul>
-                <slot></slot>
-                ${this._listItems?.map((item) => html`
-                    <li>
-                        ${item}
-                    </li>
-                `)}
+                <slot>
+                    ${this._listItems().map((item) => html`
+                        <li>${item}</li>
+                    `)}
+                </slot>
             </ul>
         `
     }
