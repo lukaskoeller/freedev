@@ -456,10 +456,12 @@
           ],
           "members": [
             {
-              "kind": "field",
+              "kind": "method",
               "name": "_listItems",
-              "type": {
-                "text": "HTMLElement[]"
+              "return": {
+                "type": {
+                  "text": "Node[]"
+                }
               }
             }
           ],

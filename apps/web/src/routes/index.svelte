@@ -105,7 +105,6 @@ import { onMount } from 'svelte';
 		}
 
 		& fd-label {
-			--fd-label-color: red;
 			--fd-label-font-size: var(--font-size-fluid-0);
 		}
 	}
