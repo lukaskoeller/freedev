@@ -12,11 +12,11 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story = (args) => html`
+const Template: Story = () => html`
   <fd-gallery>
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
+    <fd-gallery-item>1</fd-gallery-item>
+    <fd-gallery-item>2</fd-gallery-item>
+    <fd-gallery-item>3</fd-gallery-item>
   </fd-gallery>
 `;
 /**
@@ -25,7 +25,7 @@ const Template: Story = (args) => html`
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
 
-export const GalleryWithLargeBoxes = (args) => html`
+export const GalleryWithLargeBoxes = () => html`
   <fd-gallery>
     ${['1','2','3','4'].map((item) => html`
       <fd-gallery-item style="width: var(--size-14); aspect-ratio: 1; background: #fcc2d7; display: grid; place-content: center; font-size: var(--size-6); color: #22b8cf;">
