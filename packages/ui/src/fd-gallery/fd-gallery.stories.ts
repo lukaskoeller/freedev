@@ -1,5 +1,6 @@
 import { Story, Meta } from '@storybook/web-components';
 import './fd-gallery';
+import '../fd-gallery-item/fd-gallery-item';
 import { html } from 'lit-html';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
@@ -27,9 +28,9 @@ export const Primary = Template.bind({});
 export const GalleryWithLargeBoxes = (args) => html`
   <fd-gallery>
     ${['1','2','3','4'].map((item) => html`
-      <div style="width: var(--size-14); aspect-ratio: 1; background: #fcc2d7; display: grid; place-content: center; font-size: var(--size-6); color: #22b8cf;">
+      <fd-gallery-item style="width: var(--size-14); aspect-ratio: 1; background: #fcc2d7; display: grid; place-content: center; font-size: var(--size-6); color: #22b8cf;">
         ${item}
-      </div>
+      </fd-gallery-item>
     `)}
   </fd-gallery>
 `

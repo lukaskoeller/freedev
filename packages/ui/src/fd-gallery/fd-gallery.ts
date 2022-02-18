@@ -4,11 +4,12 @@ import { customElement } from 'lit/decorators.js'
 //See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
 /**
- * An example element.
+ * Displays its items in a horizontal stack and enables scrolling
+ * if items overflow its container.
  *
- * @slot - This element has a slot
- * @csspart button - The button
- * @cssprop {string} --fd-button-background-color - Adjusts the background-color
+ * @slot - Must only contain <fd-gallery-item> components
+ * @cssprop {string} --padding - Adjusts padding of gallery
+ * @cssprop {string} --gap - Adjusts gap between items
  */
 @customElement('fd-gallery')
 export class Gallery extends LitElement {
@@ -42,25 +43,21 @@ export class Gallery extends LitElement {
         }
       }
       
-      li {
+      ::slotted(li) {
           display: inline-block;
           scroll-snap-align: start;
           flex-shrink: 0;
       }
     `
 
-    _listItems(): Node[] {
-        return Array.from(this.querySelectorAll("*")).map(x => x.cloneNode(true));
-    }
+    // _listItems(): Node[] {
+    //     return Array.from(this.querySelectorAll("*")).map(x => x.cloneNode(true));
+    // }
 
     render() {
         return html`
             <ul>
-                <slot>
-                    ${this._listItems().map((item) => html`
-                        <li>${item}</li>
-                    `)}
-                </slot>
+                <slot></slot>
             </ul>
         `
     }
