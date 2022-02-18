@@ -53,6 +53,17 @@ import { onMount } from 'svelte';
 		ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
 		dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 	</Section>
+	<Section heading="Projects" isEndAligned={true}>
+		<fd-gallery>
+			<div class="project-preview"></div>
+			<div class="project-preview"></div>
+			<div class="project-preview"></div>
+			<div class="project-preview"></div>
+			<div class="project-preview"></div>
+			<div class="project-preview"></div>
+			<div class="project-preview"></div>
+		</fd-gallery>
+	</Section>
 </section>
 
 <style lang="postcss">
@@ -107,5 +118,13 @@ import { onMount } from 'svelte';
 		& fd-label {
 			--fd-label-font-size: var(--font-size-fluid-0);
 		}
+	}
+
+	.project-preview {
+		aspect-ratio: 4/5;
+		inline-size: min(50vw, var(--size-14));
+		background-color: var(--primary-color-0);
+		border-radius: var(--border-size-3);
+		overflow: hidden;
 	}
 </style>
