@@ -27,26 +27,26 @@ import { onMount } from 'svelte';
 		</div>
 	</div>
 	<fd-gallery class="section-end">
-		<div class="kpi">
+		<fd-gallery-item class="kpi">
 			<fd-label tag="div">Hourly Rate</fd-label>
 			<span>123 €</span>
-		</div>
-		<div class="kpi">
+		</fd-gallery-item>
+		<fd-gallery-item class="kpi">
 			<fd-label tag="div">Available From</fd-label>
 			<span>Feb 12</span>
-		</div>
-		<div class="kpi">
+		</fd-gallery-item>
+		<fd-gallery-item class="kpi">
 			<fd-label tag="div">Projects</fd-label>
 			<span>42</span>
-		</div>
-		<div class="kpi">
+		</fd-gallery-item>
+		<fd-gallery-item class="kpi">
 			<fd-label tag="div">Happiness</fd-label>
 			<span>4.3 (27)</span>
-		</div>
-		<div class="kpi">
+		</fd-gallery-item>
+		<fd-gallery-item class="kpi">
 			<fd-label tag="div">Capacity</fd-label>
 			<span>30h/week</span>
-		</div>
+		</fd-gallery-item>
 	</fd-gallery>
 	<Section heading="About Me">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
@@ -55,13 +55,13 @@ import { onMount } from 'svelte';
 	</Section>
 	<Section heading="Projects" isEndAligned={true}>
 		<fd-gallery>
-			<div class="project-preview"></div>
-			<div class="project-preview"></div>
-			<div class="project-preview"></div>
-			<div class="project-preview"></div>
-			<div class="project-preview"></div>
-			<div class="project-preview"></div>
-			<div class="project-preview"></div>
+			<fd-gallery-item class="project-preview"></fd-gallery-item>
+			<fd-gallery-item class="project-preview"></fd-gallery-item>
+			<fd-gallery-item class="project-preview"></fd-gallery-item>
+			<fd-gallery-item class="project-preview"></fd-gallery-item>
+			<fd-gallery-item class="project-preview"></fd-gallery-item>
+			<fd-gallery-item class="project-preview"></fd-gallery-item>
+			<fd-gallery-item class="project-preview"></fd-gallery-item>
 		</fd-gallery>
 	</Section>
 </section>
@@ -125,6 +125,5 @@ import { onMount } from 'svelte';
 		inline-size: min(50vw, var(--size-14));
 		background-color: var(--primary-color-0);
 		border-radius: var(--border-size-3);
-		overflow: hidden;
 	}
 </style>
