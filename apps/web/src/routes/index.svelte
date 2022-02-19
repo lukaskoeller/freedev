@@ -89,7 +89,7 @@ import { onMount } from 'svelte';
 
 		& > div {
 			font-weight: var(--font-weight-5);
-			color: var(--primary-color-2);
+			color: var(--primary-color-3);
 		}
 	}
 
@@ -99,7 +99,7 @@ import { onMount } from 'svelte';
 		inline-size: var(--size);
 		block-size: var(--size);
 		border-radius: 100%;
-		background-color: var(--primary-color-0);
+		background-color: var(--primary-color-1);
 	}
 
 	.section-end {
@@ -107,7 +107,7 @@ import { onMount } from 'svelte';
 		padding-block: var(--global-spacing);
 		margin-inline-start: var(--global-spacing);
 		margin-inline-end: 0;
-		border-top: 1px solid var(--primary-color-0);
+		border-top: 1px solid var(--primary-color-1);
 	}
 
 	fd-gallery {
@@ -123,7 +123,7 @@ import { onMount } from 'svelte';
 	.project-preview {
 		aspect-ratio: 4/5;
 		inline-size: min(50vw, var(--size-14));
-		background-color: var(--primary-color-0);
+		background-color: var(--primary-color-1);
 		border-radius: var(--border-size-3);
 	}
 </style>
