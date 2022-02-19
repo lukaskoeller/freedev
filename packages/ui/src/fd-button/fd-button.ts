@@ -15,7 +15,7 @@ export class Button extends LitElement {
   static styles = css`
     button {
       --fd-button-background-color-default: var(--primary-color-base);
-      --fd-button-background-color-default--hover: var(--primary-color-4);
+      --fd-button-background-color-default--hover: var(--primary-color-5);
       --fd-button-color-default: var(--light-color-base);
       --fd-button-color-default--hover: var(--light-color-base);
       
@@ -49,14 +49,14 @@ export class Button extends LitElement {
       --fd-button-background-color-default: var(--light-color-base);
       --fd-button-background-color-default--hover: var(--light-color-base);
       --fd-button-color-default: var(--primary-color-base);
-      --fd-button-color-default--hover: var(--primary-color-4);
+      --fd-button-color-default--hover: var(--primary-color-5);
     }
     
     button[data-variant="stealth"] {
       --fd-button-background-color-default: transparent;
       --fd-button-background-color-default--hover: transparent;
-      --fd-button-color-default: var(--primary-color-4);
-      --fd-button-color-default--hover: var(--primary-color-3);
+      --fd-button-color-default: var(--primary-color-5);
+      --fd-button-color-default--hover: var(--primary-color-4);
     }
     
     button[data-size="small"] {

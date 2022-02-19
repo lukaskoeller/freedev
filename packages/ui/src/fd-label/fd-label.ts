@@ -23,7 +23,7 @@ export enum Tags {
 export class Label extends LitElement {
   static styles = css`
     :host {
-      --fd-label-color-default: var(--primary-color-4);
+      --fd-label-color-default: var(--primary-color-5);
       --fd-label-text-transform-default: uppercase;
       --fd-label-font-weight-default: var(--font-weight-6);
       --fd-label-font-size-default: var(--font-size-0);
