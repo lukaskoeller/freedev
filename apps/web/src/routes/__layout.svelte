@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Header from '$lib/header/Header.svelte';
-	import '../app.css';
+	import 'ui/src/styles/globals.css';
+	import 'ui/src/styles/props.css';
 </script>
 
 <Header />
