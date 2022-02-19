@@ -16,17 +16,56 @@
 @import "https://unpkg.com/open-props/src/extra/normalize.css";
 
 :root {
-  --primary-color-0: hsl(252, 26%, 93%);
-  --primary-color-1: hsl(252, 20%, 72%);
-  --primary-color-2: hsl(252, 10%, 50%);
-  --primary-color-3: hsl(252, 100%, 50%);
-  --primary-color-4: hsl(252, 100%, 20%);
+  color-scheme: light;
 
-  --primary-color-base: var(--primary-color-3);
+  --brand-hue: 252;
+  
+  /* light */
+  --primary-color-light-0: hsl(252, 26%, 98%);
+  --primary-color-light-1: hsl(252, 26%, 93%);
+  --primary-color-light-2: hsl(252, 20%, 72%);
+  --primary-color-light-3: hsl(252, 10%, 50%);
+  --primary-color-light-4: hsl(252, 100%, 50%);
+  --primary-color-light-5: hsl(252, 100%, 20%);
+  --primary-color-light-6: hsl(252, 100%, 8%);
+  --primary-color-light-7: hsl(252, 100%, 6%);
 
+  /* base */
+  --primary-color-dark-0: hsl(252, 100%, 8%);
+  --primary-color-dark-1: hsl(252, 26%, 93%);
+  --primary-color-dark-2: hsl(252, 20%, 72%);
+  --primary-color-dark-3: hsl(252, 10%, 30%);
+  --primary-color-dark-4: hsl(252, 80%, 50%);
+  --primary-color-dark-5: hsl(252, 100%, 20%);
+  --primary-color-dark-6: hsl(252, 100%, 8%);
+  --primary-color-dark-7: hsl(252, 26%, 98%);
+
+  --primary-color-0: var(--primary-color-light-0);
+  --primary-color-1: var(--primary-color-light-1);
+  --primary-color-2: var(--primary-color-light-2);
+  --primary-color-3: var(--primary-color-light-3);
+  --primary-color-4: var(--primary-color-light-4);
+  --primary-color-5: var(--primary-color-light-5);
+  --primary-color-6: var(--primary-color-light-6);
+  --primary-color-7: var(--primary-color-light-7);
+
+  --primary-color-base: var(--primary-color-4);
   --light-color-base: hsl(0, 100%, 100%);
-
   --neutral-color-base: hsl(252, 28%, 93%);
-
   --global-spacing: var(--size-3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color-0: var(--primary-color-dark-0);
+    --primary-color-1: var(--primary-color-dark-1);
+    --primary-color-2: var(--primary-color-dark-2);
+    --primary-color-3: var(--primary-color-dark-3);
+    --primary-color-4: var(--primary-color-dark-4);
+    --primary-color-5: var(--primary-color-dark-5);
+    --primary-color-6: var(--primary-color-dark-6);
+    --primary-color-7: var(--primary-color-dark-7);
+
+    --primary-color-base: var(--primary-color-4);
+  }
 }
