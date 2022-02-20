@@ -53,6 +53,14 @@
             "name": "*",
             "package": "./fd-label/fd-label"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-section/fd-section"
+          }
         }
       ]
     },
@@ -343,6 +351,13 @@
               "type": {
                 "text": "string"
               },
+              "description": "Adjusts gap between items",
+              "name": "--fd-gallery-gap"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Adjusts padding of gallery",
               "name": "--fd-gallery-padding"
             },
@@ -350,8 +365,8 @@
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts gap between items",
-              "name": "--fd-gallery-gap"
+              "description": "Adjusts block padding of gallery",
+              "name": "--fd-gallery-padding-block"
             }
           ],
           "slots": [
