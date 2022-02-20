@@ -52,7 +52,12 @@
   --primary-color-base: var(--primary-color-4);
   --light-color-base: hsl(0, 100%, 100%);
   --neutral-color-base: hsl(252, 28%, 93%);
+
   --global-spacing: var(--size-3);
+
+  @media (--small-desktop) {
+    --global-spacing: var(--size-10);
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
