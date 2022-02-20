@@ -8,8 +8,8 @@ import { customElement } from 'lit/decorators.js'
  * if items overflow its container.
  *
  * @slot - Must only contain <fd-gallery-item> components
- * @cssprop {string} --padding - Adjusts padding of gallery
- * @cssprop {string} --gap - Adjusts gap between items
+ * @cssprop {string} --fd-gallery-padding - Adjusts padding of gallery
+ * @cssprop {string} --fd-gallery-gap - Adjusts gap between items
  */
 @customElement('fd-gallery')
 export class Gallery extends LitElement {
@@ -17,25 +17,28 @@ export class Gallery extends LitElement {
     // @todo: implement arrow controls?
 
     static styles = css`
-      ul {
-        --gap-default: var(--size-6);
-        --padding-default: 0;
+      :host {
+        --fd-gallery-gap: var(--size-6);
+        --fd-gallery-padding: 0;
+        --fd-gallery-block: 0;
+      }
 
+      ul {
         display: flex;
-        gap: calc(var(--gap, var(--gap-default)) / 2);
+        gap: calc(var(--fd-gallery-gap) / 2);
         margin: 0;
         max-inline-size: 100%;
         block-size: var(--size, auto);
-        padding-inline-start: var(--padding, var(--padding-default));
-        padding-inline-end: var(--padding, var(--padding-default));
-        padding-block-start: calc(var(--padding, var(--padding-default)) / 2);
-        padding-block-end: calc(var(--padding, var(--padding-default)) / 2);
+        padding-inline-start: var(--fd-gallery-padding);
+        padding-inline-end: var(--fd-gallery-padding);
+        padding-block-start: calc(var(--fd-gallery-block) / 2);
+        padding-block-end: calc(var(--fd-gallery-block) / 2);
         overflow-x: auto;
         overscroll-behavior-inline: contain;
         scroll-snap-type: inline mandatory;
-        scroll-padding-left: var(--gap, var(--gap-default));
-        scroll-padding-right: var(--gap, var(--gap-default));
-        scroll-padding-inline: var(--gap, var(--gap-default));
+        scroll-padding-left: var(--fd-gallery-padding);
+        scroll-padding-right: var(--fd-gallery-padding);
+        scroll-padding-inline: var(--fd-gallery-padding);
         list-style: none;
 
         @media (prefers-reduced-motion: no-preference) {
