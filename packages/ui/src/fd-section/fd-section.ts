@@ -26,7 +26,7 @@ export class Section extends LitElement {
       display: grid;
       gap: var(--size-3);
       grid-template-columns: minmax(0, 1fr);
-      padding-block: var(--global-spacing);
+      padding-block: calc(var(--global-spacing) / 2);
     }
 
     section[data-full-width="true"] {
