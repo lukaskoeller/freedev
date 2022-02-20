@@ -27,7 +27,7 @@ import { onMount } from 'svelte';
 		</div>
 	</div>
 	<fd-section fullWidth={true}>
-		<fd-gallery style="--fd-gallery-padding: var(--fd-section-padding-inline)">
+		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="kpi">
 				<fd-label tag="div">Hourly Rate</fd-label>
 				<span>123 €</span>
@@ -56,7 +56,7 @@ import { onMount } from 'svelte';
 		dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 	</fd-section>
 	<fd-section heading="Projects" fullWidth={true}>
-		<fd-gallery style="--fd-gallery-padding: var(--fd-section-padding-inline)">
+		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
