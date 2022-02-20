@@ -26,8 +26,8 @@ import { onMount } from 'svelte';
 			<fd-button size="small">Scedule</fd-button>
 		</div>
 	</div>
-	<Section isEndAligned={true}>
-		<fd-gallery>
+	<fd-section fullWidth={true}>
+		<fd-gallery style="--fd-gallery-padding: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="kpi">
 				<fd-label tag="div">Hourly Rate</fd-label>
 				<span>123 €</span>
@@ -49,14 +49,14 @@ import { onMount } from 'svelte';
 				<span>30h/week</span>
 			</fd-gallery-item>
 		</fd-gallery>
-	</Section>
-	<Section heading="About Me">
+	</fd-section>
+	<fd-section heading="About Me">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 		ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
 		dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</Section>
-	<Section heading="Projects" isEndAligned={true}>
-		<fd-gallery>
+	</fd-section>
+	<fd-section heading="Projects" fullWidth={true}>
+		<fd-gallery style="--fd-gallery-padding: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
@@ -65,7 +65,7 @@ import { onMount } from 'svelte';
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 		</fd-gallery>
-	</Section>
+	</fd-section>
 </section>
 
 <style lang="postcss">
