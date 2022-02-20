@@ -608,6 +608,15 @@
               },
               "default": "false",
               "attribute": "fullWidth"
+            },
+            {
+              "kind": "field",
+              "name": "hasBorder",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "hasBorder"
             }
           ],
           "attributes": [
@@ -625,6 +634,14 @@
               },
               "default": "false",
               "fieldName": "fullWidth"
+            },
+            {
+              "name": "hasBorder",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "hasBorder"
             }
           ],
           "superclass": {

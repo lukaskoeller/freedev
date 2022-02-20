@@ -33,6 +33,14 @@ export class Section extends LitElement {
       --fd-section-padding-inline-start: 0;
       --fd-section-padding-inline-end: 0;
     }
+    
+    hr {
+      display: block;
+      inline-size: calc(100% - var(--fd-section-padding-inline));
+      margin: 0;
+      border-top: 1px solid var(--primary-color-1);
+      margin-inline-start: var(--fd-section-padding-inline);
+    }
 
     .header {
       box-sizing: border-box;
@@ -67,14 +75,18 @@ export class Section extends LitElement {
   @property()
     fullWidth?: boolean = false;
 
+  @property()
+    hasBorder?: boolean = false;
+
   render() {
     return html`
       <section data-full-width=${this.fullWidth}>
+        ${this.hasBorder ? html`<hr />` : null}
         <div class="header">
-          ${this.heading && html`
+          ${this.heading ? html`
             <h2>${this.heading}</h2>
             ${html`<fd-label>Read More</fd-label>`}
-          `}
+          ` : null}
         </div>
         <div class="slot">
           <slot />
