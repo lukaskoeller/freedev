@@ -35,7 +35,7 @@ FullWidth.args = {
   heading: 'About Me',
   fullWidth: true,
   slot: html`
-    <fd-gallery style="--fd-gallery-padding: var(--fd-section-padding-inline)">
+    <fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
       <style>
         li {
           display: grid;
@@ -51,6 +51,8 @@ FullWidth.args = {
         <li>2</li>
         <li>3</li>
         <li>4</li>
+        <li>5</li>
+        <li>6</li>
       </fd-gallery>
   `
 }

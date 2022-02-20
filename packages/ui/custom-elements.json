@@ -351,15 +351,8 @@
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts gap between items",
+              "description": "Adjusts gap between items and padding-inline",
               "name": "--fd-gallery-gap"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding of gallery",
-              "name": "--fd-gallery-padding"
             },
             {
               "type": {
@@ -560,6 +553,103 @@
           "declaration": {
             "name": "Label",
             "module": "src/fd-label/fd-label.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-section/fd-section.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Generalized section component",
+          "name": "Section",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline-end"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content of the section",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "fullWidth",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "fullWidth"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "heading"
+            },
+            {
+              "name": "fullWidth",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "fullWidth"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-section",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Section",
+          "declaration": {
+            "name": "Section",
+            "module": "src/fd-section/fd-section.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-section",
+          "declaration": {
+            "name": "Section",
+            "module": "src/fd-section/fd-section.ts"
           }
         }
       ]
