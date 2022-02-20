@@ -112,6 +112,11 @@ import { onMount } from 'svelte';
 		& fd-label {
 			--fd-label-font-size: var(--font-size-fluid-0);
 		}
+
+		& span {
+			font-size: var(--font-size-4);
+			color: var(--primary-color-4);
+		}
 	}
 
 	.project-preview {
