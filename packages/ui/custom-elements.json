@@ -344,14 +344,14 @@
                 "text": "string"
               },
               "description": "Adjusts padding of gallery",
-              "name": "--padding"
+              "name": "--fd-gallery-padding"
             },
             {
               "type": {
                 "text": "string"
               },
               "description": "Adjusts gap between items",
-              "name": "--gap"
+              "name": "--fd-gallery-gap"
             }
           ],
           "slots": [
