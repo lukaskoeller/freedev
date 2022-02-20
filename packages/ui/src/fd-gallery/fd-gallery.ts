@@ -8,8 +8,7 @@ import { customElement } from 'lit/decorators.js'
  * if items overflow its container.
  *
  * @slot - Must only contain <fd-gallery-item> components
- * @cssprop {string} --fd-gallery-gap - Adjusts gap between items
- * @cssprop {string} --fd-gallery-padding - Adjusts padding of gallery
+ * @cssprop {string} --fd-gallery-gap - Adjusts gap between items and padding-inline
  * @cssprop {string} --fd-gallery-padding-block - Adjusts block padding of gallery
  */
 @customElement('fd-gallery')
@@ -20,7 +19,6 @@ export class Gallery extends LitElement {
     static styles = css`
       :host {
         --fd-gallery-gap: var(--size-6);
-        --fd-gallery-padding: 0;
         --fd-gallery-padding-block: 0;
       }
 
@@ -30,16 +28,16 @@ export class Gallery extends LitElement {
         margin: 0;
         max-inline-size: 100%;
         block-size: var(--size, auto);
-        padding-inline-start: var(--fd-gallery-padding);
-        padding-inline-end: var(--fd-gallery-padding);
+        padding-inline-start: var(--fd-gallery-gap);
+        padding-inline-end: var(--fd-gallery-gap);
         padding-block-start: calc(var(--fd-gallery-padding-block) / 2);
         padding-block-end: calc(var(--fd-gallery-padding-block) / 2);
         overflow-x: auto;
         overscroll-behavior-inline: contain;
         scroll-snap-type: inline mandatory;
-        scroll-padding-left: var(--fd-gallery-padding);
-        scroll-padding-right: var(--fd-gallery-padding);
-        scroll-padding-inline: var(--fd-gallery-padding);
+        scroll-padding-left: var(--fd-gallery-gap);
+        scroll-padding-right: var(--fd-gallery-gap);
+        scroll-padding-inline: var(--fd-gallery-gap);
         list-style: none;
 
         @media (prefers-reduced-motion: no-preference) {
