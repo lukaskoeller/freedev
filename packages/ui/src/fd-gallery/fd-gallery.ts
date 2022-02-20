@@ -8,8 +8,9 @@ import { customElement } from 'lit/decorators.js'
  * if items overflow its container.
  *
  * @slot - Must only contain <fd-gallery-item> components
- * @cssprop {string} --fd-gallery-padding - Adjusts padding of gallery
  * @cssprop {string} --fd-gallery-gap - Adjusts gap between items
+ * @cssprop {string} --fd-gallery-padding - Adjusts padding of gallery
+ * @cssprop {string} --fd-gallery-padding-block - Adjusts block padding of gallery
  */
 @customElement('fd-gallery')
 export class Gallery extends LitElement {
@@ -20,7 +21,7 @@ export class Gallery extends LitElement {
       :host {
         --fd-gallery-gap: var(--size-6);
         --fd-gallery-padding: 0;
-        --fd-gallery-block: 0;
+        --fd-gallery-padding-block: 0;
       }
 
       ul {
@@ -31,8 +32,8 @@ export class Gallery extends LitElement {
         block-size: var(--size, auto);
         padding-inline-start: var(--fd-gallery-padding);
         padding-inline-end: var(--fd-gallery-padding);
-        padding-block-start: calc(var(--fd-gallery-block) / 2);
-        padding-block-end: calc(var(--fd-gallery-block) / 2);
+        padding-block-start: calc(var(--fd-gallery-padding-block) / 2);
+        padding-block-end: calc(var(--fd-gallery-padding-block) / 2);
         overflow-x: auto;
         overscroll-behavior-inline: contain;
         scroll-snap-type: inline mandatory;
