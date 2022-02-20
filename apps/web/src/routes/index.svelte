@@ -26,28 +26,30 @@ import { onMount } from 'svelte';
 			<fd-button size="small">Scedule</fd-button>
 		</div>
 	</div>
-	<fd-gallery class="section-end">
-		<fd-gallery-item class="kpi">
-			<fd-label tag="div">Hourly Rate</fd-label>
-			<span>123 €</span>
-		</fd-gallery-item>
-		<fd-gallery-item class="kpi">
-			<fd-label tag="div">Available From</fd-label>
-			<span>Feb 12</span>
-		</fd-gallery-item>
-		<fd-gallery-item class="kpi">
-			<fd-label tag="div">Projects</fd-label>
-			<span>42</span>
-		</fd-gallery-item>
-		<fd-gallery-item class="kpi">
-			<fd-label tag="div">Happiness</fd-label>
-			<span>4.3 (27)</span>
-		</fd-gallery-item>
-		<fd-gallery-item class="kpi">
-			<fd-label tag="div">Capacity</fd-label>
-			<span>30h/week</span>
-		</fd-gallery-item>
-	</fd-gallery>
+	<Section isEndAligned={true}>
+		<fd-gallery>
+			<fd-gallery-item class="kpi">
+				<fd-label tag="div">Hourly Rate</fd-label>
+				<span>123 €</span>
+			</fd-gallery-item>
+			<fd-gallery-item class="kpi">
+				<fd-label tag="div">Available From</fd-label>
+				<span>Feb 12</span>
+			</fd-gallery-item>
+			<fd-gallery-item class="kpi">
+				<fd-label tag="div">Projects</fd-label>
+				<span>42</span>
+			</fd-gallery-item>
+			<fd-gallery-item class="kpi">
+				<fd-label tag="div">Happiness</fd-label>
+				<span>4.3 (27)</span>
+			</fd-gallery-item>
+			<fd-gallery-item class="kpi">
+				<fd-label tag="div">Capacity</fd-label>
+				<span>30h/week</span>
+			</fd-gallery-item>
+		</fd-gallery>
+	</Section>
 	<Section heading="About Me">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 		ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
@@ -103,10 +105,6 @@ import { onMount } from 'svelte';
 	}
 
 	.section-end {
-		display: block;
-		padding-block: var(--global-spacing);
-		margin-inline-start: var(--global-spacing);
-		margin-inline-end: 0;
 		border-top: 1px solid var(--primary-color-1);
 	}
 
