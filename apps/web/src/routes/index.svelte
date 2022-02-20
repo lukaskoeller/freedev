@@ -26,7 +26,7 @@ import { onMount } from 'svelte';
 			<fd-button size="small">Scedule</fd-button>
 		</div>
 	</div>
-	<fd-section fullWidth={true}>
+	<fd-section class="separator" fullWidth={true} hasBorder={true}>
 		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="kpi">
 				<fd-label tag="div">Hourly Rate</fd-label>
@@ -102,10 +102,6 @@ import { onMount } from 'svelte';
 		block-size: var(--size);
 		border-radius: 100%;
 		background-color: var(--primary-color-1);
-	}
-
-	.section-end {
-		border-top: 1px solid var(--primary-color-1);
 	}
 
 	fd-gallery {
