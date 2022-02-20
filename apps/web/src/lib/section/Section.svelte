@@ -10,8 +10,10 @@
 
 <section data-is-end-aligned={isEndAligned}>
   <div class="header">
-    <h2>{heading}</h2>
-    <fd-label>Read More</fd-label>
+    {#if heading}
+      <h2>{heading}</h2>
+      <fd-label>Read More</fd-label>
+    {/if}
   </div>
   <div class="slot">
     <slot />
@@ -52,7 +54,7 @@
   }
 
   .slot {
-    padding-inline: var(--padding-inline-default);
+    padding-inline-start: var(--padding-inline-start, var(--padding-inline-default));
     padding-inline-end: var(--padding-inline-end, var(--padding-inline-default));
   }
 </style>
