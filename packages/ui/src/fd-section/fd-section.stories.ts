@@ -13,7 +13,7 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story = (args) => html`
-  <fd-section .heading=${args.heading} .fullWidth=${args.fullWidth}>
+  <fd-section .heading=${args.heading} .hasBorder=${args.hasBorder} .fullWidth=${args.fullWidth}>
     ${args.slot}  
   </fd-section>
 `;
@@ -55,5 +55,12 @@ FullWidth.args = {
         <li>6</li>
       </fd-gallery>
   `
+}
+
+export const HasBorder = Template.bind({});
+HasBorder.args = {
+  heading: 'About Me',
+  hasBorder: true,
+  slot: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
 }
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
