@@ -13,7 +13,6 @@ module.exports = {
     }),
     postcssPresetEnv({
       stage: 1,
-      preserve: true,
       importFrom: [
         { customMedia: { '--mobile': '(min-width: 320px)' } },
         { customMedia: { '--large-mobile': '(min-width: 480px)' } },
