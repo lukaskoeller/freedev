@@ -69,6 +69,14 @@
             "name": "*",
             "package": "./fd-input/fd-input"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-logo/fd-logo"
+          }
         }
       ]
     },
@@ -271,64 +279,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-gallery/fd-gallery.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "Gallery",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items and padding-inline",
-              "name": "--fd-gallery-gap"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts block padding of gallery",
-              "name": "--fd-gallery-padding-block"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Must only contain <fd-gallery-item> components",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Gallery",
-          "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-gallery",
-          "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/fd-card/fd-card.ts",
       "declarations": [
         {
@@ -458,6 +408,64 @@
           "declaration": {
             "name": "GalleryItem",
             "module": "src/fd-gallery-item/fd-gallery-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-gallery/fd-gallery.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "Gallery",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items and padding-inline",
+              "name": "--fd-gallery-gap"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts block padding of gallery",
+              "name": "--fd-gallery-padding-block"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Must only contain <fd-gallery-item> components",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
           }
         }
       ]
