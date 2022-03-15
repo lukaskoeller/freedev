@@ -66,6 +66,10 @@ import { onMount } from 'svelte';
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 		</fd-gallery>
 	</fd-section>
+	<h3>Form</h3>
+	<form>
+    <fd-input value="hello world" name="demo">Input Label</fd-input>
+  </form>
 </section>
 
 <style lang="postcss">
