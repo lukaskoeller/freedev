@@ -13,7 +13,7 @@ import { customElement, property } from 'lit/decorators.js';
  * @cssprop {string} --fd-logo-inline-size - Adjusts the width of the logo
  */
 @customElement('fd-logo')
-export class Label extends LitElement {
+export class Logo extends LitElement {
   static styles = css`
     :host {
       --fd-logo-fill-logo: var(--primary-color-base);
@@ -35,7 +35,7 @@ export class Label extends LitElement {
   `
 
   // @property()
-  // tag: Tags = Tags.Label;
+  // tag: Tags = Tags.Logo;
 
   render() {
     return html`
@@ -55,6 +55,6 @@ export class Label extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'fd-logo': Label
+    'fd-logo': Logo
   }
 }
