@@ -18,7 +18,7 @@ export class Logo extends LitElement {
     :host {
       --fd-logo-fill-logo: var(--primary-color-base);
       --fd-logo-fill-text: var(--primary-color-5);
-      --fd-logo-inline-size: var(--size-fluid-8);
+      --fd-logo-inline-size: 160px;
     }
 
     svg {
