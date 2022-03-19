@@ -7,13 +7,14 @@
 </script>
 
 <header>
-	<fd-logo />
-	<nav>Navigation</nav>
+	<slot />
 </header>
 
 <style>
 	header {
 		display: flex;
 		justify-content: space-between;
+		padding-inline: var(--global-spacing);
+		padding-block: calc(var(--global-spacing) / 2);
 	}
 </style>
