@@ -7,7 +7,13 @@
 </script>
 
 <header>
-	<slot />
+	<fd-logo />
+	<nav>
+		<a href="/profile">Profile</a>
+		<a href="/messages">Messages</a>
+		<a href="/notifications">Notifications</a>
+		<a href="/settings">Settings</a>
+	</nav>
 </header>
 
 <style>
@@ -16,5 +22,10 @@
 		justify-content: space-between;
 		padding-inline: var(--global-spacing);
 		padding-block: calc(var(--global-spacing) / 2);
+	}
+
+	nav {
+		display: flex;
+		gap: var(--size-fluid-3);
 	}
 </style>
