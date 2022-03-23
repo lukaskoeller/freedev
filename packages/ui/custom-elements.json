@@ -279,6 +279,64 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-gallery/fd-gallery.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "Gallery",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items and padding-inline",
+              "name": "--fd-gallery-gap"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts block padding of gallery",
+              "name": "--fd-gallery-padding-block"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Must only contain <fd-gallery-item> components",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-card/fd-card.ts",
       "declarations": [
         {
@@ -356,58 +414,96 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-gallery/fd-gallery.ts",
+      "path": "src/fd-icon/fd-icon.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "Gallery",
+          "description": "Generalized section component",
+          "name": "Icon",
           "cssProperties": [
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts gap between items and padding-inline",
-              "name": "--fd-gallery-gap"
+              "description": "Sets the inline and block size",
+              "name": "--fd-icon-size"
             },
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts block padding of gallery",
-              "name": "--fd-gallery-padding-block"
+              "name": "--fd-icon-padding-inline-end"
             }
           ],
-          "slots": [
+          "members": [
             {
-              "description": "Must only contain <fd-gallery-item> components",
-              "name": ""
+              "kind": "field",
+              "name": "file",
+              "type": {
+                "text": "string"
+              },
+              "description": "A svg file as string (see https://vitejs.dev/guide/features.html#static-assets)",
+              "attribute": "file"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Sizes | undefined"
+              },
+              "description": "Sets the size of the icon based on a enum value.",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "svg",
+              "type": {
+                "text": "SVGSVGElement|null"
+              },
+              "privacy": "private"
             }
           ],
-          "members": [],
+          "attributes": [
+            {
+              "name": "file",
+              "type": {
+                "text": "string"
+              },
+              "description": "A svg file as string (see https://vitejs.dev/guide/features.html#static-assets)",
+              "fieldName": "file"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "Sizes | undefined"
+              },
+              "description": "Sets the size of the icon based on a enum value.",
+              "fieldName": "size"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "fd-gallery",
+          "tagName": "fd-icon",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Gallery",
+          "name": "Icon",
           "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
+            "name": "Icon",
+            "module": "src/fd-icon/fd-icon.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "fd-gallery",
+          "name": "fd-icon",
           "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
+            "name": "Icon",
+            "module": "src/fd-icon/fd-icon.ts"
           }
         }
       ]
@@ -466,109 +562,6 @@
           "declaration": {
             "name": "GalleryItem",
             "module": "src/fd-gallery-item/fd-gallery-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-label/fd-label.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Label component for inputs or as usual div or span",
-          "name": "Label",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-label-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-label-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "tag",
-              "type": {
-                "text": "Tags"
-              },
-              "attribute": "tag"
-            },
-            {
-              "kind": "method",
-              "name": "getTag",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "tag",
-                  "type": {
-                    "text": "Tags"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "tag",
-              "type": {
-                "text": "Tags"
-              },
-              "fieldName": "tag"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-label",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Label",
-          "declaration": {
-            "name": "Label",
-            "module": "src/fd-label/fd-label.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-label",
-          "declaration": {
-            "name": "Label",
-            "module": "src/fd-label/fd-label.ts"
           }
         }
       ]
@@ -690,33 +683,40 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-logo/fd-logo.ts",
+      "path": "src/fd-label/fd-label.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Logo component",
-          "name": "Logo",
+          "description": "Label component for inputs or as usual div or span",
+          "name": "Label",
           "cssProperties": [
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts the fill color of the logo image",
-              "name": "--fd-logo-fill-logo"
+              "description": "Adjusts text color",
+              "name": "--fd-label-color"
             },
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts the fill color of the logo text",
-              "name": "--fd-logo-fill-text"
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-label-text-transform"
             },
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts the width of the logo",
-              "name": "--fd-logo-inline-size"
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-size"
             }
           ],
           "slots": [
@@ -725,30 +725,61 @@
               "name": ""
             }
           ],
-          "members": [],
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "type": {
+                "text": "Tags"
+              },
+              "attribute": "tag"
+            },
+            {
+              "kind": "method",
+              "name": "getTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": {
+                    "text": "Tags"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "tag",
+              "type": {
+                "text": "Tags"
+              },
+              "fieldName": "tag"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "fd-logo",
+          "tagName": "fd-label",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Logo",
+          "name": "Label",
           "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
+            "name": "Label",
+            "module": "src/fd-label/fd-label.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "fd-logo",
+          "name": "fd-label",
           "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
+            "name": "Label",
+            "module": "src/fd-label/fd-label.ts"
           }
         }
       ]
@@ -866,6 +897,77 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-logo/fd-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component",
+          "name": "Logo",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo image",
+              "name": "--fd-logo-fill-logo"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo text",
+              "name": "--fd-logo-fill-text"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the width of the logo",
+              "name": "--fd-logo-inline-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/types/index.type.ts",
+      "declarations": [],
+      "exports": []
     }
   ]
 }
