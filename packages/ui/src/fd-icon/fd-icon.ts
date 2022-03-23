@@ -20,6 +20,7 @@ const SizeMap = {
  * @prop {string} file - A svg file as string (see https://vitejs.dev/guide/features.html#static-assets)
  * @prop {string} file - Sets the size of the icon based on a enum value.
  * @cssprop {string} --fd-icon-size - Sets the inline and block size
+ * @cssprop {string} --fd-icon-fill - Sets the fill color and defaults to currentcolor
  */
 @customElement('fd-icon')
 export class Icon extends LitElement {
@@ -27,6 +28,10 @@ export class Icon extends LitElement {
     svg {
       inline-size: var(--fd-icon-size, var(--size));
       block-size: var(--fd-icon-size, var(--size));
+    }
+
+    svg path {
+      fill: var(--fd-icon-fill, currentcolor);
     }
   `
 
