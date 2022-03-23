@@ -77,6 +77,14 @@
             "name": "*",
             "package": "./fd-logo/fd-logo"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-icon/fd-icon"
+          }
         }
       ]
     },
@@ -427,6 +435,13 @@
               },
               "description": "Sets the inline and block size",
               "name": "--fd-icon-size"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the fill color and defaults to currentcolor",
+              "name": "--fd-icon-fill"
             }
           ],
           "members": [
