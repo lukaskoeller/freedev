@@ -60,6 +60,10 @@
   }
 }
 
+html {
+  color: var(--primary-color-5);
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --primary-color-0: var(--primary-color-dark-0);
