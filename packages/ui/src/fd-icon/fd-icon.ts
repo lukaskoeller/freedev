@@ -18,8 +18,8 @@ const SizeMap = {
  * Generalized section component
  *
  * @prop {string} file - A svg file as string (see https://vitejs.dev/guide/features.html#static-assets)
+ * @prop {string} file - Sets the size of the icon based on a enum value.
  * @cssprop {string} --fd-icon-size - Sets the inline and block size
- * @cssprop {string} --fd-icon-padding-inline-end
  */
 @customElement('fd-icon')
 export class Icon extends LitElement {
@@ -30,16 +30,9 @@ export class Icon extends LitElement {
     }
   `
 
-  /**
-   * Must be an svg file or element as string.
-   * See https://vitejs.dev/guide/features.html#static-assets
-   */
   @property()
     file?: string;
 
-  /**
-   * Sets the size of the icon based on a enum value.
-   */
   @property()
     size?: Sizes = Sizes.Md;
 

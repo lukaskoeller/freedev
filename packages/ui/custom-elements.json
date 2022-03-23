@@ -427,12 +427,6 @@
               },
               "description": "Sets the inline and block size",
               "name": "--fd-icon-size"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-icon-padding-inline-end"
             }
           ],
           "members": [
@@ -442,7 +436,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "A svg file as string (see https://vitejs.dev/guide/features.html#static-assets)",
+              "description": "Sets the size of the icon based on a enum value.",
               "attribute": "file"
             },
             {
@@ -451,7 +445,6 @@
               "type": {
                 "text": "Sizes | undefined"
               },
-              "description": "Sets the size of the icon based on a enum value.",
               "attribute": "size"
             },
             {
@@ -469,7 +462,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "A svg file as string (see https://vitejs.dev/guide/features.html#static-assets)",
+              "description": "Sets the size of the icon based on a enum value.",
               "fieldName": "file"
             },
             {
@@ -477,7 +470,6 @@
               "type": {
                 "text": "Sizes | undefined"
               },
-              "description": "Sets the size of the icon based on a enum value.",
               "fieldName": "size"
             }
           ],
