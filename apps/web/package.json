@@ -35,6 +35,7 @@
     "@lukeed/uuid": "^2.0.0",
     "config": "*",
     "cookie": "^0.4.1",
-    "ui": "*"
+    "ui": "*",
+    "assets": "*"
   }
 }
