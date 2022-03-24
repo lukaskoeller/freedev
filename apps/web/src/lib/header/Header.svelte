@@ -34,10 +34,20 @@
 
 <style>
 	header {
+		position: sticky;
+		bottom: 0;
+		left: 0;
+
+		inline-size: 100%;
 		display: flex;
 		justify-content: space-between;
 		padding-inline: var(--global-spacing);
 		padding-block: calc(var(--global-spacing) / 2);
+
+		/* background-color: var(--neutral-color-base); */
+		background-color: hsl(252deg 28% 93% / 60%);
+		backdrop-filter: blur(16px);
+		box-shadow: var(--shadow-5);
 	}
 
 	nav {
