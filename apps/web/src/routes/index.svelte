@@ -3,8 +3,6 @@
 </script>
 
 <script lang="ts">
-	// import Counter from '$lib/Counter.svelte';
-	import Section from '$lib/section/Section.svelte';
 import { onMount } from 'svelte';
   onMount(async () => {
     await import('ui');
