@@ -1,10 +1,10 @@
 <script lang="ts">
 	// import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import bellSolid from '../../assets/icons/bell-solid.svg?raw';
-	import cogSolid from '../../assets/icons/cog-solid.svg?raw';
-	import paperPlaneSolid from '../../assets/icons/paper-plane-solid.svg?raw';
-	import userCircleSolid from '../../assets/icons/user-circle-solid.svg?raw';
+	import bellSolid from 'assets/icons/bell-solid.svg?raw';
+	import cogSolid from 'assets/icons/cog-solid.svg?raw';
+	import paperPlaneSolid from 'assets/icons/paper-plane-solid.svg?raw';
+	import userCircleSolid from 'assets/icons/user-circle-solid.svg?raw';
   onMount(async () => {
     await import('ui');
   });
