@@ -40,8 +40,6 @@ export class Card extends LitElement {
   @property()
   variant: "default" = "default";
 
-
-
   render() {
     return html`
       <div part="card" data-variant="${this.variant}">
