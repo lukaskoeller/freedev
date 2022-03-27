@@ -20,13 +20,14 @@ export class Section extends LitElement {
       --fd-section-padding-inline: var(--global-spacing);
       --fd-section-padding-inline-start: var(--fd-section-padding-inline);
       --fd-section-padding-inline-end: var(--fd-section-padding-inline);
+      --fd-section-padding-block: calc(var(--global-spacing) / 2);
     }
 
     section {
       display: grid;
       gap: var(--size-3);
       grid-template-columns: minmax(0, 1fr);
-      padding-block: calc(var(--global-spacing) / 2);
+      padding-block: var(--fd-section-padding-block);
     }
 
     section[data-full-width="true"] {
@@ -38,6 +39,7 @@ export class Section extends LitElement {
       display: block;
       inline-size: calc(100% - var(--fd-section-padding-inline));
       margin: 0;
+      border-left: 0;
       border-top: 1px solid var(--primary-color-1);
       margin-inline-start: var(--fd-section-padding-inline);
     }
