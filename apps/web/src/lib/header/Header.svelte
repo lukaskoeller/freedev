@@ -34,9 +34,9 @@
 
 <style>
 	header {
-		position: sticky;
+		/* position: sticky;
 		bottom: 0;
-		left: 0;
+		left: 0; */
 
 		inline-size: 100%;
 		display: flex;
@@ -45,9 +45,9 @@
 		padding-block: calc(var(--global-spacing) / 2);
 
 		/* background-color: var(--neutral-color-base); */
-		background-color: hsl(252deg 28% 93% / 60%);
+		/* background-color: hsl(252deg 28% 93% / 60%); */
 		backdrop-filter: blur(16px);
-		box-shadow: var(--shadow-5);
+		/* box-shadow: var(--shadow-5); */
 	}
 
 	nav {
