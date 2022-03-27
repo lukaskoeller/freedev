@@ -12,6 +12,7 @@ import '../fd-label/fd-label';
  * @cssprop {string} --fd-section-padding-inline
  * @cssprop {string} --fd-section-padding-inline-start
  * @cssprop {string} --fd-section-padding-inline-end
+ * @cssprop {string} --fd-section-padding-block
  */
 @customElement('fd-section')
 export class Section extends LitElement {
@@ -83,7 +84,7 @@ export class Section extends LitElement {
   render() {
     return html`
       <section data-full-width=${this.fullWidth} part="section">
-        ${this.hasBorder ? html`<hr />` : null}
+        ${this.hasBorder ? html`<hr part="hr" />` : null}
         <div class="header">
           ${this.heading ? html`
             <h2>${this.heading}</h2>
