@@ -80,7 +80,7 @@ export class Section extends LitElement {
 
   render() {
     return html`
-      <section data-full-width=${this.fullWidth}>
+      <section data-full-width=${this.fullWidth} part="section">
         ${this.hasBorder ? html`<hr />` : null}
         <div class="header">
           ${this.heading ? html`
