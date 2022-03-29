@@ -2,7 +2,7 @@ import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 
-//See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
+// See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
 /**
  * Logo component

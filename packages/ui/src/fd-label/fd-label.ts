@@ -8,7 +8,7 @@ export enum Tags {
   Div = 'div' 
 };
 
-//See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
+// See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
 /**
  * Label component for inputs or as usual div or span

@@ -12,7 +12,7 @@ const SizeMap = {
   [Sizes.Xl]: 'var(--size-7)',
 }
 
-//See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
+// See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
 /**
  * Generalized section component
