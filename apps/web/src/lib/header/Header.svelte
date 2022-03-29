@@ -32,11 +32,11 @@
 	</nav>
 </header>
 
-<style>
+<style lang="postcss">
 	header {
-		/* position: sticky;
+		position: fixed;
 		bottom: 0;
-		left: 0; */
+		left: 0;
 
 		inline-size: 100%;
 		display: flex;
@@ -48,11 +48,30 @@
 		/* background-color: hsl(252deg 28% 93% / 60%); */
 		backdrop-filter: blur(16px);
 		/* box-shadow: var(--shadow-5); */
+
+		@media (--tablet) {
+			position: relative;
+		}
+	}
+
+	fd-logo {
+		display: none;
+
+		@media (--tablet) {
+			display: block;
+		}
 	}
 
 	nav {
 		display: flex;
+		inline-size: 100%;
+		justify-content: space-around;
 		gap: var(--size-fluid-3);
+
+		@media (--tablet) {
+			inline-size: auto;
+			justify-content: normal;
+		}
 	}
 
 	a {
