@@ -7,3 +7,4 @@ export * from './fd-section/fd-section';
 export * from './fd-input/fd-input';
 export * from './fd-logo/fd-logo';
 export * from './fd-icon/fd-icon';
+export * from './fd-container/fd-container';
