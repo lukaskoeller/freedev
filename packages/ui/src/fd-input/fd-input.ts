@@ -60,23 +60,23 @@ export class Input extends FormControlMixin(LitElement) {
   //   this.value = '';
   // }
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   value = '';
 
-  @property({ type: HTMLInputElement.prototype.placeholder })
+  @property({ type: String, reflect: true })
   placeholder = '';
 
-  @property({ type: HTMLInputElement.prototype.type })
-  type = '';
+  @property({ type: String })
+  type = 'text';
 
   render() {
     return html`
       <label for="input"><slot></slot></label>
       <input
         id="input"
+        .type="${this.type}"
+        .placeholder="${live(this.placeholder)}"
         .value="${live(this.value)}"
-        ${this.type ? `.type=${this.type}` : ''}
-        ${this.placeholder ? `.placeholder=${this.placeholder}` : ''}
         @input="${this.#onInput}"
       >
     `;
