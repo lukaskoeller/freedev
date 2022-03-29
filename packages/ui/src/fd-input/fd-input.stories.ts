@@ -13,7 +13,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story = (args) => html`
   <form style="display: grid; gap: 16px; justify-items: start;">
-    <fd-input value="Falcon" name="animal">Animal</fd-input>
+    <fd-input value="Falcon" name="animal" placeholder="E.g. Lion">Animal</fd-input>
     <input name="plant" />
     <button type="submit">Submit</button>
   </form>
