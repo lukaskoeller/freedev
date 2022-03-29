@@ -11,32 +11,30 @@
 	<title>Settings</title>
 </svelte:head>
 
-<section>
-	<h1>Settings</h1>
-	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
-	<section class="settingsWrapper">
-		<fd-card class="settings">
-			<fd-section class="separator" fullWidth={true} hasBorder={true}>
-				<div class="sectionSlot">
-					<div class="sectionIcon">
-						<fd-icon size="xl" file={svgAtSolid} />
-					</div>
-					<fd-input type="email">E-Mail</fd-input>
+<h1>Settings</h1>
+<p>
+	This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
+	following into your command line and following the prompts:
+</p>
+<section class="settingsWrapper">
+	<fd-card class="settings">
+		<fd-section class="separator" fullWidth={true} hasBorder={true}>
+			<div class="sectionSlot">
+				<div class="sectionIcon">
+					<fd-icon size="xl" file={svgAtSolid} />
 				</div>
-			</fd-section>
-			<fd-section class="separator" fullWidth={true} hasBorder={true}>
-				<div class="sectionSlot">
-					<div class="sectionIcon">
-						<fd-icon size="xl" file={svgUserCircleSolid} />
-					</div>
-					<fd-input>Name</fd-input>
+				<fd-input type="email">E-Mail</fd-input>
+			</div>
+		</fd-section>
+		<fd-section class="separator" fullWidth={true} hasBorder={true}>
+			<div class="sectionSlot">
+				<div class="sectionIcon">
+					<fd-icon size="xl" file={svgUserCircleSolid} />
 				</div>
-			</fd-section>
-		</fd-card>
-	</section>
+				<fd-input>Name</fd-input>
+			</div>
+		</fd-section>
+	</fd-card>
 </section>
 
 <style lang="postcss">
