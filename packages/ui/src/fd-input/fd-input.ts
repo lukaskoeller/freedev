@@ -38,6 +38,7 @@ export class Input extends FormControlMixin(LitElement) {
     }
 
     input {
+      min-width: 0;
       border: 0;
       border-radius: var(--radius-2);
       background-color: var(--fd-input-background-color);
