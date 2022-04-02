@@ -25,6 +25,7 @@ export class Container extends LitElement {
     }
 
     section {
+      box-sizing: border-box;
       padding-inline-start: var(--fd-container-padding-inline-start);
       padding-inline-end: var(--fd-container-padding-inline-end);
       padding-block: var(--fd-container-padding-block);
