@@ -1,0 +1,10 @@
+{
+  "custom-media": {
+    "--mobile": "(min-width: 320px)",
+    "--large-mobile": "(min-width: 480px)",
+    "--tablet": "(min-width: 768px)",
+    "--small-desktop": "(min-width: 1024px)",
+    "--large-desktop": "(min-width: 1312px)"
+  }
+}
+        
