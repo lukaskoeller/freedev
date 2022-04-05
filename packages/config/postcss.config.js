@@ -14,7 +14,7 @@ module.exports = {
     postcssPresetEnv({
       stage: 1,
       importFrom: [
-        './breakpoints.json',
+        'breakpoints.json',
         { customSelectors: { ':--heading': 'h1, h2, h3, h4, h5, h6' } },
       ],
     }),
