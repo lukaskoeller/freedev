@@ -36,13 +36,9 @@ export class Section extends LitElement {
       --fd-section-padding-inline-end: 0;
     }
     
-    hr {
-      display: block;
-      inline-size: calc(100% - var(--fd-section-padding-inline));
-      margin: 0;
-      border-left: 0;
-      border-top: 1px solid var(--primary-color-1);
-      margin-inline-start: var(--fd-section-padding-inline);
+    fd-hr {
+      --fd-hr-padding-inline: var(--fd-section-padding-inline);
+      --fd-hr-margin-inline-start: var(--fd-section-padding-inline);
     }
 
     .header {
@@ -84,7 +80,7 @@ export class Section extends LitElement {
   render() {
     return html`
       <section data-full-width=${this.fullWidth} part="section">
-        ${this.hasBorder ? html`<hr part="hr" />` : null}
+        ${this.hasBorder ? html`<fd-hr />` : null}
         <div class="header">
           ${this.heading ? html`
             <h2>${this.heading}</h2>
