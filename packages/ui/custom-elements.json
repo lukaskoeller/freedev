@@ -101,6 +101,14 @@
             "name": "*",
             "package": "./fd-container/fd-container"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-hr/fd-hr"
+          }
         }
       ]
     },
@@ -303,31 +311,112 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-card/fd-card.ts",
+      "path": "src/fd-container/fd-container.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "An example element.",
-          "name": "Card",
+          "description": "General wrapper providing basic inline and block padding",
+          "name": "Container",
           "cssProperties": [
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts the background-color",
-              "name": "--fd-button-background-color"
-            }
-          ],
-          "cssParts": [
+              "name": "--fd-container-padding-inline"
+            },
             {
-              "description": "The button",
-              "name": "button"
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-block"
             }
           ],
           "slots": [
             {
-              "description": "This element has a slot",
+              "description": "Content of the container",
               "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-container",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Container",
+          "declaration": {
+            "name": "Container",
+            "module": "src/fd-container/fd-container.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-container",
+          "declaration": {
+            "name": "Container",
+            "module": "src/fd-container/fd-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-card/fd-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A classic Card component.",
+          "name": "Card",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-card-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-card-color"
+            },
+            {
+              "description": "Sets the Card's shadow",
+              "name": "--fd-card-shadow"
+            },
+            {
+              "description": "Sets the inline padding",
+              "name": "--fd-card-padding-inline"
+            },
+            {
+              "description": "Sets the block padding",
+              "name": "--fd-card-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Card's div",
+              "name": "card"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
             }
           ],
           "members": [
@@ -380,31 +469,31 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-gallery/fd-gallery.ts",
+      "path": "src/fd-gallery-item/fd-gallery-item.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "Gallery",
+          "name": "GalleryItem",
           "cssProperties": [
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts gap between items and padding-inline",
-              "name": "--fd-gallery-gap"
+              "description": "Adjusts padding of gallery",
+              "name": "--padding"
             },
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts block padding of gallery",
-              "name": "--fd-gallery-padding-block"
+              "description": "Adjusts gap between items",
+              "name": "--gap"
             }
           ],
           "slots": [
             {
-              "description": "Must only contain <fd-gallery-item> components",
+              "description": "Contains the content of the item",
               "name": ""
             }
           ],
@@ -413,120 +502,25 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "fd-gallery",
+          "tagName": "fd-gallery-item",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Gallery",
+          "name": "GalleryItem",
           "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
+            "name": "GalleryItem",
+            "module": "src/fd-gallery-item/fd-gallery-item.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "fd-gallery",
+          "name": "fd-gallery-item",
           "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-icon/fd-icon.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Generalized section component",
-          "name": "Icon",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the inline and block size",
-              "name": "--fd-icon-size"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the fill color and defaults to currentcolor",
-              "name": "--fd-icon-fill"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "file",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the size of the icon based on a enum value.",
-              "attribute": "file"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Sizes | undefined"
-              },
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "svg",
-              "type": {
-                "text": "SVGSVGElement|null"
-              },
-              "privacy": "private"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "file",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the size of the icon based on a enum value.",
-              "fieldName": "file"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "Sizes | undefined"
-              },
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-icon",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Icon",
-          "declaration": {
-            "name": "Icon",
-            "module": "src/fd-icon/fd-icon.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-icon",
-          "declaration": {
-            "name": "Icon",
-            "module": "src/fd-icon/fd-icon.ts"
+            "name": "GalleryItem",
+            "module": "src/fd-gallery-item/fd-gallery-item.ts"
           }
         }
       ]
@@ -678,64 +672,6 @@
           "declaration": {
             "name": "Input",
             "module": "src/fd-input/fd-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-gallery-item/fd-gallery-item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "GalleryItem",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding of gallery",
-              "name": "--padding"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items",
-              "name": "--gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Contains the content of the item",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery-item",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GalleryItem",
-          "declaration": {
-            "name": "GalleryItem",
-            "module": "src/fd-gallery-item/fd-gallery-item.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-gallery-item",
-          "declaration": {
-            "name": "GalleryItem",
-            "module": "src/fd-gallery-item/fd-gallery-item.ts"
           }
         }
       ]
@@ -910,12 +846,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/types/index.type.ts",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/fd-section/fd-section.ts",
       "declarations": [
         {
@@ -1033,6 +963,165 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-icon/fd-icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Generalized section component",
+          "name": "Icon",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the inline and block size",
+              "name": "--fd-icon-size"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the fill color and defaults to currentcolor",
+              "name": "--fd-icon-fill"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "file",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the size of the icon based on a enum value.",
+              "attribute": "file"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Sizes | undefined"
+              },
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "svg",
+              "type": {
+                "text": "SVGSVGElement|null"
+              },
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "file",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the size of the icon based on a enum value.",
+              "fieldName": "file"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "Sizes | undefined"
+              },
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "src/fd-icon/fd-icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "src/fd-icon/fd-icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-gallery/fd-gallery.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "Gallery",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items and padding-inline",
+              "name": "--fd-gallery-gap"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts block padding of gallery",
+              "name": "--fd-gallery-padding-block"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Must only contain <fd-gallery-item> components",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/types/index.type.ts",
+      "declarations": [],
+      "exports": []
     }
   ]
 }
