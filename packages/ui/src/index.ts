@@ -8,3 +8,4 @@ export * from './fd-input/fd-input';
 export * from './fd-logo/fd-logo';
 export * from './fd-icon/fd-icon';
 export * from './fd-container/fd-container';
+export * from './fd-hr/fd-hr';
