@@ -37,7 +37,7 @@
 	}
 	::part(card) {
 		inline-size: min(600px, 100%);
-		padding-inline-end: 0;
+		padding-inline-end: 0px;
 	}
 	.item {
 		display: grid;
