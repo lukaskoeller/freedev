@@ -38,8 +38,10 @@ export class Card extends LitElement {
       background-color: var(--fd-card-background-color);
       border-radius: var(--radius-conditional-3);
       box-shadow: var(--fd-card-shadow);
-      
-      @media (--small-desktop) {
+    }
+
+    @media (min-width: 1024px) {
+      div {
         --fd-card-padding-inline: var(--size-9);
       }
     }
