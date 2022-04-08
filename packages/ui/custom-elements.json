@@ -109,6 +109,14 @@
             "name": "*",
             "package": "./fd-hr/fd-hr"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-stack/fd-stack"
+          }
         }
       ]
     },
