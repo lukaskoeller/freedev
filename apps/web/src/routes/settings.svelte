@@ -19,14 +19,16 @@ import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 </p>
 <fd-container>
 	<fd-card>
-		<SettingsItem>
-			<fd-icon slot="icon" size="xl" file={svgAtSolid} />
-			<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
-		</SettingsItem>
-		<SettingsItem>
-			<fd-icon slot="icon" size="xl" file={svgAtSolid} />
-			<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
-		</SettingsItem>
+		<fd-stack>
+			<SettingsItem>
+				<fd-icon slot="icon" size="xl" file={svgAtSolid} />
+				<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
+			</SettingsItem>
+			<SettingsItem>
+				<fd-icon slot="icon" size="xl" file={svgAtSolid} />
+				<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
+			</SettingsItem>
+		</fd-stack>
 	</fd-card>
 </fd-container>
 
