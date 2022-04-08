@@ -28,6 +28,7 @@ export class Card extends LitElement {
     }
 
     div {
+      inline-size: 100%;
       display: inline-block;
       box-sizing: border-box;
       padding-inline: var(--fd-card-padding-inline);
