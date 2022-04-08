@@ -3,7 +3,7 @@ import './fd-icon';
 import '../fd-gallery/fd-gallery';
 import { html } from 'lit-html';
 import svgBell from 'assets/icons/bell-solid.svg?raw';
-import { Sizes } from '../types/index.type';
+import { Sizes } from 'types/index';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
