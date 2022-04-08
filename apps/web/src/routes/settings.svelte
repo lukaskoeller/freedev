@@ -1,5 +1,6 @@
 <script lang="ts">
-	import svgAtSolid from 'assets/icons/at-solid.svg?raw';
+	import SettingsItem from '$lib/settingsitem/SettingsItem.svelte';
+import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 	import svgUserCircleSolid from 'assets/icons/user-circle-solid.svg?raw';
 	import { onMount } from 'svelte';
 		onMount(async () => {
@@ -18,15 +19,14 @@
 </p>
 <fd-container>
 	<fd-card>
-		<div class="item">
-			<div class="icon">
-				<fd-icon size="xl" file={svgAtSolid} />
-			</div>
-			<div class="input">
-				<fd-hr />
-				<fd-input type="email" placeholder="example@mail.de">E-Mail</fd-input>
-			</div>
-		</div>
+		<SettingsItem>
+			<fd-icon slot="icon" size="xl" file={svgAtSolid} />
+			<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
+		</SettingsItem>
+		<SettingsItem>
+			<fd-icon slot="icon" size="xl" file={svgAtSolid} />
+			<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
+		</SettingsItem>
 	</fd-card>
 </fd-container>
 
@@ -35,22 +35,12 @@
 		display: flex;
 		justify-content: center;
 	}
-	::part(card) {
+
+	fd-card {
 		inline-size: min(600px, 100%);
+	}
+
+	::part(card) {
 		padding-inline-end: 0px;
-	}
-	.item {
-		display: grid;
-		grid-template-columns: auto 1fr;
-		gap: var(--size-4);
-	}
-
-	.icon {
-		padding-block-start: var(--size-3);
-	}
-
-	.input {
-		display: grid;
-		gap: var(--size-3);
 	}
 </style>
