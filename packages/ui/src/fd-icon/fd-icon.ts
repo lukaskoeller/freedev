@@ -2,7 +2,7 @@ import { html, css, LitElement } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import '../fd-label/fd-label';
-import { Sizes } from '../types/index.type';
+import { Sizes } from 'types/index';
 
 const SizeMap = {
   [Sizes.Xs]: 'var(--size-3)',
