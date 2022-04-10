@@ -26,6 +26,7 @@ const SizeMap = {
 export class Icon extends LitElement {
   static styles = css`
     svg {
+      display: block;
       inline-size: var(--fd-icon-size, var(--size));
       block-size: var(--fd-icon-size, var(--size));
     }
