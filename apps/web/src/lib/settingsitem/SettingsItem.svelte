@@ -1,26 +1,41 @@
   <div class="item">
+      <fd-hr />
       <div class="icon">
           <slot name="icon" />
       </div>
       <div class="input">
-          <fd-hr />
-          <slot name="input" />
+        <slot name="input" />
       </div>
   </div>
   
   <style lang="postcss">
     .item {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--size-4);
+      grid:
+        ". hr" auto
+        "icon input" auto
+        / auto 1fr;
+      gap: min(var(--fd-card-padding-inline, var(--size-4)), var(--size-4));
+      align-items: center;
+    }
+
+    fd-hr {
+      grid-area: hr;
     }
 
     .icon {
-      padding-block-start: var(--size-3);
+      grid-area: icon;
     }
 
     .input {
-      display: grid;
+      grid-area: input;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: var(--size-3);
+    }
+
+    .item:first-child fd-hr {
+      display: none;
     }
   </style>
