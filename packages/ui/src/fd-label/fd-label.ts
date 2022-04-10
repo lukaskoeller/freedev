@@ -26,7 +26,7 @@ export class Label extends LitElement {
       --fd-label-color-default: var(--primary-color-5);
       --fd-label-text-transform-default: uppercase;
       --fd-label-font-weight-default: var(--font-weight-6);
-      --fd-label-font-size-default: var(--font-size-0);
+      --fd-label-font-size-default: var(--font-size-1);
 
       font-weight: var(--fd-label-font-weight, var(--fd-label-font-weight-default));
       font-size: var(--fd-label-font-size, var(--fd-label-font-size-default));
