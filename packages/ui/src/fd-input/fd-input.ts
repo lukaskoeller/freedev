@@ -50,6 +50,10 @@ export class Input extends FormControlMixin(LitElement) {
       font-size: var(--font-size-1);
       color: var(--primary-color-base);
     }
+
+    input:focus-visible {
+      outline-color: var(--primary-color-0);
+    }
   `
 
   // static get formAssociated() {
