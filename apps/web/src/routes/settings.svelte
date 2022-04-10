@@ -16,31 +16,45 @@ import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 	<h1>Settings</h1>
 </fd-container>
 <fd-container>
-	<fd-card>
-		<fd-stack>
-			<SettingsItem>
-				<fd-icon slot="icon" size="xl" file={svgAtSolid} />
-				<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
-			</SettingsItem>
-			<SettingsItem>
-				<fd-icon slot="icon" size="xl" file={svgAtSolid} />
-				<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
-			</SettingsItem>
-		</fd-stack>
-	</fd-card>
+	<fieldset>
+		<legend>
+			Account
+		</legend>
+		<fd-card>
+			<fd-stack>
+				<SettingsItem>
+					<fd-icon slot="icon" size="xl" file={svgAtSolid} />
+					<div slot="input">
+						<fd-label>E-Mail</fd-label>
+						<!-- <fd-input type="email" placeholder="example@mail.de">E-Mail</fd-input> -->
+					</div>
+				</SettingsItem>
+				<SettingsItem>
+					<fd-icon slot="icon" size="xl" file={svgAtSolid} />
+					<fd-input slot="input" type="email" placeholder="example@mail.de">E-Mail</fd-input>
+				</SettingsItem>
+			</fd-stack>
+		</fd-card>
+	</fieldset>
 </fd-container>
 
 <style lang="postcss">
 	::part(container) {
-		display: flex;
-		justify-content: center;
+		display: grid;
+		justify-items: center;
 	}
 
-	fd-card {
-		inline-size: min(600px, 100%);
+	fieldset {
+		inline-size: min(800px, 100%);
 	}
 
-	::part(card) {
-		padding-inline-end: 0px;
+	legend {
+		font-weight: var(--font-weight-h2);
+		font-size: var(--font-size-h3);
+		color: var(--primary-color-h2);
+	}
+
+	fd-input {
+		inline-size: 100%;
 	}
 </style>
