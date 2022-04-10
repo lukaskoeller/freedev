@@ -19,7 +19,7 @@
   color-scheme: light;
 
   --brand-hue: 252;
-  
+
   /* light */
   --primary-color-light-0: hsl(252, 26%, 98%);
   --primary-color-light-1: hsl(252, 26%, 93%);
@@ -40,6 +40,7 @@
   --primary-color-dark-6: hsl(252, 100%, 8%);
   --primary-color-dark-7: hsl(252, 26%, 98%);
 
+  /* Colors */
   --primary-color-0: var(--primary-color-light-0);
   --primary-color-1: var(--primary-color-light-1);
   --primary-color-2: var(--primary-color-light-2);
@@ -52,6 +53,29 @@
   --primary-color-base: var(--primary-color-4);
   --light-color-base: hsl(0, 100%, 100%);
   --neutral-color-base: hsl(252, 28%, 93%);
+
+  --color-h1: var(--primary-color-base);
+  --color-h2: var(--primary-color-base);
+  --color-h3: var(--primary-color-base);
+  --color-h4: var(--primary-color-base);
+  --color-h5: var(--primary-color-base);
+  --color-h6: var(--primary-color-base);
+
+  /* Font Sizes */
+  --font-size-h1: var(--font-size-8);
+  --font-size-h2: var(--font-size-7);
+  --font-size-h3: var(--font-size-6);
+  --font-size-h4: var(--font-size-5);
+  --font-size-h5: var(--font-size-4);
+  --font-size-h6: var(--font-size-3);
+
+  /* Font Weights */
+  --font-weight-h1: var(--font-weight-5);
+  --font-weight-h2: var(--font-weight-5);
+  --font-weight-h3: var(--font-weight-5);
+  --font-weight-h4: var(--font-weight-5);
+  --font-weight-h5: var(--font-weight-5);
+  --font-weight-h6: var(--font-weight-5);
 
   --global-spacing: var(--size-3);
 
