@@ -72,7 +72,7 @@ export class Input extends FormControlMixin(LitElement) {
 
   render() {
     return html`
-      <label for="input"><slot></slot></label>
+      <fd-label for="input"><slot></slot></fd-label>
       <input
         id="input"
         .type="${this.type}"
