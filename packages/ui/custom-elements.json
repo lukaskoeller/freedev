@@ -319,74 +319,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-container/fd-container.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "General wrapper providing basic inline and block padding",
-          "name": "Container",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-end"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-block"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content of the container",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-container",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Container",
-          "declaration": {
-            "name": "Container",
-            "module": "src/fd-container/fd-container.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-container",
-          "declaration": {
-            "name": "Container",
-            "module": "src/fd-container/fd-container.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/fd-card/fd-card.ts",
       "declarations": [
         {
@@ -471,6 +403,74 @@
           "declaration": {
             "name": "Card",
             "module": "src/fd-card/fd-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-container/fd-container.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "General wrapper providing basic inline and block padding",
+          "name": "Container",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-block"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content of the container",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-container",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Container",
+          "declaration": {
+            "name": "Container",
+            "module": "src/fd-container/fd-container.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-container",
+          "declaration": {
+            "name": "Container",
+            "module": "src/fd-container/fd-container.ts"
           }
         }
       ]
@@ -1173,6 +1173,58 @@
           "declaration": {
             "name": "Section",
             "module": "src/fd-section/fd-section.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-stack/fd-stack.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Vertical Stack using gaps in between",
+          "name": "Stack",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-stack-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-stack-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-stack",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Stack",
+          "declaration": {
+            "name": "Stack",
+            "module": "src/fd-stack/fd-stack.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-stack",
+          "declaration": {
+            "name": "Stack",
+            "module": "src/fd-stack/fd-stack.ts"
           }
         }
       ]
