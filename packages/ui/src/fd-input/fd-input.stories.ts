@@ -20,7 +20,7 @@ const Template: Story = (args) => html`
     >
       ${args.slot}
     </fd-input>
-    <input name="plant" />
+    <input name="plant" value="Aloe Vera" />
     <button type="submit">Submit</button>
   </form>
   <output></output>
@@ -51,7 +51,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   type: '',
   placeholder: 'E.g. Lion',
-  name: 'Flacon',
+  name: 'animal',
   value: '',
   slot: 'Animal'
 };
