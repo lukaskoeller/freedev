@@ -225,6 +225,96 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-card/fd-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A classic Card component.",
+          "name": "Card",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-card-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-card-color"
+            },
+            {
+              "description": "Sets the Card's shadow",
+              "name": "--fd-card-shadow"
+            },
+            {
+              "description": "Sets the inline padding",
+              "name": "--fd-card-padding-inline"
+            },
+            {
+              "description": "Sets the block padding",
+              "name": "--fd-card-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Card's div",
+              "name": "card"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-button/fd-button.ts",
       "declarations": [
         {
@@ -313,96 +403,6 @@
           "declaration": {
             "name": "Button",
             "module": "src/fd-button/fd-button.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-card/fd-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A classic Card component.",
-          "name": "Card",
-          "cssProperties": [
-            {
-              "description": "Adjusts the background color",
-              "name": "--fd-card-background-color"
-            },
-            {
-              "description": "Adjusts the font color",
-              "name": "--fd-card-color"
-            },
-            {
-              "description": "Sets the Card's shadow",
-              "name": "--fd-card-shadow"
-            },
-            {
-              "description": "Sets the inline padding",
-              "name": "--fd-card-padding-inline"
-            },
-            {
-              "description": "Sets the block padding",
-              "name": "--fd-card-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Card's div",
-              "name": "card"
-            }
-          ],
-          "slots": [
-            {
-              "description": "element has a slot",
-              "name": "This"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "attribute": "variant"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
           }
         }
       ]
@@ -943,6 +943,15 @@
               "attribute": "tag"
             },
             {
+              "kind": "field",
+              "name": "for",
+              "type": {
+                "text": "string"
+              },
+              "default": "'input'",
+              "attribute": "for"
+            },
+            {
               "kind": "method",
               "name": "getTag",
               "privacy": "private",
@@ -954,6 +963,11 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "createRenderRoot",
+              "privacy": "protected"
             }
           ],
           "attributes": [
@@ -963,6 +977,14 @@
                 "text": "Tags"
               },
               "fieldName": "tag"
+            },
+            {
+              "name": "for",
+              "type": {
+                "text": "string"
+              },
+              "default": "'input'",
+              "fieldName": "for"
             }
           ],
           "superclass": {
@@ -1225,6 +1247,140 @@
           "declaration": {
             "name": "Stack",
             "module": "src/fd-stack/fd-stack.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-switch/fd-switch.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switch component for text",
+          "name": "Switch",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-switch-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-switch-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "placeholder",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "#onInput",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "{ target }",
+                  "type": {
+                    "text": "{ target: HTMLInputElement }"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "placeholder"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "package": "@open-wc/form-control"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-switch",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "src/fd-switch/fd-switch.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "src/fd-switch/fd-switch.ts"
           }
         }
       ]
