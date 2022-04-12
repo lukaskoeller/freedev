@@ -38,6 +38,9 @@ export class Label extends LitElement {
   @property()
   tag: Tags = Tags.Label;
 
+  @property()
+  for: string = 'input';
+
   private getTag(tag: Tags) {
     switch (tag) {
       case "label":
@@ -51,12 +54,16 @@ export class Label extends LitElement {
     }
   }
 
-  render() {
+  protected render() {
     return html`
-      <${this.getTag(this.tag)}>
+      <${this.getTag(this.tag)} part="label" for=${this.for}>
         <slot></slot>
       </${this.getTag(this.tag)}>
     `
+  }
+
+  protected createRenderRoot() {
+    return this;
   }
 }
 
