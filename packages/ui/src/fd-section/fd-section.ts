@@ -84,7 +84,7 @@ export class Section extends LitElement {
         <div class="header">
           ${this.heading ? html`
             <h2>${this.heading}</h2>
-            ${html`<fd-label>Read More</fd-label>`}
+            <fd-label>Read More</fd-label>
           ` : null}
         </div>
         <div class="slot">

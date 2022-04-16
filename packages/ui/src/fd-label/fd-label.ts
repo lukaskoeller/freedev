@@ -54,16 +54,12 @@ export class Label extends LitElement {
     }
   }
 
-  protected render() {
+  render() {
     return html`
       <${this.getTag(this.tag)} part="label" for=${this.for}>
         <slot></slot>
       </${this.getTag(this.tag)}>
     `
-  }
-
-  protected createRenderRoot() {
-    return this;
   }
 }
 
