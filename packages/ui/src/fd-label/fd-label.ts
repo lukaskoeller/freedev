@@ -1,6 +1,7 @@
 import { css, LitElement } from 'lit'
 import {html, literal} from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
+import { labelStyles } from './fd-label.style';
 
 export enum Tags {
   Label = 'label',
@@ -21,19 +22,7 @@ export enum Tags {
  */
 @customElement('fd-label')
 export class Label extends LitElement {
-  static styles = css`
-    :host {
-      --fd-label-color-default: var(--primary-color-5);
-      --fd-label-text-transform-default: uppercase;
-      --fd-label-font-weight-default: var(--font-weight-6);
-      --fd-label-font-size-default: var(--font-size-1);
-
-      font-weight: var(--fd-label-font-weight, var(--fd-label-font-weight-default));
-      font-size: var(--fd-label-font-size, var(--fd-label-font-size-default));
-      text-transform: var(--fd-label-text-transform, var(--fd-label-text-transform-default));
-      color: var(--fd-label-color, var(--fd-label-color-default));
-    }
-  `
+  static styles = labelStyles;
 
   @property()
   tag: Tags = Tags.Label;
@@ -56,7 +45,7 @@ export class Label extends LitElement {
 
   render() {
     return html`
-      <${this.getTag(this.tag)} part="label" for=${this.for}>
+      <${this.getTag(this.tag)} class="label" part="label" for=${this.for}>
         <slot></slot>
       </${this.getTag(this.tag)}>
     `
