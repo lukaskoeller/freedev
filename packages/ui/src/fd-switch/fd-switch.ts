@@ -1,9 +1,7 @@
 import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
-import { live } from 'lit/directives/live.js';
-
-import { FormControlMixin } from '@open-wc/form-control';
+import { labelStyles } from '../fd-label/fd-label.style';
 
 /**
  * https://css-tricks.com/supercharging-built-in-elements-with-web-components-is-easier-than-you-think/
@@ -25,115 +23,118 @@ import { FormControlMixin } from '@open-wc/form-control';
  * @cssprop {string} --fd-switch-font-size - Adjusts font size (see https://open-props.style/#typography)
  */
 @customElement('fd-switch')
-export class Switch extends FormControlMixin(LitElement) {
-  static styles = css`
-    :host {
-      --fd-switch-thumb-size: var(--size-6);
-      --fd-switch-thumb: var(--light-color-base);
+export class Switch extends LitElement {
+  static styles = [
+    labelStyles,
+    css`
+      :host {
+        --fd-switch-thumb-size: var(--size-6);
+        --fd-switch-thumb: var(--light-color-base);
+        
+        --fd-switch-track-size: calc(var(--fd-switch-thumb-size) * 2);
+        --fd-switch-track-padding: calc(var(--size-1) / 2);
+        --fd-switch-track-inactive: var(--primary-color-2);
+        --fd-switch-track-active: var(--primary-color-base);
       
-      --fd-switch-track-size: calc(var(--fd-switch-thumb-size) * 2);
-      --fd-switch-track-padding: calc(var(--size-1) / 2);
-      --fd-switch-track-inactive: var(--primary-color-2);
-      --fd-switch-track-active: var(--primary-color-base);
-    
-      --fd-switch-thumb-color: var(--fd-switch-thumb);
-      --fd-switch-track-color-inactive: var(--fd-switch-track-inactive);
-      --fd-switch-track-color-active: var(--fd-switch-track-active);
-    
-      --fd-switch-isLTR: 1;
-    }
-
-    fd-label {
-      display: flex;
-      align-items: center;
-      gap: var(--size-4);
-      justify-content: space-between;
-
-      cursor: pointer;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    input {
-      --fd-switch-thumb-position: 0%;
-      --fd-switch-thumb-transition-duration: .25s;
+        --fd-switch-thumb-color: var(--fd-switch-thumb);
+        --fd-switch-track-color-inactive: var(--fd-switch-track-inactive);
+        --fd-switch-track-color-active: var(--fd-switch-track-active);
       
-      padding: var(--fd-switch-track-padding);
-      background: var(--fd-switch-track-color-inactive);
-      inline-size: var(--fd-switch-track-size);
-      block-size: var(--fd-switch-thumb-size);
-      border-radius: var(--fd-switch-track-size);
+        --fd-switch-isLTR: 1;
+      }
 
-      appearance: none;
-      -webkit-appearance: none;
-      pointer-events: none;
-      touch-action: pan-y;
-      border: none;
-      outline-offset: 5px;
-      box-sizing: content-box;
+      label {
+        display: flex;
+        align-items: center;
+        gap: var(--size-4);
+        justify-content: space-between;
 
-      flex-shrink: 0;
-      display: grid;
-      align-items: center;
-      grid: [track] 1fr / [track] 1fr;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
 
-      transition: background-color .25s ease;
-    }
+      input {
+        --fd-switch-thumb-position: 0%;
+        --fd-switch-thumb-transition-duration: .25s;
+        
+        padding: var(--fd-switch-track-padding);
+        background: var(--fd-switch-track-color-inactive);
+        inline-size: var(--fd-switch-track-size);
+        block-size: var(--fd-switch-thumb-size);
+        border-radius: var(--fd-switch-track-size);
 
-    input::before {
-      --fd-switch-highlight-size: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        pointer-events: none;
+        touch-action: pan-y;
+        border: none;
+        outline-offset: 5px;
+        box-sizing: content-box;
 
-      content: "";
-      cursor: pointer;
-      pointer-events: auto;
-      grid-area: track;
-      inline-size: var(--fd-switch-thumb-size);
-      block-size: var(--fd-switch-thumb-size);
-      background: var(--fd-switch-thumb-color);
-      border-radius: 50%;
-      transition: transform .25s ease;
-      transform: translateX(var(--fd-switch-thumb-position));
-    }
+        flex-shrink: 0;
+        display: grid;
+        align-items: center;
+        grid: [track] 1fr / [track] 1fr;
 
-    @media (--fd-switch-motionOK) { 
+        transition: background-color .25s ease;
+      }
+
       input::before {
-        transition: 
-          transform var(--fd-switch-thumb-transition-duration) ease;
+        --fd-switch-highlight-size: 0;
+
+        content: "";
+        cursor: pointer;
+        pointer-events: auto;
+        grid-area: track;
+        inline-size: var(--fd-switch-thumb-size);
+        block-size: var(--fd-switch-thumb-size);
+        background: var(--fd-switch-thumb-color);
+        border-radius: 50%;
+        transition: transform .25s ease;
+        transform: translateX(var(--fd-switch-thumb-position));
       }
-    }
 
-    input:not(:disabled):hover::before {
-      --fd-switch-highlight-size: .5rem;
-    }
+      @media (--fd-switch-motionOK) { 
+        input::before {
+          transition: 
+            transform var(--fd-switch-thumb-transition-duration) ease;
+        }
+      }
 
-    input:checked {
-      background: var(--fd-switch-track-color-active);
-      --fd-switch-thumb-position: calc((var(--fd-switch-track-size) - 100%) * var(--fd-switch-isLTR));
-    }
+      input:not(:disabled):hover::before {
+        --fd-switch-highlight-size: .5rem;
+      }
 
-    input:indeterminate {
-      --fd-switch-thumb-position: calc(
-        calc(calc(var(--fd-switch-track-size) / 2) - calc(var(--fd-switch-thumb-size) / 2))
-        * var(--fd-switch-isLTR)
-      );
-    }
+      input:checked {
+        background: var(--fd-switch-track-color-active);
+        --fd-switch-thumb-position: calc((var(--fd-switch-track-size) - 100%) * var(--fd-switch-isLTR));
+      }
 
-    input:disabled {
-      cursor: not-allowed;
-      --fd-switch-thumb-color: transparent;
-    }
+      input:indeterminate {
+        --fd-switch-thumb-position: calc(
+          calc(calc(var(--fd-switch-track-size) / 2) - calc(var(--fd-switch-thumb-size) / 2))
+          * var(--fd-switch-isLTR)
+        );
+      }
 
-    input:disabled::before {
-      cursor: not-allowed;
-      box-shadow: inset 0 0 0 2px hsl(0 0% 100% / 50%);
-    }
+      input:disabled {
+        cursor: not-allowed;
+        --fd-switch-thumb-color: transparent;
+      }
 
-    @media (prefers-color-scheme: dark) {
       input:disabled::before {
-        box-shadow: inset 0 0 0 2px hsl(0 0% 0% / 50%);
+        cursor: not-allowed;
+        box-shadow: inset 0 0 0 2px hsl(0 0% 100% / 50%);
       }
-    }
-  `
+
+      @media (prefers-color-scheme: dark) {
+        input:disabled::before {
+          box-shadow: inset 0 0 0 2px hsl(0 0% 0% / 50%);
+        }
+      }
+    `
+  ];
 
   @property({ type: String, reflect: true })
   value = '';
@@ -143,22 +144,15 @@ export class Switch extends FormControlMixin(LitElement) {
 
   render() {
     return html`
-      <fd-label for="input">
+      <label for="input" class="label">
         <input
           id="input"
           role="switch"
           type="checkbox"
-          .placeholder="${live(this.placeholder)}"
-          .value="${live(this.value)}"
-          @input="${this.#onInput}"
         >
         <slot></slot>
-      </fd-label>
+      </label>
     `;
-  }
-
-  #onInput({ target }: { target: HTMLInputElement }): void {
-    this.value = target.value;
   }
 }
 
