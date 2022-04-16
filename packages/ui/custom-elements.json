@@ -1310,23 +1310,6 @@
               "default": "''",
               "attribute": "placeholder",
               "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "#onInput",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "{ target }",
-                  "type": {
-                    "text": "{ target: HTMLInputElement }"
-                  }
-                }
-              ]
             }
           ],
           "attributes": [
@@ -1345,12 +1328,6 @@
               },
               "default": "''",
               "fieldName": "placeholder"
-            }
-          ],
-          "mixins": [
-            {
-              "name": "FormControlMixin",
-              "package": "@open-wc/form-control"
             }
           ],
           "superclass": {
