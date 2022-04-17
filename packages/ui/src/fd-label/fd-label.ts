@@ -1,4 +1,4 @@
-import { css, LitElement } from 'lit'
+import { LitElement } from 'lit'
 import {html, literal} from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import { labelStyles } from './fd-label.style';
