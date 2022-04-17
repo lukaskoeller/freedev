@@ -144,8 +144,9 @@ export class Switch extends LitElement {
 
   render() {
     return html`
-      <label for="input" class="label">
+      <label for="input" class="label" part="label">
         <input
+          part="input"
           id="input"
           role="switch"
           type="checkbox"
