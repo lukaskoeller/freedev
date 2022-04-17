@@ -3,8 +3,6 @@ import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 
-import { FormControlMixin } from '@open-wc/form-control';
-
 /**
  * https://css-tricks.com/supercharging-built-in-elements-with-web-components-is-easier-than-you-think/
  * https://github.com/WICG/webcomponents/issues/509
@@ -25,7 +23,7 @@ import { FormControlMixin } from '@open-wc/form-control';
  * @cssprop {string} --fd-input-font-size - Adjusts font size (see https://open-props.style/#typography)
  */
 @customElement('fd-input')
-export class Input extends FormControlMixin(LitElement) {
+export class Input extends LitElement {
   static styles = css`
     :host {
       --fd-input-background-color: var(--primary-color-1);
@@ -38,6 +36,7 @@ export class Input extends FormControlMixin(LitElement) {
     }
 
     input {
+      position: relative;
       min-width: 0;
       border: 0;
       border-radius: var(--radius-2);
@@ -56,15 +55,6 @@ export class Input extends FormControlMixin(LitElement) {
     }
   `
 
-  // static get formAssociated() {
-  //   return true;
-  // }
-
-  // constructor() {
-  //   super();
-  //   this.value = '';
-  // }
-
   @property({ type: String, reflect: true })
   value = '';
 
@@ -77,18 +67,15 @@ export class Input extends FormControlMixin(LitElement) {
   render() {
     return html`
       <fd-label for="input"><slot></slot></fd-label>
-      <input
-        id="input"
-        .type="${this.type}"
-        .placeholder="${live(this.placeholder)}"
-        .value="${live(this.value)}"
-        @input="${this.#onInput}"
-      >
+      <slot>
+        <input
+          id="input"
+          .type="${this.type}"
+          .placeholder="${live(this.placeholder)}"
+          .value="${live(this.value)}"
+        >
+      </slot>
     `;
-  }
-
-  #onInput({ target }: { target: HTMLInputElement }): void {
-    this.value = target.value;
   }
 }
 
