@@ -868,6 +868,92 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-logo/fd-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component",
+          "name": "Logo",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo image",
+              "name": "--fd-logo-fill-logo"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo text",
+              "name": "--fd-logo-fill-text"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the width of the logo",
+              "name": "--fd-logo-inline-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-label/fd-label.style.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "labelStyles",
+          "default": "css`\n  :host {\n    --fd-label-color-default: var(--primary-color-5);\n    --fd-label-text-transform-default: uppercase;\n    --fd-label-font-weight-default: var(--font-weight-6);\n    --fd-label-font-size-default: var(--font-size-1);\n  }\n\n  .label {\n    font-weight: var(--fd-label-font-weight, var(--fd-label-font-weight-default));\n    font-size: var(--fd-label-font-size, var(--fd-label-font-size-default));\n    text-transform: var(--fd-label-text-transform, var(--fd-label-text-transform-default));\n    color: var(--fd-label-color, var(--fd-label-color-default));\n  }\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "labelStyles",
+          "declaration": {
+            "name": "labelStyles",
+            "module": "src/fd-label/fd-label.style.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-label/fd-label.ts",
       "declarations": [
         {
@@ -988,12 +1074,12 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-logo/fd-logo.ts",
+      "path": "src/fd-progress-circle/fd-progress-circle.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "Logo component",
-          "name": "Logo",
+          "name": "ProgressCircle",
           "cssProperties": [
             {
               "type": {
@@ -1023,30 +1109,104 @@
               "name": ""
             }
           ],
-          "members": [],
+          "members": [
+            {
+              "kind": "field",
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "attribute": "totalSteps",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "attribute": "progress",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "protected",
+              "default": "60",
+              "attribute": "_radius"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "fieldName": "totalSteps"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "fieldName": "progress"
+            },
+            {
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "default": "60",
+              "fieldName": "_radius"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "fd-logo",
+          "tagName": "fd-progress-circle",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Logo",
+          "name": "ProgressCircle",
           "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "fd-logo",
+          "name": "fd-progress-circle",
           "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
           }
         }
       ]
