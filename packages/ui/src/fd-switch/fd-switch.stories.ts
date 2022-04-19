@@ -13,12 +13,9 @@ export default {
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story = (args) => html`
   <form style="display: grid; gap: 16px; justify-items: start;">
-    <fd-switch
-      .value="${args.value}"
-      .name="${args.name}"
-      .placeholder="${args.placeholder}"
-    >
+    <fd-switch>
       ${args.slot}
+      <span slot="label">My Label</span>
     </fd-switch>
     <input name="plant" />
     <button type="submit">Submit</button>
@@ -53,6 +50,13 @@ Primary.args = {
   placeholder: 'E.g. Lion',
   name: 'animal',
   value: '',
-  slot: 'Animal'
+  slot: html`
+    <input
+      slot="input"
+      id="input"
+      role="switch"
+      type="checkbox"
+    >
+  `
 };
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
