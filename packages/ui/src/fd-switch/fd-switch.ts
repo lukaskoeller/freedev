@@ -54,7 +54,7 @@ export class Switch extends LitElement {
         -webkit-tap-highlight-color: transparent;
       }
 
-      input {
+      ::slotted(#input) {
         --fd-switch-thumb-position: 0%;
         --fd-switch-thumb-transition-duration: .25s;
         
@@ -80,7 +80,7 @@ export class Switch extends LitElement {
         transition: background-color .25s ease;
       }
 
-      input::before {
+      ::slotted(#input)::before {
         --fd-switch-highlight-size: 0;
 
         content: "";
@@ -102,28 +102,28 @@ export class Switch extends LitElement {
         }
       }
 
-      input:not(:disabled):hover::before {
+      ::slotted(#input):not(:disabled):hover::before {
         --fd-switch-highlight-size: .5rem;
       }
 
-      input:checked {
+      ::slotted(#input):checked {
         background: var(--fd-switch-track-color-active);
         --fd-switch-thumb-position: calc((var(--fd-switch-track-size) - 100%) * var(--fd-switch-isLTR));
       }
 
-      input:indeterminate {
+      ::slotted(#input):indeterminate {
         --fd-switch-thumb-position: calc(
           calc(calc(var(--fd-switch-track-size) / 2) - calc(var(--fd-switch-thumb-size) / 2))
           * var(--fd-switch-isLTR)
         );
       }
 
-      input:disabled {
+      ::slotted(#input):disabled {
         cursor: not-allowed;
         --fd-switch-thumb-color: transparent;
       }
 
-      input:disabled::before {
+      ::slotted(#input):disabled::before {
         cursor: not-allowed;
         box-shadow: inset 0 0 0 2px hsl(0 0% 100% / 50%);
       }
@@ -145,13 +145,9 @@ export class Switch extends LitElement {
   render() {
     return html`
       <label for="input" class="label" part="label">
-        <input
-          part="input"
-          id="input"
-          role="switch"
-          type="checkbox"
-        >
-        <slot></slot>
+        <slot name="input">
+        </slot>
+        <slot name="label" />
       </label>
     `;
   }
