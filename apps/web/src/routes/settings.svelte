@@ -25,8 +25,15 @@ import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 				<SettingsItem>
 					<fd-icon slot="icon" size="xl" file={svgAtSolid} />
 					<div slot="input">
-						<fd-label>E-Mail</fd-label>
-						<!-- <fd-input type="email" placeholder="example@mail.de">E-Mail</fd-input> -->
+						<fd-switch>
+							<input
+								part="input"
+								id="input"
+								role="switch"
+								type="checkbox"
+							>
+							<fd-label slot="label">Angemeldet bleiben</fd-label>
+						</fd-switch>
 					</div>
 				</SettingsItem>
 				<SettingsItem>
