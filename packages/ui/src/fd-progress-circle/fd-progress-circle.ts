@@ -5,12 +5,11 @@ import { customElement, property } from "lit/decorators.js";
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
 /**
- * Logo component
+ * Progress Circle Component e.g. used for a "complete profile" card.
  *
- * @slot - Text of label
- * @cssprop {string} --fd-logo-fill-logo - Adjusts the fill color of the logo image
- * @cssprop {string} --fd-logo-fill-text - Adjusts the fill color of the logo text
- * @cssprop {string} --fd-logo-inline-size - Adjusts the width of the logo
+ * @cssprop {string} --fd-progress-circle-fill-active - Adjusts the fill color of the circle
+ * @cssprop {string} --fd-progress-circle-fill-inactive - Adjusts the fill color of the progress circle
+ * @cssprop {string} --fd-progress-circle-inline-size - Size of the circle
  */
 @customElement("fd-progress-circle")
 export class ProgressCircle extends LitElement {
