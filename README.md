@@ -51,3 +51,10 @@ To develop all apps and packages, run the following command:
 cd my-turborepo
 npm run dev
 ```
+
+## Forms
+
+* [Lit Mixins](https://lit.dev/docs/composition/mixins/)
+* [Lion Delegate Mixin](https://github.com/ing-bank/lion/blob/master/packages/core/src/DelegateMixin.js)
+* [Form Data Polyfill](https://gist.github.com/WickyNilliams/eb6a44075356ee504dd9491c5a3ab0be)
+* [Slack: InputMixin](https://lit-and-friends.slack.com/archives/CE6D9DN05/p1632831988227700)
