@@ -2,6 +2,7 @@ import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import { labelStyles } from '../fd-label/fd-label.style';
+import { FormControlMixin } from '../mixins/formControlMixin';
 
 /**
  * https://css-tricks.com/supercharging-built-in-elements-with-web-components-is-easier-than-you-think/
@@ -23,7 +24,7 @@ import { labelStyles } from '../fd-label/fd-label.style';
  * @cssprop {string} --fd-switch-font-size - Adjusts font size (see https://open-props.style/#typography)
  */
 @customElement('fd-switch')
-export class Switch extends LitElement {
+export class Switch extends FormControlMixin(LitElement) {
   static styles = [
     labelStyles,
     css`
@@ -54,7 +55,7 @@ export class Switch extends LitElement {
         -webkit-tap-highlight-color: transparent;
       }
 
-      ::slotted(#input) {
+      input {
         --fd-switch-thumb-position: 0%;
         --fd-switch-thumb-transition-duration: .25s;
         
@@ -80,7 +81,7 @@ export class Switch extends LitElement {
         transition: background-color .25s ease;
       }
 
-      ::slotted(#input)::before {
+      input::before {
         --fd-switch-highlight-size: 0;
 
         content: "";
@@ -102,28 +103,28 @@ export class Switch extends LitElement {
         }
       }
 
-      ::slotted(#input):not(:disabled):hover::before {
+      input:not(:disabled):hover::before {
         --fd-switch-highlight-size: .5rem;
       }
 
-      ::slotted(#input):checked {
+      input:checked {
         background: var(--fd-switch-track-color-active);
         --fd-switch-thumb-position: calc((var(--fd-switch-track-size) - 100%) * var(--fd-switch-isLTR));
       }
 
-      ::slotted(#input):indeterminate {
+      input:indeterminate {
         --fd-switch-thumb-position: calc(
           calc(calc(var(--fd-switch-track-size) / 2) - calc(var(--fd-switch-thumb-size) / 2))
           * var(--fd-switch-isLTR)
         );
       }
 
-      ::slotted(#input):disabled {
+      input:disabled {
         cursor: not-allowed;
         --fd-switch-thumb-color: transparent;
       }
 
-      ::slotted(#input):disabled::before {
+      input:disabled::before {
         cursor: not-allowed;
         box-shadow: inset 0 0 0 2px hsl(0 0% 100% / 50%);
       }
@@ -137,19 +138,28 @@ export class Switch extends LitElement {
   ];
 
   @property({ type: String, reflect: true })
-  value = '';
-
-  @property({ type: String, reflect: true })
   placeholder = '';
 
   render() {
     return html`
       <label for="input" class="label" part="label">
-        <slot name="input">
-        </slot>
-        <slot name="label" />
+        <input
+          id="input"
+          role="switch"
+          type="checkbox"
+          name=${this.name}
+          .value=${this.value}
+          .checked=${this.checked}
+          @input=${this.handleInput}
+        >
+        <slot />
       </label>
     `;
+  }
+
+  private handleInput(e: Event) {
+    console.log(e?.target?.checked);
+    this.checked = e?.target?.checked;
   }
 }
 
