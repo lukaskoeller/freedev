@@ -868,6 +868,27 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-label/fd-label.style.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "labelStyles",
+          "default": "css`\n  :host {\n    --fd-label-color-default: var(--primary-color-5);\n    --fd-label-text-transform-default: uppercase;\n    --fd-label-font-weight-default: var(--font-weight-6);\n    --fd-label-font-size-default: var(--font-size-1);\n  }\n\n  .label {\n    font-weight: var(--fd-label-font-weight, var(--fd-label-font-weight-default));\n    font-size: var(--fd-label-font-size, var(--fd-label-font-size-default));\n    text-transform: var(--fd-label-text-transform, var(--fd-label-text-transform-default));\n    color: var(--fd-label-color, var(--fd-label-color-default));\n  }\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "labelStyles",
+          "declaration": {
+            "name": "labelStyles",
+            "module": "src/fd-label/fd-label.style.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-label/fd-label.ts",
       "declarations": [
         {
@@ -1047,6 +1068,139 @@
           "declaration": {
             "name": "Logo",
             "module": "src/fd-logo/fd-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-progress-circle/fd-progress-circle.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Progress Circle Component e.g. used for a \"complete profile\" card.",
+          "name": "ProgressCircle",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the circle",
+              "name": "--fd-progress-circle-fill-active"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the progress circle",
+              "name": "--fd-progress-circle-fill-inactive"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the circle",
+              "name": "--fd-progress-circle-inline-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "attribute": "totalSteps",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "attribute": "progress",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "protected",
+              "default": "60",
+              "attribute": "_radius"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "fieldName": "totalSteps"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "fieldName": "progress"
+            },
+            {
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "default": "60",
+              "fieldName": "_radius"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-progress-circle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ProgressCircle",
+          "declaration": {
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-progress-circle",
+          "declaration": {
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
           }
         }
       ]
@@ -1270,16 +1424,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value",
-              "reflects": true
-            },
-            {
-              "kind": "field",
               "name": "placeholder",
               "type": {
                 "text": "string"
@@ -1287,17 +1431,61 @@
               "default": "''",
               "attribute": "placeholder",
               "reflects": true
-            }
-          ],
-          "attributes": [
+            },
             {
+              "kind": "method",
+              "name": "handleInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
               "name": "value",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "fieldName": "value"
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
             },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "attributes": [
             {
               "name": "placeholder",
               "type": {
@@ -1305,6 +1493,48 @@
               },
               "default": "''",
               "fieldName": "placeholder"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "module": "/src/mixins/formControlMixin"
             }
           ],
           "superclass": {
@@ -1330,6 +1560,126 @@
           "declaration": {
             "name": "Switch",
             "module": "src/fd-switch/fd-switch.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/mixins/formControlMixin.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FormControlMixinInterface",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "FormControlMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass",
+              "type": {
+                "text": "T"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FormControlMixinInterface",
+          "declaration": {
+            "name": "FormControlMixinInterface",
+            "module": "src/mixins/formControlMixin.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FormControlMixin",
+          "declaration": {
+            "name": "FormControlMixin",
+            "module": "src/mixins/formControlMixin.ts"
           }
         }
       ]
