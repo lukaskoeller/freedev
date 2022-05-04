@@ -25,14 +25,8 @@ import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 				<SettingsItem>
 					<fd-icon slot="icon" size="xl" file={svgAtSolid} />
 					<div slot="input">
-						<fd-switch>
-							<input
-								part="input"
-								id="input"
-								role="switch"
-								type="checkbox"
-							>
-							<fd-label slot="label">Angemeldet bleiben</fd-label>
+						<fd-switch name="stayLoggedIn">
+							<fd-label>Angemeldet bleiben</fd-label>
 						</fd-switch>
 					</div>
 				</SettingsItem>
