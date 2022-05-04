@@ -157,9 +157,9 @@ export class Switch extends FormControlMixin(LitElement) {
     `;
   }
 
-  private handleInput(e: Event) {
-    console.log(e?.target?.checked);
-    this.checked = e?.target?.checked;
+  private handleInput(e: InputEvent) {
+    const target = e.target as HTMLInputElement
+    this.checked = target.checked;
   }
 }
 
