@@ -225,6 +225,96 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-card/fd-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A classic Card component.",
+          "name": "Card",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-card-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-card-color"
+            },
+            {
+              "description": "Sets the Card's shadow",
+              "name": "--fd-card-shadow"
+            },
+            {
+              "description": "Sets the inline padding",
+              "name": "--fd-card-padding-inline"
+            },
+            {
+              "description": "Sets the block padding",
+              "name": "--fd-card-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Card's div",
+              "name": "card"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-button/fd-button.ts",
       "declarations": [
         {
@@ -319,96 +409,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-card/fd-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A classic Card component.",
-          "name": "Card",
-          "cssProperties": [
-            {
-              "description": "Adjusts the background color",
-              "name": "--fd-card-background-color"
-            },
-            {
-              "description": "Adjusts the font color",
-              "name": "--fd-card-color"
-            },
-            {
-              "description": "Sets the Card's shadow",
-              "name": "--fd-card-shadow"
-            },
-            {
-              "description": "Sets the inline padding",
-              "name": "--fd-card-padding-inline"
-            },
-            {
-              "description": "Sets the block padding",
-              "name": "--fd-card-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Card's div",
-              "name": "card"
-            }
-          ],
-          "slots": [
-            {
-              "description": "element has a slot",
-              "name": "This"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "attribute": "variant"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/fd-container/fd-container.ts",
       "declarations": [
         {
@@ -471,6 +471,68 @@
           "declaration": {
             "name": "Container",
             "module": "src/fd-container/fd-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-form/fd-form.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Extended form element to allow cross-browser form participation of custom elements",
+          "name": "Form",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-form-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-form-padding-inline"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_formdata",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Form",
+          "declaration": {
+            "name": "Form",
+            "module": "src/fd-form/fd-form.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-form",
+          "declaration": {
+            "name": "Form",
+            "module": "src/fd-form/fd-form.ts"
           }
         }
       ]
@@ -791,7 +853,11 @@
               },
               "default": "''",
               "attribute": "value",
-              "reflects": true
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
             },
             {
               "kind": "field",
@@ -811,6 +877,87 @@
               },
               "default": "'text'",
               "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "associatedForm",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
             }
           ],
           "attributes": [
@@ -820,7 +967,11 @@
                 "text": "string"
               },
               "default": "''",
-              "fieldName": "value"
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
             },
             {
               "name": "placeholder",
@@ -837,6 +988,36 @@
               },
               "default": "'text'",
               "fieldName": "type"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "module": "/src/mixins/formControlMixin"
             }
           ],
           "superclass": {
@@ -1434,7 +1615,7 @@
             },
             {
               "kind": "method",
-              "name": "handleInput",
+              "name": "onCheckbox",
               "privacy": "private",
               "parameters": [
                 {
@@ -1444,6 +1625,28 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "associatedForm",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
             },
             {
               "kind": "field",
@@ -1479,6 +1682,39 @@
               },
               "default": "false",
               "attribute": "checked",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
               "inheritedFrom": {
                 "name": "FormControlMixin",
                 "module": "src/mixins/formControlMixin.ts"
@@ -1593,6 +1829,23 @@
               "type": {
                 "text": "boolean"
               }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -1601,6 +1854,20 @@
           "description": "",
           "name": "FormControlMixin",
           "members": [
+            {
+              "kind": "field",
+              "name": "associatedForm",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private"
+            },
             {
               "kind": "field",
               "name": "name",
@@ -1627,6 +1894,31 @@
               },
               "default": "false",
               "attribute": "checked"
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ]
             }
           ],
           "attributes": [
@@ -1683,6 +1975,12 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/utils/formdataPolyfill.ts",
+      "declarations": [],
+      "exports": []
     }
   ]
 }
