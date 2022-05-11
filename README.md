@@ -58,3 +58,4 @@ npm run dev
 * [Lion Delegate Mixin](https://github.com/ing-bank/lion/blob/master/packages/core/src/DelegateMixin.js)
 * [Form Data Polyfill](https://gist.github.com/WickyNilliams/eb6a44075356ee504dd9491c5a3ab0be)
 * [Slack: InputMixin](https://lit-and-friends.slack.com/archives/CE6D9DN05/p1632831988227700)
+* [!webdev form participation](https://web.dev/more-capable-form-controls/)
