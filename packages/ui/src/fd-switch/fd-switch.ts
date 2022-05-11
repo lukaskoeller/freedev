@@ -150,14 +150,14 @@ export class Switch extends FormControlMixin(LitElement) {
           name=${this.name}
           .value=${this.value}
           .checked=${this.checked}
-          @input=${this.handleInput}
+          @input=${this.onCheckbox}
         >
         <slot />
       </label>
     `;
   }
 
-  private handleInput(e: InputEvent) {
+  private onCheckbox(e: InputEvent) {
     const target = e.target as HTMLInputElement
     this.checked = target.checked;
   }
