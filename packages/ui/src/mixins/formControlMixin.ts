@@ -10,6 +10,13 @@ export declare class FormControlMixinInterface {
   onInput(event: InputEvent): void;
 }
 
+/**
+ * 
+ * @param superClass 
+ * @returns the form control class that comes with input and form handling functionality.
+ * 
+ * Inspired by @url https://twitter.com/techytacos/status/1408184381491933184
+ */
 export const FormControlMixin = 
   <T extends Constructor<LitElement>>(superClass: T) => {
     class FormControl extends superClass {
