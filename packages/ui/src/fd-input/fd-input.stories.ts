@@ -32,12 +32,11 @@ const Template: Story = (args) => html`
       event.preventDefault();
       
       const form = event.target;
-      console.log('fd-input:', form.animal);
 
       /** Get all of the form data */
       const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
+      const data = [...formData.entries()];
+      data.forEach((value, key) => data[key] = value);
       console.log(data);
       output.innerHTML = JSON.stringify(data, null, 2);
     });
@@ -49,7 +48,7 @@ const Template: Story = (args) => html`
  */
 export const Primary = Template.bind({});
 Primary.args = {
-  type: '',
+  type: 'text',
   placeholder: 'E.g. Lion',
   name: 'animal',
   value: '',
