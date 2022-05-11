@@ -1,7 +1,7 @@
 import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
-import { live } from 'lit/directives/live.js';
+import { FormControlMixin } from '../mixins/formControlMixin';
 
 /**
  * https://css-tricks.com/supercharging-built-in-elements-with-web-components-is-easier-than-you-think/
@@ -23,7 +23,7 @@ import { live } from 'lit/directives/live.js';
  * @cssprop {string} --fd-input-font-size - Adjusts font size (see https://open-props.style/#typography)
  */
 @customElement('fd-input')
-export class Input extends LitElement {
+export class Input extends FormControlMixin(LitElement) {
   static styles = css`
     :host {
       --fd-input-background-color: var(--primary-color-1);
@@ -70,9 +70,11 @@ export class Input extends LitElement {
       <slot>
         <input
           id="input"
+          name=${this.name}
           .type="${this.type}"
-          .placeholder="${live(this.placeholder)}"
-          .value="${live(this.value)}"
+          .placeholder="${this.placeholder}"
+          .value="${this.value}"
+          @input=${this.onInput}
         >
       </slot>
     `;
