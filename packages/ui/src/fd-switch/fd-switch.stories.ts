@@ -15,9 +15,8 @@ const Template: Story = (args) => html`
   <form style="display: grid; gap: 16px; justify-items: start;">
     <fd-switch .name=${args.name} .value=${args.value} .checked=${args.checked}>
       ${args.slot}
-      <span slot="label">My Label</span>
     </fd-switch>
-    <input name="plant" />
+    <input name="plant" value="Aloe Vera" />
     <button type="submit">Submit</button>
   </form>
   <output></output>
