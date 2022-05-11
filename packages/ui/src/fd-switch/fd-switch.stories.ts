@@ -16,7 +16,9 @@ const Template: Story = (args) => html`
     <fd-switch .name=${args.name} .value=${args.value} .checked=${args.checked}>
       ${args.slot}
     </fd-switch>
-    <input name="plant" value="Aloe Vera" />
+    <label for="plant">
+      Plant: <input id="plant" name="plant" value="Aloe Vera" />
+    </label>
     <button type="submit">Submit</button>
   </form>
   <output></output>
@@ -28,12 +30,11 @@ const Template: Story = (args) => html`
       event.preventDefault();
       
       const form = event.target;
-      console.log('fd-switch:', form.animal);
 
       /** Get all of the form data */
       const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
+      const data = [...formData.entries()];
+      data.forEach((value, key) => data[key] = value);
       console.log(data);
       output.innerHTML = JSON.stringify(data, null, 2);
     });
@@ -45,10 +46,9 @@ const Template: Story = (args) => html`
  */
 export const Primary = Template.bind({});
 Primary.args = {
-  placeholder: 'E.g. Lion',
   name: 'animal',
   value: 'Lion',
   checked: false,
-  slot: 'My Switch Label'
+  slot: 'Add Lion'
 };
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
