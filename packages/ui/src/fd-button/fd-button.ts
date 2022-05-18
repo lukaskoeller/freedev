@@ -14,10 +14,10 @@ import { customElement, property } from 'lit/decorators.js'
 export class Button extends LitElement {
   static styles = css`
     button {
-      --fd-button-background-color-default: var(--primary-color-base);
-      --fd-button-background-color-default--hover: var(--primary-color-5);
-      --fd-button-color-default: var(--light-color-base);
-      --fd-button-color-default--hover: var(--light-color-base);
+      --fd-button-background-color-default: var(--color-link);
+      --fd-button-background-color-default--hover: var(--color-link-hover);
+      --fd-button-color-default: var(--color-on-primary);
+      --fd-button-color-default--hover: var(--color-on-primary);
       
       --fd-button-padding-inline-default: var(--size-6);
       --fd-button-block-size-default: var(--size-8);
