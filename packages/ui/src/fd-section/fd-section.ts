@@ -55,7 +55,7 @@ export class Section extends LitElement {
       margin-block: 0;
       font-size: var(--font-size-fluid-2);
       font-weight: var(--font-weight-5);
-      color: var(--primary-color-base);
+      color: var(--color-primary-base);
     }
 
     fd-label {
