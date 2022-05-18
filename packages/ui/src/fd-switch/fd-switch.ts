@@ -30,18 +30,24 @@ export class Switch extends FormControlMixin(LitElement) {
     css`
       :host {
         --fd-switch-thumb-size: var(--size-6);
-        --fd-switch-thumb: var(--light-color-base);
+        --fd-switch-thumb: var(--color-surface-1);
         
         --fd-switch-track-size: calc(var(--fd-switch-thumb-size) * 2);
         --fd-switch-track-padding: calc(var(--size-1) / 2);
-        --fd-switch-track-inactive: var(--primary-color-2);
-        --fd-switch-track-active: var(--primary-color-base);
+        --fd-switch-track-inactive: var(--color-surface-4);
+        --fd-switch-track-active: var(--color-primary-base);
       
         --fd-switch-thumb-color: var(--fd-switch-thumb);
         --fd-switch-track-color-inactive: var(--fd-switch-track-inactive);
         --fd-switch-track-color-active: var(--fd-switch-track-active);
       
         --fd-switch-isLTR: 1;
+      }
+
+      @media (prefers-color-scheme:dark) {
+        :host {
+          --fd-switch-track-inactive: var(--color-surface-4);
+        }
       }
 
       label {
