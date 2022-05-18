@@ -23,7 +23,8 @@ export class Hr extends LitElement {
       inline-size: calc(100% - var(--fd-hr-padding-inline));
       margin: 0;
       border-left: 0;
-      border-top: 1px solid var(--primary-color-1);
+      border-top: 1px solid;
+      border-color: var(--color-border);
       margin-inline-start: var(--fd-hr-margin-inline-start);
     }
   `
