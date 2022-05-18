@@ -1560,6 +1560,182 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/mixins/formControlMixin.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FormControlMixinInterface",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "FormControlMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "associatedForm",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked"
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass",
+              "type": {
+                "text": "T"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FormControlMixinInterface",
+          "declaration": {
+            "name": "FormControlMixinInterface",
+            "module": "src/mixins/formControlMixin.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FormControlMixin",
+          "declaration": {
+            "name": "FormControlMixin",
+            "module": "src/mixins/formControlMixin.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-switch/fd-switch.ts",
       "declarations": [
         {
@@ -1796,182 +1972,6 @@
           "declaration": {
             "name": "Switch",
             "module": "src/fd-switch/fd-switch.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/mixins/formControlMixin.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "FormControlMixinInterface",
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "onInput",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "InputEvent"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "kind": "mixin",
-          "description": "",
-          "name": "FormControlMixin",
-          "members": [
-            {
-              "kind": "field",
-              "name": "associatedForm",
-              "type": {
-                "text": "HTMLFormElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "boundOnSubmit",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "checked"
-            },
-            {
-              "kind": "method",
-              "name": "onInput",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "InputEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "onSubmit",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "FormDataEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "name"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "checked"
-            }
-          ],
-          "parameters": [
-            {
-              "name": "superClass",
-              "type": {
-                "text": "T"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "FormControlMixinInterface",
-          "declaration": {
-            "name": "FormControlMixinInterface",
-            "module": "src/mixins/formControlMixin.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "FormControlMixin",
-          "declaration": {
-            "name": "FormControlMixin",
-            "module": "src/mixins/formControlMixin.ts"
           }
         }
       ]
