@@ -16,6 +16,7 @@ export declare class FormControlMixinInterface {
  * @returns the form control class that comes with input and form handling functionality.
  * 
  * Inspired by @url https://twitter.com/techytacos/status/1408184381491933184
+ * @todo Have a look at https://lit.dev/docs/api/controllers/ as possible replacement
  */
 export const FormControlMixin = 
   <T extends Constructor<LitElement>>(superClass: T) => {
