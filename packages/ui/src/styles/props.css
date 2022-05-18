@@ -1,36 +1,59 @@
 @import 'https://unpkg.com/open-props@latest/open-props.min.css';
 
+/* @see https://unpkg.com/open-props/normalize.min.css */
 :root {
   color-scheme: light;
 
-  /* strongest */
-  --color-primary-9: hsl(252, 50%, 12%);
-  --color-primary-8: hsl(252, 100%, 20%);
-  --color-primary-7: hsl(252, 100%, 35%);
+  /* PRIMARY */
+  --color-primary-hue: 252;
+  --color-primary-saturation: 100%;
+  --color-primary-9: hsl(var(--color-primary-hue), var(--color-primary-saturation), 17%);
+  --color-primary-8: hsl(var(--color-primary-hue), var(--color-primary-saturation), 35%);
+  --color-primary-7: hsl(var(--color-primary-hue), var(--color-primary-saturation), 50%);
+  --color-primary-base: var(--color-primary-7);
 
-  /* base */
-  --color-primary-6: hsl(252, 100%, 50%);
+  /* NEUTRAL */
+  --color-accent-hue: 252;
+  --color-accent-9: hsl(var(--color-accent-hue), 41%, 12%);
+  --color-accent-8: hsl(var(--color-accent-hue), 41%, 20%);
+  --color-accent-7: hsl(var(--color-accent-hue), 30%, 32%);
+  --color-accent-6: hsl(var(--color-accent-hue), 20%, 43%);
+  --color-accent-5: hsl(var(--color-accent-hue), 16%, 53%);
+  --color-accent-4: hsl(var(--color-accent-hue), 20%, 72%);
+  --color-accent-3: hsl(var(--color-accent-hue), 24%, 83%);
+  --color-accent-2: hsl(var(--color-accent-hue), 26%, 93%);
+  --color-accent-1: hsl(var(--color-accent-hue), 30%, 96%);
+  --color-accent-0: hsl(var(--color-accent-hue), 30%, 100%);
 
-  /* intermediate */
-  --color-primary-5: hsl(252, 10%, 50%);
-
-  /* light */
-  --color-primary-4: hsl(252, 20%, 72%);
-  --color-primary-3: hsl(252, 24%, 83%);
-  --color-primary-2: hsl(252, 26%, 93%);
-  --color-primary-1: hsl(252, 30%, 96%);
-  --color-primary-0: hsl(252, 32%, 100%);
+  /* CONTEXTUAL PROPERTIES */
+  --color-on-accent: var(--color-primary-9);
+  --color-on-primary: var(--color-accent-0);
 
   /* ADAPTIVE PROPS */
-  --link: var(--color-primary-6);
-  --link-visited: var(--color-primary-7);
+  --link: var(--color-primary-base);
+  --link-hover: var(--color-primary-7);
+  --link-visited: var(--color-primary-base);
   --text-1: var(--color-primary-9);
-  --text-2: var(--color-primary-8);
-  --surface-1: var(--color-primary-0);
-  --surface-2: var(--color-primary-2);
-  --surface-3: var(--color-primary-3);
-  --surface-4: var(--color-primary-4);
-  --scrollbar-color: var(--color-primary-5);
+  --text-2: var(--color-accent-7);
+  --surface-1: var(--color-accent-0);
+  --surface-2: var(--color-accent-2);
+  --surface-3: var(--color-accent-3);
+  --surface-4: var(--color-accent-4);
+  --scrollbar-color: var(--color-accent-5);
+
+  /* aliases */
+  /* Simplifies updates from https://unpkg.com/open-props/normalize.min.css */
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-link-visited: var(--link-visited);
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-4: var(--surface-4);
+
+  --color-border: var(--color-accent-2);
 
   /* @url https://yeun.github.io/open-color/#lime */
   --color-status-success: #37b24d;
@@ -44,68 +67,6 @@
   --color-status-error-weak: #ffc9c9; /* #ffe3e3 */
 
   /* OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD */
-  /* OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD */
-  /* OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD */
-  /* OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD */
-
-  --brand-hue: 252;
-
-  /* light */
-  --primary-color-light-0: hsl(252, 26%, 98%);
-  --primary-color-light-1: hsl(252, 26%, 93%);
-  --primary-color-light-2: hsl(252, 20%, 72%);
-  --primary-color-light-3: hsl(252, 10%, 50%);
-  --primary-color-light-4: hsl(252, 100%, 50%);
-  --primary-color-light-5: hsl(252, 100%, 20%);
-  --primary-color-light-6: hsl(252, 100%, 8%);
-  --primary-color-light-7: hsl(252, 100%, 6%);
-
-  /* base */
-  --primary-color-dark-0: hsl(252, 100%, 8%);
-  --primary-color-dark-1: hsl(252, 26%, 93%);
-  --primary-color-dark-2: hsl(252, 20%, 72%);
-  --primary-color-dark-3: hsl(252, 10%, 30%);
-  --primary-color-dark-4: hsl(252, 100%, 50%);
-  --primary-color-dark-5: hsl(252, 100%, 20%);
-  --primary-color-dark-6: hsl(252, 100%, 8%);
-  --primary-color-dark-7: hsl(252, 26%, 98%);
-
-  /* Colors */
-  --primary-color-0: var(--primary-color-light-0);
-  --primary-color-1: var(--primary-color-light-1);
-  --primary-color-2: var(--primary-color-light-2);
-  --primary-color-3: var(--primary-color-light-3);
-  --primary-color-4: var(--primary-color-light-4);
-  --primary-color-5: var(--primary-color-light-5);
-  --primary-color-6: var(--primary-color-light-6);
-  --primary-color-7: var(--primary-color-light-7);
-
-  --primary-color-base: var(--primary-color-4);
-  --light-color-base: hsl(0, 100%, 100%);
-  --neutral-color-base: hsl(252, 28%, 93%);
-
-  --color-h1: var(--primary-color-base);
-  --color-h2: var(--primary-color-base);
-  --color-h3: var(--primary-color-base);
-  --color-h4: var(--primary-color-base);
-  --color-h5: var(--primary-color-base);
-  --color-h6: var(--primary-color-base);
-
-  /* Font Sizes */
-  --font-size-h1: var(--font-size-8);
-  --font-size-h2: var(--font-size-7);
-  --font-size-h3: var(--font-size-6);
-  --font-size-h4: var(--font-size-5);
-  --font-size-h5: var(--font-size-4);
-  --font-size-h6: var(--font-size-3);
-
-  /* Font Weights */
-  --font-weight-h1: var(--font-weight-5);
-  --font-weight-h2: var(--font-weight-5);
-  --font-weight-h3: var(--font-weight-5);
-  --font-weight-h4: var(--font-weight-5);
-  --font-weight-h5: var(--font-weight-5);
-  --font-weight-h6: var(--font-weight-5);
 
   --global-spacing: var(--size-3);
 
@@ -125,14 +86,25 @@
 
 @media (prefers-color-scheme:dark) {
   :root {
-    --link: var(--color-primary-5);
-    --link-visited: var(--color-primary-4);
-    --text-1: var(--color-primary-0);
-    --text-2: var(--color-primary-3);
-    --surface-1: var(--color-primary-9);
-    --surface-2: var(--color-primary-8);
-    --surface-3: var(--color-primary-7);
-    --surface-4: var(--color-primary-6);
+    --color-primary-9: hsl(235, 97%, 76%);
+    --color-primary-8: hsl(225, 81%, 81%);
+    --color-primary-7: hsl(225, 100%, 86%);
+    --color-primary-base: var(--color-primary-7);
+
+    --color-on-primary: var(--color-accent-9);
+
+    --link: var(--color-primary-7);
+    --link-hover: var(--color-primary-8);
+    --link-visited: var(--color-primary-8);
+    --text-1: var(--color-accent-2);
+    --text-2: var(--color-accent-4);
+    --surface-1: var(--color-accent-9);
+    --surface-2: var(--color-accent-8);
+    --surface-3: var(--color-accent-7);
+    --surface-4: var(--color-accent-6);
+
+    --color-border: var(--color-accent-8);
+
     color-scheme: dark;
   }
 }
@@ -143,11 +115,23 @@ html {
   background-color: var(--surface-1);
   block-size: 100%;
   caret-color: var(--link);
-  color: var(--text-2);
+  color: var(--text-1);
   color-scheme: light;
   font-family: var(--font-sans);
   line-height: var(--font-lineheight-3);
   scrollbar-color: var(--scrollbar-color) transparent
+}
+
+/* added manually over open props */
+@media (prefers-color-scheme:dark) {
+  html {
+    color: var(--text-2);
+  }
+}
+
+/* added manually over open props */
+::placeholder {
+  color: var(--text-2);
 }
 
 :where(h1, h2, h3, h4, h5, h6, dt) {
@@ -168,7 +152,7 @@ html {
 
 @media (prefers-color-scheme:light) {
   :where(html) {
-    --scrollbar-color: var(--color-primary-4)
+    --scrollbar-color: var(--color-neutral-4)
   }
 }
 
