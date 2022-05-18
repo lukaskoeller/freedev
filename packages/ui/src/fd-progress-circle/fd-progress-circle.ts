@@ -15,8 +15,8 @@ import { customElement, property } from "lit/decorators.js";
 export class ProgressCircle extends LitElement {
   static styles = css`
     :host {
-      --fd-progress-circle-fill-active: var(--light-color-base);
-      --fd-progress-circle-fill-inactive: var(--primary-color-4);
+      --fd-progress-circle-fill-active: var(--color-surface-2);
+      --fd-progress-circle-fill-inactive: var(--color-surface-2);
       --fd-progress-circle-inline-size: 160px;
     }
 
@@ -29,13 +29,13 @@ export class ProgressCircle extends LitElement {
     }
 
     div[data-variant="default"] {
-      --fd-progress-circle-fill-active: var(--primary-color-base);
-      --fd-progress-circle-fill-inactive: var(--primary-color-2);
+      --fd-progress-circle-fill-active: var(--color-primary-base);
+      --fd-progress-circle-fill-inactive: var(--color-surface-2);
     }
 
     div[data-variant="inverted"] {
-      --fd-progress-circle-fill-active: var(--light-color-base);
-      --fd-progress-circle-fill-inactive: var(--primary-color-4);
+      --fd-progress-circle-fill-active: var(--color-accent-0);
+      --fd-progress-circle-fill-inactive: var(--color-primary-8);
     }
 
     svg {
