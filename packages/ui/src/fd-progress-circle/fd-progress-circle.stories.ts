@@ -19,14 +19,24 @@ const Template: Story = (args) => html`
   />
 `;
 
-/**
- * Some documentation on this story
- */
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/web-components/writing-stories/args
-
-Primary.args = {
+export const VariantDefault = Template.bind({});
+VariantDefault.args = {
   progress: 4,
   totalSteps: 10,
   variant: "default",
 };
+
+export const VariantInverted = Template.bind({});
+VariantInverted.args = {
+  progress: 4,
+  totalSteps: 10,
+  variant: "inverted",
+};
+VariantInverted.parameters = {
+  backgrounds: {
+    default: 'primary',
+    values: [
+      { name: 'primary', value: 'var(--color-primary-base)' },
+    ],
+  },
+}
