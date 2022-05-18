@@ -18,9 +18,9 @@ import { customElement, property } from 'lit/decorators.js'
 export class Card extends LitElement {
   static styles = css`
     :host {
-      --fd-card-background-color: var(--light-color-base);
+      --fd-card-background-color: var(--color-surface-1);
       --fd-card-color: var(--primary-color-base);
-      --fd-card-border-color: var(--neutral-color-base);
+      --fd-card-border-color: var(--color-border);
       --fd-card-shadow: var(--shadow-3);
       
       --fd-card-padding-inline: var(--size-3);
