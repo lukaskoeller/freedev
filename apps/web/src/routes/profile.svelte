@@ -108,12 +108,12 @@ import { onMount } from 'svelte';
 		& > h4 {
 			font-size: var(--font-size-fluid-2);
 			font-weight: var(--font-weight-6);
-			color: var(--primary-color-base);
+			color: var(--color-primary-base);
 		}
 
 		& > div {
 			font-weight: var(--font-weight-5);
-			color: var(--primary-color-3);
+			color: var(--text-2);
 		}
 	}
 
@@ -123,7 +123,7 @@ import { onMount } from 'svelte';
 		inline-size: var(--size);
 		block-size: var(--size);
 		border-radius: 100%;
-		background-color: var(--primary-color-1);
+		background-color: var(--color-surface-2);
 	}
 
 	fd-gallery {
@@ -137,14 +137,14 @@ import { onMount } from 'svelte';
 
 		& span {
 			font-size: var(--font-size-4);
-			color: var(--primary-color-4);
+			color: var(--color-primary-base);
 		}
 	}
 
 	.project-preview {
 		aspect-ratio: 4/5;
 		inline-size: min(50vw, var(--size-14));
-		background-color: var(--primary-color-1);
+		background-color: var(--color-surface-2);
 		border-radius: var(--border-size-3);
 	}
 </style>
