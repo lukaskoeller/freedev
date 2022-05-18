@@ -26,7 +26,7 @@ import { FormControlMixin } from '../mixins/formControlMixin';
 export class Input extends FormControlMixin(LitElement) {
   static styles = css`
     :host {
-      --fd-input-background-color: var(--primary-color-1);
+      --fd-input-background-color: var(--color-surface-2);
       --fd-input-text-transform: uppercase;
       --fd-input-font-weight: var(--font-weight-6);
       --fd-input-font-size: var(--font-size-0);
