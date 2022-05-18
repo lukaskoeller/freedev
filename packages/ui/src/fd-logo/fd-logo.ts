@@ -16,8 +16,8 @@ import { customElement } from 'lit/decorators.js';
 export class Logo extends LitElement {
   static styles = css`
     :host {
-      --fd-logo-fill-logo: var(--primary-color-base);
-      --fd-logo-fill-text: var(--primary-color-5);
+      --fd-logo-fill-logo: var(--color-primary-base);
+      --fd-logo-fill-text: var(--text-1);
       --fd-logo-inline-size: 160px;
     }
 
