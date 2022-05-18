@@ -42,8 +42,8 @@ FullWidth.args = {
           place-content: center;
           inline-size: 40vw;
           aspect-ratio: 16/9;
-          background: var(--primary-color-base);
-          color: var(--light-color-base);
+          background: var(--color-primary-base);
+          color: var(--color-surface-1);
           border-radius: var(--radius-3);
         }
       </style>
