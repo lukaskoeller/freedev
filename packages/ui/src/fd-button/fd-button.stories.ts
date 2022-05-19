@@ -12,7 +12,11 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template: Story = (args) => html`
-  <fd-button .variant="${args.variant}" .size="${args.size}">
+  <fd-button
+    .variant="${args.variant}"
+    .size="${args.size}"
+    .href="${args.href}"
+  >
     Button Label
   </fd-button>
 `;
@@ -33,5 +37,10 @@ Stealth.args = {
 export const Small = Template.bind({});
 Small.args = {
   size: "small"
+}
+
+export const WithHref = Template.bind({});
+WithHref.args = {
+  href: 'https://www.youtube.com/watch?v=Cz23Cw-Z6SE'
 }
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
