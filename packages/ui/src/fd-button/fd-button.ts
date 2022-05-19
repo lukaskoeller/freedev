@@ -1,5 +1,11 @@
-import { html, css, LitElement } from 'lit'
+import { css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
+import { html, literal } from 'lit/static-html.js';
+
+export enum Tags {
+  Button = 'button',
+  Anchor = 'a',
+};
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
@@ -13,7 +19,7 @@ import { customElement, property } from 'lit/decorators.js'
 @customElement('fd-button')
 export class Button extends LitElement {
   static styles = css`
-    button {
+    :is(button, a) {
       --fd-button-background-color-default: var(--color-link);
       --fd-button-background-color-default--hover: var(--color-link-hover);
       --fd-button-color-default: var(--color-on-primary);
@@ -22,8 +28,13 @@ export class Button extends LitElement {
       --fd-button-padding-inline-default: var(--size-6);
       --fd-button-block-size-default: var(--size-8);
       --fd-button-font-size-default: var(--font-size-1);
-      
-      display: inline-block;
+
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-3);      
+
       min-block-size: var(--fd-button-block-size, var(--fd-button-block-size-default));
       padding-inline: var(--fd-button-padding-inline, var(--fd-button-padding-inline-default));
 
@@ -33,33 +44,35 @@ export class Button extends LitElement {
 
       appearance: none;
       border: none;
+      text-decoration: none;
 
       background-color: var(--fd-button-background-color, var(--fd-button-background-color-default));
       border-radius: var(--radius-round);
       
+      touch-action: manipulation;
       cursor: pointer;
     }
     
-    button:hover {
+    :is(button, a):hover {
       background-color: var(--fg-button-background-color--hover, var(--fd-button-background-color-default--hover));
       color: var(--fd-button-color--hover, var(--fd-button-color-default--hover));
     }
     
-    button[data-variant="light"] {
+    :is(button, a)[data-variant="light"] {
       --fd-button-background-color-default: var(--light-color-base);
       --fd-button-background-color-default--hover: var(--light-color-base);
       --fd-button-color-default: var(--primary-color-base);
       --fd-button-color-default--hover: var(--primary-color-5);
     }
     
-    button[data-variant="stealth"] {
+    :is(button, a)[data-variant="stealth"] {
       --fd-button-background-color-default: transparent;
       --fd-button-background-color-default--hover: transparent;
       --fd-button-color-default: var(--primary-color-5);
       --fd-button-color-default--hover: var(--primary-color-4);
     }
     
-    button[data-size="small"] {
+    :is(button, a)[data-size="small"] {
       --fd-button-padding-inline-default: var(--size-3);
       --fd-button-block-size-default: var(--size-7);
       --fd-button-font-size-default: var(--font-size-0);
@@ -72,11 +85,23 @@ export class Button extends LitElement {
   @property()
   size: "default" | "small" = "default";
 
+  @property()
+  href?: string;
+
+  private getTag() {
+    return this.href ? literal`a` : literal`button`;
+  }
+
   render() {
     return html`
-      <button part="button" data-variant="${this.variant}" data-size="${this.size}">
+      <${this.getTag()}
+        part="button"
+        data-variant="${this.variant}"
+        data-size="${this.size}"
+        href="${this.href}"
+      >
         <slot></slot>
-      </button>
+      </${this.getTag()}>
     `
   }
 }
