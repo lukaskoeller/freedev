@@ -17,7 +17,7 @@ import { onMount } from 'svelte';
   <fd-container>
     <h1>E-Mail</h1>
     <form>
-      <fd-input name="email" type="email">E-Mail</fd-input>
+      <fd-input name="email" type="email" label="E-Mail"></fd-input>
     </form>
   </fd-container>
 </section>

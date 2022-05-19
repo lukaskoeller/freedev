@@ -15,6 +15,6 @@ import { onMount } from 'svelte';
 
 <section>
   <fd-container>
-    <fd-button>Sign Up</fd-button>
+    <fd-button href="/signup">Sign Up</fd-button>
   </fd-container>
 </section>

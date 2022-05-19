@@ -66,7 +66,7 @@ import { onMount } from 'svelte';
 	</fd-section>
 	<h3>Form</h3>
 	<form>
-    <fd-input value="hello world" name="demo">Input Label</fd-input>
+    <fd-input label="Input Label" value="hello world" name="demo"></fd-input>
 		<button type="submit">Submit</button>
   </form>
 	<output></output>
