@@ -1,0 +1,20 @@
+<script context="module" lang="ts">
+	export const prerender = true;
+</script>
+
+<script lang="ts">
+import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('ui');
+  });
+</script>
+
+<svelte:head>
+	<title>Home</title>
+</svelte:head>
+
+<section>
+  <fd-container>
+    <fd-button>Sign Up</fd-button>
+  </fd-container>
+</section>
