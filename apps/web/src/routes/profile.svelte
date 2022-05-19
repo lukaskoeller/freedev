@@ -10,7 +10,7 @@ import { onMount } from 'svelte';
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Profile</title>
 </svelte:head>
 
 <section>
