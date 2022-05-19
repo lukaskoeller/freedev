@@ -11,7 +11,9 @@
 
 <Header />
 <div class="logoWrapper">
-	<fd-logo />
+	<a href="/">
+		<fd-logo />
+	</a>
 </div>
 <main>
 	<slot />

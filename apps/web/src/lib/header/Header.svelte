@@ -11,7 +11,9 @@
 </script>
 
 <header>
-	<fd-logo />
+	<a href="/">
+		<fd-logo />
+	</a>
 	<nav>
 		<a href="/profile">
 			<fd-icon file={userCircleSolid} size="lg" />
