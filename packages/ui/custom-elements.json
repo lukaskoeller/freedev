@@ -978,25 +978,18 @@
           "members": [
             {
               "kind": "field",
-              "name": "value",
+              "name": "label",
               "type": {
                 "text": "string"
               },
-              "default": "''",
-              "attribute": "value",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "FormControlMixin",
-                "module": "src/mixins/formControlMixin.ts"
-              }
+              "attribute": "label"
             },
             {
               "kind": "field",
               "name": "placeholder",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "placeholder",
               "reflects": true
             },
@@ -1004,7 +997,7 @@
               "kind": "field",
               "name": "type",
               "type": {
-                "text": "string"
+                "text": "HTMLInputElement[\"type\"]"
               },
               "default": "'text'",
               "attribute": "type"
@@ -1039,6 +1032,19 @@
               },
               "default": "''",
               "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value",
               "inheritedFrom": {
                 "name": "FormControlMixin",
                 "module": "src/mixins/formControlMixin.ts"
@@ -1093,29 +1099,23 @@
           ],
           "attributes": [
             {
-              "name": "value",
+              "name": "label",
               "type": {
                 "text": "string"
               },
-              "default": "''",
-              "fieldName": "value",
-              "inheritedFrom": {
-                "name": "FormControlMixin",
-                "module": "src/mixins/formControlMixin.ts"
-              }
+              "fieldName": "label"
             },
             {
               "name": "placeholder",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "placeholder"
             },
             {
               "name": "type",
               "type": {
-                "text": "string"
+                "text": "HTMLInputElement[\"type\"]"
               },
               "default": "'text'",
               "fieldName": "type"
@@ -1127,6 +1127,18 @@
               },
               "default": "''",
               "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value",
               "inheritedFrom": {
                 "name": "FormControlMixin",
                 "module": "src/mixins/formControlMixin.ts"
