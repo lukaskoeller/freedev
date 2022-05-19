@@ -381,6 +381,19 @@
               },
               "default": "\"default\"",
               "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "href"
+            },
+            {
+              "kind": "method",
+              "name": "getTag",
+              "privacy": "private"
             }
           ],
           "attributes": [
@@ -399,6 +412,13 @@
               },
               "default": "\"default\"",
               "fieldName": "size"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "href"
             }
           ],
           "superclass": {
