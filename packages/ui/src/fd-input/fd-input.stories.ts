@@ -16,10 +16,9 @@ const Template: Story = (args) => html`
     <fd-input
       .value="${args.value}"
       .name="${args.name}"
+      .label="${args.label}"
       .placeholder="${args.placeholder}"
-    >
-      ${args.slot}
-    </fd-input>
+    ></fd-input>
     <input name="plant" value="Aloe Vera" />
     <button type="submit">Submit</button>
   </form>
@@ -52,6 +51,6 @@ Primary.args = {
   placeholder: 'E.g. Lion',
   name: 'animal',
   value: '',
-  slot: 'Animal'
+  label: 'Animal'
 };
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
