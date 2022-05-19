@@ -55,28 +55,28 @@ export class Input extends FormControlMixin(LitElement) {
     }
   `
 
-  @property({ type: String, reflect: true })
-  value = '';
+  @property({ type: String })
+  label!: string;
 
   @property({ type: String, reflect: true })
-  placeholder = '';
+  placeholder?: string;
 
   @property({ type: String })
-  type = 'text';
+  type: HTMLInputElement["type"] = 'text';
 
   render() {
     return html`
-      <fd-label for="input"><slot></slot></fd-label>
-      <slot>
-        <input
-          id="input"
-          name=${this.name}
-          .type="${this.type}"
-          .placeholder="${this.placeholder}"
-          .value="${this.value}"
-          @input=${this.onInput}
-        >
-      </slot>
+      <fd-label for="input">
+        <slot name="label">${this.label}</slot>
+      </fd-label>
+      <input
+        id="input"
+        name=${this.name}
+        type="${this.type}"
+        placeholder="${this.placeholder ?? this.label}"
+        value="${this.value}"
+        @input=${this.onInput}
+      >
     `;
   }
 }
