@@ -6,9 +6,9 @@ import './formdata-event-polyfill';
 export type Constructor<T> = new (...args: any[]) => T;
 
 export declare class FormControlMixinInterface {
-  name: string;
-  value: string;
-  disabled: boolean;
+  name?: string;
+  value?: string;
+  disabled?: boolean;
   form: HTMLFormElement | null;
   onInput(event: InputEvent): void;
 }
@@ -25,8 +25,8 @@ export const FormControlMixin =
     class FormControl extends superClass {
       private boundOnSubmit = this.onSubmit.bind(this);
   
-      @property({type: String}) name!: string;
-      @property({type: String}) value!: string;
+      @property({type: String}) name?: string;
+      @property({type: String}) value?: string;
       @property({type: Boolean}) disabled: boolean = false;
       @property({type: HTMLFormElement}) form: HTMLFormElement | null = null;
 
@@ -66,7 +66,9 @@ export const FormControlMixin =
         // this.customValidity();
 
         // @todo Also adds checkbox data even if :not(:checked)
-        event.formData.append(this.name, this.value)
+        if (this?.name && this?.value) {
+          event.formData.append(this.name, this.value);
+        }
       }
     };
   return FormControl as Constructor<FormControlMixinInterface> & T;
