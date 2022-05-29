@@ -1,5 +1,6 @@
 import { Story, Meta } from '@storybook/web-components';
 import './fd-input';
+import '../fd-button/fd-button';
 import { html } from 'lit-html';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
@@ -20,7 +21,7 @@ const Template: Story = (args) => html`
       .placeholder="${args.placeholder}"
     ></fd-input>
     <input name="plant" value="Aloe Vera" />
-    <button type="submit">Submit</button>
+    <fd-button type="submit">Submit</fd-button>
   </form>
   <output></output>
   <script>
