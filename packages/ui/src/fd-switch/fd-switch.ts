@@ -54,7 +54,7 @@ export class Switch extends FormControlMixin(LitElement) {
         display: flex;
         align-items: center;
         gap: var(--size-4);
-        justify-content: space-between;
+        justify-content: flex-start
 
         cursor: pointer;
         user-select: none;
@@ -143,10 +143,7 @@ export class Switch extends FormControlMixin(LitElement) {
     `
   ];
 
-  @property({ type: String, reflect: true })
-  placeholder = '';
-
-  @property({type: Boolean})
+  @property({type: Boolean, reflect: true})
   checked = false;
 
   render() {
@@ -157,9 +154,10 @@ export class Switch extends FormControlMixin(LitElement) {
           role="switch"
           type="checkbox"
           name=${this.name}
-          .value=${this.value}
-          .checked=${this.checked}
-          @input=${this.onCheckbox}
+          value=${this.value}
+          ?checked=${this.checked}
+          ?disabled=${this.disabled}
+          @input=${() => { this.onInput; this.onCheckbox }}
         >
         <slot />
       </label>
