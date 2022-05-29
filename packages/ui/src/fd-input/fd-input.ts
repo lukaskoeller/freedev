@@ -75,6 +75,7 @@ export class Input extends FormControlMixin(LitElement) {
         type="${this.type}"
         placeholder="${this.placeholder ?? this.label}"
         value="${this.value}"
+        ?disabled=${this.disabled}
         @input=${this.onInput}
       >
     `;
