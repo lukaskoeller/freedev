@@ -2,6 +2,7 @@ import { css, LitElement, render } from 'lit'
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js'
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { FormControlMixin } from '../mixins/formControlMixin';
 
 export enum Tags {
   Button = 'button',
@@ -18,7 +19,7 @@ export enum Tags {
  * @cssprop {string} --fd-button-background-color - Adjusts the background-color
  */
 @customElement('fd-button')
-export class Button extends LitElement {
+export class Button extends FormControlMixin(LitElement) {
   static styles = css`
     :host([disabled]) {
       pointer-events: none;
@@ -106,16 +107,7 @@ export class Button extends LitElement {
   download?: boolean = false;
 
   @property()
-  name?: string;
-
-  @property()
-  value?: string;
-
-  @property()
   type?: HTMLButtonElement["type"] = 'submit';
-
-  @property()
-  disabled?: boolean = false;
 
   private getTag() {
     this.isLink = !!this.href;
