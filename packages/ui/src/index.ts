@@ -10,3 +10,4 @@ export * from './fd-icon/fd-icon';
 export * from './fd-container/fd-container';
 export * from './fd-hr/fd-hr';
 export * from './fd-stack/fd-stack';
+export * from './fd-switch/fd-switch';
