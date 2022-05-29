@@ -17,7 +17,8 @@ const Template: Story = (args) => html`
     .size="${args.size}"
     .href="${args.href}"
   >
-    Button Label
+    ${args.proxy}
+    ${args.slot}
   </fd-button>
 `;
 
@@ -25,22 +26,67 @@ const Template: Story = (args) => html`
  * Some documentation on this story
  */
 export const Primary = Template.bind({});
+Primary.args = {
+  slot: 'Button Label',
+};
+
 export const Light = Template.bind({});
 Light.args = {
-  variant: "light"
+  variant: "light",
+  slot: 'Button Label',
 }
 export const Stealth = Template.bind({});
 Stealth.args = {
-  variant: "stealth"
+  variant: "stealth",
+  slot: 'Button Label',
 }
 
 export const Small = Template.bind({});
 Small.args = {
-  size: "small"
+  size: "small",
+  slot: 'Button Label',
 }
 
 export const WithHref = Template.bind({});
 WithHref.args = {
-  href: 'https://www.youtube.com/watch?v=Cz23Cw-Z6SE'
+  href: 'https://www.youtube.com/watch?v=Cz23Cw-Z6SE',
+  slot: 'Button Label',
+}
+
+export const Submit: Story = (args) => html`
+  <form>
+    <input value="test value" name="test" />
+    <fd-button
+      .type=${args.type}
+      .variant="${args.variant}"
+      .size="${args.size}"
+      .href="${args.href}"
+    >
+      ${args.proxy}
+      ${args.slot}
+    </fd-button>
+  </form>
+  <output></output>
+  <script>
+    const form = document.querySelector('form');
+    const output = document.querySelector('output');
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      
+      const form = event.target;
+
+      /** Get all of the form data */
+      const formData = new FormData(form);
+      const data = [...formData.entries()];
+      data.forEach((value, key) => data[key] = value);
+      console.log(data);
+      output.innerHTML = JSON.stringify(data, null, 2);
+    });
+  </script>
+`;
+Submit.args = {
+  type: 'submit',
+  slot: 'Button Label',
 }
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
