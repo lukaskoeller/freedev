@@ -146,6 +146,9 @@ export class Switch extends FormControlMixin(LitElement) {
   @property({ type: String, reflect: true })
   placeholder = '';
 
+  @property({type: Boolean})
+  checked = false;
+
   render() {
     return html`
       <label for="input" class="label" part="label">
