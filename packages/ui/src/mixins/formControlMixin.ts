@@ -1,5 +1,7 @@
 import { LitElement } from "lit";
 import { property } from "lit/decorators.js";
+import { addListener } from "../controllers/event-controller";
+import './formdata-event-polyfill';
 
 export type Constructor<T> = new (...args: any[]) => T;
 
@@ -16,7 +18,6 @@ export declare class FormControlMixinInterface {
  * @returns the form control class that comes with input and form handling functionality.
  * 
  * Inspired by @url https://twitter.com/techytacos/status/1408184381491933184
- * @todo Have a look at https://lit.dev/docs/api/controllers/ as possible replacement
  */
 export const FormControlMixin = 
   <T extends Constructor<LitElement>>(superClass: T) => {
@@ -35,6 +36,13 @@ export const FormControlMixin =
 
       connectedCallback(): void {
           super.connectedCallback();
+
+          addListener(this, 'keydown', (event: Event) => {
+            if ((event as KeyboardEvent).code === 'Enter') {
+              this.associatedForm?.requestSubmit();
+            }
+          });
+
           this.associatedForm = this.closest('form');
           if(this.associatedForm) {
             this.associatedForm.addEventListener('formdata', this.boundOnSubmit);
