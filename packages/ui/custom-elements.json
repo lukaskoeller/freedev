@@ -225,6 +225,103 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/controllers/formSubmitController.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FormSubmitController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost & Element | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "FormSubmitControllerOptions"
+              },
+              "default": "{\n      form: (input: HTMLInputElement) => input.closest('form'),\n      name: (input: HTMLInputElement) => input.name,\n      value: (input: HTMLInputElement) => input.value,\n      disabled: (input: HTMLInputElement) => input.disabled,\n      reportValidity: (input: HTMLInputElement) => {\n        return typeof input.reportValidity === 'function' ? input.reportValidity() : true;\n      },\n      ...options\n    }"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "handleFormData",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleFormSubmit",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "submit",
+              "parameters": [
+                {
+                  "name": "submitter",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLInputElement | Button"
+                  }
+                }
+              ],
+              "description": "Submits the form, triggering validation and form data injection."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FormSubmitController",
+          "declaration": {
+            "name": "FormSubmitController",
+            "module": "src/controllers/formSubmitController.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/controllers/formdata-event-polyfill.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-avatar/fd-avatar.ts",
       "declarations": [
         {
@@ -366,6 +463,15 @@
           "members": [
             {
               "kind": "field",
+              "name": "isLink",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "variant",
               "type": {
                 "text": "\"default\" | \"light\" | \"stealth\""
@@ -391,9 +497,30 @@
               "attribute": "href"
             },
             {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "HTMLButtonElement[\"type\"] | undefined"
+              },
+              "default": "'button'",
+              "attribute": "type"
+            },
+            {
               "kind": "method",
               "name": "getTag",
               "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "onClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_proxyItems",
+              "type": {
+                "text": "Array<HTMLButtonElement>"
+              }
             }
           ],
           "attributes": [
@@ -419,6 +546,14 @@
                 "text": "string | undefined"
               },
               "fieldName": "href"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "HTMLButtonElement[\"type\"] | undefined"
+              },
+              "default": "'button'",
+              "fieldName": "type"
             }
           ],
           "superclass": {
