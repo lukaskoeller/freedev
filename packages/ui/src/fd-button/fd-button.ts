@@ -106,6 +106,12 @@ export class Button extends LitElement {
   download?: boolean = false;
 
   @property()
+  name?: string;
+
+  @property()
+  value?: string;
+
+  @property()
   type?: HTMLButtonElement["type"] = 'submit';
 
   @property()
@@ -130,6 +136,8 @@ export class Button extends LitElement {
       render(html`
         <button
           slot="proxy"
+          name=${ifDefined(!this.isLink ? this.name : undefined)}
+          value=${ifDefined(!this.isLink ? this.value : undefined)}
           type=${ifDefined(!this.isLink ? this.type : undefined)}
           ?disabled=${ifDefined(!this.isLink ? this.disabled : undefined)}
         ></button>
@@ -144,6 +152,8 @@ export class Button extends LitElement {
         part="button"
         data-variant=${this.variant}
         data-size=${this.size}
+        name=${ifDefined(!this.isLink ? this.name : undefined)}
+        value=${ifDefined(!this.isLink ? this.value : undefined)}
         type=${ifDefined(!this.isLink ? this.type : undefined)}
         ?disabled=${ifDefined(!this.isLink ? this.disabled : undefined)}
         href=${ifDefined(this.isLink ? this.href : undefined)}
