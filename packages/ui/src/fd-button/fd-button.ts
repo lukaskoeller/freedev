@@ -1,6 +1,7 @@
-import { css, LitElement } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { css, LitElement, render } from 'lit'
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js'
 import { html, literal } from 'lit/static-html.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export enum Tags {
   Button = 'button',
@@ -19,6 +20,10 @@ export enum Tags {
 @customElement('fd-button')
 export class Button extends LitElement {
   static styles = css`
+    :host([disabled]) {
+      pointer-events: none;
+    }  
+
     :is(button, a) {
       --fd-button-background-color-default: var(--color-link);
       --fd-button-background-color-default--hover: var(--color-link-hover);
@@ -77,7 +82,13 @@ export class Button extends LitElement {
       --fd-button-block-size-default: var(--size-7);
       --fd-button-font-size-default: var(--font-size-0);
     }
+
+    ::slotted(button[slot="proxy"]) {
+      display: none;
+    }
   `
+
+  private isLink: boolean = false;
 
   @property()
   variant: "default" | "light" | "stealth" = "default";
@@ -88,17 +99,57 @@ export class Button extends LitElement {
   @property()
   href?: string;
 
+  @property()
+  target?: "_self" | "_blank" | "_parent" | "_top" = "_self";
+
+  @property()
+  download?: boolean = false;
+
+  @property()
+  type?: HTMLButtonElement["type"] = 'submit';
+
+  @property()
+  disabled?: boolean = false;
+
   private getTag() {
-    return this.href ? literal`a` : literal`button`;
+    this.isLink = !!this.href;
+    return this.isLink ? literal`a` : literal`button`;
+  }
+
+  private onClick() {
+    if (this.type === "submit") {
+      (this._proxyItems[0] as HTMLButtonElement).click();
+    }
+  }
+
+  @queryAssignedElements({slot: 'proxy', selector: 'button[slot="proxy"]'})
+  _proxyItems!: Array<HTMLButtonElement>;
+
+  updated() {
+    if (this.type === "submit") {
+      render(html`
+        <button
+          slot="proxy"
+          type=${ifDefined(!this.isLink ? this.type : undefined)}
+          ?disabled=${ifDefined(!this.isLink ? this.disabled : undefined)}
+        ></button>
+      `, this);
+    }
   }
 
   render() {
     return html`
+      <slot name="proxy"></slot>
       <${this.getTag()}
         part="button"
-        data-variant="${this.variant}"
-        data-size="${this.size}"
-        href="${this.href}"
+        data-variant=${this.variant}
+        data-size=${this.size}
+        type=${ifDefined(!this.isLink ? this.type : undefined)}
+        ?disabled=${ifDefined(!this.isLink ? this.disabled : undefined)}
+        href=${ifDefined(this.isLink ? this.href : undefined)}
+        target=${ifDefined(this.isLink ? this.target : undefined)}
+        ?download=${ifDefined(this.isLink ? this.download : undefined)}
+        @click=${this.onClick}
       >
         <slot></slot>
       </${this.getTag()}>
