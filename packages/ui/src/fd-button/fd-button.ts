@@ -4,7 +4,7 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FormControlMixin } from '../mixins/formControlMixin';
 
-export enum Tags {
+export enum ButtonTags {
   Button = 'button',
   Anchor = 'a',
 };
