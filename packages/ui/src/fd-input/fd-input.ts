@@ -1,6 +1,7 @@
 import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
+import { labelStyles } from '../fd-label/fd-label.style';
 import { FormControlMixin } from '../mixins/formControlMixin';
 
 /**
@@ -24,36 +25,39 @@ import { FormControlMixin } from '../mixins/formControlMixin';
  */
 @customElement('fd-input')
 export class Input extends FormControlMixin(LitElement) {
-  static styles = css`
-    :host {
-      --fd-input-background-color: var(--color-surface-2);
-      --fd-input-text-transform: uppercase;
-      --fd-input-font-weight: var(--font-weight-6);
-      --fd-input-font-size: var(--font-size-0);
+  static styles = [
+    labelStyles,
+    css`
+      :host {
+        --fd-input-background-color: var(--color-surface-2);
+        --fd-input-text-transform: uppercase;
+        --fd-input-font-weight: var(--font-weight-6);
+        --fd-input-font-size: var(--font-size-0);
 
-      display: grid;
-      gap-row: var(--size-3);
-    }
+        display: grid;
+        gap-row: var(--size-3);
+      }
 
-    input {
-      position: relative;
-      min-width: 0;
-      border: 0;
-      border-radius: var(--radius-2);
-      background-color: var(--fd-input-background-color);
-      padding-inline: var(--size-4);
-      padding-block: var(--size-3);
+      input {
+        position: relative;
+        min-width: 0;
+        border: 0;
+        border-radius: var(--radius-2);
+        background-color: var(--fd-input-background-color);
+        padding-inline: var(--size-4);
+        padding-block: var(--size-3);
 
-      font-family: var(--font-sans);
-      font-weight: var(--font-weight-5);
-      font-size: var(--font-size-1);
-      color: var(--primary-color-base);
-    }
+        font-family: var(--font-sans);
+        font-weight: var(--font-weight-5);
+        font-size: var(--font-size-1);
+        color: var(--primary-color-base);
+      }
 
-    input:focus-visible {
-      outline-color: var(--primary-color-0);
-    }
-  `
+      input:focus-visible {
+        outline-color: var(--primary-color-0);
+      }
+    `
+  ];
 
   @property({ type: String })
   label!: string;
@@ -66,15 +70,15 @@ export class Input extends FormControlMixin(LitElement) {
 
   render() {
     return html`
-      <fd-label for="input">
+      <label for="input" class="label" part="label">
         <slot name="label">${this.label}</slot>
-      </fd-label>
+      </label>
       <input
         id="input"
+        type=${this.type}
         name=${this.name}
-        type="${this.type}"
-        placeholder="${this.placeholder ?? this.label}"
-        value="${this.value}"
+        value=${this.value}
+        placeholder=${this.placeholder ?? this.label}
         ?disabled=${this.disabled}
         @input=${this.onInput}
       >
