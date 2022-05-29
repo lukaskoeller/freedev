@@ -9,6 +9,7 @@ export declare class FormControlMixinInterface {
   name: string;
   value: string;
   disabled: boolean;
+  form: HTMLFormElement | null;
   onInput(event: InputEvent): void;
 }
 
@@ -22,12 +23,12 @@ export declare class FormControlMixinInterface {
 export const FormControlMixin = 
   <T extends Constructor<LitElement>>(superClass: T) => {
     class FormControl extends superClass {
-      private associatedForm: HTMLFormElement | null = null;
       private boundOnSubmit = this.onSubmit.bind(this);
   
       @property({type: String}) name!: string;
       @property({type: String}) value!: string;
       @property({type: Boolean}) disabled: boolean = false;
+      @property({type: HTMLFormElement}) form: HTMLFormElement | null = null;
 
       onInput(e: InputEvent) {
         const target = e.target as HTMLInputElement
@@ -39,20 +40,20 @@ export const FormControlMixin =
 
           addListener(this, 'keydown', (event: Event) => {
             if ((event as KeyboardEvent).code === 'Enter') {
-              this.associatedForm?.requestSubmit();
+              this.form?.requestSubmit();
             }
           });
 
-          this.associatedForm = this.closest('form');
-          if(this.associatedForm) {
-            this.associatedForm.addEventListener('formdata', this.boundOnSubmit);
+          this.form = this.closest('form');
+          if(this.form) {
+            this.form.addEventListener('formdata', this.boundOnSubmit);
           }
       }
 
       disconnectedCallback() {
         super.disconnectedCallback();
-        if (this.associatedForm) {
-          this.associatedForm.removeEventListener('formdata', this.boundOnSubmit);
+        if (this.form) {
+          this.form.removeEventListener('formdata', this.boundOnSubmit);
         }
       }
 
