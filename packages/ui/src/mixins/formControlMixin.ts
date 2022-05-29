@@ -8,7 +8,6 @@ export type Constructor<T> = new (...args: any[]) => T;
 export declare class FormControlMixinInterface {
   name: string;
   value: string;
-  checked: boolean;
   onInput(event: InputEvent): void;
 }
 
@@ -27,7 +26,6 @@ export const FormControlMixin =
   
       @property({type: String}) name = '';
       @property({type: String}) value = '';
-      @property({type: Boolean}) checked = false;
 
       onInput(e: InputEvent) {
         const target = e.target as HTMLInputElement
