@@ -17,9 +17,12 @@ import { onMount } from 'svelte';
   <fd-container>
     <h1>E-Mail</h1>
     <form>
-      <fd-input name="email" type="email" label="E-Mail"></fd-input>
-      <fd-input name="password" type="password" label="Password"></fd-input>
-      <fd-button type="submit">Submit</fd-button>
+      <fd-stack>
+        <fd-input name="email" type="email" label="E-Mail"></fd-input>
+        <fd-input name="password" type="password" label="Password"></fd-input>
+        <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
+        <fd-button type="submit">Submit</fd-button>
+      </fd-stack>
     </form>
     <output></output>
     <script>
