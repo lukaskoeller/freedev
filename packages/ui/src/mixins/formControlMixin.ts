@@ -35,6 +35,10 @@ export const FormControlMixin =
         this.value = target.value;
       }
 
+      /**
+       * @todo Extract addListener to FormSubmissionController?
+       * @todo Extract formdata event to FormParticipationController?
+       */
       connectedCallback(): void {
           super.connectedCallback();
 
@@ -45,7 +49,7 @@ export const FormControlMixin =
           });
 
           this.form = this.closest('form');
-          if(this.form) {
+          if (this.form) {
             this.form.addEventListener('formdata', this.boundOnSubmit);
           }
       }
