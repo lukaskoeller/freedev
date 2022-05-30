@@ -117,6 +117,14 @@
             "name": "*",
             "package": "./fd-stack/fd-stack"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-switch/fd-switch"
+          }
         }
       ]
     },
@@ -225,80 +233,72 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/controllers/formSubmitController.ts",
+      "path": "src/controllers/event-controller.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "FormSubmitController",
+          "name": "EventController",
           "members": [
             {
               "kind": "field",
               "name": "host",
               "type": {
-                "text": "ReactiveControllerHost & Element | undefined"
+                "text": "ReactiveControllerHost & Element"
               }
             },
             {
               "kind": "field",
-              "name": "form",
+              "name": "type",
               "type": {
-                "text": "HTMLFormElement | null | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "options",
-              "type": {
-                "text": "FormSubmitControllerOptions"
+                "text": "Event[\"type\"]"
               },
-              "default": "{\n      form: (input: HTMLInputElement) => input.closest('form'),\n      name: (input: HTMLInputElement) => input.name,\n      value: (input: HTMLInputElement) => input.value,\n      disabled: (input: HTMLInputElement) => input.disabled,\n      reportValidity: (input: HTMLInputElement) => {\n        return typeof input.reportValidity === 'function' ? input.reportValidity() : true;\n      },\n      ...options\n    }"
+              "default": "type"
+            },
+            {
+              "kind": "field",
+              "name": "onEvent",
+              "type": {
+                "text": "(event: EventType) => void"
+              },
+              "default": "method"
             },
             {
               "kind": "method",
-              "name": "hostConnected"
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             },
             {
               "kind": "method",
               "name": "hostDisconnected"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "addListener",
+          "parameters": [
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost & Element"
+              }
             },
             {
-              "kind": "method",
-              "name": "handleFormData",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "FormDataEvent"
-                  }
-                }
-              ]
+              "name": "type",
+              "type": {
+                "text": "Event[\"type\"]"
+              }
             },
             {
-              "kind": "method",
-              "name": "handleFormSubmit",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "submit",
-              "parameters": [
-                {
-                  "name": "submitter",
-                  "optional": true,
-                  "type": {
-                    "text": "HTMLInputElement | Button"
-                  }
-                }
-              ],
-              "description": "Submits the form, triggering validation and form data injection."
+              "name": "method",
+              "type": {
+                "text": "(event: EventType) => void"
+              }
             }
           ]
         }
@@ -306,19 +306,49 @@
       "exports": [
         {
           "kind": "js",
-          "name": "FormSubmitController",
+          "name": "EventController",
           "declaration": {
-            "name": "FormSubmitController",
-            "module": "src/controllers/formSubmitController.ts"
+            "name": "EventController",
+            "module": "src/controllers/event-controller.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "addListener",
+          "declaration": {
+            "name": "addListener",
+            "module": "src/controllers/event-controller.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/controllers/formdata-event-polyfill.ts",
-      "declarations": [],
-      "exports": []
+      "path": "src/controllers/observer-controller.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "observe",
+          "parameters": [
+            {
+              "name": "propertyName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observe",
+          "declaration": {
+            "name": "observe",
+            "module": "src/controllers/observer-controller.ts"
+          }
+        }
+      ]
     },
     {
       "kind": "javascript-module",
@@ -498,11 +528,29 @@
             },
             {
               "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
+              },
+              "default": "\"_self\"",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "download",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "download"
+            },
+            {
+              "kind": "field",
               "name": "type",
               "type": {
                 "text": "HTMLButtonElement[\"type\"] | undefined"
               },
-              "default": "'button'",
+              "default": "'submit'",
               "attribute": "type"
             },
             {
@@ -520,6 +568,110 @@
               "name": "_proxyItems",
               "type": {
                 "text": "Array<HTMLButtonElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
               }
             }
           ],
@@ -548,12 +700,68 @@
               "fieldName": "href"
             },
             {
+              "name": "target",
+              "type": {
+                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
+              },
+              "default": "\"_self\"",
+              "fieldName": "target"
+            },
+            {
+              "name": "download",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "download"
+            },
+            {
               "name": "type",
               "type": {
                 "text": "HTMLButtonElement[\"type\"] | undefined"
               },
-              "default": "'button'",
+              "default": "'submit'",
               "fieldName": "type"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "module": "/src/mixins/formControlMixin"
             }
           ],
           "superclass": {
@@ -1139,7 +1347,16 @@
             },
             {
               "kind": "field",
-              "name": "associatedForm",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
               "type": {
                 "text": "HTMLFormElement | null"
               },
@@ -1152,20 +1369,10 @@
             },
             {
               "kind": "field",
-              "name": "boundOnSubmit",
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "FormControlMixin",
-                "module": "src/mixins/formControlMixin.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "name",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "name",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -1176,9 +1383,8 @@
               "kind": "field",
               "name": "value",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "value",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -1187,12 +1393,24 @@
             },
             {
               "kind": "field",
-              "name": "checked",
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "attribute": "checked",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
               "inheritedFrom": {
                 "name": "FormControlMixin",
                 "module": "src/mixins/formControlMixin.ts"
@@ -1258,9 +1476,8 @@
             {
               "name": "name",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "name",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -1270,9 +1487,8 @@
             {
               "name": "value",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "value",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -1280,12 +1496,12 @@
               }
             },
             {
-              "name": "checked",
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "fieldName": "checked",
+              "fieldName": "disabled",
               "inheritedFrom": {
                 "name": "FormControlMixin",
                 "module": "src/mixins/formControlMixin.ts"
@@ -1883,12 +2099,12 @@
           "members": [
             {
               "kind": "field",
-              "name": "placeholder",
+              "name": "checked",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
-              "default": "''",
-              "attribute": "placeholder",
+              "default": "false",
+              "attribute": "checked",
               "reflects": true
             },
             {
@@ -1906,7 +2122,16 @@
             },
             {
               "kind": "field",
-              "name": "associatedForm",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
               "type": {
                 "text": "HTMLFormElement | null"
               },
@@ -1919,20 +2144,10 @@
             },
             {
               "kind": "field",
-              "name": "boundOnSubmit",
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "FormControlMixin",
-                "module": "src/mixins/formControlMixin.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "name",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "name",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -1943,9 +2158,8 @@
               "kind": "field",
               "name": "value",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "value",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -1954,12 +2168,24 @@
             },
             {
               "kind": "field",
-              "name": "checked",
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "attribute": "checked",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
               "inheritedFrom": {
                 "name": "FormControlMixin",
                 "module": "src/mixins/formControlMixin.ts"
@@ -2001,19 +2227,18 @@
           ],
           "attributes": [
             {
-              "name": "placeholder",
+              "name": "checked",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
-              "default": "''",
-              "fieldName": "placeholder"
+              "default": "false",
+              "fieldName": "checked"
             },
             {
               "name": "name",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "name",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -2023,9 +2248,8 @@
             {
               "name": "value",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "value",
               "inheritedFrom": {
                 "name": "FormControlMixin",
@@ -2033,12 +2257,12 @@
               }
             },
             {
-              "name": "checked",
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "fieldName": "checked",
+              "fieldName": "disabled",
               "inheritedFrom": {
                 "name": "FormControlMixin",
                 "module": "src/mixins/formControlMixin.ts"
@@ -2091,21 +2315,21 @@
               "kind": "field",
               "name": "name",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               }
             },
             {
               "kind": "field",
               "name": "value",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               }
             },
             {
               "kind": "field",
-              "name": "checked",
+              "name": "disabled",
               "type": {
-                "text": "boolean"
+                "text": "boolean | undefined"
               }
             },
             {
@@ -2134,7 +2358,12 @@
           "members": [
             {
               "kind": "field",
-              "name": "associatedForm",
+              "name": "boundOnSubmit",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_form",
               "type": {
                 "text": "HTMLFormElement | null"
               },
@@ -2143,35 +2372,36 @@
             },
             {
               "kind": "field",
-              "name": "boundOnSubmit",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
               "name": "name",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "name"
             },
             {
               "kind": "field",
               "name": "value",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "value"
             },
             {
               "kind": "field",
-              "name": "checked",
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "attribute": "checked"
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected"
             },
             {
               "kind": "method",
@@ -2203,26 +2433,24 @@
             {
               "name": "name",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "name"
             },
             {
               "name": "value",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "value"
             },
             {
-              "name": "checked",
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "fieldName": "checked"
+              "fieldName": "disabled"
             }
           ],
           "parameters": [
@@ -2253,6 +2481,12 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/mixins/formdata-event-polyfill.ts",
+      "declarations": [],
+      "exports": []
     }
   ]
 }
