@@ -1609,11 +1609,11 @@
           "members": [
             {
               "kind": "field",
-              "name": "tag",
+              "name": "as",
               "type": {
-                "text": "Tags"
+                "text": "LabelTags"
               },
-              "attribute": "tag"
+              "attribute": "as"
             },
             {
               "kind": "field",
@@ -1630,9 +1630,9 @@
               "privacy": "private",
               "parameters": [
                 {
-                  "name": "tag",
+                  "name": "as",
                   "type": {
-                    "text": "Tags"
+                    "text": "LabelTags"
                   }
                 }
               ]
@@ -1640,11 +1640,11 @@
           ],
           "attributes": [
             {
-              "name": "tag",
+              "name": "as",
               "type": {
-                "text": "Tags"
+                "text": "LabelTags"
               },
-              "fieldName": "tag"
+              "fieldName": "as"
             },
             {
               "name": "for",
