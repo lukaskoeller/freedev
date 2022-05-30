@@ -142,6 +142,11 @@ export class Switch extends FormControlMixin(LitElement) {
   @property({type: Boolean, reflect: true})
   checked = false;
 
+  connectedCallback(): void {
+    super.connectedCallback();
+      if (!this.value) this.value = 'on';
+  }
+
   render() {
     return html`
       <label for="input" part="label">
@@ -153,7 +158,7 @@ export class Switch extends FormControlMixin(LitElement) {
           value=${this.value}
           ?checked=${this.checked}
           ?disabled=${this.disabled}
-          @input=${() => { this.onInput; this.onCheckbox }}
+          @click=${this.onCheckbox}
         >
         <slot />
       </label>
@@ -161,7 +166,9 @@ export class Switch extends FormControlMixin(LitElement) {
   }
 
   private onCheckbox(e: InputEvent) {
+    
     const target = e.target as HTMLInputElement
+    console.log('swith onCheckbox', target.checked);
     this.checked = target.checked;
   }
 }
