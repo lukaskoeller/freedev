@@ -15,10 +15,10 @@ export default {
 const Template: Story = (args) => html`
   <form style="display: grid; gap: 16px; justify-items: start;">
     <fd-input
-      .value="${args.value}"
-      .name="${args.name}"
-      .label="${args.label}"
-      .placeholder="${args.placeholder}"
+      value="${args.value}"
+      name="${args.name}"
+      label="${args.label}"
+      placeholder="${args.placeholder}"
     ></fd-input>
     <input name="plant" value="Aloe Vera" />
     <fd-button type="submit">Submit</fd-button>
@@ -55,3 +55,43 @@ Primary.args = {
   label: 'Animal'
 };
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
+
+export const OutsideForm: Story = (args) => html`
+  <form style="display: grid; gap: 16px; justify-items: start;" id="${args.form}">
+    <input name="plant" value="Aloe Vera" />
+    <fd-button type="submit">Submit</fd-button>
+  </form>
+  <fd-input
+    value="${args.value}"
+    name="${args.name}"
+    label="${args.label}"
+    placeholder="${args.placeholder}"
+    form="${args.form}"
+  ></fd-input>
+  <output></output>
+  <script>
+    const form = document.querySelector('form');
+    const output = document.querySelector('output');
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      
+      const form = event.target;
+
+      /** Get all of the form data */
+      const formData = new FormData(form);
+      const data = [...formData.entries()];
+      data.forEach((value, key) => data[key] = value);
+      console.log(data);
+      output.innerHTML = JSON.stringify(data, null, 2);
+    });
+  </script>
+`;
+OutsideForm.args = {
+  type: 'text',
+  placeholder: 'E.g. Lion',
+  name: 'animal',
+  value: '',
+  label: 'Animal',
+  form: 'myform',
+};
