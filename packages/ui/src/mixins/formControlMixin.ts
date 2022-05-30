@@ -9,7 +9,6 @@ export declare class FormControlMixinInterface {
   name?: string;
   value?: string;
   disabled?: boolean;
-  form: HTMLFormElement | null;
   onInput(event: InputEvent): void;
 }
 
@@ -24,11 +23,29 @@ export const FormControlMixin =
   <T extends Constructor<LitElement>>(superClass: T) => {
     class FormControl extends superClass {
       private boundOnSubmit = this.onSubmit.bind(this);
-  
+      private _form: HTMLFormElement | null = null;
+
       @property({type: String}) name?: string;
       @property({type: String}) value?: string;
       @property({type: Boolean}) disabled: boolean = false;
-      @property({type: HTMLFormElement}) form: HTMLFormElement | null = null;
+
+      protected get form(): HTMLFormElement | null {
+        console.log(this);
+        
+        if (this.hasAttribute("form")) {
+          const root = this.getRootNode() as ShadowRoot | Document
+          this._form = root.querySelector(`form#${this.getAttribute("form")}`)
+          return this._form;
+        }
+      
+        this._form = this.closest("form");
+        return this._form;
+        
+      }
+
+      protected set form(form: HTMLFormElement | null) {
+        this._form = form;
+      }
 
       onInput(e: InputEvent) {
         const target = e.target as HTMLInputElement
@@ -48,7 +65,6 @@ export const FormControlMixin =
             }
           });
 
-          this.form = this.closest('form');
           if (this.form) {
             this.form.addEventListener('formdata', this.boundOnSubmit);
           }
