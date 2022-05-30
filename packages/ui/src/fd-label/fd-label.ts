@@ -3,7 +3,7 @@ import { html, literal } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import { labelStyles } from './fd-label.style';
 
-export enum Tags {
+export enum LabelTags {
   Label = 'label',
   Span = 'span',
   Div = 'div' 
@@ -25,13 +25,13 @@ export class Label extends LitElement {
   static styles = labelStyles;
 
   @property()
-  tag: Tags = Tags.Label;
+  as: LabelTags = LabelTags.Label;
 
   @property()
   for: string = 'input';
 
-  private getTag(tag: Tags) {
-    switch (tag) {
+  private getTag(as: LabelTags) {
+    switch (as) {
       case "label":
         return literal`label`;
       case "span":
@@ -45,9 +45,9 @@ export class Label extends LitElement {
 
   render() {
     return html`
-      <${this.getTag(this.tag)} class="label" part="label" for=${this.for}>
+      <${this.getTag(this.as)} class="label" part="label" for=${this.for}>
         <slot></slot>
-      </${this.getTag(this.tag)}>
+      </${this.getTag(this.as)}>
     `
   }
 }
