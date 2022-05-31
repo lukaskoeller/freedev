@@ -29,9 +29,7 @@ export const FormControlMixin =
       @property({type: String}) value?: string;
       @property({type: Boolean}) disabled: boolean = false;
 
-      protected get form(): HTMLFormElement | null {
-        console.log(this);
-        
+      protected get form(): HTMLFormElement | null { 
         if (this.hasAttribute("form")) {
           const root = this.getRootNode() as ShadowRoot | Document
           this._form = root.querySelector(`form#${this.getAttribute("form")}`)
@@ -40,7 +38,6 @@ export const FormControlMixin =
       
         this._form = this.closest("form");
         return this._form;
-        
       }
 
       protected set form(form: HTMLFormElement | null) {
