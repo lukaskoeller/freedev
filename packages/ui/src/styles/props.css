@@ -1,4 +1,4 @@
-@import 'https://unpkg.com/open-props@latest/open-props.min.css';
+@import './base.css';
 
 /* @see https://unpkg.com/open-props/normalize.min.css */
 :root {
