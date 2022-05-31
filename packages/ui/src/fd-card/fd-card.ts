@@ -19,7 +19,7 @@ export class Card extends LitElement {
   static styles = css`
     :host {
       --fd-card-background-color: var(--color-surface-1);
-      --fd-card-color: var(--primary-color-base);
+      --fd-card-color: var(--text-1);
       --fd-card-border-color: var(--color-border);
       --fd-card-shadow: var(--shadow-3);
       
