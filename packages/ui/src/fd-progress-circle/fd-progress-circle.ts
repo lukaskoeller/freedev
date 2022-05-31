@@ -105,7 +105,7 @@ export class ProgressCircle extends LitElement {
             stroke-dashoffset="${0.25 * (2 * Math.PI * this._radius)}"
           />
         </svg>
-        <fd-label id="label" tag="span"
+        <fd-label id="label" as="span"
           >${this.progress} / ${this.totalSteps}</fd-label
         >
       </div>

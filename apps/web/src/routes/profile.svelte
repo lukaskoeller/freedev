@@ -27,23 +27,23 @@ import { onMount } from 'svelte';
 	<fd-section class="separator" fullWidth={true} hasBorder={true}>
 		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="kpi">
-				<fd-label tag="div">Hourly Rate</fd-label>
+				<fd-label as="div">Hourly Rate</fd-label>
 				<span>123 €</span>
 			</fd-gallery-item>
 			<fd-gallery-item class="kpi">
-				<fd-label tag="div">Available From</fd-label>
+				<fd-label as="div">Available From</fd-label>
 				<span>Feb 12</span>
 			</fd-gallery-item>
 			<fd-gallery-item class="kpi">
-				<fd-label tag="div">Projects</fd-label>
+				<fd-label as="div">Projects</fd-label>
 				<span>42</span>
 			</fd-gallery-item>
 			<fd-gallery-item class="kpi">
-				<fd-label tag="div">Happiness</fd-label>
+				<fd-label as="div">Happiness</fd-label>
 				<span>4.3 (27)</span>
 			</fd-gallery-item>
 			<fd-gallery-item class="kpi">
-				<fd-label tag="div">Capacity</fd-label>
+				<fd-label as="div">Capacity</fd-label>
 				<span>30h/week</span>
 			</fd-gallery-item>
 		</fd-gallery>
