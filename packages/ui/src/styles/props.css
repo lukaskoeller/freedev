@@ -199,7 +199,7 @@ html {
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
-  font-weight: var(--font-weight-9);
+  font-weight: var(--font-weight-5); /* edited */
   line-height: var(--font-lineheight-1)
 }
 
