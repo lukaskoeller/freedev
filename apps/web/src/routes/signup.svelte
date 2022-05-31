@@ -15,18 +15,22 @@ import { onMount } from 'svelte';
 
 <section>
   <fd-container>
-    <h1>E-Mail</h1>
-    <fd-card>
-      <form>
-        <fd-stack>
-          <fd-input name="email" type="email" label="E-Mail"></fd-input>
-          <fd-input name="password" type="password" label="Password"></fd-input>
-          <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
-          <fd-button type="submit">Submit</fd-button>
-        </fd-stack>
-      </form>
-    </fd-card>
-    <output></output>
+    <fd-container data-content>
+      <fd-stack>
+        <h1>Sign Up</h1>
+        <fd-card>
+          <form>
+            <fd-stack>
+              <fd-input name="email" type="email" label="E-Mail"></fd-input>
+              <fd-input name="password" type="password" label="Password"></fd-input>
+              <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
+              <fd-button type="submit" expand>Submit</fd-button>
+              <output></output>
+            </fd-stack>
+          </form>
+        </fd-card>
+      </fd-stack>
+    </fd-container>
     <script>
       const form = document.querySelector('form');
       const output = document.querySelector('output');
@@ -46,9 +50,3 @@ import { onMount } from 'svelte';
     </script>
   </fd-container>
 </section>
-
-<style lang="postcss">
-  fd-card::part(card) {
-    inline-size: min(var(--size-content-3), 100%);
-  }
-</style>
