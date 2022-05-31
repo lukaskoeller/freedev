@@ -53,8 +53,8 @@ export class Input extends FormControlMixin(LitElement) {
         color: var(--primary-color-base);
       }
 
-      input:focus-visible {
-        outline-color: var(--primary-color-0);
+      ::placeholder {
+        color: var(--color-accent-6);
       }
     `
   ];
