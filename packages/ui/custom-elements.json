@@ -476,6 +476,27 @@
               },
               "description": "Adjusts the background-color",
               "name": "--fd-button-background-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the background-color hover state",
+              "name": "--fd-button-background-color--host"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color",
+              "name": "--fd-button-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color hover state",
+              "name": "--fd-button-color--hover"
             }
           ],
           "cssParts": [
@@ -517,6 +538,15 @@
               },
               "default": "\"default\"",
               "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "expand",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "expand"
             },
             {
               "kind": "field",
@@ -691,6 +721,14 @@
               },
               "default": "\"default\"",
               "fieldName": "size"
+            },
+            {
+              "name": "expand",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "expand"
             },
             {
               "name": "href",
