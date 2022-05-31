@@ -15,9 +15,8 @@ const Template: Story = (args) => html`
   <fd-button
     .variant="${args.variant}"
     .size="${args.size}"
-    .href="${args.href}"
+    href="${args.href}"
   >
-    ${args.proxy}
     ${args.slot}
   </fd-button>
 `;
@@ -50,6 +49,25 @@ Small.args = {
 export const WithHref = Template.bind({});
 WithHref.args = {
   href: 'https://www.youtube.com/watch?v=Cz23Cw-Z6SE',
+  slot: 'Button Label',
+}
+
+export const Expand: Story = (args) => html`
+  <fd-button
+    expand
+    .size="${args.size}"
+    href="https://www.youtube.com/watch?v=Cz23Cw-Z6SE"
+  >
+    ${args.slot}
+  </fd-button>
+  <fd-button
+    expand
+    .size="${args.size}"
+  >
+    ${args.slot}
+  </fd-button>
+`;
+Expand.args = {
   slot: 'Button Label',
 }
 
