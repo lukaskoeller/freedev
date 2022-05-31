@@ -24,8 +24,18 @@ export class Container extends LitElement {
       --fd-container-padding-block: calc(var(--global-spacing) / 2);
     }
 
+    :host([data-content]) {
+      --fd-container-inline-size: calc(4 * var(--size-content-1));
+      --fd-container-padding-inline: 0;
+
+      --fd-container-margin-inline: auto;
+      margin-inline: var(--fd-container-margin-inline);
+    }
+
     section {
       box-sizing: border-box;
+      inline-size: min(var(--fd-container-inline-size, fit-content), 100%);
+      margin-inline: var(--fd-container-margin-inline);
       padding-inline-start: var(--fd-container-padding-inline-start);
       padding-inline-end: var(--fd-container-padding-inline-end);
       padding-block: var(--fd-container-padding-block);
