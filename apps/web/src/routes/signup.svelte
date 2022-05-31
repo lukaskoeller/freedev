@@ -16,14 +16,16 @@ import { onMount } from 'svelte';
 <section>
   <fd-container>
     <h1>E-Mail</h1>
-    <form>
-      <fd-stack>
-        <fd-input name="email" type="email" label="E-Mail"></fd-input>
-        <fd-input name="password" type="password" label="Password"></fd-input>
-        <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
-        <fd-button type="submit">Submit</fd-button>
-      </fd-stack>
-    </form>
+    <fd-card>
+      <form>
+        <fd-stack>
+          <fd-input name="email" type="email" label="E-Mail"></fd-input>
+          <fd-input name="password" type="password" label="Password"></fd-input>
+          <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
+          <fd-button type="submit">Submit</fd-button>
+        </fd-stack>
+      </form>
+    </fd-card>
     <output></output>
     <script>
       const form = document.querySelector('form');
@@ -44,3 +46,9 @@ import { onMount } from 'svelte';
     </script>
   </fd-container>
 </section>
+
+<style lang="postcss">
+  fd-card::part(card) {
+    inline-size: min(var(--size-content-3), 100%);
+  }
+</style>
