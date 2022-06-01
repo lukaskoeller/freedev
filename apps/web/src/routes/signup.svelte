@@ -15,20 +15,18 @@ import { onMount } from 'svelte';
 
 <section>
   <fd-container>
-    <fd-container data-content>
+    <fd-container size="xs">
       <fd-stack>
         <h1>Sign Up</h1>
-        <fd-card>
-          <form>
-            <fd-stack>
-              <fd-input name="email" type="email" label="E-Mail"></fd-input>
-              <fd-input name="password" type="password" label="Password"></fd-input>
-              <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
-              <fd-button type="submit" expand>Submit</fd-button>
-              <output></output>
-            </fd-stack>
-          </form>
-        </fd-card>
+        <form>
+          <fd-stack>
+            <fd-input name="email" type="email" label="E-Mail"></fd-input>
+            <fd-input name="password" type="password" label="Password"></fd-input>
+            <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
+            <fd-button type="submit" expand>Submit</fd-button>
+            <output></output>
+          </fd-stack>
+        </form>
       </fd-stack>
     </fd-container>
     <script>
@@ -49,4 +47,27 @@ import { onMount } from 'svelte';
       });
     </script>
   </fd-container>
+  <fd-container>
+    <fd-container size="xs">
+      <fd-stack>
+        <h1>What's your name?</h1>
+        <fd-input label="Name" name="name" />
+        <fd-button>Continue</fd-button>
+      </fd-stack>
+    </fd-container>
+  </fd-container>
+  <fd-container>
+    <fd-container size="xs">
+      <fd-stack>
+        <h1>What do you rock at?</h1>
+        <fd-input label="Area" name="area" />
+        <fd-input label="Language" name="language" />
+        <fd-input label="Technologies" name="technology" />
+        <fd-button>Continue</fd-button>
+      </fd-stack>
+    </fd-container>
+  </fd-container>
 </section>
+
+<style lang="postcss">
+</style>
