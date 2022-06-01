@@ -18,6 +18,7 @@ import { FormControlMixin } from '../mixins/formControlMixin';
  * Input component for text
  *
  * @slot - Text of label
+ * @csspart label - Assigned to the <label> element
  * @cssprop {string} --fd-input-color - Adjusts text color
  * @cssprop {string} --fd-input-text-transform - Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)
  * @cssprop {string} --fd-input-font-weight - Adjusts font weight (see https://open-props.style/#typography)
@@ -35,7 +36,7 @@ export class Input extends FormControlMixin(LitElement) {
         --fd-input-font-size: var(--font-size-0);
 
         display: grid;
-        gap-row: var(--size-3);
+        row-gap: calc(var(--size-1) / 2);
       }
 
       input {
