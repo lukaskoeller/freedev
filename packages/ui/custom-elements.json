@@ -1376,6 +1376,12 @@
               "name": "--fd-input-font-size"
             }
           ],
+          "cssParts": [
+            {
+              "description": "Assigned to the <label> element",
+              "name": "label"
+            }
+          ],
           "slots": [
             {
               "description": "Text of label",
