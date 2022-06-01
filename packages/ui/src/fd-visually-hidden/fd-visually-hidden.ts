@@ -1,6 +1,6 @@
 import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import '../fd-label/fd-label';
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
