@@ -953,13 +953,39 @@
               "name": "--fd-container-padding-block"
             }
           ],
+          "cssParts": [
+            {
+              "description": "Styles the Container's section",
+              "name": "container"
+            }
+          ],
           "slots": [
             {
               "description": "Content of the container",
               "name": ""
             }
           ],
-          "members": [],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Sizes"
+              },
+              "description": "Sets the width according to given value and disables padding inline",
+              "attribute": "size"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "Sizes"
+              },
+              "description": "Sets the width according to given value and disables padding inline",
+              "fieldName": "size"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
