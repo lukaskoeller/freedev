@@ -35,6 +35,8 @@
   --link-visited: var(--color-primary-base);
   --text-1: var(--color-primary-9);
   --text-2: var(--color-accent-7);
+  --text-1-inverted: var(--color-accent-2);
+  --text-2-inverted: var(--color-accent-4);
   --surface-1: var(--color-accent-0);
   --surface-2: var(--color-accent-2);
   --surface-3: var(--color-accent-3);
@@ -48,6 +50,8 @@
   --color-link-visited: var(--link-visited);
   --color-text-1: var(--text-1);
   --color-text-2: var(--text-2);
+  --color-text-1-inverted: var(--text-1-inverted);
+  --color-text-2-inverted: var(--text-2-inverted);
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
@@ -98,6 +102,8 @@
     --link-visited: var(--color-primary-8);
     --text-1: var(--color-accent-2);
     --text-2: var(--color-accent-4);
+    --text-1-inverted: var(--color-accent-9);
+    --text-2-inverted: var(--color-accent-7);
     --surface-1: var(--color-accent-9);
     --surface-2: var(--color-accent-8);
     --surface-3: var(--color-accent-7);
