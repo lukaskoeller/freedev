@@ -48,7 +48,23 @@ SizeSm.args = {
   slot: 'Button Label',
 }
 
-export const StatusLoading = Template.bind({});
+export const StatusLoading: Story = (args) => html`
+  <fd-button
+    .variant="${args.variant}"
+    .status="${args.status}"
+    .href="${args.href}"
+  >
+    ${args.slot}
+  </fd-button>
+  <fd-button
+    .variant="${args.variant}"
+    size="sm"
+    .status="${args.status}"
+    .href="${args.href}"
+  >
+    ${args.slot}
+  </fd-button>
+`;
 StatusLoading.args = {
   slot: 'Button Label',
   status: Status.Loading,
