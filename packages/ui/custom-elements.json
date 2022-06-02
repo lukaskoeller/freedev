@@ -413,7 +413,7 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "Sizes | undefined"
+                "text": "Size | undefined"
               },
               "attribute": "size"
             }
@@ -429,7 +429,7 @@
             {
               "name": "size",
               "type": {
-                "text": "Sizes | undefined"
+                "text": "Size | undefined"
               },
               "fieldName": "size"
             }
@@ -534,10 +534,17 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "\"default\" | \"small\""
+                "text": "Size.Sm | undefined"
               },
-              "default": "\"default\"",
               "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "Status | undefined"
+              },
+              "attribute": "status"
             },
             {
               "kind": "field",
@@ -717,10 +724,16 @@
             {
               "name": "size",
               "type": {
-                "text": "\"default\" | \"small\""
+                "text": "Size.Sm | undefined"
               },
-              "default": "\"default\"",
               "fieldName": "size"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "Status | undefined"
+              },
+              "fieldName": "status"
             },
             {
               "name": "expand",
@@ -970,7 +983,7 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "Sizes"
+                "text": "Size"
               },
               "description": "Sets the width according to given value and disables padding inline",
               "attribute": "size"
@@ -980,7 +993,7 @@
             {
               "name": "size",
               "type": {
-                "text": "Sizes"
+                "text": "Size"
               },
               "description": "Sets the width according to given value and disables padding inline",
               "fieldName": "size"
@@ -1281,7 +1294,7 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "Sizes | undefined"
+                "text": "Size | undefined"
               },
               "attribute": "size"
             },
@@ -1306,7 +1319,7 @@
             {
               "name": "size",
               "type": {
-                "text": "Sizes | undefined"
+                "text": "Size | undefined"
               },
               "fieldName": "size"
             }
@@ -2368,6 +2381,48 @@
           "declaration": {
             "name": "Switch",
             "module": "src/fd-switch/fd-switch.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
+          "name": "VisuallyHidden",
+          "slots": [
+            {
+              "description": "The visually hidden content.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-visually-hidden",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VisuallyHidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-visually-hidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
           }
         }
       ]
