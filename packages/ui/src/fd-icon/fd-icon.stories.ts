@@ -3,7 +3,7 @@ import './fd-icon';
 import '../fd-gallery/fd-gallery';
 import { html } from 'lit-html';
 import svgBell from 'assets/icons/bell-solid.svg?raw';
-import { Sizes } from 'types/index';
+import { Size } from 'types/index';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -24,11 +24,11 @@ const Template: Story = (args) => html`
 export const Primary = Template.bind({});
 Primary.args = {
   file: svgBell,
-  size: Sizes.Xl,
+  size: Size.Xl,
 }
 
 export const AllSizes: Story = (args) => html`
-  ${Object.values(Sizes).map((size) => (
+  ${Object.values(Size).map((size) => (
     html`
       <fd-icon .file=${args.file} .size=${size} />
     `

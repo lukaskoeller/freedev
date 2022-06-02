@@ -2,14 +2,14 @@ import { html, css, LitElement } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import '../fd-label/fd-label';
-import { Sizes } from 'types/index';
+import { Size } from 'types/index';
 
 const SizeMap = {
-  [Sizes.Xs]: 'var(--size-3)',
-  [Sizes.Sm]: 'var(--size-4)',
-  [Sizes.Md]: 'var(--size-5)',
-  [Sizes.Lg]: 'var(--size-6)',
-  [Sizes.Xl]: 'var(--size-7)',
+  [Size.Xs]: 'var(--size-3)',
+  [Size.Sm]: 'var(--size-4)',
+  [Size.Md]: 'var(--size-5)',
+  [Size.Lg]: 'var(--size-6)',
+  [Size.Xl]: 'var(--size-7)',
 }
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
@@ -40,7 +40,7 @@ export class Icon extends LitElement {
     file?: string;
 
   @property()
-    size?: Sizes = Sizes.Md;
+    size?: Size = Size.Md;
 
   @query('svg') private svg!: SVGSVGElement|null;
 

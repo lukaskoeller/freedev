@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/web-components';
 import './fd-avatar';
 import { html } from 'lit-html';
-import { Sizes } from 'types';
+import { Size } from 'types';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -24,7 +24,7 @@ Primary.args = {
 }
 
 export const WithImage: Story = (args) => html`
-  ${Object.values(Sizes).map((size) => (
+  ${Object.values(Size).map((size) => (
     html`
       <fd-avatar .name="${args.name}" .size="${size}">
         ${args?.slot}
@@ -42,7 +42,7 @@ WithImage.args = {
 }
 
 export const AllSizes: Story = (args) => html`
-  ${Object.values(Sizes).map((size) => (
+  ${Object.values(Size).map((size) => (
     html`
       <fd-avatar .name="${args.name}" .size="${size}"></fd-avatar>
     `

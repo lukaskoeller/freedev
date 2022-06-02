@@ -2,7 +2,7 @@ import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import '../fd-label/fd-label';
-import { Sizes } from 'types';
+import { Size } from 'types';
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
@@ -10,7 +10,7 @@ import { Sizes } from 'types';
  * General wrapper providing basic inline and block padding
  *
  * @slot - Content of the container
- * @property {Sizes} size - Sets the width according to given value and disables padding inline
+ * @property {Size} size - Sets the width according to given value and disables padding inline
  * @csspart container - Styles the Container's section
  * @cssprop {string} --fd-container-padding-inline
  * @cssprop {string} --fd-container-padding-inline-start
@@ -69,7 +69,7 @@ export class Container extends LitElement {
   `
 
   @property({type: String})
-  size?: Sizes;
+  size?: Size;
 
   render() {
     return html`

@@ -1,13 +1,13 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { Sizes } from 'types/index';
+import { Size } from 'types/index';
 
 const SizeMap = {
-  [Sizes.Xs]: 'var(--size-6)',
-  [Sizes.Sm]: 'var(--size-7)',
-  [Sizes.Md]: 'var(--size-8)',
-  [Sizes.Lg]: 'var(--size-9)',
-  [Sizes.Xl]: 'var(--size-10)',
+  [Size.Xs]: 'var(--size-6)',
+  [Size.Sm]: 'var(--size-7)',
+  [Size.Md]: 'var(--size-8)',
+  [Size.Lg]: 'var(--size-9)',
+  [Size.Xl]: 'var(--size-10)',
 }
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
@@ -57,12 +57,12 @@ export class Avatar extends LitElement {
   @query('img') private img!: HTMLImageElement|null;
 
   @property({ type: String })
-  size?: Sizes;
+  size?: Size;
 
   render() {
     return html`
       <div part="avatar" style="--size: ${SizeMap[
-        this.size ?? Sizes.Xs
+        this.size ?? Size.Xs
       ]};">
         <slot>
           ${this.name?.charAt(0) ?? ''}
