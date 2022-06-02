@@ -7,6 +7,8 @@ import { onMount } from 'svelte';
   onMount(async () => {
     await import('ui');
   });
+
+  const email = 'lukas.koeller@proton.me';
 </script>
 
 <svelte:head>
@@ -27,6 +29,16 @@ import { onMount } from 'svelte';
             <output></output>
           </fd-stack>
         </form>
+      </fd-stack>
+      <fd-stack>
+        <h1>Wohooo!</h1>
+        <h2>E-Mail bestätigen</h2>
+        <p>
+          Wir haben dir einen Link an <strong>{email}</strong> geschickt.
+          Mit einem Klick bestätigst du deine Email.
+        </p>
+        <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
+        <fd-button>Erneut senden</fd-button>
       </fd-stack>
     </fd-container>
     <script>
