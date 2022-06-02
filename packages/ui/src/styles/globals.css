@@ -2,3 +2,7 @@
 /** CUSTOM SELECTORS */
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 @custom-selector :--input input, button, textarea, select;
+
+[data-animation-spin] {
+  animation: var(--animation-spin) 2s linear;
+}
