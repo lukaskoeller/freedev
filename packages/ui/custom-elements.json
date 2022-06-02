@@ -513,6 +513,18 @@
           ],
           "members": [
             {
+              "kind": "method",
+              "name": "statusIcon",
+              "parameters": [
+                {
+                  "name": "status",
+                  "type": {
+                    "text": "Status | undefined"
+                  }
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "isLink",
               "type": {
@@ -1278,6 +1290,13 @@
               },
               "description": "Sets the fill color and defaults to currentcolor",
               "name": "--fd-icon-fill"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets transform translate on the Y axis. Used to align with text. For more @see https://css-tricks.com/improving-icons-for-ui-elements-with-typographic-alignment-and-scale/",
+              "name": "--fd-offset"
             }
           ],
           "members": [
@@ -1294,7 +1313,7 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "Size | undefined"
+                "text": "Size | 'inline' | undefined"
               },
               "attribute": "size"
             },
@@ -1319,7 +1338,7 @@
             {
               "name": "size",
               "type": {
-                "text": "Size | undefined"
+                "text": "Size | 'inline' | undefined"
               },
               "fieldName": "size"
             }
