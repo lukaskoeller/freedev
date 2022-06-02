@@ -3,6 +3,7 @@ import { customElement, property, queryAssignedElements } from 'lit/decorators.j
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FormControlMixin } from '../mixins/formControlMixin';
+import { Size, Status } from 'types';
 
 export enum ButtonTags {
   Button = 'button',
@@ -91,7 +92,7 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-color--hover: var(--primary-color-4);
     }
     
-    :is(button, a)[data-size="small"] {
+    :is(button, a)[data-size="sm"] {
       --fd-button-padding-inline: var(--size-3);
       --fd-button-block-size: var(--size-7);
       --fd-button-font-size: var(--font-size-0);
@@ -108,7 +109,10 @@ export class Button extends FormControlMixin(LitElement) {
   variant: "default" | "light" | "stealth" = "default";
 
   @property()
-  size: "default" | "small" = "default";
+  size?: Size.Sm;
+
+  @property()
+  status?: Status;
 
   @property()
   expand: boolean = false;
