@@ -15,7 +15,7 @@ const Template: Story = (args) => html`
   <fd-button
     .variant="${args.variant}"
     .size="${args.size}"
-    href="${args.href}"
+    .href="${args.href}"
   >
     ${args.slot}
   </fd-button>
@@ -24,25 +24,25 @@ const Template: Story = (args) => html`
 /**
  * Some documentation on this story
  */
-export const Primary = Template.bind({});
-Primary.args = {
+export const VariantPrimary = Template.bind({});
+VariantPrimary.args = {
   slot: 'Button Label',
 };
 
-export const Light = Template.bind({});
-Light.args = {
+export const VariantLight = Template.bind({});
+VariantLight.args = {
   variant: "light",
   slot: 'Button Label',
 }
-export const Stealth = Template.bind({});
-Stealth.args = {
+export const VariantStealth = Template.bind({});
+VariantStealth.args = {
   variant: "stealth",
   slot: 'Button Label',
 }
 
-export const Small = Template.bind({});
-Small.args = {
-  size: "small",
+export const SizeSm = Template.bind({});
+SizeSm.args = {
+  size: "sm",
   slot: 'Button Label',
 }
 
