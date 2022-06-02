@@ -37,3 +37,18 @@ export const AllSizes: Story = (args) => html`
 AllSizes.args = {
   file: svgBell
 }
+
+export const CustomSize: Story = (args) => html`
+  <fd-icon
+    .file=${args.file}
+    style="
+      --fd-icon-size: ${args['--fd-icon-size']};
+      --fd-icon-fill: ${args['--fd-icon-fill']};
+    "
+  />
+`;
+CustomSize.args = {
+  file: svgBell,
+  '--fd-icon-size': '137px',
+  '--fd-icon-fill': '#FF4D00',
+}
