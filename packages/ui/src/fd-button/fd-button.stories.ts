@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/web-components';
 import './fd-button';
 import { html } from 'lit-html';
+import { Status } from 'types';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
@@ -15,6 +16,7 @@ const Template: Story = (args) => html`
   <fd-button
     .variant="${args.variant}"
     .size="${args.size}"
+    .status="${args.status}"
     .href="${args.href}"
   >
     ${args.slot}
@@ -44,6 +46,12 @@ export const SizeSm = Template.bind({});
 SizeSm.args = {
   size: "sm",
   slot: 'Button Label',
+}
+
+export const StatusLoading = Template.bind({});
+StatusLoading.args = {
+  slot: 'Button Label',
+  status: Status.Loading,
 }
 
 export const WithHref = Template.bind({});
