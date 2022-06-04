@@ -3,6 +3,7 @@ import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import { labelStyles } from '../fd-label/fd-label.style';
 import { FormControlMixin } from '../mixins/formControlMixin';
+import { captionStyles, errorStyles } from '../styles/shared';
 
 /**
  * https://css-tricks.com/supercharging-built-in-elements-with-web-components-is-easier-than-you-think/
@@ -28,12 +29,15 @@ import { FormControlMixin } from '../mixins/formControlMixin';
 export class Input extends FormControlMixin(LitElement) {
   static styles = [
     labelStyles,
+    captionStyles,
+    errorStyles,
     css`
       :host {
         --fd-input-background-color: var(--color-surface-2);
         --fd-input-text-transform: uppercase;
         --fd-input-font-weight: var(--font-weight-6);
         --fd-input-font-size: var(--font-size-0);
+        --fd-input-border-color: var(--color-border);
 
         display: grid;
         row-gap: calc(var(--size-1) / 2);
@@ -42,7 +46,7 @@ export class Input extends FormControlMixin(LitElement) {
       input {
         position: relative;
         min-width: 0;
-        border: 0;
+        border: var(--border-size-1) solid var(--fd-input-border-color);
         border-radius: var(--radius-2);
         background-color: var(--fd-input-background-color);
         padding-inline: var(--size-4);
@@ -52,6 +56,11 @@ export class Input extends FormControlMixin(LitElement) {
         font-weight: var(--font-weight-5);
         font-size: var(--font-size-1);
         color: var(--primary-color-base);
+      }
+
+      input[aria-invalid] {
+        --fd-input-border-color: var(--color-status-error);
+        border: var(--border-size-1) solid var(--fd-input-border-color);
       }
 
       ::placeholder {
@@ -69,6 +78,9 @@ export class Input extends FormControlMixin(LitElement) {
   @property({ type: String })
   type: HTMLInputElement["type"] = 'text';
 
+  @property({ type: String })
+  error?: string;
+
   render() {
     return html`
       <label for="input" class="label" part="label">
@@ -82,7 +94,19 @@ export class Input extends FormControlMixin(LitElement) {
         placeholder=${this.placeholder ?? this.label}
         ?disabled=${this.disabled}
         @input=${this.onInput}
+        spellcheck="false"
+        ?aria-invalid=${!!this.error}
+        aria-describedby="error"
       >
+      <div
+        class="fd-error fd-caption"
+        role="alert"
+        id="error"
+      >
+        <slot name="error">
+          ${this.error}
+        </slot>
+      </div>
     `;
   }
 }
