@@ -19,6 +19,7 @@ const Template: Story = (args) => html`
       name="${args.name}"
       label="${args.label}"
       placeholder="${args.placeholder}"
+      error="${args.error}"
     ></fd-input>
     <input name="plant" value="Aloe Vera" />
     <fd-button type="submit">Submit</fd-button>
@@ -53,6 +54,15 @@ Primary.args = {
   name: 'animal',
   value: '',
   label: 'Animal'
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  type: 'text',
+  name: 'password',
+  value: '',
+  label: 'Password',
+  error: 'At least 8 characters are required'
 };
 // More on args: https://storybook.js.org/docs/web-components/writing-stories/args
 
