@@ -33,9 +33,9 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.8",
     "@lukeed/uuid": "^2.0.0",
-    "assets": "^0.0.0",
-    "config": "^0.0.0",
+    "assets": "*",
+    "config": "*",
     "cookie": "^0.4.2",
-    "ui": "^0.0.0"
+    "ui": "*"
   }
 }
