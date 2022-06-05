@@ -3152,6 +3152,107 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-form/fd-form.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Extended form element to allow cross-browser form participation of custom elements",
+          "name": "Form",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-form-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-form-padding-inline"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_formdata",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Form",
+          "declaration": {
+            "name": "Form",
+            "module": "types/fd-form/fd-form.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-form/fd-form.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-form/fd-form.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-form/fd-form.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-container/fd-container.d.ts",
       "declarations": [
         {
@@ -3260,107 +3361,6 @@
           "declaration": {
             "name": "Primary",
             "module": "types/fd-container/fd-container.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-form/fd-form.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Extended form element to allow cross-browser form participation of custom elements",
-          "name": "Form",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-form-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-form-padding-inline"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "_formdata",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "any"
-                  }
-                }
-              ]
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-form",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Form",
-          "declaration": {
-            "name": "Form",
-            "module": "types/fd-form/fd-form.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-form/fd-form.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-form/fd-form.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-form/fd-form.stories.d.ts"
           }
         }
       ]
@@ -4750,83 +4750,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/styles/elements.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Default",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Showcasing basic HTML5 elements for theme testing"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Default",
-          "declaration": {
-            "name": "Default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/shared.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "errorStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "captionStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "errorStyles",
-          "declaration": {
-            "name": "errorStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "captionStyles",
-          "declaration": {
-            "name": "captionStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/mixins/formControlMixin.d.ts",
       "declarations": [
         {
@@ -4916,6 +4839,83 @@
       "path": "types/mixins/formdata-event-polyfill.d.ts",
       "declarations": [],
       "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/elements.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Default",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Showcasing basic HTML5 elements for theme testing"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Default",
+          "declaration": {
+            "name": "Default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/shared.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "errorStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "captionStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "errorStyles",
+          "declaration": {
+            "name": "errorStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "captionStyles",
+          "declaration": {
+            "name": "captionStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        }
+      ]
     }
   ]
 }
