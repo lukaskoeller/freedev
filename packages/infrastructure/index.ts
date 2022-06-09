@@ -21,10 +21,15 @@ const pool = new aws.cognito.UserPool('appPool', {
         },
     ],
   },
-  aliasAttributes: ['phone_number', 'email'],
+  usernameAttributes: ['phone_number', 'email'],
+  deviceConfiguration: {
+    deviceOnlyRememberedOnUserPrompt: true,
+  },
   passwordPolicy: {
-    minimumLength: 10,
+    minimumLength: 8,
     requireLowercase: true,
     requireSymbols: true,
+    requireNumbers: true,
+    requireUppercase: true,
   }
 })
