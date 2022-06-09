@@ -32,4 +32,7 @@ const pool = new aws.cognito.UserPool('appPool', {
     requireNumbers: true,
     requireUppercase: true,
   }
-})
+});
+
+// @todo Create swagger-api with api gateway
+// @see https://github.com/pulumi/examples/tree/master/aws-apigateway-ts-routes
