@@ -1,2 +1,4 @@
 config:
   aws:region: eu-central-1
+  aws:profile: iac
+  aws:skipCredentialsValidation: true
