@@ -47,30 +47,42 @@ const swaggerAPI = new apigateway.RestAPI("swagger-api", {
   swaggerString: JSON.stringify(api),
 });
 
-// Configure IAM so that the AWS Lambda can be run.
-const handleApiTestRole = new aws.iam.Role("handleApiTestRole", {
+// Create the role for the Lambda to assume
+const lambdaRole = new aws.iam.Role("lambdaRole", {
   assumeRolePolicy: {
-     Version: "2012-10-17",
-     Statement: [{
+    Version: "2012-10-17",
+    Statement: [
+      {
         Action: "sts:AssumeRole",
         Principal: {
-           Service: "lambda.amazonaws.com",
+          Service: "lambda.amazonaws.com",
         },
         Effect: "Allow",
         Sid: "",
-     }],
+      },
+    ],
   },
 });
-new aws.iam.RolePolicyAttachment("zipTpsReportsFuncRoleAttach", {
-  role: handleApiTestRole,
-  policyArn: aws.iam.ManagedPolicies.AWSLambdaExecute,
+
+// Attach the fullaccess policy to the Lambda role created above
+const rolepolicyattachment = new aws.iam.RolePolicyAttachment("lambdaRoleAttachment", {
+  role: lambdaRole,
+  policyArn: aws.iam.ManagedPolicy.AWSLambdaBasicExecutionRole,
 });
 
-const handleApiTest = new aws.lambda.Function("handleApiTest", {
-  // Upload the code for our Lambda from the "./app" directory:
+// Create the Lambda to execute
+const lambda = new aws.lambda.Function("handleApiTest", {
   code: new pulumi.asset.AssetArchive({
-     ".": new pulumi.asset.FileArchive("./app"),
+    ".": new pulumi.asset.FileArchive("./src/lambdas"),
   }),
   runtime: "nodejs12.x",
-  role: handleApiTestRole.arn,
-})
+  role: lambdaRole.arn,
+  handler: "index.handler",
+});
+
+// Give API Gateway permissions to invoke the Lambda
+const lambdapermission = new aws.lambda.Permission("lambdaPermission", {
+  action: "lambda:InvokeFunction",
+  principal: "apigateway.amazonaws.com",
+  function: lambda,
+});
