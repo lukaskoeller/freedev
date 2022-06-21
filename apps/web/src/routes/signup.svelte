@@ -3,17 +3,15 @@
 </script>
 
 <script lang="ts">
-  // import 'ui';
-  // import { onMount } from 'svelte';
-  //   onMount(async () => {
-  //     await import('ui');
-  //   });
-
-  import { browser } from '$app/env';
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('ui');
+  });
+  // import { browser } from '$app/env';
  
-  if (browser) {
-    import('ui');
-  }
+  // if (browser) {
+  //   import('ui');
+  // }
 
   const email = 'lukas.koeller@proton.me';
 </script>

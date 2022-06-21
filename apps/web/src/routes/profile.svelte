@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
   onMount(async () => {
     await import('ui');
   });
