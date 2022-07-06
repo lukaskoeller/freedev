@@ -2,7 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
 import * as apigateway from "@pulumi/aws-apigateway";
-import api from './api.json';
+import openapi from './api.json';
+import { User } from "@pulumi/aws/cognito";
+import { APIGatewayEvent } from "aws-lambda";
+import { Context } from "@pulumi/aws/lambda";
+import { RestExceptionNoBody } from "errors";
 
 // // Create an AWS resource (S3 Bucket)
 // const bucket = new aws.s3.Bucket("my-bucket");
@@ -10,7 +14,7 @@ import api from './api.json';
 // // Export the name of the bucket
 // export const bucketName = bucket.id;
 
-const pool = new aws.cognito.UserPool('appPool', {
+const userPool = new aws.cognito.UserPool('appPool', {
   accountRecoverySetting: {
     recoveryMechanisms: [
         {
@@ -36,53 +40,64 @@ const pool = new aws.cognito.UserPool('appPool', {
   }
 });
 
-// @todo Create swagger-api with api gateway
-// @see https://github.com/pulumi/examples/tree/master/aws-apigateway-ts-routes
-
-// Docs on enabling a cognito user pool in aws api gateway
-// https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-enable-cognito-user-pool.html
-
-// Define whole API using swagger (OpenAPI)
-const swaggerAPI = new apigateway.RestAPI("swagger-api", {
-  swaggerString: JSON.stringify(api),
-});
-
-// Create the role for the Lambda to assume
-const lambdaRole = new aws.iam.Role("lambdaRole", {
-  assumeRolePolicy: {
-    Version: "2012-10-17",
-    Statement: [
-      {
-        Action: "sts:AssumeRole",
-        Principal: {
-          Service: "lambda.amazonaws.com",
-        },
-        Effect: "Allow",
-        Sid: "",
-      },
-    ],
+// Create a Lambda Function
+const helloHandler = new aws.lambda.CallbackFunction("hello-handler", {
+  callback: async (ev, ctx) => {
+    return {
+      statusCode: 200,
+      body: "Hello, API Gateway!",
+    };
   },
 });
 
-// Attach the fullaccess policy to the Lambda role created above
-const rolepolicyattachment = new aws.iam.RolePolicyAttachment("lambdaRoleAttachment", {
-  role: lambdaRole,
-  policyArn: aws.iam.ManagedPolicy.AWSLambdaBasicExecutionRole,
+export type SignupBody = {
+  email: string;
+  password: string;
+}
+
+const signup = new aws.lambda.CallbackFunction("signup", {
+  callback: async (event: APIGatewayEvent, context: Context) => {
+    // const user = new User()
+    console.log('LOG:LOG:LOG:LOG', {
+      event,
+      context,
+    });
+    if (!event?.body) {
+      throw RestExceptionNoBody
+    }
+    console.log('BODY!!!', event?.body);
+    
+    const body: SignupBody = JSON.parse(event?.body);
+    const { email, password } = body;
+
+    const user = new aws.cognito.User('email', {
+      userPoolId: userPool.id,
+      username: email,
+      password,
+    });
+    console.log('USER!!!', user);
+    
+    return {
+      statusCode: 200,
+      body: "Hello, API Gateway!",
+    };
+  },
 });
 
-// Create the Lambda to execute
-const lambda = new aws.lambda.Function("handleApiTest", {
-  code: new pulumi.asset.AssetArchive({
-    ".": new pulumi.asset.FileArchive("./src/lambdas"),
-  }),
-  runtime: "nodejs12.x",
-  role: lambdaRole.arn,
-  handler: "index.handler",
+// Define an endpoint that invokes a lambda to handle requests
+const api = new apigateway.RestAPI("freedev-api", {
+  routes: [
+    {
+      path: "/",
+      method: "GET",
+      eventHandler: helloHandler,
+    },
+    {
+      path: "/signup",
+      method: "PUT",
+      eventHandler: signup,
+    },
+  ],
 });
 
-// Give API Gateway permissions to invoke the Lambda
-const lambdapermission = new aws.lambda.Permission("lambdaPermission", {
-  action: "lambda:InvokeFunction",
-  principal: "apigateway.amazonaws.com",
-  function: lambda,
-});
+export const apiUrl = api.url;
