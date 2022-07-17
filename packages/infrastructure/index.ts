@@ -10,7 +10,7 @@ import * as apigateway from "@pulumi/aws-apigateway";
 // // Export the name of the bucket
 // export const bucketName = bucket.id;
 
-const userPool = new aws.cognito.UserPool('appPool', {
+export const userPool = new aws.cognito.UserPool('appPool', {
   accountRecoverySetting: {
     recoveryMechanisms: [
         {
@@ -62,7 +62,7 @@ const iamForLambda = new aws.iam.Role("iamForLambda", {assumeRolePolicy: `{
 `});
 
 const signup = new aws.lambda.Function("sign-up", {
-  code: new pulumi.asset.FileArchive("@functions/.aws-sam/build/SignUp"),
+  code: new pulumi.asset.FileArchive("../functions/.aws-sam/build/SignUp"),
   role: iamForLambda.arn,
   handler: "index.js",
   runtime: "nodejs16.x",
