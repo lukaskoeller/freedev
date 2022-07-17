@@ -62,9 +62,9 @@ const iamForLambda = new aws.iam.Role("iamForLambda", {assumeRolePolicy: `{
 `});
 
 const signup = new aws.lambda.Function("sign-up", {
-  code: new pulumi.asset.FileArchive("lambda_function_payload.zip"),
+  code: new pulumi.asset.FileArchive("@functions/.aws-sam/build/SignUp"),
   role: iamForLambda.arn,
-  handler: "index.test",
+  handler: "index.js",
   runtime: "nodejs16.x",
   // environment: {
   //     variables: {
