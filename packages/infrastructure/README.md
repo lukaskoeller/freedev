@@ -77,3 +77,11 @@ const integration = new aws.apigateway.Integration("/testo", {
 //   "uri": "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-central-1:865039251033:function:handleApiTest-3eb5a4f/invocations"
 // }
 ```
+
+```ts
+const user = new aws.cognito.User('email', {
+  userPoolId: userPool.id,
+  username: email,
+  password,
+});
+```

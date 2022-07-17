@@ -10,8 +10,8 @@
         "@pulumi/aws-apigateway": "^0.0.9",
         "@pulumi/awsx": "^0.40.0",
         "@pulumi/pulumi": "^3.0.0",
-        "@types/aws-lambda": "^8.10.101",
+        "errors": "*",
         "tsconfig": "*",
-        "errors": "*"
+        "functions": "*"
     }
 }
