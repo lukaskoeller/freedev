@@ -5,7 +5,8 @@
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.131.0",
     "@types/aws-lambda": "^8.10.101",
-    "errors": "*"
+    "errors": "*",
+    "infrastructure": "*"
   },
   "devDependencies": {
     "esbuild": "^0.14.49"
