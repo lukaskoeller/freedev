@@ -1,12 +1,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
-import * as awsx from "@pulumi/awsx";
+// import * as awsx from "@pulumi/awsx";
 import * as apigateway from "@pulumi/aws-apigateway";
-import openapi from './api.json';
-import { User } from "@pulumi/aws/cognito";
-import { APIGatewayEvent } from "aws-lambda";
-import { Context } from "@pulumi/aws/lambda";
-import { RestExceptionNoBody } from "errors";
+// import openapi from './api.json';
 
 // // Create an AWS resource (S3 Bucket)
 // const bucket = new aws.s3.Bucket("my-bucket");
@@ -50,38 +46,31 @@ const helloHandler = new aws.lambda.CallbackFunction("hello-handler", {
   },
 });
 
-export type SignupBody = {
-  email: string;
-  password: string;
-}
-
-const signup = new aws.lambda.CallbackFunction("signup", {
-  callback: async (event: APIGatewayEvent, context: Context) => {
-    // const user = new User()
-    console.log('LOG:LOG:LOG:LOG', {
-      event,
-      context,
-    });
-    if (!event?.body) {
-      throw RestExceptionNoBody
+const iamForLambda = new aws.iam.Role("iamForLambda", {assumeRolePolicy: `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
     }
-    console.log('BODY!!!', event?.body);
-    
-    const body: SignupBody = JSON.parse(event?.body);
-    const { email, password } = body;
+  ]
+}
+`});
 
-    const user = new aws.cognito.User('email', {
-      userPoolId: userPool.id,
-      username: email,
-      password,
-    });
-    console.log('USER!!!', user);
-    
-    return {
-      statusCode: 200,
-      body: "Hello, API Gateway!",
-    };
-  },
+const signup = new aws.lambda.Function("sign-up", {
+  code: new pulumi.asset.FileArchive("lambda_function_payload.zip"),
+  role: iamForLambda.arn,
+  handler: "index.test",
+  runtime: "nodejs16.x",
+  // environment: {
+  //     variables: {
+  //         foo: "bar",
+  //     },
+  // },
 });
 
 // Define an endpoint that invokes a lambda to handle requests
