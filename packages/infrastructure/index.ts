@@ -10,7 +10,7 @@ import * as apigateway from "@pulumi/aws-apigateway";
 // // Export the name of the bucket
 // export const bucketName = bucket.id;
 
-export const userPool = new aws.cognito.UserPool('appPool', {
+const userPool = new aws.cognito.UserPool('appPool', {
   accountRecoverySetting: {
     recoveryMechanisms: [
         {
@@ -36,6 +36,8 @@ export const userPool = new aws.cognito.UserPool('appPool', {
   }
 });
 
+export const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {userPoolId: userPool.id});
+
 // Create a Lambda Function
 const helloHandler = new aws.lambda.CallbackFunction("hello-handler", {
   callback: async (ev, ctx) => {
@@ -46,20 +48,25 @@ const helloHandler = new aws.lambda.CallbackFunction("hello-handler", {
   },
 });
 
-const iamForLambda = new aws.iam.Role("iamForLambda", {assumeRolePolicy: `{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
+const iamForLambda = new aws.iam.Role("iamForLambda", {
+  assumeRolePolicy: `{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "sts:AssumeRole",
+        "Principal": {
+          "Service": "lambda.amazonaws.com"
+        },
+        "Effect": "Allow",
+        "Sid": ""
+      }
+    ]
+  }`,
+  managedPolicyArns: [
+    // Allow AWS Lambda to log to CloudWatch
+    'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
   ]
-}
-`});
+});
 
 const signup = new aws.lambda.Function("sign-up", {
   code: new pulumi.asset.FileArchive("../functions/.aws-sam/build/SignUp"),
