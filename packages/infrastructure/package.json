@@ -2,6 +2,9 @@
     "name": "infrastructure",
     "version": "0.0.0",
     "main": "index.ts",
+    "scripts": {
+        "deploy": "pulumi up"
+    },
     "devDependencies": {
         "@types/node": "^14"
     },
