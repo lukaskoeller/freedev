@@ -16,15 +16,9 @@ export type SignupBody = {
 }
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
-  // const user = new User()
-  console.log('!!!LOG!!!', {
-    event,
-    context,
-  });
   if (!event?.body) {
     throw RestExceptionNoBody
   }
-  console.log('!!!BODY!!!', event?.body);
   
   const body: SignupBody = JSON.parse(event?.body);
   const { email, password } = body;
@@ -42,16 +36,11 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   
   // async/await.
   try {
-    console.log('TRY:CLIENT_SEND');
     const data = await client.send(command);
-    console.log('DATA: ', data);
-    
-    // process data.
   } catch (error) {
-    console.log('!!!ERROR!!!');
-    // error handling.
+    // @todo add throw Error as return
+    console.log('!!!ERROR!!!', error);
   } finally {
-    console.log('!!!FINALLY!!!');
     // finally.
   }
   
