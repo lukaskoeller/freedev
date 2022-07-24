@@ -3,6 +3,7 @@
 </script>
 
 <script lang="ts">
+  import { enhance } from '$lib/form';
   import { onMount } from 'svelte';
   onMount(async () => {
     await import('ui');
@@ -25,7 +26,25 @@
     <fd-container size="xs">
       <fd-stack>
         <h1>Sign Up</h1>
-        <form>
+        <form
+          action="/todos?_method=PUT"
+          use:enhance={{
+            pending: async ({ data, form }) => {
+              console.log('pending', {
+                data,
+                form,
+              })
+            },
+            result: async ({ data, form, response }) => {
+              console.log('result', {
+                data,
+                form,
+                response,
+              });
+              
+            }
+          }}
+        >
           <fd-stack>
             <fd-input name="email" type="email" label="E-Mail"></fd-input>
             <fd-input name="password" type="password" label="Password"></fd-input>
