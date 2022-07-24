@@ -82,8 +82,14 @@ const signup = new aws.lambda.Function("sign-up", {
   // },
 });
 
+export enum APIStage {
+  Development = 'dev',
+  Production = 'prod',
+}
+
 // Define an endpoint that invokes a lambda to handle requests
 const api = new apigateway.RestAPI("freedev-api", {
+  stageName: APIStage.Development,
   routes: [
     {
       path: "/",
