@@ -1,7 +1,6 @@
 import { APIGatewayEvent, Context } from "aws-lambda";
 import { RestExceptionNoBody } from "errors";
 import { CognitoIdentityProviderClient, SignUpCommand } from "@aws-sdk/client-cognito-identity-provider";
-// import { userPoolClient } from "infrastructure";
 
 /**
  * AWS Region
@@ -33,8 +32,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   };
 
   const command = new SignUpCommand(params);
-  
-  // async/await.
+
   try {
     const data = await client.send(command);
   } catch (error) {
