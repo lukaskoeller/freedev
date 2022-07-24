@@ -1,5 +1,5 @@
-<script context="module" lang="ts">
-	export const prerender = true;
+<script context="module">
+  export const prerender = false;
 </script>
 
 <script lang="ts">
@@ -27,13 +27,17 @@
       <fd-stack>
         <h1>Sign Up</h1>
         <form
-          action="/todos?_method=PUT"
+          action="/signup?_method=PUT"
+          method="post"
           use:enhance={{
             pending: async ({ data, form }) => {
               console.log('pending', {
                 data,
                 form,
-              })
+              });
+            },
+            error: async (error) => {
+              console.log('error', error);
             },
             result: async ({ data, form, response }) => {
               console.log('result', {
@@ -41,7 +45,6 @@
                 form,
                 response,
               });
-              
             }
           }}
         >
