@@ -2231,6 +2231,40 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/styles/shared.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "errorStyles",
+          "default": "css`\n  .fd-error {\n    margin-block-start: var(--size-1);\n    color: var(--color-status-error);\n  }\n`"
+        },
+        {
+          "kind": "variable",
+          "name": "captionStyles",
+          "default": "css`\n  .fd-caption {\n    font-size: var(--font-size-0);\n    line-height: var(--font-lineheight-1);\n  }\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "errorStyles",
+          "declaration": {
+            "name": "errorStyles",
+            "module": "src/styles/shared.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "captionStyles",
+          "declaration": {
+            "name": "captionStyles",
+            "module": "src/styles/shared.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/mixins/formControlMixin.ts",
       "declarations": [
         {
@@ -2414,40 +2448,6 @@
       "path": "src/mixins/formdata-event-polyfill.ts",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/styles/shared.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "errorStyles",
-          "default": "css`\n  .fd-error {\n    margin-block-start: var(--size-1);\n    color: var(--color-status-error);\n  }\n`"
-        },
-        {
-          "kind": "variable",
-          "name": "captionStyles",
-          "default": "css`\n  .fd-caption {\n    font-size: var(--font-size-0);\n    line-height: var(--font-lineheight-1);\n  }\n`"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "errorStyles",
-          "declaration": {
-            "name": "errorStyles",
-            "module": "src/styles/shared.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "captionStyles",
-          "declaration": {
-            "name": "captionStyles",
-            "module": "src/styles/shared.ts"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
@@ -2727,316 +2727,6 @@
           "declaration": {
             "name": "AllSizes",
             "module": "types/fd-avatar/fd-avatar.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-button/fd-button.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An example element.",
-          "name": "Button",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the background-color",
-              "name": "--fd-button-background-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the background-color hover state",
-              "name": "--fd-button-background-color--host"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the text color",
-              "name": "--fd-button-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the text color hover state",
-              "name": "--fd-button-color--hover"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The button",
-              "name": "button"
-            }
-          ],
-          "slots": [
-            {
-              "description": "This element has a slot",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "statusIcon",
-              "return": {
-                "type": {
-                  "text": "import(\"lit-html\").TemplateResult<2 | 1> | null"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "status",
-                  "type": {
-                    "text": "Status | undefined"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "isLink",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"light\" | \"stealth\""
-              }
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size.Sm | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "Status | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "expand",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "href",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "target",
-              "type": {
-                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "download",
-              "type": {
-                "text": "boolean | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "HTMLButtonElement[\"type\"] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "getTag",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "onClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_proxyItems",
-              "type": {
-                "text": "Array<HTMLButtonElement>"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "Button_base",
-            "module": "types/fd-button/fd-button.d.ts"
-          },
-          "tagName": "fd-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Button",
-          "declaration": {
-            "name": "Button",
-            "module": "types/fd-button/fd-button.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-button/fd-button.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "VariantPrimary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        },
-        {
-          "kind": "variable",
-          "name": "VariantLight",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "VariantStealth",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "SizeSm",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "StatusLoading",
-          "type": {
-            "text": "Story"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "WithHref",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Expand",
-          "type": {
-            "text": "Story"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Submit",
-          "type": {
-            "text": "Story"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantPrimary",
-          "declaration": {
-            "name": "VariantPrimary",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantLight",
-          "declaration": {
-            "name": "VariantLight",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantStealth",
-          "declaration": {
-            "name": "VariantStealth",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "SizeSm",
-          "declaration": {
-            "name": "SizeSm",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "StatusLoading",
-          "declaration": {
-            "name": "StatusLoading",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "WithHref",
-          "declaration": {
-            "name": "WithHref",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Expand",
-          "declaration": {
-            "name": "Expand",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Submit",
-          "declaration": {
-            "name": "Submit",
-            "module": "types/fd-button/fd-button.stories.d.ts"
           }
         }
       ]
@@ -3367,110 +3057,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-gallery/fd-gallery.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "Gallery",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items and padding-inline",
-              "name": "--fd-gallery-gap"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts block padding of gallery",
-              "name": "--fd-gallery-padding-block"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Must only contain <fd-gallery-item> components",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Gallery",
-          "declaration": {
-            "name": "Gallery",
-            "module": "types/fd-gallery/fd-gallery.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-gallery/fd-gallery.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        },
-        {
-          "kind": "variable",
-          "name": "GalleryWithLargeBoxes",
-          "type": {
-            "text": "() => import(\"lit-html\").TemplateResult<1>"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-gallery/fd-gallery.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-gallery/fd-gallery.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "GalleryWithLargeBoxes",
-          "declaration": {
-            "name": "GalleryWithLargeBoxes",
-            "module": "types/fd-gallery/fd-gallery.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-gallery-item/fd-gallery-item.d.ts",
       "declarations": [
         {
@@ -3559,51 +3145,173 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.d.ts",
+      "path": "types/fd-button/fd-button.d.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Horizontal rule (divider)",
-          "name": "Hr",
+          "description": "An example element.",
+          "name": "Button",
           "cssProperties": [
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-hr-margin-inline-start"
+              "description": "Adjusts the background-color",
+              "name": "--fd-button-background-color"
             },
             {
               "type": {
                 "text": "string"
               },
-              "description": "Adjusts padding inline",
-              "name": "--fd-hr-padding-inline"
+              "description": "Adjusts the background-color hover state",
+              "name": "--fd-button-background-color--host"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color",
+              "name": "--fd-button-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color hover state",
+              "name": "--fd-button-color--hover"
             }
           ],
-          "members": [],
+          "cssParts": [
+            {
+              "description": "The button",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "statusIcon",
+              "return": {
+                "type": {
+                  "text": "import(\"lit-html\").TemplateResult<2 | 1> | null"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "status",
+                  "type": {
+                    "text": "Status | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "isLink",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"light\" | \"stealth\""
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size.Sm | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "Status | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "expand",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "download",
+              "type": {
+                "text": "boolean | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "HTMLButtonElement[\"type\"] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "getTag",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "onClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_proxyItems",
+              "type": {
+                "text": "Array<HTMLButtonElement>"
+              }
+            }
+          ],
           "superclass": {
-            "name": "LitElement",
-            "package": "lit"
+            "name": "Button_base",
+            "module": "types/fd-button/fd-button.d.ts"
           },
-          "tagName": "fd-hr",
+          "tagName": "fd-button",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Hr",
+          "name": "Button",
           "declaration": {
-            "name": "Hr",
-            "module": "types/fd-hr/fd-hr.d.ts"
+            "name": "Button",
+            "module": "types/fd-button/fd-button.d.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.stories.d.ts",
+      "path": "types/fd-button/fd-button.stories.d.ts",
       "declarations": [
         {
           "kind": "variable",
@@ -3614,11 +3322,60 @@
         },
         {
           "kind": "variable",
-          "name": "Primary",
+          "name": "VariantPrimary",
           "type": {
             "text": "Story<import(\"@storybook/web-components\").Args>"
           },
           "description": "Some documentation on this story"
+        },
+        {
+          "kind": "variable",
+          "name": "VariantLight",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "VariantStealth",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "SizeSm",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "StatusLoading",
+          "type": {
+            "text": "Story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "WithHref",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Expand",
+          "type": {
+            "text": "Story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Submit",
+          "type": {
+            "text": "Story"
+          }
         }
       ],
       "exports": [
@@ -3627,15 +3384,71 @@
           "name": "default",
           "declaration": {
             "name": "_default",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
+            "module": "types/fd-button/fd-button.stories.d.ts"
           }
         },
         {
           "kind": "js",
-          "name": "Primary",
+          "name": "VariantPrimary",
           "declaration": {
-            "name": "Primary",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
+            "name": "VariantPrimary",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VariantLight",
+          "declaration": {
+            "name": "VariantLight",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VariantStealth",
+          "declaration": {
+            "name": "VariantStealth",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SizeSm",
+          "declaration": {
+            "name": "SizeSm",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "StatusLoading",
+          "declaration": {
+            "name": "StatusLoading",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "WithHref",
+          "declaration": {
+            "name": "WithHref",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Expand",
+          "declaration": {
+            "name": "Expand",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Submit",
+          "declaration": {
+            "name": "Submit",
+            "module": "types/fd-button/fd-button.stories.d.ts"
           }
         }
       ]
@@ -3777,6 +3590,193 @@
           "declaration": {
             "name": "CustomSize",
             "module": "types/fd-icon/fd-icon.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Horizontal rule (divider)",
+          "name": "Hr",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-hr-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-hr-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-hr",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Hr",
+          "declaration": {
+            "name": "Hr",
+            "module": "types/fd-hr/fd-hr.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery/fd-gallery.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "Gallery",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items and padding-inline",
+              "name": "--fd-gallery-gap"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts block padding of gallery",
+              "name": "--fd-gallery-padding-block"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Must only contain <fd-gallery-item> components",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "types/fd-gallery/fd-gallery.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery/fd-gallery.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        },
+        {
+          "kind": "variable",
+          "name": "GalleryWithLargeBoxes",
+          "type": {
+            "text": "() => import(\"lit-html\").TemplateResult<1>"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-gallery/fd-gallery.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-gallery/fd-gallery.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GalleryWithLargeBoxes",
+          "declaration": {
+            "name": "GalleryWithLargeBoxes",
+            "module": "types/fd-gallery/fd-gallery.stories.d.ts"
           }
         }
       ]
@@ -4327,158 +4327,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-section/fd-section.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Generalized section component",
-          "name": "Section",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-inline"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-inline-end"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-block"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content of the section",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "fullWidth",
-              "type": {
-                "text": "boolean | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hasBorder",
-              "type": {
-                "text": "boolean | undefined"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-section",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Section",
-          "declaration": {
-            "name": "Section",
-            "module": "types/fd-section/fd-section.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-section/fd-section.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        },
-        {
-          "kind": "variable",
-          "name": "FullWidth",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "With `fullWidth` being true, all `<slot>` children will have no inline padding."
-        },
-        {
-          "kind": "variable",
-          "name": "HasBorder",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-section/fd-section.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-section/fd-section.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "FullWidth",
-          "declaration": {
-            "name": "FullWidth",
-            "module": "types/fd-section/fd-section.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "HasBorder",
-          "declaration": {
-            "name": "HasBorder",
-            "module": "types/fd-section/fd-section.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-stack/fd-stack.d.ts",
       "declarations": [
         {
@@ -4750,6 +4598,235 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-section/fd-section.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Generalized section component",
+          "name": "Section",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-block"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content of the section",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fullWidth",
+              "type": {
+                "text": "boolean | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasBorder",
+              "type": {
+                "text": "boolean | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-section",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Section",
+          "declaration": {
+            "name": "Section",
+            "module": "types/fd-section/fd-section.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-section/fd-section.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        },
+        {
+          "kind": "variable",
+          "name": "FullWidth",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "With `fullWidth` being true, all `<slot>` children will have no inline padding."
+        },
+        {
+          "kind": "variable",
+          "name": "HasBorder",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-section/fd-section.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-section/fd-section.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FullWidth",
+          "declaration": {
+            "name": "FullWidth",
+            "module": "types/fd-section/fd-section.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HasBorder",
+          "declaration": {
+            "name": "HasBorder",
+            "module": "types/fd-section/fd-section.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/elements.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Default",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Showcasing basic HTML5 elements for theme testing"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Default",
+          "declaration": {
+            "name": "Default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/shared.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "errorStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "captionStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "errorStyles",
+          "declaration": {
+            "name": "errorStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "captionStyles",
+          "declaration": {
+            "name": "captionStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/mixins/formControlMixin.d.ts",
       "declarations": [
         {
@@ -4839,83 +4916,6 @@
       "path": "types/mixins/formdata-event-polyfill.d.ts",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/elements.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Default",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Showcasing basic HTML5 elements for theme testing"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Default",
-          "declaration": {
-            "name": "Default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/shared.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "errorStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "captionStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "errorStyles",
-          "declaration": {
-            "name": "errorStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "captionStyles",
-          "declaration": {
-            "name": "captionStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        }
-      ]
     }
   ]
 }
