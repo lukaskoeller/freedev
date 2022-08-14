@@ -187,6 +187,9 @@ const userPool = new aws.cognito.UserPool('appPool', {
 
 const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {userPoolId: userPool.id});
 
+/**
+ * @todo Iterate through openapi.json and create new Microservice.
+ */
 const signup = new Microservice({
   name: 'sign-up',
   path: '/sign-up',
