@@ -85,3 +85,108 @@ const user = new aws.cognito.User('email', {
   password,
 });
 ```
+
+```ts
+// Define an endpoint that invokes a lambda to handle requests
+// const api = new aws.apigateway.RestApi("freedev-api", {
+//   body: JSON.stringify({
+//     openapi: "3.0.1",
+//     info: {
+//       version: "1.0.0",
+//       title: "freedev",
+//     },
+//     paths: {
+//       "/signup": {
+//         put: {
+//           requestBody: {
+//             content: {
+//               'multipart/form-data': {
+//                 schema: {
+//                   type: 'object',
+//                   properties: {
+//                     email: {
+//                       type: 'string',
+//                     },
+//                     password: {
+//                       type: 'string',
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           },
+//           "x-amazon-apigateway-integration": {
+//             httpMethod: "POST",
+//             // passthroughBehavior: "when_no_match",
+//             type: "AWS_PROXY",
+//             uri: pulumi.interpolate `arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/${signup.invokeArn}/invocations`,
+//           },
+//         }
+//       },
+//       // "/": {
+//       //     get: {
+//       //         "x-amazon-apigateway-integration": {
+//       //             httpMethod: "GET",
+//       //             payloadFormatVersion: "1.0",
+//       //             type: "HTTP_PROXY",
+//       //             uri: "https://ip-ranges.amazonaws.com/ip-ranges.json",
+//       //         },
+//       //     },
+//       // },
+//   },
+//   }),
+//   // [
+//   //   {
+//   //     path: "/",
+//   //     method: "GET",
+//   //     eventHandler: helloHandler,
+//   //   },
+//   //   {
+//   //     path: "/signup",
+//   //     method: "PUT",
+//   //     eventHandler: signup,
+//   //   },
+//   // ],
+//   binaryMediaTypes: [
+//     'multipart/form-data',
+//   ],
+// }, { dependsOn: [signup] });
+
+// const apiDeployment = new aws.apigateway.Deployment("freedev-api-deployment", {
+//   restApi: api.id,
+// });
+
+// const apiStageDev = new aws.apigateway.Stage("freedev-api-stage-dev", {
+//   deployment: apiDeployment.id,
+//   restApi: api.id,
+//   stageName: APIStage.Development,
+// });
+
+// const myApi = await aws.apigateway.getRestApi({
+//   name: "freedev-api",
+// });
+
+// const myResource = await aws.apigateway.getResource({
+//   restApiId: myApi.id,
+//   path: "/signup",
+// });
+
+// console.log('api.id', api.id);
+// console.log('myApi.id', myApi.id);
+// console.log('myResource.id', myResource.id);
+// console.log('typeof myResource.id', typeof myResource.id);
+// console.log('myResource', myResource);
+// console.log('signup.invokeArn', signup.invokeArn);
+
+// const signupIntegration = new aws.apigateway.Integration('signupIntegration', {
+//   httpMethod: 'PUT',
+//   integrationHttpMethod: 'POST', // @see https://www.pulumi.com/registry/packages/aws/api-docs/apigateway/integration/#integrationhttpmethod_nodejs
+//   resourceId: myResource.id,
+//   restApi: api.id,
+//   type: 'AWS_PROXY',
+//   uri: signup.invokeArn,
+// });
+
+// export const apiUrl = api.url;  
+// }
+```
