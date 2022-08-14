@@ -27,7 +27,7 @@
       <fd-stack>
         <h1>Sign Up</h1>
         <form
-          action="/signup?_method=PUT"
+          action="/sign-up?_method=PUT"
           method="post"
           use:enhance={{
             pending: async ({ data, form }) => {
@@ -81,7 +81,6 @@
         const formData = new FormData(form);
         const data = [...formData.entries()];
         data.forEach((value, key) => data[key] = value);
-        console.log(data);
         output.innerHTML = JSON.stringify(data, null, 2);
       });
     </script>
