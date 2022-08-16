@@ -12,6 +12,7 @@
     "errors": "*"
   },
   "devDependencies": {
-    "esbuild": "^0.14.49"
+    "esbuild": "^0.14.49",
+    "tiny-glob": "^0.2.9"
   }
 }
