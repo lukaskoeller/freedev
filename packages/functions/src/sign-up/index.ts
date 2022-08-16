@@ -44,6 +44,6 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   
   return {
     statusCode: 200,
-    body: "Hello, API Gateway!",
+    body: '{"hallo":"hello from freedev"}',
   };
 };
