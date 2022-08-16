@@ -25,7 +25,11 @@ export type MicroserviceParams = {
    * @example `/user`
    */
   path: string;
-  httpMethod: HttpMethod;
+  /**
+   * Is required except that path is "$default"
+   */
+  httpMethod?: HttpMethod;
+  api: aws.apigatewayv2.Api;
 }
 
 class Microservice {
@@ -69,11 +73,11 @@ class Microservice {
    * Stage of route of the API
    * @see {APIStage}
    */
-  apigatewayv2Stage: aws.apigatewayv2.Stage;
+  // apigatewayv2Stage: aws.apigatewayv2.Stage;
   /**
    * Returns the API URL when deploying via pulumi.
    */
-  endpoint: pulumi.Output<string>;
+  // endpoint: pulumi.Output<string>;
 
   /**
    * Initiates a microservice creating a lambda, an api route and an integration for both.
@@ -115,9 +119,7 @@ class Microservice {
       // },
     });
 
-    this.apigatewayv2 = new aws.apigatewayv2.Api("httpApiGateway", {
-      protocolType: "HTTP",
-    });
+    this.apigatewayv2 = parameters.api;
 
     this.lambdaPermission = new aws.lambda.Permission(`${parameters.name}-lambda-permission`, {
       action: "lambda:InvokeFunction",
@@ -137,25 +139,9 @@ class Microservice {
 
     this.apigatewayv2Route = new aws.apigatewayv2.Route(`${parameters.name}-api-route`, {
       apiId: this.apigatewayv2.id,
-      routeKey: `${parameters.httpMethod} ${parameters.path}`,
+      routeKey: `${parameters?.httpMethod ? `${parameters?.httpMethod} ` : ''}${parameters.path}`,
       target: pulumi.interpolate`integrations/${this.apigatewayv2Integration.id}`,
     });
-
-    this.apigatewayv2Stage = new aws.apigatewayv2.Stage(`${parameters.name}-api-stage`, {
-      apiId: this.apigatewayv2.id,
-      // @see https://stackoverflow.com/questions/61027859/conflictexception-stage-already-exist-from-aws-api-gateway-deployment-with-stag
-      // name: pulumi.getStack(), // @todo rework?
-      routeSettings: [
-        {
-          routeKey: this.apigatewayv2Route.routeKey,
-          throttlingBurstLimit: 5000,
-          throttlingRateLimit: 10000,
-        },
-      ],
-      // autoDeploy: true,
-    }, {dependsOn: [this.apigatewayv2Route]});
-
-    this.endpoint = pulumi.interpolate`${this.apigatewayv2.apiEndpoint}/${this.apigatewayv2Stage.name}`;
   }
 }
 
@@ -187,6 +173,29 @@ const userPool = new aws.cognito.UserPool('appPool', {
 
 const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {userPoolId: userPool.id});
 
+const api = new aws.apigatewayv2.Api("httpApiGateway", {
+  protocolType: "HTTP",
+});
+
+const apiStage = new aws.apigatewayv2.Stage(`${pulumi.getStack()}-api-stage`, {
+  apiId: api.id,
+  // @see https://stackoverflow.com/questions/61027859/conflictexception-stage-already-exist-from-aws-api-gateway-deployment-with-stag
+  name: pulumi.getStack(), // @todo rework?
+  autoDeploy: true,
+  // deploymentId: `${pulumi.getStack()}-api-deployment-id`,
+  // @todo integrate into microservice!?
+  // routeSettings: [
+  //   {
+  //     routeKey: this.apigatewayv2Route.routeKey,
+  //     throttlingBurstLimit: 5000,
+  //     throttlingRateLimit: 10000,
+  //   },
+  // ],
+  // autoDeploy: true,
+});
+
+export const endpoint = pulumi.interpolate`${api.apiEndpoint}/${apiStage.name}`;
+
 /**
  * @todo Iterate through openapi.json and create new Microservice.
  */
@@ -194,6 +203,21 @@ const signup = new Microservice({
   name: 'sign-up',
   path: '/sign-up',
   httpMethod: HttpMethod.PUT,
+  api,
 });
 
-export const endpoint = signup.endpoint;
+const root = new Microservice({
+  name: 'default',
+  path: '$default',
+  api,
+});
+
+// const apiDeployment = new aws.apigatewayv2.Deployment("freedev-api-deployment", {
+//   apiId: api.id,
+//   description: "freedev api deployment",
+// }, {
+//   dependsOn: [
+//     signup.apigatewayv2Route,
+//     root.apigatewayv2Route,
+//   ]
+// });
