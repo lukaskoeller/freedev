@@ -1,6 +1,6 @@
 import { APIGatewayEvent, Context } from "aws-lambda";
 import { RestExceptionNoBody } from "errors";
-import { CognitoIdentityProviderClient, SignUpCommand } from "@aws-sdk/client-cognito-identity-provider";
+import { CognitoIdentityProviderClient, SignUpCommand, SignUpCommandInput } from "@aws-sdk/client-cognito-identity-provider";
 
 /**
  * AWS Region
@@ -25,10 +25,16 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   // a client can be shared by different commands.
   const client = new CognitoIdentityProviderClient({ region: REGION });
 
-  const params = {
+  const params: SignUpCommandInput = {
     ClientId: USER_POOL_CLIENT_ID, // @todo any possibility to use 'userPoolClient.id'?
     Username: email,
     Password: password,
+    UserAttributes: [
+      { 
+        Name: 'email',
+        Value: email,
+     }
+    ],
   };
 
   const command = new SignUpCommand(params);
@@ -44,6 +50,9 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   
   return {
     statusCode: 200,
-    body: '{"hallo":"hello from freedev"}',
+    body: JSON.stringify({
+      statusCode: 200,
+      message: 'Successfully signed up'
+    }),
   };
 };
