@@ -145,6 +145,20 @@ class Microservice {
   }
 }
 
+const emailConfiguration = new aws.ses.ConfigurationSet("email-sign-up-verification", {
+  deliveryOptions: {
+      tlsPolicy: "Require",
+  },
+  sendingEnabled: true,
+  // trackingOptions @todo enable or not?
+});
+
+export const emailConfigurationArn = emailConfiguration.arn;
+
+const emailIdentity = new aws.ses.EmailIdentity("hey-freedev-email-identity", {
+  email: "hey@freedev.app",
+});
+
 const userPool = new aws.cognito.UserPool('appPool', {
   accountRecoverySetting: {
     recoveryMechanisms: [
@@ -159,6 +173,18 @@ const userPool = new aws.cognito.UserPool('appPool', {
     ],
   },
   usernameAttributes: ['phone_number', 'email'],
+  emailConfiguration: {
+    configurationSet: emailConfiguration.name,
+    emailSendingAccount: 'DEVELOPER',
+    fromEmailAddress: 'freedev <hey@freedev.app>',
+    replyToEmailAddress: 'hey@freedev.app',
+    sourceArn: emailIdentity.arn,
+  },
+  verificationMessageTemplate: {
+    defaultEmailOption: 'CONFIRM_WITH_CODE',
+    emailMessage: 'freedev says hello! Use {####} to confirm your sign up.',
+    emailSubject: 'Verify your account with freedev',
+  },
   deviceConfiguration: {
     deviceOnlyRememberedOnUserPrompt: true,
   },
@@ -171,7 +197,9 @@ const userPool = new aws.cognito.UserPool('appPool', {
   }
 });
 
-const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {userPoolId: userPool.id});
+const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {
+  userPoolId: userPool.id,
+});
 
 const api = new aws.apigatewayv2.Api("httpApiGateway", {
   protocolType: "HTTP",
