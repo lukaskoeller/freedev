@@ -990,6 +990,68 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-form/fd-form.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Extended form element to allow cross-browser form participation of custom elements",
+          "name": "Form",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-form-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-form-padding-inline"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_formdata",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Form",
+          "declaration": {
+            "name": "Form",
+            "module": "src/fd-form/fd-form.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-form",
+          "declaration": {
+            "name": "Form",
+            "module": "src/fd-form/fd-form.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-container/fd-container.ts",
       "declarations": [
         {
@@ -1078,68 +1140,6 @@
           "declaration": {
             "name": "Container",
             "module": "src/fd-container/fd-container.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-form/fd-form.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Extended form element to allow cross-browser form participation of custom elements",
-          "name": "Form",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-form-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-form-padding-inline"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "_formdata",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-form",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Form",
-          "declaration": {
-            "name": "Form",
-            "module": "src/fd-form/fd-form.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-form",
-          "declaration": {
-            "name": "Form",
-            "module": "src/fd-form/fd-form.ts"
           }
         }
       ]
