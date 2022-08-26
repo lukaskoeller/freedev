@@ -1,7 +1,3 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
-
 <script lang="ts">
 import { onMount } from 'svelte';
   onMount(async () => {
@@ -10,11 +6,12 @@ import { onMount } from 'svelte';
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Notifications</title>
 </svelte:head>
 
 <section>
+  <h1>Notifications</h1>
   <fd-container>
-    <fd-button href="/sign-up">Sign Up</fd-button>
+    <fd-button href="/">Home</fd-button>
   </fd-container>
 </section>

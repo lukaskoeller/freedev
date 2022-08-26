@@ -1,7 +1,7 @@
-import type { RequestHandler } from "@sveltejs/kit";
+import type { Action } from "@sveltejs/kit";
 import { api } from "./_api";
 
-export const PUT: RequestHandler = async (event) => {
+export const PUT: Action = async (event) => {
   console.log('PUT');
   
   const form = await event.request.formData();
@@ -16,5 +16,6 @@ export const PUT: RequestHandler = async (event) => {
   console.log('RESPONSE', response);
   console.log('BODY', body);
   
+  throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292699)");
   return body;
 };
