@@ -37,6 +37,7 @@
   "type": "module",
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.8",
+    "@lit-labs/ssr": "^2.2.3",
     "@lukeed/uuid": "^2.0.0",
     "assets": "*",
     "config": "*",
