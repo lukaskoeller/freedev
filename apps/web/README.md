@@ -1,8 +1,22 @@
-# create-svelte
+# web
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+## Deployment Strategies
+
+**SSR (Server Side Rendering)**
+* Static files via S3
+* Serving app via Cloudfront
+* Customizing content via Lambda@Edge
+
+* https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#nextjs-ssr-pricing
+
+**CSR (Client Side Rendering)**
+* Static files via S3
+* Serving app via Cloudfront
+* Use sveltekit static-adapter
 
 ## Creating a project
+
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
 
 If you're seeing this, you've probably already done this step. Congrats!
 
