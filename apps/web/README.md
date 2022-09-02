@@ -8,6 +8,8 @@
 * Customizing content via Lambda@Edge
 
 * https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#nextjs-ssr-pricing
+* https://blog.canopas.com/complete-guide-to-deploying-ssr-vite-apps-on-aws-with-automation-27676113d6ac
+* https://stackoverflow.com/questions/61433306/cheapest-way-to-deploy-a-react-app-using-nextjs-ssr-on-aws
 
 **CSR (Client Side Rendering)**
 * Static files via S3
