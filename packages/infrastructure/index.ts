@@ -237,6 +237,9 @@ const signup = new Microservice({
   api,
 });
 
+/**
+ * Root of website (homepage). Path is '/' or 'https://freedev.app'.
+ */
 const root = new Microservice({
   name: 'default',
   path: '$default',
