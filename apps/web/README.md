@@ -11,6 +11,10 @@
 * https://blog.canopas.com/complete-guide-to-deploying-ssr-vite-apps-on-aws-with-automation-27676113d6ac
 * https://stackoverflow.com/questions/61433306/cheapest-way-to-deploy-a-react-app-using-nextjs-ssr-on-aws
 
+Configure Cloudfront Distribution Lambda trigger (Lambda@edge)
+* https://www.pulumi.com/registry/packages/aws/api-docs/cloudfront/distribution/#distributiondefaultcachebehaviorlambdafunctionassociation
+* Directory associated with lambda@edge: `/edge/router.handler`
+
 **CSR (Client Side Rendering)**
 * Static files via S3
 * Serving app via Cloudfront
