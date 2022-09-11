@@ -342,6 +342,12 @@ let certificateArn: pulumi.Input<string> = config.certificateArn!;
 const domainParts = getDomainAndSubdomain(config.targetDomain);
 console.log('domainParts.parentDomain', domainParts.parentDomain);
 
+/**
+ * A hosted zone is a container for records. Each record in a hosted zone contains information
+ * about how you want to route traffic for a domain, such as freedev.app.
+ * 
+ * The information provided are used in the name server of the domain provider (here google domains).
+ */
 const hostedZone = new aws.route53.Zone(`${domainParts.parentDomain}HostedZone`, {
   name: domainParts.parentDomain
 });
