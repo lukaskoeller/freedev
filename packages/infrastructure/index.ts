@@ -478,6 +478,53 @@ const originAccessIdentity = new aws.cloudfront.OriginAccessIdentity("originAcce
 // if config.includeWWW include an alias for the www subdomain
 const distributionAliases = config.includeWWW ? [config.targetDomain, `www.${config.targetDomain}`] : [config.targetDomain];
 
+/**
+ * Creating Lambda@Edge that is associated with
+ * the following cloudfront distribution
+ */
+const edgeRouterName = 'edge-router';
+
+const edgeRouterLambdaIamRole = new aws.iam.Role(`${edgeRouterName}-lambda-iam-role`, {
+  assumeRolePolicy: {
+    Version: "2012-10-17",
+    Statement: [
+      {
+          Action: "sts:AssumeRole",
+          Principal: aws.iam.Principals.LambdaPrincipal,
+          Effect: "Allow",
+      },
+      {
+          Action: "sts:AssumeRole",
+          Principal: aws.iam.Principals.EdgeLambdaPrincipal,
+          Effect: "Allow",
+      },
+    ],
+  },
+});
+
+const edgeRouterLambdaRolePolicy = new aws.iam.RolePolicyAttachment(`${edgeRouterName}-lambda-role-attachment`, {
+  role: edgeRouterLambdaIamRole,
+  policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
+});
+
+const edgeRouterLambda = new aws.lambda.Function(edgeRouterName, {
+  code: new pulumi.asset.AssetArchive({
+    '.': new pulumi.asset.FileArchive(`../../apps/web/build/edge`),
+  }),
+  role: edgeRouterLambdaIamRole.arn,
+  handler: "router.handler",
+  runtime: "nodejs16.x",
+  publish: true,
+}, {
+  // Some resources _must_ be put in us-east-1, such as Lambda at Edge.
+  provider: eastRegion,
+});
+
+export const edgeRouterLambdaVersion = edgeRouterLambda.version;
+ 
+// Not using qualifiedArn here due to some bugs around sometimes returning $LATEST
+export const edgeRouterLambdaArn = pulumi.interpolate`${edgeRouterLambda.arn}:${edgeRouterLambda.version}`;
+
 // distributionArgs configures the CloudFront distribution. Relevant documentation:
 // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html
 // https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html
