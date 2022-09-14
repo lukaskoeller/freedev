@@ -532,7 +532,7 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
     origins: [
         {
             originId: contentBucket.arn,
-            domainName: contentBucket.bucketDomainName,
+            domainName: contentBucket.bucketDomainName, // @todo NEXT change this to SSR lambda
             s3OriginConfig: {
                 originAccessIdentity: originAccessIdentity.cloudfrontAccessIdentityPath,
             },
@@ -696,5 +696,6 @@ if (config.includeWWW) {
 // makes them easier to access from the pulumi.com.
 export const contentBucketUri = pulumi.interpolate`s3://${contentBucket.bucket}`;
 export const contentBucketWebsiteEndpoint = contentBucket.websiteEndpoint;
+export const contentBucketDomainName = contentBucket.bucketDomainName;
 export const cloudFrontDomain = cdn.domainName;
 export const targetDomainEndpoint = `https://${config.targetDomain}/`;
