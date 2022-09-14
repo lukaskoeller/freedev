@@ -554,6 +554,8 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
         },
     ],
 
+    comment: contentBucket.bucketDomainName,
+
     defaultRootObject: "index.html",
 
     // A CloudFront distribution can configure different cache behaviors based on the request path.
