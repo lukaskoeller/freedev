@@ -407,12 +407,6 @@ const eastRegion = new aws.Provider("east", {
  * Only provision a certificate (and related resources) if a certificateArn is _not_ provided via configuration.
  */
 if (config.certificateArn === undefined) {
-
-    const eastRegion = new aws.Provider("east", {
-        profile: aws.config.profile,
-        region: "us-east-1", // Per AWS, ACM certificate must be in the us-east-1 region.
-    });
-
     // if config.includeWWW include required subjectAlternativeNames to support the www subdomain
     const certificateConfig: aws.acm.CertificateArgs = {
         domainName: config.targetDomain,
