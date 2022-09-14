@@ -575,6 +575,11 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
         minTtl: 0,
         defaultTtl: tenMinutes,
         maxTtl: tenMinutes,
+
+        lambdaFunctionAssociations: [{
+          eventType: 'origin-request',
+          lambdaArn: edgeRouterLambdaArn,
+        }],
     },
 
     // "All" is the most broad distribution, and also the most expensive.
