@@ -308,11 +308,55 @@ function crawlDirectory(dir: string, f: (_: string) => void) {
 
 // Sync the contents of the source directory with the S3 bucket, which will in-turn show up on the CDN.
 const webContentsRootPath = path.join(process.cwd(), config.pathToWebsiteContents);
+const webContentsPrerenderedPath = path.join(process.cwd(), `${config.pathToWebsiteContents}/prerendered`);
+const webContentsAssetsPath = path.join(process.cwd(), `${config.pathToWebsiteContents}/assets`);
 console.log("Syncing contents from local disk at", webContentsRootPath);
+// crawlDirectory(
+//     webContentsRootPath,
+//     (filePath: string) => {
+//         const relativeFilePath = filePath.replace(webContentsRootPath + "/", "");
+//         const contentFile = new aws.s3.BucketObject(
+//             relativeFilePath,
+//             {
+//                 key: relativeFilePath,
+
+//                 acl: "public-read",
+//                 bucket: contentBucket,
+//                 contentType: mime.getType(filePath) || undefined,
+//                 source: new pulumi.asset.FileAsset(filePath),
+//             },
+//             {
+//                 parent: contentBucket,
+//             });
+//     });
+
+/**
+ * @todo Simplify function calling (DRY)
+ */
+
 crawlDirectory(
-    webContentsRootPath,
+  webContentsPrerenderedPath,
+  (filePath: string) => {
+      const relativeFilePath = filePath.replace(webContentsPrerenderedPath + "/", "");
+      const contentFile = new aws.s3.BucketObject(
+          relativeFilePath,
+          {
+              key: relativeFilePath,
+
+              acl: "public-read",
+              bucket: contentBucket,
+              contentType: mime.getType(filePath) || undefined,
+              source: new pulumi.asset.FileAsset(filePath),
+          },
+          {
+              parent: contentBucket,
+          });
+  });
+
+  crawlDirectory(
+    webContentsAssetsPath,
     (filePath: string) => {
-        const relativeFilePath = filePath.replace(webContentsRootPath + "/", "");
+        const relativeFilePath = filePath.replace(webContentsAssetsPath + "/", "");
         const contentFile = new aws.s3.BucketObject(
             relativeFilePath,
             {
