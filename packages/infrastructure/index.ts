@@ -604,6 +604,7 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
     },
 };
 
+// Creates a cloudfront web distribution
 const cdn = new aws.cloudfront.Distribution("cdn", distributionArgs, { dependsOn: contentBucket });
 
 // Split a domain name into its subdomain and parent domain names.
