@@ -519,10 +519,55 @@ const edgeRouterLambda = new aws.lambda.Function(edgeRouterName, {
   provider: eastRegion,
 });
 
+// Every change in the lambda triggers a lambda version bump.
 export const edgeRouterLambdaVersion = edgeRouterLambda.version;
  
 // Not using qualifiedArn here due to some bugs around sometimes returning $LATEST
 export const edgeRouterLambdaArn = pulumi.interpolate`${edgeRouterLambda.arn}:${edgeRouterLambda.version}`;
+
+/**
+ * Creating Lambda Function for SSR of the
+ * sveltekit app. It acts as the default origin
+ * for the cloudfront distribution and returns
+ * requested html template on request.
+ * 
+ * Invocation happens through http request via a direct url.
+ */
+ const ssrLambdaName = 'ssr-app';
+
+ const ssrLambdaIamRole = new aws.iam.Role(`${ssrLambdaName}-lambda-iam-role`, {
+  assumeRolePolicy: {
+    Version: "2012-10-17",
+    Statement: [
+      {
+          Action: "sts:AssumeRole",
+          Principal: aws.iam.Principals.LambdaPrincipal,
+          Effect: "Allow",
+      },
+    ],
+  },
+});
+
+const ssrLambdaRolePolicy = new aws.iam.RolePolicyAttachment(`${ssrLambdaName}-lambda-role-attachment`, {
+  role: ssrLambdaIamRole,
+  policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
+});
+
+const ssrLambda = new aws.lambda.Function(`${ssrLambdaName}-lambda`, {
+  code: new pulumi.asset.AssetArchive({
+    '.': new pulumi.asset.FileArchive(`../../apps/web/build/server`),
+  }),
+  role: ssrLambdaIamRole.arn,
+  handler: "serverless.handler",
+  runtime: "nodejs16.x",
+});
+
+const ssrLambdaFunctionUrl = new aws.lambda.FunctionUrl(`${ssrLambdaName}-lambda-url`, {
+  functionName: ssrLambda.arn,
+  authorizationType: "NONE",
+});
+
+export const ssrLambdaUrl = ssrLambdaFunctionUrl.functionUrl;
 
 // distributionArgs configures the CloudFront distribution. Relevant documentation:
 // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html
