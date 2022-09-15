@@ -279,16 +279,26 @@ const config = {
 };
 
 // contentBucket is the S3 bucket that the website's contents will be stored in.
+const contentBucket = new aws.s3.Bucket("contentBucket", {
 const contentBucket = new aws.s3.Bucket("contentBucket",
     {
         bucket: config.targetDomain,
         // Configure S3 to serve bucket contents as a website. This way S3 will automatically convert
         // requests for "foo/" to "foo/index.html".
-        website: {
-            indexDocument: "index.html",
-            errorDocument: "404.html",
-        },
-    });
+  // Configure S3 to serve bucket contents as a website. This way S3 will automatically convert
+  // requests for "foo/" to "foo/index.html".
+  /**
+   * If your origin is an Amazon S3 bucket that’s configured as a website endpoint,
+   * you can’t configure CloudFront to use HTTPS with your origin
+   * because Amazon S3 doesn’t support HTTPS for website endpoints.
+   * 
+   * @see https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https-cloudfront-to-custom-origin.html
+   */
+  // website: {
+  //     indexDocument: "index.html",
+  //     errorDocument: "404.html",
+  // },
+});
 
 // crawlDirectory recursive crawls the provided directory, applying the provided function
 // to every file it contains. Doesn't handle cycles from symlinks.
