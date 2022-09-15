@@ -608,6 +608,16 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
               originProtocolPolicy: 'https-only',
               originSslProtocols: ['TLSv1', 'TLSv1.1', 'TLSv1.2'], // @todo can list be narrowed down?
           },
+          /**
+           * Workaround for environment variables
+           * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
+           */
+          customHeaders: [{
+            // referenced in web/build/edge/router.js
+            name: 's3-host',
+            value: contentBucket.bucketDomainName,
+          }],
+      },
     ],
 
     comment: contentBucket.bucketDomainName,
