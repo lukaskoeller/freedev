@@ -280,11 +280,7 @@ const config = {
 
 // contentBucket is the S3 bucket that the website's contents will be stored in.
 const contentBucket = new aws.s3.Bucket("contentBucket", {
-const contentBucket = new aws.s3.Bucket("contentBucket",
-    {
-        bucket: config.targetDomain,
-        // Configure S3 to serve bucket contents as a website. This way S3 will automatically convert
-        // requests for "foo/" to "foo/index.html".
+  bucket: config.targetDomain.replace('.', '-'),
   // Configure S3 to serve bucket contents as a website. This way S3 will automatically convert
   // requests for "foo/" to "foo/index.html".
   /**
