@@ -580,6 +580,25 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
 
     // We only specify one origin for this distribution, the S3 content bucket.
     origins: [
+        /**
+         * Only used if the only origin is S3, which is the case for static site hosting.
+         */
+        // {
+        //     originId: contentBucket.arn,
+        //     domainName: contentBucket.bucketDomainName,
+        //     s3OriginConfig: {
+        //         originAccessIdentity: originAccessIdentity.cloudfrontAccessIdentityPath,
+        //     },
+        //     /**
+        //      * Workaround for environment variables
+        //      * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
+        //      */
+        //     customHeaders: [{
+        //       // referenced in web/build/edge/router.js
+        //       name: 's3-host',
+        //       value: contentBucket.bucketDomainName,
+        //     }],
+        // },
         {
             originId: contentBucket.arn,
             domainName: contentBucket.bucketDomainName, // @todo NEXT change this to SSR lambda
