@@ -622,31 +622,55 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
 
     comment: contentBucket.bucketDomainName,
 
-    defaultRootObject: "index.html",
+    // defaultRootObject: "index.html",
 
     // A CloudFront distribution can configure different cache behaviors based on the request path.
     // Here we just specify a single, default cache behavior which is just read-only requests to S3.
+    /**
+     * Only used if the only origin is S3, which is the case for static site hosting.
+     */
+    // defaultCacheBehavior: {
+    //     targetOriginId: contentBucket.arn,
+
+    //     viewerProtocolPolicy: "redirect-to-https",
+    //     allowedMethods: ["GET", "HEAD", "OPTIONS"],
+    //     cachedMethods: ["GET", "HEAD", "OPTIONS"],
+
+    //     forwardedValues: {
+    //         cookies: { forward: "none" },
+    //         queryString: false,
+    //     },
+
+    //     minTtl: 0,
+    //     defaultTtl: tenMinutes,
+    //     maxTtl: tenMinutes,
+
+    //     lambdaFunctionAssociations: [{
+    //       eventType: 'origin-request',
+    //       lambdaArn: edgeRouterLambdaArn,
+    //     }],
+    // },
     defaultCacheBehavior: {
-        targetOriginId: contentBucket.arn,
+      targetOriginId: ssrLambda.arn,
 
-        viewerProtocolPolicy: "redirect-to-https",
-        allowedMethods: ["GET", "HEAD", "OPTIONS"],
-        cachedMethods: ["GET", "HEAD", "OPTIONS"],
+      viewerProtocolPolicy: "redirect-to-https",
+      allowedMethods: ["GET", "HEAD", "OPTIONS", "DELETE", "PATCH", "POST", "PUT"],
+      cachedMethods: ["GET", "HEAD", "OPTIONS"],
 
-        forwardedValues: {
-            cookies: { forward: "none" },
-            queryString: false,
-        },
+      forwardedValues: {
+          cookies: { forward: "all" },
+          queryString: true,
+      },
 
-        minTtl: 0,
-        defaultTtl: tenMinutes,
-        maxTtl: tenMinutes,
+      minTtl: 0,
+      defaultTtl: tenMinutes,
+      maxTtl: tenMinutes,
 
-        lambdaFunctionAssociations: [{
-          eventType: 'origin-request',
-          lambdaArn: edgeRouterLambdaArn,
-        }],
-    },
+      lambdaFunctionAssociations: [{
+        eventType: 'origin-request',
+        lambdaArn: edgeRouterLambdaArn,
+      }],
+  },
 
     // "All" is the most broad distribution, and also the most expensive.
     // "100" is the least broad, and also the least expensive.
