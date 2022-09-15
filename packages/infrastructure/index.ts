@@ -600,6 +600,8 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
         //     }],
         // },
         {
+          originId: ssrLambda.arn,
+          domainName: ssrLambdaUrl.apply((url) => url.replace('https://', '').replace('/', '')),
           customOriginConfig: {
               httpPort: 80,
               httpsPort: 443,
