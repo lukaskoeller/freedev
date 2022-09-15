@@ -379,11 +379,10 @@ crawlDirectory(
     });
 
 // logsBucket is an S3 bucket that will contain the CDN's request logs.
-const logsBucket = new aws.s3.Bucket("requestLogs",
-    {
-        bucket: `${config.targetDomain}-logs`,
-        acl: "private",
-    });
+const logsBucket = new aws.s3.Bucket("requestLogs", {
+  bucket: `${config.targetDomain}-logs`,
+  acl: "private",
+});
 
 const tenMinutes = 60 * 10;
 
