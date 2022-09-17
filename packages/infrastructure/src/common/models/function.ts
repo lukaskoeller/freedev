@@ -5,7 +5,7 @@ export interface LambdaFunctionArgs {
   /**
    * The region the certicate should be registered.
    */
-  region: aws.Provider;
+  region?: aws.Provider;
   /**
    * Policy that grants an entity permission to assume the role.
    */
@@ -53,7 +53,7 @@ export class LambdaFunction extends pulumi.ComponentResource {
         publish: args?.publish ?? false,
       }, {
         // Some resources _must_ be put in us-east-1, such as Lambda at Edge.
-        provider: args.region,
+        ...args?.region ? { provider: args.region } : {},
         parent: this,
       });
 
