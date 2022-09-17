@@ -126,9 +126,8 @@ const edgeRouterLambda = new LambdaFunction('edge-router', {
  * 
  * Invocation happens through http request via a direct url.
  */
- const ssrLambdaName = 'ssr-app';
-
- const ssrLambdaIamRole = new aws.iam.Role(`${ssrLambdaName}-lambda-iam-role`, {
+const ssrLambdaName =  'ssr-app'
+const ssrLambda = new LambdaFunction(ssrLambdaName, {
   assumeRolePolicy: {
     Version: "2012-10-17",
     Statement: [
@@ -139,20 +138,11 @@ const edgeRouterLambda = new LambdaFunction('edge-router', {
       },
     ],
   },
-});
-
-const ssrLambdaRolePolicy = new aws.iam.RolePolicyAttachment(`${ssrLambdaName}-lambda-role-attachment`, {
-  role: ssrLambdaIamRole,
   policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
-});
-
-const ssrLambda = new aws.lambda.Function(`${ssrLambdaName}-lambda`, {
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive(`../../apps/web/build/server`),
   }),
-  role: ssrLambdaIamRole.arn,
   handler: "serverless.handler",
-  runtime: "nodejs16.x",
 });
 
 const ssrLambdaFunctionUrl = new aws.lambda.FunctionUrl(`${ssrLambdaName}-lambda-url`, {
