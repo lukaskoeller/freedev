@@ -3,7 +3,7 @@ import * as aws from "@pulumi/aws";
 import { signUpEndpoint, rootEndpoint } from './src/functions';
 import { userPool, userPoolClient } from './src/resources';
 import { config, websiteS3 } from './src/resources/website'; // @todo temporary
-import { SSLCertificate, SSLCertificateValidation } from "./src/common/models";
+import { LambdaFunction, SSLCertificate, SSLCertificateValidation } from "./src/common/models";
 
 /**
  * Cognito User Pool
@@ -93,9 +93,8 @@ const distributionAliases = config.includeWWW ? [config.targetDomain, `www.${con
  * Creating Lambda@Edge that is associated with
  * the following cloudfront distribution
  */
-const edgeRouterName = 'edge-router';
-
-const edgeRouterLambdaIamRole = new aws.iam.Role(`${edgeRouterName}-lambda-iam-role`, {
+const edgeRouterLambda = new LambdaFunction('edge-router', {
+  region: eastRegion,
   assumeRolePolicy: {
     Version: "2012-10-17",
     Statement: [
@@ -111,31 +110,13 @@ const edgeRouterLambdaIamRole = new aws.iam.Role(`${edgeRouterName}-lambda-iam-r
       },
     ],
   },
-});
-
-const edgeRouterLambdaRolePolicy = new aws.iam.RolePolicyAttachment(`${edgeRouterName}-lambda-role-attachment`, {
-  role: edgeRouterLambdaIamRole,
   policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
-});
-
-const edgeRouterLambda = new aws.lambda.Function(edgeRouterName, {
   code: new pulumi.asset.AssetArchive({
     '.': new pulumi.asset.FileArchive(`../../apps/web/build/edge`),
   }),
-  role: edgeRouterLambdaIamRole.arn,
   handler: "router.handler",
-  runtime: "nodejs16.x",
   publish: true,
-}, {
-  // Some resources _must_ be put in us-east-1, such as Lambda at Edge.
-  provider: eastRegion,
 });
-
-// Every change in the lambda triggers a lambda version bump.
-export const edgeRouterLambdaVersion = edgeRouterLambda.version;
- 
-// Not using qualifiedArn here due to some bugs around sometimes returning $LATEST
-export const edgeRouterLambdaArn = pulumi.interpolate`${edgeRouterLambda.arn}:${edgeRouterLambda.version}`;
 
 /**
  * Creating Lambda Function for SSR of the
@@ -280,7 +261,7 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
 
       lambdaFunctionAssociations: [{
         eventType: 'origin-request',
-        lambdaArn: edgeRouterLambdaArn,
+        lambdaArn: edgeRouterLambda.arn,
       }],
   },
 
