@@ -4,6 +4,7 @@ import { signUpEndpoint, rootEndpoint } from './src/functions';
 import { userPool, userPoolClient } from './src/resources';
 import { config, websiteS3 } from './src/resources/website'; // @todo temporary
 import { LambdaFunction, SSLCertificate, SSLCertificateValidation } from "./src/common/models";
+import { getDomainAndSubdomain } from "./src/common/utils";
 
 /**
  * Cognito User Pool
@@ -285,27 +286,6 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
 
 // Creates a cloudfront web distribution
 const cdn = new aws.cloudfront.Distribution("cdn", distributionArgs, { dependsOn: contentBucket });
-
-// Split a domain name into its subdomain and parent domain names.
-// e.g. "www.example.com" => "www", "example.com".
-function getDomainAndSubdomain(domain: string): { subdomain: string, parentDomain: string } {
-    const parts = domain.split(".");
-    if (parts.length < 2) {
-        throw new Error(`No TLD found on ${domain}`);
-    }
-    // No subdomain, e.g. awesome-website.com.
-    if (parts.length === 2) {
-        return { subdomain: "", parentDomain: domain };
-    }
-
-    const subdomain = parts[0];
-    parts.shift();  // Drop first element.
-    return {
-        subdomain,
-        // Trailing "." to canonicalize domain.
-        parentDomain: parts.join(".") + ".",
-    };
-}
 
 // Creates a new Route53 DNS record pointing the domain to the CloudFront distribution.
 function createAliasRecord(
