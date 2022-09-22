@@ -56,16 +56,6 @@
           </Stack>
         </form>
       </Stack>
-      <Stack>
-        <h1>Wohooo!</h1>
-        <h2>E-Mail bestätigen</h2>
-        <p>
-          Wir haben dir einen Link an <strong>{email}</strong> geschickt.
-          Mit einem Klick bestätigst du deine Email.
-        </p>
-        <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
-        <fd-button>Erneut senden</fd-button>
-      </Stack>
     </Container>
     <script>
       const form = document.querySelector('form');
@@ -83,6 +73,20 @@
         output.innerHTML = JSON.stringify(data, null, 2);
       });
     </script>
+  </Container>
+  <Container>
+    <Container size={Size.Xs}>
+      <Stack>
+        <h1>Wohooo!</h1>
+        <h2>E-Mail bestätigen</h2>
+        <p>
+          Wir haben dir einen Link an <strong>{email}</strong> geschickt.
+          Mit einem Klick bestätigst du deine Email.
+        </p>
+        <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
+        <fd-button>Erneut senden</fd-button>
+      </Stack>
+    </Container>
   </Container>
   <Container>
     <Container size={Size.Xs}>
