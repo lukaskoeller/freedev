@@ -2,6 +2,7 @@ import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import '../fd-label/fd-label';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
@@ -79,7 +80,7 @@ export class Section extends LitElement {
 
   render() {
     return html`
-      <section data-full-width=${this.fullWidth} part="section">
+      <section data-full-width=${ifDefined(this.fullWidth)} part="section">
         ${this.hasBorder ? html`<fd-hr />` : null}
         <div class="header">
           ${this.heading ? html`
@@ -88,7 +89,7 @@ export class Section extends LitElement {
           ` : null}
         </div>
         <div class="slot">
-          <slot />
+          <slot></slot>
         </div>
       </section>
     `
