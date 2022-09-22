@@ -3,6 +3,7 @@ import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import '../fd-label/fd-label';
 import { Size } from 'types';
+import { ifDefined } from 'lit/directives/if-defined';
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
@@ -73,8 +74,8 @@ export class Container extends LitElement {
 
   render() {
     return html`
-      <section part="container" data-size=${this.size}>
-        <slot />
+      <section part="container" data-size=${ifDefined(this.size)}>
+        <slot></slot>
       </section>
     `
   }
