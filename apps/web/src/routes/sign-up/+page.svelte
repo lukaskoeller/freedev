@@ -1,6 +1,8 @@
 <script lang="ts">
+  import Container from '$lib/container/Container.svelte';
   import { enhance } from '$lib/form';
   import { onMount } from 'svelte';
+	import { Size } from 'types';
   onMount(async () => {
     await import('ui');
   });
@@ -18,8 +20,8 @@
 </svelte:head>
 
 <section>
-  <fd-container>
-    <fd-container size="xs">
+  <Container>
+    <Container size={Size.Xs}>
       <fd-stack>
         <h1>Sign Up</h1>
         <form
@@ -63,7 +65,7 @@
         <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
         <fd-button>Erneut senden</fd-button>
       </fd-stack>
-    </fd-container>
+    </Container>
     <script>
       const form = document.querySelector('form');
       const output = document.querySelector('output');
@@ -80,18 +82,18 @@
         output.innerHTML = JSON.stringify(data, null, 2);
       });
     </script>
-  </fd-container>
-  <fd-container>
-    <fd-container size="xs">
+  </Container>
+  <Container>
+    <Container size={Size.Xs}>
       <fd-stack>
         <h1>What's your name?</h1>
         <fd-input label="Name" name="name" />
         <fd-button>Continue</fd-button>
       </fd-stack>
-    </fd-container>
-  </fd-container>
-  <fd-container>
-    <fd-container size="xs">
+    </Container>
+  </Container>
+  <Container>
+    <Container size={Size.Xs}>
       <fd-stack>
         <h1>What do you rock at?</h1>
         <fd-input label="Area" name="area" />
@@ -99,8 +101,8 @@
         <fd-input label="Technologies" name="technology" />
         <fd-button>Continue</fd-button>
       </fd-stack>
-    </fd-container>
-  </fd-container>
+    </Container>
+  </Container>
 </section>
 
 <style lang="postcss">
