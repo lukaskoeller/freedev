@@ -1,0 +1,8 @@
+body {
+  /* Compensate for fixed navigation bar's height */
+  padding-bottom: var(--size-10);
+
+  @media (--tablet) {
+    padding-bottom: 0;
+  }
+}
