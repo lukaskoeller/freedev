@@ -60,30 +60,6 @@
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 		</fd-gallery>
 	</fd-section>
-	<h3>Form</h3>
-	<form>
-    <fd-input label="Input Label" value="hello world" name="demo"></fd-input>
-		<button type="submit">Submit</button>
-  </form>
-	<output></output>
-	<script>
-		const form = document.querySelector('form');
-    const output = document.querySelector('output');
-
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      
-      const form = event.target;
-      console.log('fd-input:', form.demo);
-
-      /** Get all of the form data */
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
-      console.log(data);
-      output.innerHTML = JSON.stringify(data, null, 2);
-    });
-	</script>
 </section>
 
 <style lang="postcss">
