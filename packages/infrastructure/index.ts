@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
-import { signUpEndpoint, rootEndpoint } from './src/functions';
-import { userPool, userPoolClient } from './src/resources';
+import { createApi } from './src/functions';
+import { createUserPoolAndClient } from './src/resources';
 import { config, websiteS3 } from './src/resources/website'; // @todo temporary
 import { LambdaFunction, SSLCertificate, SSLCertificateValidation } from "./src/common/models";
 import { getDomainAndSubdomain } from "./src/common/utils";
@@ -10,14 +10,12 @@ import { getDomainAndSubdomain } from "./src/common/utils";
  * Cognito User Pool
  * Includes email configuration
  */
-userPool
-userPoolClient
+createUserPoolAndClient();
 
 /**
  * API Gateway v2
  */
-signUpEndpoint
-rootEndpoint
+createApi();
 
 /**
  * US East Region Provider
