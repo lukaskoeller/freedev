@@ -28,7 +28,7 @@ export class Stack extends LitElement {
   render() {
     return html`
       <div>
-        <slot />
+        <slot></slot>
       </div>
     `
   }
