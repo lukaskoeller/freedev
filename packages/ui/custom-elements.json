@@ -1946,6 +1946,11 @@
           "members": [
             {
               "kind": "field",
+              "name": "actionSlot",
+              "default": "new SlotController(this, 'actions')"
+            },
+            {
+              "kind": "field",
               "name": "heading",
               "type": {
                 "text": "string | undefined"
