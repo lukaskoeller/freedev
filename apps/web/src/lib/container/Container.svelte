@@ -2,9 +2,10 @@
 	import type { Size } from "types";
 
   export let size: Size = undefined;
+  export let style: string = undefined;
 </script>
 
-<section data-size={size}>
+<section data-size={size} {style}>
   <slot />
 </section>
 
