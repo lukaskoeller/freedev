@@ -43,4 +43,8 @@ export const createUserPoolAndClient = () => {
   const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {
     userPoolId: userPool.id,
   });
+
+  return {
+    userPoolClientId: userPoolClient.id,
+  }
 }
