@@ -52,6 +52,7 @@
 		/* box-shadow: var(--shadow-5); */
 
 		@media (--tablet) {
+			backdrop-filter: none;
 			position: relative;
 		}
 	}
