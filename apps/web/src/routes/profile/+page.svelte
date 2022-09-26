@@ -45,9 +45,15 @@
 		</fd-gallery>
 	</fd-section>
 	<fd-section heading="About Me">
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-		ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-		dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		<div slot="actions">
+			<fd-button size="sm">Edit</fd-button>
+			<fd-button size="sm">Read More</fd-button>
+		</div>
+		<p>
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+			ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+			dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		</p>
 	</fd-section>
 	<fd-section heading="Projects" fullWidth={true}>
 		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
@@ -96,6 +102,11 @@
 		block-size: var(--size);
 		border-radius: 100%;
 		background-color: var(--color-surface-2);
+	}
+
+	div[slot="actions"] {
+		display: flex;
+		gap: var(--size-2);
 	}
 
 	fd-gallery {
