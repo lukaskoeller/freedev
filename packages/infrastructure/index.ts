@@ -10,7 +10,7 @@ import { getDomainAndSubdomain } from "./src/common/utils";
  * Cognito User Pool
  * Includes email configuration
  */
-createUserPoolAndClient();
+export const { userPoolClientId } =  createUserPoolAndClient();
 
 /**
  * API Gateway v2
@@ -250,7 +250,7 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
 
       lambdaFunctionAssociations: [{
         eventType: 'origin-request',
-        lambdaArn: edgeRouterLambda.arn,
+        lambdaArn: edgeRouterLambda.arnVersion,
       }],
   },
 
