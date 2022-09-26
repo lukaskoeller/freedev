@@ -70,6 +70,12 @@
   --color-status-danger: var(--color-status-error);
   --color-status-error-weak: #ffc9c9; /* #ffe3e3 */
 
+  /* HIGHLIGHTS */
+  --color-highlight: hsl(18, 100%, 50%);
+
+  /* FIXED */
+  --color-primary-fixed: hsl(var(--color-primary-hue), var(--color-primary-saturation), 50%);
+
   /* OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD */
 
   --global-spacing: var(--size-3);
