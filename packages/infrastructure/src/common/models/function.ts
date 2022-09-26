@@ -32,6 +32,7 @@ export class LambdaFunction extends pulumi.ComponentResource {
   function: aws.lambda.Function;
   version: pulumi.Output<string>;
   arn: pulumi.Output<string>;
+  arnVersion: pulumi.Output<string>;
   
   constructor(name: string, args: LambdaFunctionArgs, opts?: pulumi.ComponentResourceOptions) {
       super("freedev:index:LambdaFunction", name, {}, opts);
@@ -61,7 +62,9 @@ export class LambdaFunction extends pulumi.ComponentResource {
       this.version = this.function.version;
 
       // Not using qualifiedArn here due to some bugs around sometimes returning $LATEST
-      this.arn = pulumi.interpolate`${this.function.arn}:${this.version}`;
+      this.arnVersion = pulumi.interpolate`${this.function.arn}:${this.version}`;
+
+      this.arn = this.function.arn;
 
       // Register output properties for this component
       this.registerOutputs({
@@ -69,7 +72,8 @@ export class LambdaFunction extends pulumi.ComponentResource {
         rolePolicy: this.rolePolicy,
         function: this.function,
         version: this.version,
-        arn: this.arn,
+        arnVersion: this.arnVersion,
+        arn: this.function.arn,
       });
   }
 }
