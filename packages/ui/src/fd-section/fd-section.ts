@@ -3,6 +3,7 @@ import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import '../fd-label/fd-label';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { SlotController } from '../controllers/slot-controller';
 
 // See https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#supported-jsdoc
 // See https://www.npmjs.com/package/@custom-elements-manifest/analyzer
@@ -47,7 +48,7 @@ export class Section extends LitElement {
       inline-size: 100%;
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
 
       padding-inline: var(--fd-section-padding-inline);
     }
@@ -67,7 +68,9 @@ export class Section extends LitElement {
       padding-inline-start: var(--fd-section-padding-inline-start);
       padding-inline-end: var(--fd-section-padding-inline-start);
     }
-  `
+  `;
+
+  actionSlot = new SlotController(this, 'actions');
 
   @property()
     heading?: string;
@@ -83,10 +86,12 @@ export class Section extends LitElement {
       <section data-full-width=${ifDefined(this.fullWidth)} part="section">
         ${this.hasBorder ? html`<fd-hr />` : null}
         <div class="header">
-          ${this.heading ? html`
-            <h2>${this.heading}</h2>
-            <fd-label>Read More</fd-label>
-          ` : null}
+          ${this.heading ? html`<h2>${this.heading}</h2>` : null}
+            ${this.actionSlot.hasContent ? html`
+              <div>
+                <slot name="actions"></slot>
+              </div>
+            ` : null}
         </div>
         <div class="slot">
           <slot></slot>
