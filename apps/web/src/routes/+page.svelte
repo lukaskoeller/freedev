@@ -24,7 +24,7 @@
     </div>
   </Container>
   <Container style="--fd-container-padding-inline: 0px;">
-    <fd-gallery style="--fd-gallery-gap: var(--size-fluid-3);">
+    <fd-gallery style="--fd-gallery-gap: var(--size-fluid-2);">
 			<fd-gallery-item>
         <ProfileCard></ProfileCard>
       </fd-gallery-item>
@@ -55,9 +55,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--size-fluid-2);
     inline-size: 100%;
-    block-size: max(60vh);
+    block-size: max(54vh);
     /* aspect-ratio: 5/4; */
     border-radius: var(--radius-conditional-3);
     /* background: radial-gradient(var(--color-surface-1) -20%, var(--color-primary-7) 240%); */
