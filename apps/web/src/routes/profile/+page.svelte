@@ -17,7 +17,7 @@
 				<h4>Lukas Köller</h4>
 				<div>React Frontend Developer</div>
 			</div>
-			<fd-button size="small">Scedule</fd-button>
+			<fd-button>Scedule</fd-button>
 		</div>
 	</div>
 	<fd-section class="separator" fullWidth={true} hasBorder={true}>
