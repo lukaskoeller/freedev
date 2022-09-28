@@ -1638,7 +1638,7 @@
         {
           "kind": "variable",
           "name": "labelStyles",
-          "default": "css`\n  :host {\n    --_fd-label-color: var(--primary-color-5);\n    --_fd-label-text-transform: uppercase;\n    --_fd-label-font-weight: var(--font-weight-6);\n    --_fd-label-font-size: var(--font-size-1);\n  }\n\n  .label {\n    font-weight: var(--fd-label-font-weight, var(--_fd-label-font-weight));\n    font-size: var(--fd-label-font-size, var(--_fd-label-font-size));\n    text-transform: var(--fd-label-text-transform, var(--_fd-label-text-transform));\n    color: var(--fd-label-color, var(--_fd-label-color));\n  }\n`"
+          "default": "css`\n  :host {\n    --fd-label-color: var(--primary-color-5);\n    --fd-label-text-transform: uppercase;\n    --fd-label-font-weight: var(--font-weight-6);\n    --fd-label-font-size: var(--font-size-1);\n  }\n\n  .label {\n    font-weight: var(--fd-label-font-weight);\n    font-size: var(--fd-label-font-size);\n    text-transform: var(--fd-label-text-transform);\n    color: var(--fd-label-color);\n  }\n`"
         }
       ],
       "exports": [
