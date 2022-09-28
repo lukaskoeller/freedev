@@ -22,8 +22,9 @@ export class Card extends LitElement {
       --fd-card-color: var(--text-1);
       --fd-card-border-color: var(--color-border);
       --fd-card-shadow: var(--shadow-3);
-      
-      --fd-card-padding-inline: var(--size-3);
+
+      /* private proxy to avoid higher specificity of @media selector */
+      --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-3));
       --fd-card-padding-block: var(--size-7);
     }
 
@@ -31,7 +32,7 @@ export class Card extends LitElement {
       inline-size: 100%;
       display: inline-block;
       box-sizing: border-box;
-      padding-inline: var(--fd-card-padding-inline);
+      padding-inline: var(--_fd-card-padding-inline);
       padding-block: var(--fd-card-padding-block);
       color: var(--fd-card-color);
 
@@ -44,8 +45,8 @@ export class Card extends LitElement {
     }
 
     @media (min-width: 1024px) {
-      div {
-        --fd-card-padding-inline: var(--size-9);
+      :host {
+        --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-9));
       }
     }
   `
