@@ -9,7 +9,7 @@
       <div class="info">
         <div>
           <h4 class="title">Lukas Köller</h4>
-          <div>React Frontend Developer</div>
+          <div class="profession">React Frontend Developer</div>
         </div>
         <fd-button>View</fd-button>
       </div>
@@ -33,7 +33,7 @@
 
 <style lang="postcss">
   fd-card::part(card) {
-    inline-size: calc(var(--size-9) * 6);
+    inline-size: min(calc(var(--size-9) * 6), calc(100vw - 2 * var(--size-3)));
   }
 
   .header {
@@ -54,6 +54,10 @@
     display: grid;
 		gap: var(--size-5);
 		padding-block-start: var(--size-1);
+  }
+
+  .profession {
+    color: var(--text-2);
   }
 
   fd-button {
