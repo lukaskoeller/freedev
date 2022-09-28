@@ -10,6 +10,9 @@ import { customElement } from 'lit/decorators.js'
  * @slot - Must only contain <fd-gallery-item> components
  * @cssprop {string} --fd-gallery-gap - Adjusts gap between items and padding-inline
  * @cssprop {string} --fd-gallery-padding-block - Adjusts block padding of gallery
+ * @cssprop {string} --fd-gallery-padding-inline-start
+ * @cssprop {string} --fd-gallery-padding-inline-end
+ * @cssprop {string} --fd-gallery-padding-inline
  */
 @customElement('fd-gallery')
 export class Gallery extends LitElement {
@@ -28,8 +31,8 @@ export class Gallery extends LitElement {
         margin: 0;
         max-inline-size: 100%;
         block-size: var(--size, auto);
-        padding-inline-start: var(--fd-gallery-gap);
-        padding-inline-end: var(--fd-gallery-gap);
+        padding-inline-start: var(--fd-gallery-padding-inline-start, var(--fd-gallery-padding-inline, var(--fd-gallery-gap)));
+        padding-inline-end: var(--fd-gallery-padding-inline-end, var(--fd-gallery-padding-inline, var(--fd-gallery-gap)));
         padding-block-start: calc(var(--fd-gallery-padding-block) / 2);
         padding-block-end: calc(var(--fd-gallery-padding-block) / 2);
         overflow-x: auto;

@@ -1233,6 +1233,24 @@
               },
               "description": "Adjusts block padding of gallery",
               "name": "--fd-gallery-padding-block"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline"
             }
           ],
           "slots": [
