@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Container from '$lib/container/Container.svelte';
+	import ProfileCard from '$lib/profilecard/ProfileCard.svelte';
 	import SearchBar from '$lib/searchbar/SearchBar.svelte';
   import { onMount } from 'svelte';
 	import { Size } from 'types';
@@ -25,16 +26,23 @@
   <Container style="--fd-container-padding-inline: 0px;">
     <fd-gallery style="--fd-gallery-gap: var(--size-fluid-3);">
 			<fd-gallery-item>
-        <fd-card>
-          Lukas Köller
-        </fd-card>
+        <ProfileCard></ProfileCard>
       </fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
+			<fd-gallery-item>
+        <ProfileCard></ProfileCard>
+      </fd-gallery-item>
+			<fd-gallery-item>
+        <ProfileCard></ProfileCard>
+      </fd-gallery-item>
+			<fd-gallery-item>
+        <ProfileCard></ProfileCard>
+      </fd-gallery-item>
+			<fd-gallery-item>
+        <ProfileCard></ProfileCard>
+      </fd-gallery-item>
+			<fd-gallery-item>
+        <ProfileCard></ProfileCard>
+      </fd-gallery-item>
 		</fd-gallery>
   </Container>
   <Container>
