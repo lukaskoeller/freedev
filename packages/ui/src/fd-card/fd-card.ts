@@ -24,7 +24,7 @@ export class Card extends LitElement {
       --fd-card-shadow: var(--shadow-3);
 
       /* private proxy to avoid higher specificity of @media selector */
-      --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-3));
+      --fd-card-padding-inline: var(--size-3);
       --fd-card-padding-block: var(--size-7);
     }
 
@@ -46,7 +46,7 @@ export class Card extends LitElement {
 
     @media (min-width: 1024px) {
       :host {
-        --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-9));
+        --fd-card-padding-inline: var(--size-9);
       }
     }
   `
