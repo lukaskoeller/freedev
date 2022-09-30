@@ -967,96 +967,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-card/fd-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A classic Card component.",
-          "name": "Card",
-          "cssProperties": [
-            {
-              "description": "Adjusts the background color",
-              "name": "--fd-card-background-color"
-            },
-            {
-              "description": "Adjusts the font color",
-              "name": "--fd-card-color"
-            },
-            {
-              "description": "Sets the Card's shadow",
-              "name": "--fd-card-shadow"
-            },
-            {
-              "description": "Sets the inline padding",
-              "name": "--fd-card-padding-inline"
-            },
-            {
-              "description": "Sets the block padding",
-              "name": "--fd-card-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Card's div",
-              "name": "card"
-            }
-          ],
-          "slots": [
-            {
-              "description": "element has a slot",
-              "name": "This"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "attribute": "variant"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/fd-container/fd-container.ts",
       "declarations": [
         {
@@ -1145,6 +1055,96 @@
           "declaration": {
             "name": "Container",
             "module": "src/fd-container/fd-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-card/fd-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A classic Card component.",
+          "name": "Card",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-card-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-card-color"
+            },
+            {
+              "description": "Sets the Card's shadow",
+              "name": "--fd-card-shadow"
+            },
+            {
+              "description": "Sets the inline padding",
+              "name": "--fd-card-padding-inline"
+            },
+            {
+              "description": "Sets the block padding",
+              "name": "--fd-card-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Card's div",
+              "name": "card"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
           }
         }
       ]
@@ -1651,6 +1651,71 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-logo/fd-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component",
+          "name": "Logo",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo image",
+              "name": "--fd-logo-fill-logo"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo text",
+              "name": "--fd-logo-fill-text"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the width of the logo",
+              "name": "--fd-logo-inline-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-label/fd-label.style.ts",
       "declarations": [
         {
@@ -1786,204 +1851,6 @@
           "declaration": {
             "name": "Label",
             "module": "src/fd-label/fd-label.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-logo/fd-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Logo component",
-          "name": "Logo",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the logo image",
-              "name": "--fd-logo-fill-logo"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the logo text",
-              "name": "--fd-logo-fill-text"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the width of the logo",
-              "name": "--fd-logo-inline-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Logo",
-          "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-logo",
-          "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-progress-circle/fd-progress-circle.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Progress Circle Component e.g. used for a \"complete profile\" card.",
-          "name": "ProgressCircle",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the circle",
-              "name": "--fd-progress-circle-fill-active"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the progress circle",
-              "name": "--fd-progress-circle-fill-inactive"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Size of the circle",
-              "name": "--fd-progress-circle-inline-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "totalSteps",
-              "type": {
-                "text": "number"
-              },
-              "default": "10",
-              "attribute": "totalSteps",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "progress",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "attribute": "progress",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_radius",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "protected",
-              "default": "60",
-              "attribute": "_radius"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"inverted\""
-              },
-              "default": "\"default\"",
-              "attribute": "variant"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "totalSteps",
-              "type": {
-                "text": "number"
-              },
-              "default": "10",
-              "fieldName": "totalSteps"
-            },
-            {
-              "name": "progress",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "fieldName": "progress"
-            },
-            {
-              "name": "_radius",
-              "type": {
-                "text": "number"
-              },
-              "default": "60",
-              "fieldName": "_radius"
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"inverted\""
-              },
-              "default": "\"default\"",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-progress-circle",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ProgressCircle",
-          "declaration": {
-            "name": "ProgressCircle",
-            "module": "src/fd-progress-circle/fd-progress-circle.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-progress-circle",
-          "declaration": {
-            "name": "ProgressCircle",
-            "module": "src/fd-progress-circle/fd-progress-circle.ts"
           }
         }
       ]
@@ -2673,156 +2540,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-avatar/fd-avatar.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An Avatar component.",
-          "name": "Avatar",
-          "cssProperties": [
-            {
-              "description": "Adjusts the background color",
-              "name": "--fd-avatar-background-color"
-            },
-            {
-              "description": "Adjusts the font color",
-              "name": "--fd-avatar-color"
-            },
-            {
-              "description": "Adjusts the border color",
-              "name": "--fd-avatar-border-color"
-            },
-            {
-              "description": "Sets the size of the avatar",
-              "name": "--fd-avatar-size"
-            },
-            {
-              "description": "Sets the border radius. Default is round",
-              "name": "--fd-avatar-border-radius"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Avatar's div",
-              "name": "Avatar"
-            }
-          ],
-          "slots": [
-            {
-              "description": "element has a slot",
-              "name": "This"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "img",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size | undefined"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-avatar",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Avatar",
-          "declaration": {
-            "name": "Avatar",
-            "module": "types/fd-avatar/fd-avatar.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-avatar/fd-avatar.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "WithImage",
-          "type": {
-            "text": "Story"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "AllSizes",
-          "type": {
-            "text": "Story"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "WithImage",
-          "declaration": {
-            "name": "WithImage",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AllSizes",
-          "declaration": {
-            "name": "AllSizes",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-button/fd-button.d.ts",
       "declarations": [
         {
@@ -3133,6 +2850,390 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-progress-circle/fd-progress-circle.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Progress Circle Component e.g. used for a \"complete profile\" card.",
+          "name": "ProgressCircle",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the circle",
+              "name": "--fd-progress-circle-fill-active"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the progress circle",
+              "name": "--fd-progress-circle-fill-inactive"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the circle",
+              "name": "--fd-progress-circle-inline-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "attribute": "totalSteps",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "attribute": "progress",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "protected",
+              "default": "60",
+              "attribute": "_radius"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "fieldName": "totalSteps"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "fieldName": "progress"
+            },
+            {
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "default": "60",
+              "fieldName": "_radius"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-progress-circle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ProgressCircle",
+          "declaration": {
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-progress-circle",
+          "declaration": {
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-avatar/fd-avatar.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An Avatar component.",
+          "name": "Avatar",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-avatar-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-avatar-color"
+            },
+            {
+              "description": "Adjusts the border color",
+              "name": "--fd-avatar-border-color"
+            },
+            {
+              "description": "Sets the size of the avatar",
+              "name": "--fd-avatar-size"
+            },
+            {
+              "description": "Sets the border radius. Default is round",
+              "name": "--fd-avatar-border-radius"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Avatar's div",
+              "name": "Avatar"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "img",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-avatar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Avatar",
+          "declaration": {
+            "name": "Avatar",
+            "module": "types/fd-avatar/fd-avatar.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-avatar/fd-avatar.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "WithImage",
+          "type": {
+            "text": "Story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "AllSizes",
+          "type": {
+            "text": "Story"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "WithImage",
+          "declaration": {
+            "name": "WithImage",
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AllSizes",
+          "declaration": {
+            "name": "AllSizes",
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-form/fd-form.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Extended form element to allow cross-browser form participation of custom elements",
+          "name": "Form",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-form-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-form-padding-inline"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_formdata",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Form",
+          "declaration": {
+            "name": "Form",
+            "module": "types/fd-form/fd-form.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-form/fd-form.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-form/fd-form.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-form/fd-form.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-card/fd-card.d.ts",
       "declarations": [
         {
@@ -3236,6 +3337,177 @@
           "declaration": {
             "name": "Primary",
             "module": "types/fd-card/fd-card.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Horizontal rule (divider)",
+          "name": "Hr",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-hr-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-hr-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-hr",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Hr",
+          "declaration": {
+            "name": "Hr",
+            "module": "types/fd-hr/fd-hr.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery-item/fd-gallery-item.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "GalleryItem",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding of gallery",
+              "name": "--padding"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items",
+              "name": "--gap"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Contains the content of the item",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GalleryItem",
+          "declaration": {
+            "name": "GalleryItem",
+            "module": "types/fd-gallery-item/fd-gallery-item.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery-item/fd-gallery-item.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
           }
         }
       ]
@@ -3356,107 +3628,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-form/fd-form.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Extended form element to allow cross-browser form participation of custom elements",
-          "name": "Form",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-form-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-form-padding-inline"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "_formdata",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "any"
-                  }
-                }
-              ]
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-form",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Form",
-          "declaration": {
-            "name": "Form",
-            "module": "types/fd-form/fd-form.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-form/fd-form.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-form/fd-form.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-form/fd-form.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-gallery/fd-gallery.d.ts",
       "declarations": [
         {
@@ -3555,177 +3726,6 @@
           "declaration": {
             "name": "GalleryWithLargeBoxes",
             "module": "types/fd-gallery/fd-gallery.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-gallery-item/fd-gallery-item.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "GalleryItem",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding of gallery",
-              "name": "--padding"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items",
-              "name": "--gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Contains the content of the item",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery-item",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GalleryItem",
-          "declaration": {
-            "name": "GalleryItem",
-            "module": "types/fd-gallery-item/fd-gallery-item.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-gallery-item/fd-gallery-item.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Horizontal rule (divider)",
-          "name": "Hr",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-hr-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-hr-padding-inline"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-hr",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Hr",
-          "declaration": {
-            "name": "Hr",
-            "module": "types/fd-hr/fd-hr.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
           }
         }
       ]
@@ -4283,140 +4283,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-progress-circle/fd-progress-circle.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Progress Circle Component e.g. used for a \"complete profile\" card.",
-          "name": "ProgressCircle",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the circle",
-              "name": "--fd-progress-circle-fill-active"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the progress circle",
-              "name": "--fd-progress-circle-fill-inactive"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Size of the circle",
-              "name": "--fd-progress-circle-inline-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "totalSteps",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "progress",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_radius",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "protected"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"inverted\""
-              }
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-progress-circle",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ProgressCircle",
-          "declaration": {
-            "name": "ProgressCircle",
-            "module": "types/fd-progress-circle/fd-progress-circle.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-progress-circle/fd-progress-circle.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "VariantDefault",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "VariantInverted",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-progress-circle/fd-progress-circle.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantDefault",
-          "declaration": {
-            "name": "VariantDefault",
-            "module": "types/fd-progress-circle/fd-progress-circle.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantInverted",
-          "declaration": {
-            "name": "VariantInverted",
-            "module": "types/fd-progress-circle/fd-progress-circle.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-section/fd-section.d.ts",
       "declarations": [
         {
@@ -4768,6 +4634,140 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-progress-circle/fd-progress-circle.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Progress Circle Component e.g. used for a \"complete profile\" card.",
+          "name": "ProgressCircle",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the circle",
+              "name": "--fd-progress-circle-fill-active"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the progress circle",
+              "name": "--fd-progress-circle-fill-inactive"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the circle",
+              "name": "--fd-progress-circle-inline-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "progress",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-progress-circle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ProgressCircle",
+          "declaration": {
+            "name": "ProgressCircle",
+            "module": "types/fd-progress-circle/fd-progress-circle.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-progress-circle/fd-progress-circle.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "VariantDefault",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "VariantInverted",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-progress-circle/fd-progress-circle.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VariantDefault",
+          "declaration": {
+            "name": "VariantDefault",
+            "module": "types/fd-progress-circle/fd-progress-circle.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VariantInverted",
+          "declaration": {
+            "name": "VariantInverted",
+            "module": "types/fd-progress-circle/fd-progress-circle.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-visually-hidden/fd-visually-hidden.d.ts",
       "declarations": [
         {
@@ -4834,6 +4834,83 @@
           "declaration": {
             "name": "Primary",
             "module": "types/fd-visually-hidden/fd-visually-hidden.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/elements.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Default",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Showcasing basic HTML5 elements for theme testing"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Default",
+          "declaration": {
+            "name": "Default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/shared.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "errorStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "captionStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "errorStyles",
+          "declaration": {
+            "name": "errorStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "captionStyles",
+          "declaration": {
+            "name": "captionStyles",
+            "module": "types/styles/shared.d.ts"
           }
         }
       ]
@@ -4929,83 +5006,6 @@
       "path": "types/mixins/formdata-event-polyfill.d.ts",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/elements.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Default",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Showcasing basic HTML5 elements for theme testing"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Default",
-          "declaration": {
-            "name": "Default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/shared.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "errorStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "captionStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "errorStyles",
-          "declaration": {
-            "name": "errorStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "captionStyles",
-          "declaration": {
-            "name": "captionStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        }
-      ]
     }
   ]
 }
