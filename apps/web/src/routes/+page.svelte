@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Container from '$lib/container/Container.svelte';
+	import FeatureBox from '$lib/featurebox/FeatureBox.svelte';
 	import ProfileCard from '$lib/profilecard/ProfileCard.svelte';
 	import SearchBar from '$lib/searchbar/SearchBar.svelte';
   import { onMount } from 'svelte';
@@ -46,6 +47,24 @@
 		</fd-gallery>
   </Container>
   <Container>
+    <Container size={Size.Lg}>
+      <div class="fd-ram-grid feature-grid">
+        <FeatureBox heading="Vernetzt mit dem Payments-Epizentrum" --fd-feature-box-grid-column-span="2">
+          <div slot="figure">XXX</div>
+          Ob direkte Integrationen mit Kartennetzwerken und Banken oder Bezahlvorgänge im Browser, Stripe-Technologien bewirken Großes im gesamten Tech-Stack der Finanzwelt.
+        </FeatureBox>
+        <FeatureBox heading="Vernetzt mit dem Payments-Epizentrum">
+          <div slot="figure">XXX</div>
+          Ob direkte Integrationen mit Kartennetzwerken und Banken oder Bezahlvorgänge im Browser, Stripe-Technologien bewirken Großes im gesamten Tech-Stack der Finanzwelt.
+        </FeatureBox>
+        <FeatureBox heading="Vernetzt mit dem Payments-Epizentrum">
+          <div slot="figure">XXX</div>
+          Ob direkte Integrationen mit Kartennetzwerken und Banken oder Bezahlvorgänge im Browser, Stripe-Technologien bewirken Großes im gesamten Tech-Stack der Finanzwelt.
+        </FeatureBox>
+      </div>
+    </Container>
+  </Container>
+  <Container>
     <fd-button href="/sign-up">Sign Up</fd-button>
   </Container>
 </section>
@@ -76,6 +95,12 @@
     @media (--tablet) {
       aspect-ratio: 2.4/1;
     }
+  }
+
+  .feature-grid {
+    --fd-ram-grid-min-width: var(--size-13);
+    --fd-ram-grid-gap: var(--size-6);
+    align-items: start;
   }
 
   .center {
