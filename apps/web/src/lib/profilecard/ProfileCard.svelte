@@ -1,9 +1,5 @@
-<script>
-	import Stack from "$lib/stack/Stack.svelte";
-</script>
-
 <fd-card class="card" style="--fd-card-padding-inline: var(--size-3);">
-  <Stack --fd-stack-gap="var(--size-7)">
+  <div class="fd-stack">
     <div class="header">
       <div class="avatar"></div>
       <div class="info">
@@ -28,12 +24,16 @@
 				  <span>30h/week</span>
       </div>
     </div>
-  </Stack>
+  </div>
 </fd-card>
 
 <style lang="postcss">
   fd-card::part(card) {
     inline-size: min(calc(var(--size-9) * 6), calc(100vw - 2 * var(--size-3)));
+  }
+
+  .fd-stack {
+    --fd-stack-gap: var(--size-7);
   }
 
   .header {
