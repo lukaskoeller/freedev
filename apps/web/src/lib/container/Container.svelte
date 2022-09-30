@@ -44,12 +44,18 @@
   }
 
   section[data-size="lg"] {
-    --fd-container-inline-size: calc(3 * var(--size-15));
+    --fd-container-inline-size: calc(2.25 * var(--size-15));
     --fd-container-padding-inline: 0px;
     --fd-container-margin-inline: auto;
   }
 
   section[data-size="xl"] {
+    --fd-container-inline-size: calc(3 * var(--size-15));
+    --fd-container-padding-inline: 0px;
+    --fd-container-margin-inline: auto;
+  }
+
+  section[data-size="xxl"] {
     --fd-container-inline-size: calc(4 * var(--size-15));
     --fd-container-padding-inline: 0px;
     --fd-container-margin-inline: auto;
