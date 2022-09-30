@@ -1,7 +1,6 @@
 <script lang="ts">
   import Container from '$lib/container/Container.svelte';
   import { enhance } from '$lib/form';
-	import Stack from '$lib/stack/Stack.svelte';
   import { onMount } from 'svelte';
 	import { Size } from 'types';
   onMount(async () => {
@@ -23,7 +22,7 @@
 <section>
   <Container>
     <Container size={Size.Xs}>
-      <Stack>
+      <div class="fd-stack">
         <h1>Sign Up</h1>
         <form
           action="/sign-up?_method=PUT"
@@ -47,15 +46,15 @@
             }
           }}
         >
-          <Stack>
+          <div class="fd-stack">
             <fd-input name="email" type="email" label="E-Mail"></fd-input>
             <fd-input name="password" type="password" label="Password"></fd-input>
             <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
             <fd-button type="submit" expand>Submit</fd-button>
             <output></output>
-          </Stack>
+          </div>
         </form>
-      </Stack>
+      </div>
     </Container>
     <script>
       const form = document.querySelector('form');
@@ -76,7 +75,7 @@
   </Container>
   <Container>
     <Container size={Size.Xs}>
-      <Stack>
+      <div class="fd-stack">
         <h1>Wohooo!</h1>
         <h2>E-Mail bestätigen</h2>
         <p>
@@ -85,27 +84,27 @@
         </p>
         <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
         <fd-button>Erneut senden</fd-button>
-      </Stack>
+      </div>
     </Container>
   </Container>
   <Container>
     <Container size={Size.Xs}>
-      <Stack>
+      <div class="fd-stack">
         <h1>What's your name?</h1>
         <fd-input label="Name" name="name" />
         <fd-button>Continue</fd-button>
-      </Stack>
+      </div>
     </Container>
   </Container>
   <Container>
     <Container size={Size.Xs}>
-      <Stack>
+      <div class="fd-stack">
         <h1>What do you rock at?</h1>
         <fd-input label="Area" name="area" />
         <fd-input label="Language" name="language" />
         <fd-input label="Technologies" name="technology" />
         <fd-button>Continue</fd-button>
-      </Stack>
+      </div>
     </Container>
   </Container>
 </section>
