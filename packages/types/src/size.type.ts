@@ -4,4 +4,5 @@ export enum Size {
     Md = 'md',
     Lg = 'lg',
     Xl = 'xl',
+    Xxl = 'xxl',
 }
