@@ -6,3 +6,20 @@ body {
     padding-bottom: 0;
   }
 }
+
+.fd-stack {
+  display: grid;
+  gap: var(--fd-stack-gap, var(--size-3));
+  justify-items: var(--fd-stack-justify-items, stretch);
+}
+
+.fd-ram-grid {
+  display: grid;
+  row-gap: var(--fd-ram-grid-gap-row, var(--fd-ram-grid-gap, var(--size-fluid-2)));
+  column-gap: var(--fd-ram-grid-gap-column, var(--fd-ram-grid-gap, var(--size-fluid-2)));
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(min(var(--fd-ram-grid-min-width, 150px), 100%), 1fr)
+    );
+}
