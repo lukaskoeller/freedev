@@ -4,14 +4,13 @@
 	import 'ui/src/styles/globals.css';
 	import 'ui/src/styles/props.css';
 	import '../app.css';
-	import bgSvg from '../assets/svg/freedev-bg.svg?url';
-	import bgLgSvg from '../assets/svg/freedev-bg-large.svg?url';
+	import bgLgSvg from '$lib/assets/svg/freedev-bg-large.svg?url';
 	onMount(async () => {
     await import('ui');
   });
 </script>
 
-<section style:background={`url('${bgLgSvg}') center 20% no-repeat`}>
+<section class="wrapper" style:background-image={`url('${bgLgSvg}')`}>
 	<Header />
 	<div class="logoWrapper">
 		<a href="/">
@@ -28,8 +27,13 @@
 
 <style lang="postcss">
 
-	section {
+	.wrapper {
 		background-repeat: no-repeat;
+		background-position: center 0%;
+
+		@media (--tablet) {
+			background-position: center 20%;
+		}
 	}
 	.logoWrapper {
 		display: grid;
