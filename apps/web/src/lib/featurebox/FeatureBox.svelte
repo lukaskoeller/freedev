@@ -1,5 +1,5 @@
 <script lang="ts">
-  export const heading: string = undefined;
+  export let heading: string;
 </script>
 
 <div class="fd-stack">
