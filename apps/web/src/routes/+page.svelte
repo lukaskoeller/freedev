@@ -101,6 +101,32 @@
     </Container>
   </Container>
   <Container>
+    <Container size={Size.Lg}>
+      <FeatureSection>
+        <div class="fd-stack">
+          <h2>Alles auf einer Plattform. Alles in wenigen Minuten.</h2>
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+        <figure>
+          <img src={workOfficeImage} alt="freedev freelancer in office">
+        </figure>
+      </FeatureSection>
+    </Container>
+  </Container>
+  <Container>
+    <Container size={Size.Lg}>
+      <FeatureSection>
+        <figure>
+          <img src={lightImage} alt="freedev makes managing freelancers easy">
+        </figure>
+        <div class="fd-stack">
+          <h2>Alles auf einer Plattform. Alles in wenigen Minuten.</h2>
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+      </FeatureSection>
+    </Container>
+  </Container>
+  <Container>
     <fd-button href="/sign-up">Sign Up</fd-button>
   </Container>
 </section>
