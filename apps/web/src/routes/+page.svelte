@@ -67,18 +67,35 @@
   </Container>
   <Container>
     <Container size={Size.Lg}>
+      <FeatureSection>
+        <figure>
+          <img src={atWorkImage} alt="Time management is easy with freedev">
+        </figure>
+        <div class="fd-stack">
+          <h2>Alles auf einer Plattform. Alles in wenigen Minuten.</h2>
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+      </FeatureSection>
+    </Container>
+  </Container>
+  <Container>
+    <Container size={Size.Lg}>
       <div class="fd-ram-grid feature-grid">
-        <FeatureBox heading="Vernetzt mit dem Payments-Epizentrum" --fd-feature-box-grid-column-span="2">
+        <FeatureBox heading="Integrations">
           <div slot="figure">XXX</div>
-          Ob direkte Integrationen mit Kartennetzwerken und Banken oder Bezahlvorgänge im Browser, Stripe-Technologien bewirken Großes im gesamten Tech-Stack der Finanzwelt.
+          DATEV, Slack, Microsoft Teams, Outlook, Gitlab, Github, Personio...
         </FeatureBox>
-        <FeatureBox heading="Vernetzt mit dem Payments-Epizentrum">
+        <FeatureBox heading="Integrations">
           <div slot="figure">XXX</div>
-          Ob direkte Integrationen mit Kartennetzwerken und Banken oder Bezahlvorgänge im Browser, Stripe-Technologien bewirken Großes im gesamten Tech-Stack der Finanzwelt.
+          DATEV, Slack, Microsoft Teams, Outlook, Gitlab, Github, Personio...
         </FeatureBox>
-        <FeatureBox heading="Vernetzt mit dem Payments-Epizentrum">
+        <FeatureBox heading="Einfaches Management">
           <div slot="figure">XXX</div>
-          Ob direkte Integrationen mit Kartennetzwerken und Banken oder Bezahlvorgänge im Browser, Stripe-Technologien bewirken Großes im gesamten Tech-Stack der Finanzwelt.
+          Vertragsmanagement, Zeitmanagement, Verschwiegenheitsvereinbarung (NDA) ...
+        </FeatureBox>
+        <FeatureBox heading="Risikoübernahme">
+          <div slot="figure">XXX</div>
+          Risiken wegen Scheinselbstständigkeit übernehmen wir als Plattform...
         </FeatureBox>
       </div>
     </Container>
