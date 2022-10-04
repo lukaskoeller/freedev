@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Container from '$lib/container/Container.svelte';
 	import FeatureBox from '$lib/featurebox/FeatureBox.svelte';
+	import FeatureSection from '$lib/featuresection/FeatureSection.svelte';
 	import ProfileCard from '$lib/profilecard/ProfileCard.svelte';
 	import SearchBar from '$lib/searchbar/SearchBar.svelte';
   import { onMount } from 'svelte';
@@ -157,6 +158,27 @@
     @media (--tablet) {
       aspect-ratio: 2.4/1;
     }
+  }
+
+  .used-by {
+    display: flex;
+    gap: var(--size-3);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-wrap: wrap;
+
+    @media (--tablet) {
+      gap: var(--size-9);
+    }
+  }
+
+  .used-by-item {
+    inline-size: clamp(var(--size-10), 7vw, var(--size-12));
+  }
+
+  figure img {
+    border-radius: var(--radius-2);
   }
 
   .feature-grid {
