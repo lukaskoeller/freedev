@@ -80,6 +80,10 @@
 
   --global-spacing: var(--size-3);
 
+  @media (--large-mobile) {
+    --global-spacing: var(--size-7);
+  }
+
   @media (--small-desktop) {
     --global-spacing: var(--size-10);
   }
