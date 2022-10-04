@@ -32,6 +32,17 @@
       </div>
     </div>
   </Container>
+  <Container>
+    <Container size={Size.Md}>
+      <div class="used-by">
+        <img class="used-by-item" src={bookingLogo} alt="xyz is using freedev">
+        <img class="used-by-item" src={netflixLogo} alt="xyz is using freedev">
+        <img class="used-by-item" src={braveLogo} alt="xyz is using freedev">
+        <img class="used-by-item" src={veoliaLogo} alt="xyz is using freedev">
+        <img class="used-by-item" src={redditLogo} alt="xyz is using freedev">
+      </div>
+    </Container>
+  </Container>
   <Container style="--fd-container-padding-inline: 0px;">
     <fd-gallery style="--fd-gallery-gap: var(--size-fluid-2);">
 			<fd-gallery-item>
