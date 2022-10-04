@@ -12,7 +12,11 @@
 <style lang="postcss">
   section {
     --fd-container-padding-inline: var(--global-spacing);
-    --fd-container-padding-block: calc(var(--global-spacing) / 2);
+    --fd-container-padding-block: var(--global-spacing);
+
+    @media (--tablet) {
+      --fd-container-padding-block: calc(var(--global-spacing) / 2);
+    }
 
     --fd-container-inline-size: auto;
     --fd-container-margin-inline: 0;
