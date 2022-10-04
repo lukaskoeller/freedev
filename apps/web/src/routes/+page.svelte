@@ -5,6 +5,14 @@
 	import SearchBar from '$lib/searchbar/SearchBar.svelte';
   import { onMount } from 'svelte';
 	import { Size } from 'types';
+  import atWorkImage from '$lib/assets/images/woman-at-work.jpg';
+  import workOfficeImage from '$lib/assets/images/work-office.jpeg';
+  import lightImage from '$lib/assets/images/light.jpg';
+  import netflixLogo from '$lib/assets/images/netflix-logo.png';
+  import redditLogo from '$lib/assets/images/reddit-logo.png';
+  import veoliaLogo from '$lib/assets/images/veolia-logo.png';
+  import bookingLogo from '$lib/assets/images/booking-logo.png';
+  import braveLogo from '$lib/assets/images/brave-logo.png';
 
   onMount(async () => {
     await import('ui');
