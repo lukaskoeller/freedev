@@ -7,7 +7,7 @@ import { CognitoIdentityProviderClient, SignUpCommand, SignUpCommandInput } from
  * @see https://www.pulumi.com/registry/packages/aws/api-docs/getregion/
  */
  const REGION = 'eu-central-1';
- const USER_POOL_CLIENT_ID = '15lv038tt2c5m7rp82mo9vdmjd';
+ const USER_POOL_CLIENT_ID = '6b3h1osi597ifm5at8qcsavg5d';
 
 export type SignupBody = {
   email: string;
