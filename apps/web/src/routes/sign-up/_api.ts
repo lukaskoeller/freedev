@@ -10,7 +10,7 @@
 */
 
 const API_STAGE = '/dev';
-const API_BASE = `https://lnzzhm3s0d.execute-api.eu-central-1.amazonaws.com${API_STAGE}`;
+const API_BASE = `https://8qjflpsz7c.execute-api.eu-central-1.amazonaws.com${API_STAGE}`;
 
 export function api(method: string, resource: string, data?: Record<string, unknown>) {
 	console.log('api', method, resource, data);
