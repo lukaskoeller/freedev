@@ -12,7 +12,7 @@
   //   import('ui');
   // }
 
-  const email = 'lukas.koeller@proton.me';
+  const email = 'uschi@proton.me';
 </script>
 
 <svelte:head>
