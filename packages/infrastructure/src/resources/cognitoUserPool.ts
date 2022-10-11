@@ -1,7 +1,25 @@
 import * as aws from "@pulumi/aws";
-import { emailConfiguration, emailIdentity } from "./emailConfig";
 
 export const createUserPoolAndClient = () => {
+  const emailConfiguration = new aws.ses.ConfigurationSet("email-sign-up-verification", {
+    // @todo re-enable?
+    // deliveryOptions: {
+    //     tlsPolicy: "Require",
+    // },
+    sendingEnabled: true,
+    // trackingOptions @todo enable or not?
+  });
+  
+  const emailConfigurationArn = emailConfiguration.arn;
+
+  const emailIdentity = new aws.ses.EmailIdentity("hey-freedev-email-identity", {
+    email: "hey@freedev.app",
+  });
+  
+  const emailIdentity2 = new aws.ses.EmailIdentity("protonmail-email-identity", {
+    email: "lukas.koeller@protonmail.com",
+  });
+
   const userPool = new aws.cognito.UserPool('appPool', {
     accountRecoverySetting: {
       recoveryMechanisms: [
@@ -19,9 +37,9 @@ export const createUserPoolAndClient = () => {
     emailConfiguration: {
       configurationSet: emailConfiguration.name,
       emailSendingAccount: 'DEVELOPER',
-      fromEmailAddress: 'freedev <hey@freedev.app>',
-      replyToEmailAddress: 'hey@freedev.app',
-      sourceArn: emailIdentity.arn,
+      // fromEmailAddress: 'freedev <hey@freedev.app>',
+      replyToEmailAddress: 'lukas.koeller@protonmail.com',
+      sourceArn: emailIdentity2.arn,
     },
     verificationMessageTemplate: {
       defaultEmailOption: 'CONFIRM_WITH_CODE',
