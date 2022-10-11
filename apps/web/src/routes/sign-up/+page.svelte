@@ -1,6 +1,7 @@
 <script lang="ts">
   import Container from '$lib/container/Container.svelte';
-  import { enhance } from '$lib/form';
+  import { enhance } from '$app/forms';
+  import type { ActionData } from './$types';
   import { onMount } from 'svelte';
 	import { Size } from 'types';
   onMount(async () => {
@@ -13,6 +14,9 @@
   // }
 
   const email = 'uschi@proton.me';
+
+  export let form: ActionData;
+  
 </script>
 
 <svelte:head>
@@ -25,53 +29,20 @@
       <div class="fd-stack">
         <h1>Sign Up</h1>
         <form
-          action="/sign-up?_method=PUT"
-          method="post"
-          use:enhance={{
-            pending: async ({ data, form }) => {
-              console.log('pending', {
-                data,
-                form,
-              });
-            },
-            error: async (error) => {
-              console.log('error', error);
-            },
-            result: async ({ data, form, response }) => {
-              console.log('result', {
-                data,
-                form,
-                response,
-              });
-            }
-          }}
+          action="?/signup"
+          method="POST"
+          use:enhance
         >
           <div class="fd-stack">
             <fd-input name="email" type="email" label="E-Mail"></fd-input>
             <fd-input name="password" type="password" label="Password"></fd-input>
             <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
             <fd-button type="submit" expand>Submit</fd-button>
-            <output></output>
+            <output>{JSON.stringify(form)}</output>
           </div>
         </form>
       </div>
     </Container>
-    <script>
-      const form = document.querySelector('form');
-      const output = document.querySelector('output');
-
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        
-        const form = event.target;
-
-        /** Get all of the form data */
-        const formData = new FormData(form);
-        const data = [...formData.entries()];
-        data.forEach((value, key) => data[key] = value);
-        output.innerHTML = JSON.stringify(data, null, 2);
-      });
-    </script>
   </Container>
   <Container>
     <Container size={Size.Xs}>
