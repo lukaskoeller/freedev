@@ -1,6 +1,5 @@
 {
   "name": "functions-hello",
   "version": "0.0.0",
-  "main": "index.ts",
-  "dependencies": {}
+  "main": "index.ts"
 }

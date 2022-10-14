@@ -7,8 +7,8 @@
     "build:esbuild": "node ./scripts/build.js"
   },
   "dependencies": {
-    "@aws-sdk/client-cognito-identity-provider": "^3.131.0",
-    "@types/aws-lambda": "^8.10.101",
+    "@aws-sdk/client-cognito-identity-provider": "^3.186.0",
+    "@types/aws-lambda": "^8.10.107",
     "errors": "*"
   },
   "devDependencies": {
