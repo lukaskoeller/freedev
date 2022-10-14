@@ -17,6 +17,13 @@ export const createApi = () => {
     api,
   });
 
+  const confirmSignUpEndpoint = new Microservice({
+    name: 'confirm-sign-up',
+    path: '/confirm-sign-up',
+    httpMethod: HttpMethod.POST,
+    api,
+  });
+
   /**
    * Root of website (homepage). Path is '/' or 'https://freedev.app'.
    */
