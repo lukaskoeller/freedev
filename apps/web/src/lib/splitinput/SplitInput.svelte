@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let ariaInvalid: boolean = false;
+
   let confirmationCodeInput: HTMLInputElement;
   let input1Input: HTMLInputElement;
 
@@ -47,14 +49,19 @@
       confirmationCodeInput.value = code;
       const form = confirmationCodeInput.closest('form');
       form?.requestSubmit();
-      // input1 = '';
-      // input2 = '';
-      // input3 = '';
-      // input4 = '';
-      // input5 = '';
-      // input6 = '';
-      // input1Input.focus();
     }
+  }
+
+  $: ariaInvalid && resetInput();
+
+  function resetInput() {
+    input1 = '';
+    input2 = '';
+    input3 = '';
+    input4 = '';
+    input5 = '';
+    input6 = '';
+    input1Input?.focus();
   }
 </script>
 
@@ -63,6 +70,7 @@
     type="text"
     maxlength="1"
     aria-label="Ziffer von 1 bis 9"
+    aria-invalid={ariaInvalid}
     on:input={onInput}
     on:keydown={onKeyDown}
     bind:this={input1Input}
@@ -72,6 +80,7 @@
     type="text"
     maxlength="1"
     aria-label="Ziffer von 1 bis 9"
+    aria-invalid={ariaInvalid}
     on:input={onInput}
     on:keydown={onKeyDown}
     bind:value={input2}
@@ -80,6 +89,7 @@
     type="text"
     maxlength="1"
     aria-label="Ziffer von 1 bis 9"
+    aria-invalid={ariaInvalid}
     on:input={onInput}
     on:keydown={onKeyDown}
     bind:value={input3}
@@ -88,6 +98,7 @@
     type="text"
     maxlength="1"
     aria-label="Ziffer von 1 bis 9"
+    aria-invalid={ariaInvalid}
     on:input={onInput}
     on:keydown={onKeyDown}
     bind:value={input4}
@@ -96,6 +107,7 @@
     type="text"
     maxlength="1"
     aria-label="Ziffer von 1 bis 9"
+    aria-invalid={ariaInvalid}
     on:input={onInput}
     on:keydown={onKeyDown}
     bind:value={input5}
@@ -104,6 +116,7 @@
     type="text"
     maxlength="1"
     aria-label="Ziffer von 1 bis 9"
+    aria-invalid={ariaInvalid}
     on:input={onInput}
     on:keydown={onKeyDown}
     bind:value={input6}
@@ -114,6 +127,7 @@
   name="confirmationCode"
   hidden
   inert
+  aria-invalid={ariaInvalid}
   bind:this={confirmationCodeInput}
 >
 
@@ -139,8 +153,13 @@
     color: var(--primary-color-base);
   }
 
-  input[aria-invalid] {
+  input[aria-invalid="true"] {
     --_fd-input-border-color: var(--color-status-error);
+    border: var(--border-size-1) solid var(--_fd-input-border-color);
+  }
+
+  input[aria-invalid="false"] {
+    --_fd-input-border-color: var(--color-status-success);
     border: var(--border-size-1) solid var(--_fd-input-border-color);
   }
 
