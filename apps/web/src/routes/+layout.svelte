@@ -28,6 +28,7 @@
 <style lang="postcss">
 
 	.wrapper {
+		min-block-size: 100vh;
 		background-repeat: no-repeat;
 		background-position: center 0%;
 
