@@ -35,7 +35,7 @@ export const createUserPoolAndClient = () => {
       configurationSet: emailConfiguration.name,
       emailSendingAccount: 'DEVELOPER',
       fromEmailAddress: 'freedev <hey@freedev.app>',
-      replyToEmailAddress: 'no-reply@freedev.app',
+      replyToEmailAddress: 'hey@freedev.app',
       sourceArn: emailIdentity.arn,
     },
     verificationMessageTemplate: {
