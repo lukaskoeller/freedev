@@ -3,7 +3,7 @@
   import { page } from '$app/stores';
 	import { Size } from "types";
   import type { ActionData } from './$types';
-	import { enhance } from "$app/forms";
+	import { applyAction, enhance } from "$app/forms";
 	import SplitInput from "$lib/splitinput/SplitInput.svelte";
 	import { onMount } from "svelte";
 
@@ -32,19 +32,21 @@
           Mit einem Klick bestätigst du deine Email.
         </p>
         <form
-          action="?/confirmSignUp"
           method="POST"
           use:enhance={() => {
             return async ({ result, update }) => {
+              applyAction(result);
               if (result.type === 'success') return;
               update();
             };
           }}
         >
-          <SplitInput />
+          <SplitInput ariaInvalid={form && form?.statusCode !== 200} />
           <input type="text" name="username" hidden value={username}>
+          {#if form?.statusCode === 200}
+            <p>{form.body.data.message}</p>
+          {/if}
         </form>
-        <output>{form}</output>
         <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
         <fd-button>Erneut senden</fd-button>
       </div>
