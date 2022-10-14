@@ -12,7 +12,6 @@ const { build } = require('esbuild');
       target: 'node16.16.0',
       outdir: './build',
       format: 'cjs',
-  
     });
   } catch (error) {
     process.exit(1); 
