@@ -51,3 +51,10 @@ body {
   }
 }
 
+.fd-info-text {
+  --fd-info-text-color: var(--text-2);
+  /* @todo use var instead? */
+  /* font-size: var(--font-size-1); */
+  font-size: 0.875rem;
+  color: var(--fd-info-text-color);
+}
