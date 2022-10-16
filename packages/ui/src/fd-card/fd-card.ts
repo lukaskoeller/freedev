@@ -22,8 +22,6 @@ export class Card extends LitElement {
       --fd-card-color: var(--text-1);
       --fd-card-border-color: var(--color-border);
       --fd-card-shadow: var(--shadow-3);
-
-      /* private proxy to avoid higher specificity of @media selector */
       --fd-card-padding-inline: var(--size-3);
       --fd-card-padding-block: var(--size-7);
     }
