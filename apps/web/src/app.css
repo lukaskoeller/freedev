@@ -23,3 +23,31 @@ body {
       minmax(min(var(--fd-ram-grid-min-width, 150px), 100%), 1fr)
     );
 }
+
+.fd-card {
+  --fd-card-background-color: var(--color-surface-1);
+  --fd-card-color: var(--text-1);
+  --fd-card-border-color: var(--color-border);
+  --fd-card-shadow: var(--shadow-3);
+  --fd-card-padding-inline: var(--size-3);
+  --fd-card-padding-block: var(--size-7);
+
+  inline-size: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-inline: var(--fd-card-padding-inline);
+  padding-block: var(--fd-card-padding-block);
+  color: var(--fd-card-color);
+
+  appearance: none;
+  border: 1px solid var(--fd-card-border-color);
+
+  background-color: var(--fd-card-background-color);
+  border-radius: var(--radius-conditional-3);
+  box-shadow: var(--fd-card-shadow);
+
+  @media (--small-desktop) {
+    --fd-card-padding-inline: var(--size-9);
+  }
+}
+
