@@ -1,10 +1,11 @@
-import { APIGatewayEvent, Context } from "aws-lambda";
-import { RestExceptionNoBody } from "errors";
+import { APIGatewayEvent, APIGatewayProxyEventV2, Context } from "aws-lambda";
+import { DEFAULT_ERROR_MESSAGE, RestExceptionNoBody } from "errors";
 import {
   CognitoIdentityProviderClient,
   SignUpCommand,
   SignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
+import { ApiErrorResponse, ApiResponse, BodyErrorType } from "../utils";
 
 /**
  * AWS Region
@@ -18,7 +19,7 @@ export type SignUpBody = {
   password: string;
 }
 
-export const handler = async (event: APIGatewayEvent, context: Context) => {
+export const handler = async (event: APIGatewayProxyEventV2, context: Context) => {
   if (!event?.body) {
     throw RestExceptionNoBody
   }
@@ -47,24 +48,24 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     const data = await client.send(command);
     console.log(data);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        statusCode: 200,
-        message: 'Successfully signed up',
-        data,
-      }),
-    };
+    return new ApiResponse({
+      statusCode: 201,
+      body: data,
+    })
   } catch (error) {
     // @todo add throw Error as return
     console.log('!!!ERROR!!!', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        statusCode: 500,
-        message: 'Something went wrong when signing up this user',
-      }),
-    }
+
+    return new ApiErrorResponse({
+      statusCode: error?.statusCode ?? 500,
+      body: {
+        status: error?.statusCode ?? 500,
+        message: error?.message
+          ? `${error?.message} (${error?.code ?? 'n/a'})`
+          : DEFAULT_ERROR_MESSAGE,
+        debugMessage: 'Some text to debug the error',
+      }
+    });
   } finally {
     // finally.
   }

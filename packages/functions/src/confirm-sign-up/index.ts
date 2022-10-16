@@ -1,10 +1,11 @@
 import { APIGatewayEvent, Context } from "aws-lambda";
-import { RestExceptionNoBody } from "errors";
+import { DEFAULT_ERROR_MESSAGE, RestExceptionNoBody } from "errors";
 import {
   CognitoIdentityProviderClient,
   ConfirmSignUpCommand,
   ConfirmSignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
+import { ApiErrorResponse, ApiResponse } from "../utils";
 
 /**
  * AWS Region
@@ -42,24 +43,24 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     const data = await client.send(command);
     console.log(data);
 
-    return {
+    return new ApiResponse({
       statusCode: 200,
-      body: JSON.stringify({
-        statusCode: 200,
-        message: 'Successfully confirmed user',
-        data,
-      }),
-    };
+      body: data,
+    });
   } catch (error) {
     // @todo add throw Error as return
     console.log('!!!ERROR!!!', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        statusCode: 500,
-        message: 'Something went wrong when confirming this user',
-      }),
-    }
+
+    return new ApiErrorResponse({
+      statusCode: error?.statusCode ?? 500,
+      body: {
+        status: error?.statusCode ?? 500,
+        message: error?.message
+          ? `${error?.message} (${error?.code ?? 'n/a'})`
+          : DEFAULT_ERROR_MESSAGE,
+        debugMessage: 'Some text to debug the error',
+      }
+    });
   } finally {
     // finally.
   }
