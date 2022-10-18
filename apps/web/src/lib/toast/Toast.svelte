@@ -1,4 +1,8 @@
 <script lang="ts">
+	import Icon from "$lib/icon/Icon.svelte";
+	import timesSolidSvg from "assets/icons/times-solid.svg?raw";
+	import { Size } from "types";
+
   export let message: string;
 </script>
 
@@ -18,7 +22,7 @@
   </div>
   <div class="after">
     <slot name="after">
-      x
+      <Icon size={Size.Xs}>{@html timesSolidSvg}</Icon>
     </slot>
   </div>
 </div>
@@ -26,10 +30,25 @@
 <style lang="postcss">
   .toast {
     --fd-card-padding-inline: var(--size-4);
-    --fd-card-padding-block: var(--size-4);
+    --fd-card-padding-block: var(--size-3);
 
     display: flex;
     gap: var(--size-4);
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+
+  strong {
+    font-size: var(--font-size-1);
+    line-height: var(--font-lineheight-3);
+  }
+
+  .after {
+    display: flex;
+    align-items: center;
+    block-size: calc(var(--font-size-1) * var(--font-lineheight-3))
   }
 
   .main {
