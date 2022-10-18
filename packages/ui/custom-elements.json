@@ -2167,6 +2167,118 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-switch/fd-switch.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switch component for text",
+          "name": "Switch",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-switch-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-switch-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "onCheckbox",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "module": "/src/mixins/formControlMixin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-switch",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "src/fd-switch/fd-switch.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "src/fd-switch/fd-switch.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
       "declarations": [
         {
@@ -2395,118 +2507,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-switch/fd-switch.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Switch component for text",
-          "name": "Switch",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-switch-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-switch-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-switch-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-switch-font-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "checked",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "onCheckbox",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "InputEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "checked"
-            }
-          ],
-          "mixins": [
-            {
-              "name": "FormControlMixin",
-              "module": "/src/mixins/formControlMixin"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-switch",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Switch",
-          "declaration": {
-            "name": "Switch",
-            "module": "src/fd-switch/fd-switch.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-switch",
-          "declaration": {
-            "name": "Switch",
-            "module": "src/fd-switch/fd-switch.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/styles/shared.ts",
       "declarations": [
         {
@@ -2667,115 +2667,6 @@
           "declaration": {
             "name": "observe",
             "module": "types/controllers/observer-controller.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-card/fd-card.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A classic Card component.",
-          "name": "Card",
-          "cssProperties": [
-            {
-              "description": "Adjusts the background color",
-              "name": "--fd-card-background-color"
-            },
-            {
-              "description": "Adjusts the font color",
-              "name": "--fd-card-color"
-            },
-            {
-              "description": "Sets the Card's shadow",
-              "name": "--fd-card-shadow"
-            },
-            {
-              "description": "Sets the inline padding",
-              "name": "--fd-card-padding-inline"
-            },
-            {
-              "description": "Sets the block padding",
-              "name": "--fd-card-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Card's div",
-              "name": "card"
-            }
-          ],
-          "slots": [
-            {
-              "description": "element has a slot",
-              "name": "This"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              }
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Card",
-          "declaration": {
-            "name": "Card",
-            "module": "types/fd-card/fd-card.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-card/fd-card.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-card/fd-card.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-card/fd-card.stories.d.ts"
           }
         }
       ]
@@ -3092,6 +2983,115 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-card/fd-card.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A classic Card component.",
+          "name": "Card",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-card-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-card-color"
+            },
+            {
+              "description": "Sets the Card's shadow",
+              "name": "--fd-card-shadow"
+            },
+            {
+              "description": "Sets the inline padding",
+              "name": "--fd-card-padding-inline"
+            },
+            {
+              "description": "Sets the block padding",
+              "name": "--fd-card-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Card's div",
+              "name": "card"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Card",
+          "declaration": {
+            "name": "Card",
+            "module": "types/fd-card/fd-card.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-card/fd-card.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-card/fd-card.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-card/fd-card.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-container/fd-container.d.ts",
       "declarations": [
         {
@@ -3304,6 +3304,94 @@
           "declaration": {
             "name": "GalleryWithLargeBoxes",
             "module": "types/fd-gallery/fd-gallery.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery-item/fd-gallery-item.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "GalleryItem",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding of gallery",
+              "name": "--padding"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items",
+              "name": "--gap"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Contains the content of the item",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GalleryItem",
+          "declaration": {
+            "name": "GalleryItem",
+            "module": "types/fd-gallery-item/fd-gallery-item.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery-item/fd-gallery-item.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
           }
         }
       ]
@@ -3561,94 +3649,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-gallery-item/fd-gallery-item.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "GalleryItem",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding of gallery",
-              "name": "--padding"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items",
-              "name": "--gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Contains the content of the item",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery-item",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GalleryItem",
-          "declaration": {
-            "name": "GalleryItem",
-            "module": "types/fd-gallery-item/fd-gallery-item.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-gallery-item/fd-gallery-item.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-hr/fd-hr.d.ts",
       "declarations": [
         {
@@ -3726,6 +3726,147 @@
           "declaration": {
             "name": "Primary",
             "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-icon/fd-icon.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Generalized section component",
+          "name": "Icon",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the inline and block size",
+              "name": "--fd-icon-size"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the fill color and defaults to currentcolor",
+              "name": "--fd-icon-fill"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets transform translate on the Y axis. Used to align with text. For more @see https://css-tricks.com/improving-icons-for-ui-elements-with-typographic-alignment-and-scale/",
+              "name": "--fd-offset"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "file",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the size of the icon based on a enum value."
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size | 'inline' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "svg",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "types/fd-icon/fd-icon.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-icon/fd-icon.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        },
+        {
+          "kind": "variable",
+          "name": "AllSizes",
+          "type": {
+            "text": "Story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "CustomSize",
+          "type": {
+            "text": "Story"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-icon/fd-icon.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-icon/fd-icon.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AllSizes",
+          "declaration": {
+            "name": "AllSizes",
+            "module": "types/fd-icon/fd-icon.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "CustomSize",
+          "declaration": {
+            "name": "CustomSize",
+            "module": "types/fd-icon/fd-icon.stories.d.ts"
           }
         }
       ]
@@ -4046,147 +4187,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-icon/fd-icon.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Generalized section component",
-          "name": "Icon",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the inline and block size",
-              "name": "--fd-icon-size"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the fill color and defaults to currentcolor",
-              "name": "--fd-icon-fill"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets transform translate on the Y axis. Used to align with text. For more @see https://css-tricks.com/improving-icons-for-ui-elements-with-typographic-alignment-and-scale/",
-              "name": "--fd-offset"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "file",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the size of the icon based on a enum value."
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size | 'inline' | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "svg",
-              "privacy": "private"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-icon",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Icon",
-          "declaration": {
-            "name": "Icon",
-            "module": "types/fd-icon/fd-icon.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-icon/fd-icon.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        },
-        {
-          "kind": "variable",
-          "name": "AllSizes",
-          "type": {
-            "text": "Story"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "CustomSize",
-          "type": {
-            "text": "Story"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-icon/fd-icon.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-icon/fd-icon.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AllSizes",
-          "declaration": {
-            "name": "AllSizes",
-            "module": "types/fd-icon/fd-icon.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CustomSize",
-          "declaration": {
-            "name": "CustomSize",
-            "module": "types/fd-icon/fd-icon.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-logo/fd-logo.d.ts",
       "declarations": [
         {
@@ -4435,89 +4435,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-stack/fd-stack.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Vertical Stack using gaps in between",
-          "name": "Stack",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-stack-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-stack-padding-inline"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-stack",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Stack",
-          "declaration": {
-            "name": "Stack",
-            "module": "types/fd-stack/fd-stack.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-stack/fd-stack.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-stack/fd-stack.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-stack/fd-stack.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-switch/fd-switch.d.ts",
       "declarations": [
         {
@@ -4634,6 +4551,166 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-stack/fd-stack.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Vertical Stack using gaps in between",
+          "name": "Stack",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-stack-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-stack-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-stack",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Stack",
+          "declaration": {
+            "name": "Stack",
+            "module": "types/fd-stack/fd-stack.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-stack/fd-stack.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-stack/fd-stack.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-stack/fd-stack.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/elements.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Default",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Showcasing basic HTML5 elements for theme testing"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Default",
+          "declaration": {
+            "name": "Default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/shared.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "errorStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "captionStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "errorStyles",
+          "declaration": {
+            "name": "errorStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "captionStyles",
+          "declaration": {
+            "name": "captionStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/mixins/formControlMixin.d.ts",
       "declarations": [
         {
@@ -4723,83 +4800,6 @@
       "path": "types/mixins/formdata-event-polyfill.d.ts",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/elements.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Default",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Showcasing basic HTML5 elements for theme testing"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Default",
-          "declaration": {
-            "name": "Default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/shared.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "errorStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "captionStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "errorStyles",
-          "declaration": {
-            "name": "errorStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "captionStyles",
-          "declaration": {
-            "name": "captionStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
