@@ -3398,6 +3398,89 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Horizontal rule (divider)",
+          "name": "Hr",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-hr-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-hr-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-hr",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Hr",
+          "declaration": {
+            "name": "Hr",
+            "module": "types/fd-hr/fd-hr.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-avatar/fd-avatar.d.ts",
       "declarations": [
         {
@@ -3649,89 +3732,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Horizontal rule (divider)",
-          "name": "Hr",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-hr-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-hr-padding-inline"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-hr",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Hr",
-          "declaration": {
-            "name": "Hr",
-            "module": "types/fd-hr/fd-hr.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-icon/fd-icon.d.ts",
       "declarations": [
         {
@@ -3867,6 +3867,152 @@
           "declaration": {
             "name": "CustomSize",
             "module": "types/fd-icon/fd-icon.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-label/fd-label.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Label component for inputs or as usual div or span",
+          "name": "Label",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-label-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-label-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "LabelTags"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "getTag",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-label",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "types/fd-label/fd-label.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-label/fd-label.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-label/fd-label.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-label/fd-label.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-label/fd-label.style.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "labelStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "labelStyles",
+          "declaration": {
+            "name": "labelStyles",
+            "module": "types/fd-label/fd-label.style.d.ts"
           }
         }
       ]
@@ -4035,152 +4181,6 @@
           "declaration": {
             "name": "OutsideForm",
             "module": "types/fd-input/fd-input.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-label/fd-label.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Label component for inputs or as usual div or span",
-          "name": "Label",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-label-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-label-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "as",
-              "type": {
-                "text": "LabelTags"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "for",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "getTag",
-              "privacy": "private"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-label",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Label",
-          "declaration": {
-            "name": "Label",
-            "module": "types/fd-label/fd-label.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-label/fd-label.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-label/fd-label.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-label/fd-label.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-label/fd-label.style.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "labelStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "labelStyles",
-          "declaration": {
-            "name": "labelStyles",
-            "module": "types/fd-label/fd-label.style.d.ts"
           }
         }
       ]
@@ -4435,6 +4435,89 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-stack/fd-stack.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Vertical Stack using gaps in between",
+          "name": "Stack",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-stack-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-stack-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-stack",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Stack",
+          "declaration": {
+            "name": "Stack",
+            "module": "types/fd-stack/fd-stack.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-stack/fd-stack.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-stack/fd-stack.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-stack/fd-stack.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-switch/fd-switch.d.ts",
       "declarations": [
         {
@@ -4551,166 +4634,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-stack/fd-stack.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Vertical Stack using gaps in between",
-          "name": "Stack",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-stack-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-stack-padding-inline"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-stack",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Stack",
-          "declaration": {
-            "name": "Stack",
-            "module": "types/fd-stack/fd-stack.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-stack/fd-stack.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-stack/fd-stack.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-stack/fd-stack.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/elements.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Default",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Showcasing basic HTML5 elements for theme testing"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Default",
-          "declaration": {
-            "name": "Default",
-            "module": "types/styles/elements.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/styles/shared.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "errorStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "captionStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "errorStyles",
-          "declaration": {
-            "name": "errorStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "captionStyles",
-          "declaration": {
-            "name": "captionStyles",
-            "module": "types/styles/shared.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/mixins/formControlMixin.d.ts",
       "declarations": [
         {
@@ -4800,6 +4723,155 @@
       "path": "types/mixins/formdata-event-polyfill.d.ts",
       "declarations": [],
       "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/elements.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Default",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Showcasing basic HTML5 elements for theme testing"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Default",
+          "declaration": {
+            "name": "Default",
+            "module": "types/styles/elements.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/styles/shared.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "errorStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "captionStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "errorStyles",
+          "declaration": {
+            "name": "errorStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "captionStyles",
+          "declaration": {
+            "name": "captionStyles",
+            "module": "types/styles/shared.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-visually-hidden/fd-visually-hidden.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
+          "name": "VisuallyHidden",
+          "slots": [
+            {
+              "description": "The visually hidden content.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-visually-hidden",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VisuallyHidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "types/fd-visually-hidden/fd-visually-hidden.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-visually-hidden/fd-visually-hidden.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-visually-hidden/fd-visually-hidden.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-visually-hidden/fd-visually-hidden.stories.d.ts"
+          }
+        }
+      ]
     },
     {
       "kind": "javascript-module",
@@ -4931,78 +5003,6 @@
           "declaration": {
             "name": "VariantInverted",
             "module": "types/fd-progress-circle/fd-progress-circle.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-visually-hidden/fd-visually-hidden.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
-          "name": "VisuallyHidden",
-          "slots": [
-            {
-              "description": "The visually hidden content.",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-visually-hidden",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "VisuallyHidden",
-          "declaration": {
-            "name": "VisuallyHidden",
-            "module": "types/fd-visually-hidden/fd-visually-hidden.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-visually-hidden/fd-visually-hidden.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-visually-hidden/fd-visually-hidden.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-visually-hidden/fd-visually-hidden.stories.d.ts"
           }
         }
       ]
