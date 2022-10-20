@@ -41,6 +41,10 @@
   --surface-2: var(--color-accent-2);
   --surface-3: var(--color-accent-3);
   --surface-4: var(--color-accent-4);
+  --surface-1-inverted: var(--color-accent-9);
+  --surface-2-inverted: var(--color-accent-8);
+  --surface-3-inverted: var(--color-accent-7);
+  --surface-4-inverted: var(--color-accent-6);
   --scrollbar-color: var(--color-accent-5);
 
   /* aliases */
@@ -56,8 +60,13 @@
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
   --color-surface-4: var(--surface-4);
+  --color-surface-1-inverted: var(--surface-1-inverted);
+  --color-surface-2-inverted: var(--surface-2-inverted);
+  --color-surface-3-inverted: var(--surface-3-inverted);
+  --color-surface-4-inverted: var(--surface-4-inverted);
 
   --color-border: var(--color-accent-2);
+  --color-border-inverted: var(--color-accent-8);
 
   /* @url https://yeun.github.io/open-color/#lime */
   --color-status-success: #37b24d;
@@ -118,8 +127,13 @@
     --surface-2: var(--color-accent-8);
     --surface-3: var(--color-accent-7);
     --surface-4: var(--color-accent-6);
+    --surface-1-inverted: var(--color-accent-0);
+    --surface-2-inverted: var(--color-accent-2);
+    --surface-3-inverted: var(--color-accent-3);
+    --surface-4-inverted: var(--color-accent-4);
 
     --color-border: var(--color-accent-8);
+    --color-border-inverted: var(--color-accent-2);
 
     color-scheme: dark;
   }
