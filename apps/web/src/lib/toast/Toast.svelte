@@ -34,6 +34,7 @@
 
     display: flex;
     gap: var(--size-4);
+    inline-size: min(var(--size-15), 100%);
   }
 
   .main {
@@ -45,7 +46,12 @@
     line-height: var(--font-lineheight-3);
   }
 
+  .before {
+    flex-shrink: 0;
+  }
+
   .after {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     block-size: calc(var(--font-size-1) * var(--font-lineheight-3))
