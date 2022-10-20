@@ -32,6 +32,13 @@ body {
   --fd-card-padding-inline: var(--size-3);
   --fd-card-padding-block: var(--size-7);
 
+  &[data-variant="inverted"] {
+    --fd-card-background-color: var(--color-surface-2-inverted);
+    --fd-card-color: var(--text-1-inverted);
+    --fd-info-text-color: var(--text-2-inverted);
+    --fd-card-border-color: var(--color-border-inverted);
+  }
+
   inline-size: 100%;
   display: inline-block;
   box-sizing: border-box;
@@ -52,9 +59,9 @@ body {
 }
 
 .fd-info-text {
-  --fd-info-text-color: var(--text-2);
+  --_fd-info-text-color: var(--fd-info-text-color, var(--text-2));
   /* @todo use var instead? */
   /* font-size: var(--font-size-1); */
   font-size: 0.875rem;
-  color: var(--fd-info-text-color);
+  color: var(--_fd-info-text-color);
 }
