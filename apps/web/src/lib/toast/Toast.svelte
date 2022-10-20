@@ -1,15 +1,47 @@
 <script lang="ts">
 	import Icon from "$lib/icon/Icon.svelte";
 	import timesSolidSvg from "assets/icons/times-solid.svg?raw";
+	import { fly } from "svelte/transition";
 	import { Size } from "types";
+	import { NotificationType } from "./notifications";
+  import checkCircleSvg from 'assets/icons/check-circle-solid.svg?raw';
+  import exclamationCircleSolidSvg from 'assets/icons/exclamation-circle-solid.svg?raw';
+  import timesCircleSvg from 'assets/icons/times-circle.svg?raw';
 
   export let message: string;
+  export let type: NotificationType = NotificationType.Default;
 </script>
 
-<div class="toast fd-card">
-  {#if $$slots.before}
+<div
+  class="toast fd-card"
+  data-variant="inverted"
+  transition:fly={{ y: 30 }}
+>
+  {#if $$slots.before || type}
     <div class="before">
-      <slot name="before"></slot>
+      <slot name="before">
+        {#if type === NotificationType.Success}
+          <Icon
+            size={Size.Md}
+            --fd-icon-fill="var(--color-status-success)"
+          >{@html checkCircleSvg}</Icon>
+        {:else if type === NotificationType.Warning}
+          <Icon
+            size={Size.Md}
+            --fd-icon-fill="var(--color-status-warning)"
+          >{@html exclamationCircleSolidSvg}</Icon>
+        {:else if type === NotificationType.Danger}
+          <Icon
+            size={Size.Md}
+            --fd-icon-fill="var(--color-status-error)"
+          >{@html exclamationCircleSolidSvg}</Icon>
+        {:else if type === NotificationType.Error}
+          <Icon
+            size={Size.Md}
+            --fd-icon-fill="var(--color-status-error)"
+          >{@html timesCircleSvg}</Icon>
+        {/if}
+      </slot>
     </div>
   {/if}
   <div class="main">
