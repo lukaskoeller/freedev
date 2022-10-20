@@ -19,8 +19,7 @@
 
 <style lang="postcss">
   div {
-    inline-size: var(--fd-icon-size, var(--size));
-    block-size: var(--fd-icon-size, var(--size));
+    display: contents;
   }
 
   div :global(svg) {
