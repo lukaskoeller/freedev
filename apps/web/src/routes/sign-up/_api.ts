@@ -13,9 +13,6 @@ const API_STAGE = '/dev';
 const API_BASE = `https://8qjflpsz7c.execute-api.eu-central-1.amazonaws.com${API_STAGE}`;
 
 export function api(method: string, resource: string, data?: Record<string, unknown>) {
-	console.log('api', method, resource, data);
-	console.log('json', JSON.stringify(data));
-	
 	
 	return fetch(`${API_BASE}/${resource}`, {
 		method,
