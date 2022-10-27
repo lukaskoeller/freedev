@@ -2,6 +2,7 @@ import { css, LitElement } from 'lit'
 import { html } from 'lit/static-html.js';
 import { customElement, property } from 'lit/decorators.js';
 import { FormControlMixin } from '../mixins/formControlMixin';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * https://css-tricks.com/supercharging-built-in-elements-with-web-components-is-easier-than-you-think/
@@ -51,7 +52,7 @@ export class Switch extends FormControlMixin(LitElement) {
       display: flex;
       align-items: center;
       gap: var(--size-4);
-      justify-content: flex-start
+      justify-content: flex-start;
 
       cursor: pointer;
       user-select: none;
@@ -154,13 +155,13 @@ export class Switch extends FormControlMixin(LitElement) {
           id="input"
           role="switch"
           type="checkbox"
-          name=${this.name}
-          value=${this.value}
+          name=${ifDefined(this.name)}
+          value=${ifDefined(this.value)}
           ?checked=${this.checked}
           ?disabled=${this.disabled}
           @click=${this.onCheckbox}
         >
-        <slot />
+        <slot></slot>
       </label>
     `;
   }
@@ -168,7 +169,7 @@ export class Switch extends FormControlMixin(LitElement) {
   private onCheckbox(e: InputEvent) {
     
     const target = e.target as HTMLInputElement
-    console.log('swith onCheckbox', target.checked);
+    console.log('switch onCheckbox', target.checked);
     this.checked = target.checked;
   }
 }
