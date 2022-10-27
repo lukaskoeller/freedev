@@ -79,10 +79,12 @@ export const FormControlMixin =
         // this.customValidity();
 
         // @todo Also adds checkbox data even if :not(:checked)
-        if (this?.name && (this?.value || this?.value === '')) {
+        if (
+          this?.name
+          && (this?.value || this?.value === '')
+        ) {
           event.formData.append(this.name, this.value);
         }
-        
       }
     };
   return FormControl as Constructor<FormControlMixinInterface> & T;
