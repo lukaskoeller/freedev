@@ -1,5 +1,13 @@
 import * as aws from "@pulumi/aws";
 
+export const passwordPolicy = {
+  minimumLength: 8,
+  requireLowercase: true,
+  requireSymbols: true,
+  requireNumbers: true,
+  requireUppercase: true,
+};
+
 export const createUserPoolAndClient = () => {
   const emailConfiguration = new aws.ses.ConfigurationSet("email-sign-up-verification", {
     // @todo re-enable "Require"?
@@ -46,13 +54,7 @@ export const createUserPoolAndClient = () => {
     deviceConfiguration: {
       deviceOnlyRememberedOnUserPrompt: true,
     },
-    passwordPolicy: {
-      minimumLength: 8,
-      requireLowercase: true,
-      requireSymbols: true,
-      requireNumbers: true,
-      requireUppercase: true,
-    }
+    passwordPolicy,
   });
   
   const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {
