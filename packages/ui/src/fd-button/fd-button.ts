@@ -195,7 +195,7 @@ export class Button extends FormControlMixin(LitElement) {
           name=${ifDefined(!this.isLink ? this.name : undefined)}
           value=${ifDefined(!this.isLink ? this.value : undefined)}
           type=${ifDefined(!this.isLink ? this.type : undefined)}
-          ?disabled=${ifDefined(!this.isLink ? this.disabled : undefined)}
+          ?disabled=${!this.isLink ? this.disabled : undefined}
         ></button>
       `, this);
     }
