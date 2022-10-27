@@ -4,7 +4,8 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/validator": "^13.7.9"
