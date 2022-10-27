@@ -61,7 +61,7 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
       body: {
         status: error?.statusCode ?? 500,
         message: error?.message
-          ? `${error?.message} (${error?.code ?? 'n/a'})`
+          ? `${error?.message}${error?.code ?? ` (${error?.code}`}`
           : DEFAULT_ERROR_MESSAGE,
         debugMessage: 'Some text to debug the error',
       }
