@@ -26,7 +26,7 @@ export const FormControlMixin =
       private _form: HTMLFormElement | null = null;
 
       @property({type: String}) name?: string;
-      @property({type: String}) value?: string;
+      @property({type: String}) value?: string = '';
       @property({type: Boolean}) disabled: boolean = false;
 
       protected get form(): HTMLFormElement | null { 
