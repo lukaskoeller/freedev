@@ -1,9 +1,45 @@
 import isEmail from 'validator/lib/isEmail';
+import type { ValidationError, AnySchema } from 'yup';
 
 export type ValidateReturn<ErrorsType> = {
   isValid: boolean;
   errors?: ErrorsType;
   fields?: Map<string, string>;
+};
+
+export type FieldErrors = Map<string, string>;
+
+export type SignUpData = {
+  email: string | FormDataEntryValue;
+  password: string | FormDataEntryValue;
+};
+
+export const validateAgainstSchema = (
+  /** Yup Validation Schema */
+  schema: AnySchema,
+  /** Data to be validated against the schema */
+  data: SignUpData
+): ValidateReturn<ValidationError> => {
+  try {
+    schema.validateSync(data, { abortEarly: false });
+
+    return {
+      isValid: true,
+    };
+
+  } catch (error) {
+    const { inner } = error as ValidationError;
+    const fields: FieldErrors = new Map();
+    inner.forEach((field) => {
+      fields.set(field.path, field.message);
+    });
+
+    return {
+      isValid: false,
+      errors: error,
+      fields,
+    };
+  }
 };
 
 export const validateIsEmail = (str: string) => isEmail(str);
