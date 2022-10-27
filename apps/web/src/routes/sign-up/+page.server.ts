@@ -1,5 +1,6 @@
 import { error, invalid, redirect, type Actions } from "@sveltejs/kit";
 import { api } from "./_api";
+import { validate } from "./_validations";
 
 export const actions: Actions = {
   signUp: async ({ request }) => {
@@ -7,52 +8,42 @@ export const actions: Actions = {
     
     const form = await request.formData();
     const email = form.get('email');
+    const password = form.get('password');
+
+    const data = {
+      email,
+      password,
+    }
+
+    const { isValid } = validate(data);
+    if (!isValid) {
+      return invalid(400, { message: 'We could not sign you up. Try to adjust your inputs.' });
+    }
 
     const response = await api('PUT', 'sign-up', {
-      email: email,
-      password: form.get('password'),
+      email,
+      password,
     });
     const body = await response.json();
+    console.log('RESPONSE BODY', body);
     
-    const username = body?.data?.UserSub;
+    
+    const username = body?.UserSub;
 
-    if (!username) {
-      return invalid(500, { message: 'We could not sign up this user' });
+    if (!username || body?.statusCode === 500) {
+      return invalid(500, { message: body?.message ?? 'We could not sign up this user' });
+    }
+
+    if (body?.statusCode === 400) {
+      return invalid(400, { message: body?.message ?? 'We could not sign you up. Try to adjust your inputs.' });
     }
 
     const params = new URLSearchParams({
       username,
-      email: body?.data?.CodeDeliveryDetails?.Destination,
+      email: body?.CodeDeliveryDetails?.Destination,
     });
     
-    // return body;
-    throw redirect(301, `/confirm-sign-up?${params}`)
-    // return { statusCode: 200, message: 'Successfully signed up', email };
-  },
-  confirmSignUp: async ({ request }) => {
-    const form = await request.formData();
-    console.log('FORM', form);
-    
-    const confirmationCode = form.get('confirmationCode');
-    const username = form.get('username');
-
-    console.log('PAYLOAD', {
-      confirmationCode,
-      username,
-    });
-
-    const response = await api('POST', 'confirm-sign-up', {
-      confirmationCode,
-      username,
-    });
-
-    if (response.status !== 200) {
-      return invalid(500, { message: 'We could not confirm this user' });
-    }
-
-    const body = await response.json();
-    console.log('BODY', body);
-    
-    return body;
+    throw redirect(301, `/confirm-sign-up?${params}`);
+    // throw redirect(301, `/confirm-sign-up?username=123456789&email=l***@p***`);
   },
 };
