@@ -4,6 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { labelStyles } from '../fd-label/fd-label.style';
 import { FormControlMixin } from '../mixins/formControlMixin';
 import { captionStyles, errorStyles } from '../styles/shared';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * https://css-tricks.com/supercharging-built-in-elements-with-web-components-is-easier-than-you-think/
@@ -89,13 +90,13 @@ export class Input extends FormControlMixin(LitElement) {
       <input
         id="input"
         type=${this.type}
-        name=${this.name}
-        value=${this.value}
+        name=${ifDefined(this.name)}
+        value=${ifDefined(this.value)}
         placeholder=${this.placeholder ?? this.label}
         ?disabled=${this.disabled}
         @input=${this.onInput}
         spellcheck="false"
-        ?aria-invalid=${!!this.error}
+        aria-invalid=${ifDefined(!!this.error)}
         aria-describedby="error"
       >
       <div
