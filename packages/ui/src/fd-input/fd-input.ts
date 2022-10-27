@@ -58,7 +58,7 @@ export class Input extends FormControlMixin(LitElement) {
         color: var(--primary-color-base);
       }
 
-      input[aria-invalid] {
+      input[aria-invalid="true"] {
         --fd-input-border-color: var(--color-status-error);
         border: var(--border-size-1) solid var(--fd-input-border-color);
       }
