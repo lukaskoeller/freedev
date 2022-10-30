@@ -9,7 +9,8 @@
 
 <style lang="postcss">
   .bar {
-    padding: var(--size-fluid-1);
+    max-inline-size: 100%;
+    padding: var(--size-fluid-2);
     border-radius: var(--radius-round);
     border: var(--border-size-1) solid var(--color-border);
     background-color: var(--color-surface-1);
@@ -24,22 +25,28 @@
 
   .search {
     inline-size: 100%;
+    min-inline-size: 0;
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr auto;
-    gap: var(--size-3);
+    gap: var(--size-fluid-1);
   }
 
   input {
+    min-inline-size: 0;
     block-size: min(var(--size-fluid-5), 100%);
-    padding-inline-start: calc(var(--size-fluid-5) / 2);
+    padding-inline-start: var(--size-fluid-3);
     border-radius: var(--radius-round);
     background: transparent;
-    font-size: var(--font-size-fluid-1);
+    font-size: var(--font-size-fluid-2);
   }
 
   button {
-    aspect-ratio: 1;
+    min-inline-size: 0;
+    /* aspect-ratio: 1; */
     block-size: 100%;
+    padding-inline: var(--size-4);
+    padding-block: var(--size-2);
     border-radius: var(--radius-round);
     background-color: var(--color-primary-base);
     color: var(--color-on-primary);
