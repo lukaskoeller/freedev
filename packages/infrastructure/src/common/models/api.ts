@@ -30,6 +30,7 @@ export type MicroserviceParams = {
    */
   httpMethod?: HttpMethod;
   api: aws.apigatewayv2.Api;
+  authorizerId?: pulumi.Output<string>;
 }
 
 export class Microservice {
@@ -141,6 +142,10 @@ export class Microservice {
       apiId: this.apigatewayv2.id,
       routeKey: `${parameters?.httpMethod ? `${parameters?.httpMethod} ` : ''}${parameters.path}`,
       target: pulumi.interpolate`integrations/${this.apigatewayv2Integration.id}`,
+      ...parameters?.authorizerId ? {
+        authorizerId: parameters.authorizerId,
+        authorizationType: 'JWT'
+      } : {},
     });
   }
 }
