@@ -25,8 +25,7 @@ export const actions: Actions = {
       password,
     });
     const body = await response.json();
-    console.log('RESPONSE BODY', body);
-    
+    console.log('RESPONSE BODY', body); // @todo remove
     
     const username = body?.UserSub;
 
