@@ -39,6 +39,7 @@
 			></Toast>
 		</div>
 	{/each}
+	<!-- @todo move to separate component -->
 	</div>
 </section>
 
