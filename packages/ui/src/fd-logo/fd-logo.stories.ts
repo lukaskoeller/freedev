@@ -11,8 +11,8 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story = (args) => html`
-  <fd-logo />
+const Template: Story = () => html`
+  <fd-logo></fd-logo>
 `;
 
 /**

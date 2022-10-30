@@ -48,7 +48,7 @@ export class Icon extends LitElement {
     file?: string;
 
   @property()
-    size?: Size | 'inline' = Size.Md;
+    size?: Exclude<Size, Size.Xxl> | 'inline' = Size.Md;
 
   @query('svg') private svg!: SVGSVGElement|null;
 

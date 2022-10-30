@@ -57,7 +57,7 @@ export class Avatar extends LitElement {
   @query('img') private img!: HTMLImageElement|null;
 
   @property({ type: String })
-  size?: Size;
+  size?: Exclude<Size, Size.Xxl>;
 
   render() {
     return html`

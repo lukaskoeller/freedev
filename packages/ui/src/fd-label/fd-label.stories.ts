@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
-const Template: Story = (args) => html`
+const Template: Story = () => html`
   <fd-label>
     Label Name
   </fd-label>

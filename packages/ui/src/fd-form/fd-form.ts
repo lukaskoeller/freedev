@@ -34,7 +34,7 @@ export class Form extends LitElement {
     return html`
       <form @submit=${this._formdata}>
         <button type="submit">Submit Form</button>
-        <slot />
+        <slot></slot>
       </form>
     `
   }

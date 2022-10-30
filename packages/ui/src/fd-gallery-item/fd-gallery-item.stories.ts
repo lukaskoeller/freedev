@@ -8,7 +8,7 @@ export default {
   component: 'fd-gallery-item',
 } as Meta;
 
-const Template: Story = (args) => html`
+const Template: Story = () => html`
   <fd-gallery>
     ${['1','2','3','4'].map((item) => html`
       <fd-gallery-item

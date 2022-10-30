@@ -662,7 +662,7 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "Size | undefined"
+                "text": "Exclude<Size, Size.Xxl> | undefined"
               },
               "attribute": "size"
             }
@@ -678,7 +678,7 @@
             {
               "name": "size",
               "type": {
-                "text": "Size | undefined"
+                "text": "Exclude<Size, Size.Xxl> | undefined"
               },
               "fieldName": "size"
             }
@@ -1866,7 +1866,7 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "Size | 'inline' | undefined"
+                "text": "Exclude<Size, Size.Xxl> | 'inline' | undefined"
               },
               "attribute": "size"
             },
@@ -1891,7 +1891,7 @@
             {
               "name": "size",
               "type": {
-                "text": "Size | 'inline' | undefined"
+                "text": "Exclude<Size, Size.Xxl> | 'inline' | undefined"
               },
               "fieldName": "size"
             }
@@ -3378,6 +3378,24 @@
               },
               "description": "Adjusts block padding of gallery",
               "name": "--fd-gallery-padding-block"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline"
             }
           ],
           "slots": [
@@ -4060,6 +4078,13 @@
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "actionSlot",
+              "type": {
+                "text": "SlotController"
+              }
+            },
             {
               "kind": "field",
               "name": "heading",
