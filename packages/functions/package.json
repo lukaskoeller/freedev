@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "index.ts",
   "scripts": {
+    "build": "npm run build:esbuild",
     "build:sam": "sam build",
     "build:esbuild": "node ./scripts/build.js"
   },
