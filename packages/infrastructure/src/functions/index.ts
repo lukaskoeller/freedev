@@ -1,11 +1,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import { HttpMethod, Microservice } from '../common/models';
+import { UserPool } from "@pulumi/aws/cognito";
 
-export const createApi = () => {
+export type CreateApiArgs = {
+  /**
+   * Cognito endpoint
+   */
+  cognitoEndpoint: UserPool['endpoint'],
+}
+
+export const createApi = (args: CreateApiArgs) => {
   const api = new aws.apigatewayv2.Api("httpApiGateway", {
     protocolType: "HTTP",
   });
+
+  const apiAuthorizer = new aws.apigatewayv2.Authorizer("example", {
+    apiId: api.id,
+    authorizerType: "JWT",
+    identitySources: [`$request.header.Authorization`],
+    jwtConfiguration: {
+      issuer: `https://${args.cognitoEndpoint}`,
+    },
+  });
+
+  const authorizerId = apiAuthorizer.id;
 
   /**
    * @todo Iterate through openapi.json and create new Microservice.
@@ -17,11 +36,22 @@ export const createApi = () => {
     api,
   });
 
+  /**
+   * Confirms sign up via a code sent through cognito and SES.
+   */
   const confirmSignUpEndpoint = new Microservice({
     name: 'confirm-sign-up',
     path: '/confirm-sign-up',
     httpMethod: HttpMethod.POST,
     api,
+  });
+
+  const profile = new Microservice({
+    name: 'profile',
+    path: '/profile/{profileName}',
+    httpMethod: HttpMethod.GET,
+    api,
+    authorizerId,
   });
 
   /**
