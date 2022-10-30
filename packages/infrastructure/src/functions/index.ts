@@ -5,9 +5,9 @@ import { UserPool } from "@pulumi/aws/cognito";
 
 export type CreateApiArgs = {
   /**
-   * Cognito endpoint
+   * Cognito user pool endpoint
    */
-  cognitoEndpoint: UserPool['endpoint'],
+  userPoolEndpoint: UserPool['endpoint'],
 }
 
 export const createApi = (args: CreateApiArgs) => {
@@ -20,7 +20,7 @@ export const createApi = (args: CreateApiArgs) => {
     authorizerType: "JWT",
     identitySources: [`$request.header.Authorization`],
     jwtConfiguration: {
-      issuer: `https://${args.cognitoEndpoint}`,
+      issuer: `https://${args.userPoolEndpoint}`,
     },
   });
 

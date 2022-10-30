@@ -61,7 +61,10 @@ export const createUserPoolAndClient = () => {
     userPoolId: userPool.id,
   });
 
+  const userPoolEndpoint = userPool.endpoint;
+
   return {
     userPoolClientId: userPoolClient.id,
+    userPoolEndpoint,
   }
 }

@@ -10,12 +10,12 @@ import { getDomainAndSubdomain } from "./src/common/utils";
  * Cognito User Pool
  * Includes email configuration
  */
-export const { userPoolClientId } =  createUserPoolAndClient();
+export const { userPoolClientId, userPoolEndpoint } =  createUserPoolAndClient();
 
 /**
  * API Gateway v2
  */
-createApi();
+createApi({ userPoolEndpoint });
 
 /**
  * US East Region Provider
