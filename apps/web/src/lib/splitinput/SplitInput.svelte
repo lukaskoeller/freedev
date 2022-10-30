@@ -52,6 +52,23 @@
     }
   }
 
+  function onPaste(e: ClipboardEvent) {
+    const [
+      val1,
+      val2,
+      val3,
+      val4,
+      val5,
+      val6,
+    ] = `${e.clipboardData.getData('text')}`.trim();
+    input1 = val1 ?? '';
+    input2 = val2 ?? '';
+    input3 = val3 ?? '';
+    input4 = val4 ?? '';
+    input5 = val5 ?? '';
+    input6 = val6 ?? '';
+  }
+
   $: ariaInvalid && resetInput();
 
   function resetInput() {
@@ -73,6 +90,7 @@
     aria-invalid={ariaInvalid}
     on:input={onInput}
     on:keydown={onKeyDown}
+    on:paste={onPaste}
     bind:this={input1Input}
     bind:value={input1}
   >
