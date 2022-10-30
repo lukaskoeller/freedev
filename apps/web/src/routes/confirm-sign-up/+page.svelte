@@ -46,17 +46,17 @@
               const { result, update } = args;
               switch (result.type) {
                 case 'success':
-                  notifications.success('Created new product');
+                  notifications.success(result.data.message);
                   invalidateAll();
                   break;
                 case 'error':
-                  notifications.error('Something went wrong when trying to create a new product');
+                  notifications.error('Something went wrong');
                   // await applyAction(result);
                   form.reset();
                   // invalidateAll();
                   break;
                 case 'invalid':
-                  notifications.warning(result.data.body.data.message);
+                  notifications.warning(result.data.message);
                   // form.reset();
                   invalidateAll();
                   await applyAction(result);
