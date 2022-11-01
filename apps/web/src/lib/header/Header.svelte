@@ -15,6 +15,9 @@
 		<fd-logo />
 	</a>
 	<nav>
+		<fd-button as="a" href="/sign-in">
+			Sign In
+		</fd-button>
 		<a href="/profile">
 			<fd-icon file={userCircleSolid} size="lg" />
 			<span>Profile</span>
