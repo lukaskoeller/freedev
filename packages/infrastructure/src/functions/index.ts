@@ -2,12 +2,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import { HttpMethod, Microservice } from '../common/models';
 import { UserPool } from "@pulumi/aws/cognito";
+import { userPoolClientId } from "../..";
 
 export type CreateApiArgs = {
   /**
    * Cognito user pool endpoint
    */
   userPoolEndpoint: UserPool['endpoint'],
+  userPoolClientId: UserPool['id'],
 }
 
 export const createApi = (args: CreateApiArgs) => {
@@ -15,12 +17,13 @@ export const createApi = (args: CreateApiArgs) => {
     protocolType: "HTTP",
   });
 
-  const apiAuthorizer = new aws.apigatewayv2.Authorizer("example", {
+  const apiAuthorizer = new aws.apigatewayv2.Authorizer("httpApiGatewayAuthorizer", {
     apiId: api.id,
     authorizerType: "JWT",
     identitySources: [`$request.header.Authorization`],
     jwtConfiguration: {
-      issuer: `https://${args.userPoolEndpoint}`,
+      issuer: pulumi.interpolate`https://${args.userPoolEndpoint}`,
+      audiences: [userPoolClientId],
     },
   });
 
