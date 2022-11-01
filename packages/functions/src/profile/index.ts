@@ -1,6 +1,6 @@
 import { APIGatewayEvent, Context } from "aws-lambda";
 import { DEFAULT_ERROR_MESSAGE } from "errors";
-import { ApiErrorResponse, ApiResponse } from "../utils";
+import { ApiErrorResponse, ApiResponse } from "../common/utils";
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   
