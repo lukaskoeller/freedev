@@ -6,13 +6,7 @@ import {
   SignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
 import { ApiErrorResponse, ApiResponse, BodyErrorType, NoBodyException } from "../common/utils";
-
-/**
- * AWS Region
- * @see https://www.pulumi.com/registry/packages/aws/api-docs/getregion/
- */
-const REGION = 'eu-central-1';
-const USER_POOL_CLIENT_ID = '6b3h1osi597ifm5at8qcsavg5d';
+import { AWS_REGION, USER_POOL_CLIENT_ID } from "../common/constants";
 
 export type SignUpBody = {
   email: string;
@@ -28,7 +22,7 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
   const { email, password } = body;
   
   // a client can be shared by different commands.
-  const client = new CognitoIdentityProviderClient({ region: REGION });
+  const client = new CognitoIdentityProviderClient({ region: AWS_REGION });
 
   const params: SignUpCommandInput = {
     ClientId: USER_POOL_CLIENT_ID, // @todo any possibility to use 'userPoolClient.id'?

@@ -24,7 +24,7 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
   if (!event?.body) {
     throw NoBodyException;
   }
-  
+
   const body: SignInBody = JSON.parse(event?.body);
   const { email, password } = body;
   const ipAddress = event?.['requestContext']?.['http']?.['sourceIp'];

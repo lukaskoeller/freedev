@@ -6,13 +6,7 @@ import {
   ConfirmSignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
 import { ApiErrorResponse, ApiResponse, NoBodyException } from "../common/utils";
-
-/**
- * AWS Region
- * @see https://www.pulumi.com/registry/packages/aws/api-docs/getregion/
- */
-const REGION = 'eu-central-1';
-const USER_POOL_CLIENT_ID = '6b3h1osi597ifm5at8qcsavg5d';
+import { AWS_REGION, USER_POOL_CLIENT_ID } from "../common/constants";
 
 // @todo use for body schema validation https://github.com/colinhacks/zod
 export type ConfirmSignUpBody = {
@@ -29,7 +23,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   const { confirmationCode, username } = body;
   
   // a client can be shared by different commands.
-  const client = new CognitoIdentityProviderClient({ region: REGION });
+  const client = new CognitoIdentityProviderClient({ region: AWS_REGION });
 
   const params: ConfirmSignUpCommandInput = {
     ConfirmationCode: confirmationCode,
