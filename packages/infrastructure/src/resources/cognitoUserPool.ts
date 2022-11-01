@@ -59,6 +59,13 @@ export const createUserPoolAndClient = () => {
   
   const userPoolClient = new aws.cognito.UserPoolClient("appPoolClient", {
     userPoolId: userPool.id,
+    explicitAuthFlows: [
+      'ALLOW_REFRESH_TOKEN_AUTH',
+      'ALLOW_CUSTOM_AUTH',
+      'ALLOW_USER_SRP_AUTH',
+      'USER_PASSWORD_AUTH',
+    ],
+    preventUserExistenceErrors: 'ENABLED',
   });
 
   const userPoolEndpoint = userPool.endpoint;
