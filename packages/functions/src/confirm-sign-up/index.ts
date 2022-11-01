@@ -1,11 +1,11 @@
 import { APIGatewayEvent, Context } from "aws-lambda";
-import { DEFAULT_ERROR_MESSAGE, RestExceptionNoBody } from "errors";
+import { DEFAULT_ERROR_MESSAGE } from "errors";
 import {
   CognitoIdentityProviderClient,
   ConfirmSignUpCommand,
   ConfirmSignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
-import { ApiErrorResponse, ApiResponse } from "../utils";
+import { ApiErrorResponse, ApiResponse, NoBodyException } from "../common/utils";
 
 /**
  * AWS Region
@@ -22,7 +22,7 @@ export type ConfirmSignUpBody = {
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   if (!event?.body) {
-    throw RestExceptionNoBody
+    throw NoBodyException;
   }
   
   const body: ConfirmSignUpBody = JSON.parse(event?.body);
