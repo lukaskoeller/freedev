@@ -49,10 +49,19 @@ export const createApi = (args: CreateApiArgs) => {
     api,
   });
 
+  // @todo change to {username}
   const profile = new Microservice({
     name: 'profile',
     path: '/profile/{profileName}',
     httpMethod: HttpMethod.GET,
+    api,
+    authorizerId,
+  });
+
+  const signIn = new Microservice({
+    name: 'sign-in',
+    path: '/sign-in',
+    httpMethod: HttpMethod.POST,
     api,
     authorizerId,
   });
