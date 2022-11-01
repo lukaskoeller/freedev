@@ -63,7 +63,6 @@ export const createApi = (args: CreateApiArgs) => {
     path: '/sign-in',
     httpMethod: HttpMethod.POST,
     api,
-    authorizerId,
   });
 
   /**
