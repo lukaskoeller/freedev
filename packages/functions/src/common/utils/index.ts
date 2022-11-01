@@ -1,3 +1,5 @@
+import { INTERNAL_ERROR_MESSAGE } from "errors";
+
 export const serialize = <BodyType extends Record<string, any>>(object: BodyType): string => (
   JSON.stringify(object, null, 2)
 );
@@ -57,4 +59,15 @@ export const NoBodyException = new ApiErrorResponse({
     message: 'Expected a body but did not receive one.',
     debugMessage: 'Check if client side validations are applied and body is passed in the api request',
   }
-})
+});
+
+/**
+ * @todo replace by InternalErrorException from aws?
+ */
+export const InternalErrorException = new ApiErrorResponse({
+  statusCode: 500,
+  body: {
+    status: 500,
+    message: INTERNAL_ERROR_MESSAGE,
+  },
+});
