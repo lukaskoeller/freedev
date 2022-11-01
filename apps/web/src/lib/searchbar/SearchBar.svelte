@@ -38,7 +38,7 @@
     padding-inline-start: var(--size-fluid-3);
     border-radius: var(--radius-round);
     background: transparent;
-    font-size: var(--font-size-fluid-2);
+    font-size: var(--font-size-fluid-1);
   }
 
   button {
