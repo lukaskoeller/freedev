@@ -6,7 +6,7 @@ import {
   InitiateAuthCommand,
   InitiateAuthCommandInput,
 } from "@aws-sdk/client-cognito-identity-provider";
-import { ApiErrorResponse, ApiResponse, NoBodyException } from "../common/utils";
+import { ApiErrorResponse, ApiResponse, InternalErrorException, NoBodyException } from "../common/utils";
 
 /**
  * AWS Region
@@ -18,7 +18,6 @@ const USER_POOL_CLIENT_ID = '6b3h1osi597ifm5at8qcsavg5d';
 export type SignInBody = {
   email: string;
   password: string;
-  ipAddress: string;
 }
 
 export const handler = async (event: APIGatewayProxyEventV2, context: Context) => {
@@ -27,7 +26,12 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
   }
   
   const body: SignInBody = JSON.parse(event?.body);
-  const { email, password, ipAddress } = body;
+  const { email, password } = body;
+  const ipAddress = event?.['requestContext']?.['http']?.['sourceIp'];
+
+  if (!ipAddress) {
+    throw InternalErrorException;
+  }
   
   // a client can be shared by different commands.
   const client = new CognitoIdentityProviderClient({ region: REGION });
