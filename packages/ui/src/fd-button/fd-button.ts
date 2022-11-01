@@ -34,7 +34,7 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-color--hover: var(--color-on-primary);
       
       --fd-button-padding-inline: var(--size-6);
-      --fd-button-block-size: var(--size-8);
+      --fd-button-block-size: calc(var(--size-6) + var(--size-3));
       --fd-button-font-size: var(--font-size-1);
       --fd-button-line-height: var(--font-lineheight-5);
 
