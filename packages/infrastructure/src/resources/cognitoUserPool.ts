@@ -61,6 +61,7 @@ export const createUserPoolAndClient = () => {
     userPoolId: userPool.id,
     explicitAuthFlows: [
       'USER_PASSWORD_AUTH',
+      'ALLOW_REFRESH_TOKEN_AUTH',
     ],
     preventUserExistenceErrors: 'ENABLED',
   });
