@@ -1,17 +1,22 @@
+import { api } from "$lib/common/utils/api.utils";
 import { invalid, type Actions } from "@sveltejs/kit";
-import { api } from "../sign-up/_api";
 
 export const actions: Actions = {
-  default: async ({ request }) => {
+  default: async ({ request, fetch }) => {
     const form = await request.formData();
     console.log('FORM', form);
     
     const confirmationCode = form.get('confirmationCode');
     const username = form.get('username');
   
-    const response = await api('POST', 'confirm-sign-up', {
-      confirmationCode,
-      username,
+    const response = await api({
+      fetch,
+      method: 'POST',
+      resource: 'confirm-sign-up',
+      data: {
+        confirmationCode,
+        username,
+      },
     });
     const body = await response.json();
 
