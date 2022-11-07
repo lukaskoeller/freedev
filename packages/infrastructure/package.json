@@ -6,15 +6,15 @@
         "deploy": "pulumi up"
     },
     "devDependencies": {
-        "@types/node": "^14"
+        "@types/node": "^14.18.33"
     },
     "dependencies": {
-        "@pulumi/aws": "^5.0.0",
+        "@pulumi/aws": "^5.20.0",
         "@pulumi/aws-apigateway": "^0.0.9",
-        "@pulumi/awsx": "^0.40.0",
-        "@pulumi/pulumi": "^3.0.0",
-        "errors": "*",
-        "tsconfig": "*",
-        "functions": "*"
+        "@pulumi/awsx": "^0.40.1",
+        "@pulumi/pulumi": "^3.46.0",
+        "errors": "^0.0.0",
+        "functions": "^0.0.0",
+        "tsconfig": "^0.0.0"
     }
 }
