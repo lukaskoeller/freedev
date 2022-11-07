@@ -65,6 +65,13 @@ export const createApi = (args: CreateApiArgs) => {
     api,
   });
 
+  const refreshToken = new Microservice({
+    name: 'refresh-token',
+    path: '/refresh-token',
+    httpMethod: HttpMethod.POST,
+    api,
+  });
+
   /**
    * Root of website (homepage). Path is '/' or 'https://freedev.app'.
    */
