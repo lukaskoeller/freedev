@@ -1,9 +1,9 @@
-import { error, invalid, redirect, type Actions } from "@sveltejs/kit";
-import { api } from "./_api";
+import { api } from "$lib/common/utils/api.utils";
+import { invalid, redirect, type Actions } from "@sveltejs/kit";
 import { validate } from "./_validations";
 
 export const actions: Actions = {
-  signUp: async ({ request }) => {
+  signUp: async ({ request, fetch }) => {
     console.log('signUp request', request);
     
     const form = await request.formData();
@@ -20,9 +20,14 @@ export const actions: Actions = {
       return invalid(400, { message: 'We could not sign you up. Try to adjust your inputs.' });
     }
 
-    const response = await api('PUT', 'sign-up', {
-      email,
-      password,
+    const response = await api({
+      fetch,
+      method: 'PUT',
+      resource: 'sign-up',
+      data: {
+        email,
+        password,
+      },
     });
     const body = await response.json();
     console.log('RESPONSE BODY', body); // @todo remove
