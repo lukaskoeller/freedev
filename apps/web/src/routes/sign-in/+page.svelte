@@ -58,7 +58,7 @@
                   invalidateAll();
                   break;
                 case 'error':
-                  notifications.error('Something went wrong when signing in 😢');
+                  notifications.error(result.error.message);
                   // await applyAction(result);
                   form.reset();
                   // invalidateAll();
