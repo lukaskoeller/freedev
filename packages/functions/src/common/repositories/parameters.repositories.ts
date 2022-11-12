@@ -10,6 +10,8 @@ import { ApiErrorResponse, InternalErrorException } from "../utils";
  * @param {GetParameterCommandInput['Name']} name The name of the parameter you want to query.
  * To query by parameter label, use `"Name": "name:label"`. To query by parameter
  * version, use `"Name": "name:version"`.
+ * 
+ * @note NOT IN USE AT THE MOMENT
  */
 export const getParameterByName = async (name: string) => {
   if (!name) {
