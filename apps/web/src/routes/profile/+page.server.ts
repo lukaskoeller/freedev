@@ -11,7 +11,6 @@ export const load: PageServerLoad = async ({ cookies, request, fetch }) => {
     resource: 'profile/lukas-koeller',
     token,
   });
-  console.log({ response });
   const body = await response.json();
 
   return body;
