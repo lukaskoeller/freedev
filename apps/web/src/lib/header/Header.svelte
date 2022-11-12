@@ -1,6 +1,7 @@
 <script lang="ts">
 	// import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores'
 	import bellSolid from 'assets/icons/bell-solid.svg?raw';
 	import cogSolid from 'assets/icons/cog-solid.svg?raw';
 	import paperPlaneSolid from 'assets/icons/paper-plane-solid.svg?raw';
@@ -15,25 +16,38 @@
 		<fd-logo />
 	</a>
 	<nav>
-		<fd-button as="a" href="/sign-in">
-			Sign In
-		</fd-button>
-		<a href="/profile">
-			<fd-icon file={userCircleSolid} size="lg" />
-			<span>Profile</span>
-		</a>
-		<a href="/messages">
-			<fd-icon file={paperPlaneSolid} size="lg" />
-			<span>Messages</span>
-		</a>
-		<a href="/notifications">
-			<fd-icon file={bellSolid} size="lg" />
-			<span>Notifications</span>
-		</a>
-		<a href="/settings">
-			<fd-icon file={cogSolid} size="lg" />
-			<span>Settings</span>
-		</a>
+		{#if $page.data.user?.isAuthenticated}
+			<a href="/profile">
+				<fd-icon file={userCircleSolid} size="lg" />
+				<span>Profile</span>
+			</a>
+			<a href="/messages">
+				<fd-icon file={paperPlaneSolid} size="lg" />
+				<span>Messages</span>
+			</a>
+			<a href="/notifications">
+				<fd-icon file={bellSolid} size="lg" />
+				<span>Notifications</span>
+			</a>
+			<a href="/settings">
+				<fd-icon file={cogSolid} size="lg" />
+				<span>Settings</span>
+			</a>
+		{:else}
+			<fd-button
+				as="a"
+				href="/sign-in"
+				variant="light"
+			>
+				Sign In
+			</fd-button>
+			<fd-button
+				as="a"
+				href="/sign-up"
+			>
+				Sign Up
+			</fd-button>
+		{/if}
 	</nav>
 </header>
 
