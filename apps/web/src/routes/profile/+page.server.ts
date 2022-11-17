@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({ cookies, request, fetch }) => {
   const response = await api({
     fetch,
     method: 'GET',
-    resource: 'profile/lukas-koeller',
+    resource: 'user/lukas-koeller',
     token,
   });
   const body = await response.json();
