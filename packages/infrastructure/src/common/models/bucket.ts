@@ -31,28 +31,28 @@ export class BucketPair extends pulumi.ComponentResource {
   logsBucket: aws.s3.Bucket;
   
   constructor(name: string, args: BucketPairArgs, opts?: pulumi.ComponentResourceOptions) {
-      super("freedev:index:BucketPair", name, {}, opts);
+    super("freedev:index:BucketPair", name, {}, opts);
 
-      this.contentBucket = new aws.s3.Bucket(`${name}-bucket-content`, {
-        bucket: args.bucketName,
-      }, { parent: this });
+    this.contentBucket = new aws.s3.Bucket(`${name}-bucket-content`, {
+      bucket: args.bucketName,
+    }, { parent: this });
 
-      this.bucketPolicy = new aws.s3.BucketPolicy(`${name}-bucket-policy`, {
-        bucket: this.contentBucket.id, // refer to the bucket created earlier
-        policy: args.policy(this),
-      }, { parent: this });
+    this.bucketPolicy = new aws.s3.BucketPolicy(`${name}-bucket-policy`, {
+      bucket: this.contentBucket.id, // refer to the bucket created earlier
+      policy: args.policy(this),
+    }, { parent: this });
 
-      this.logsBucket = new aws.s3.Bucket(`${name}-bucket-logs`, {
-        bucket: `${args.bucketName}-logs`,
-        acl: "private",
-      }, { parent: this });
+    this.logsBucket = new aws.s3.Bucket(`${name}-bucket-logs`, {
+      bucket: `${args.bucketName}-logs`,
+      acl: "private",
+    }, { parent: this });
 
-      // Register output properties for this component
-      this.registerOutputs({
-        contentBucket: this.contentBucket,
-        bucketPolicy: this.bucketPolicy,
-        logsBucket: this.logsBucket,
-      });
+    // Register output properties for this component
+    this.registerOutputs({
+      contentBucket: this.contentBucket,
+      bucketPolicy: this.bucketPolicy,
+      logsBucket: this.logsBucket,
+    });
   }
 }
 
