@@ -1,5 +1,5 @@
 const API_STAGE = '/dev';
-const API_BASE = `https://8qjflpsz7c.execute-api.eu-central-1.amazonaws.com${API_STAGE}`;
+const API_BASE = `https://ltvcsq5asd.execute-api.eu-central-1.amazonaws.com${API_STAGE}`;
 
 export type ApiParams = {
 	/**
