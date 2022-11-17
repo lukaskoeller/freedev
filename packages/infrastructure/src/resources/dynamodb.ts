@@ -5,11 +5,15 @@ export const createDatabase = () => {
   const database = new aws.dynamodb.Table('main-dynamodb-table', {
     attributes: [
       {
-        name: 'username',
+        name: 'pk',
         type: 'S',
       },
       {
-        name: 'email',
+        name: 'sk',
+        type: 'S',
+      },
+      {
+        name: 'handle',
         type: 'S',
       },
       // Not indexed anywhere. Thus, not used.
@@ -23,8 +27,15 @@ export const createDatabase = () => {
       //   type: 'S',
       // },
     ],
-    hashKey: 'username',
-    rangeKey: 'email',
+    hashKey: 'pk',
+    rangeKey: 'sk',
+    globalSecondaryIndexes: [{
+      name: "handle-index",
+      projectionType: "ALL",
+      hashKey: "handle",
+      readCapacity: 1,
+      writeCapacity: 1,
+    }],
     billingMode: 'PROVISIONED',
     // @todo Necessary to adjust?
     readCapacity: 1,
