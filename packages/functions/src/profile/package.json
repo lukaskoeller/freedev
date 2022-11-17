@@ -1,9 +1,0 @@
-{
-  "name": "functions-profile",
-  "version": "0.0.0",
-  "main": "index.ts",
-  "dependencies": {
-    "@types/aws-lambda": "^8.10.101",
-    "errors": "*"
-  }
-}
