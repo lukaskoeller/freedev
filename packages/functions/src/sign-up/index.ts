@@ -5,8 +5,9 @@ import {
   SignUpCommand,
   SignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
-import { ApiErrorResponse, ApiResponse, BodyErrorType, NoBodyException } from "../common/utils";
-import { AWS_REGION, USER_POOL_CLIENT_ID } from "../common/constants";
+import { ApiErrorResponse, ApiResponse, NoBodyException } from "../common/utils";
+import { AWS_REGION, DBPrefix, DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID } from "../common/constants";
+import { DynamoDBService } from "../common/services/dynamodb.services";
 
 export type SignUpBody = {
   email: string;
@@ -22,7 +23,8 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
   const { email, password } = body;
   
   // a client can be shared by different commands.
-  const client = new CognitoIdentityProviderClient({ region: AWS_REGION });
+  const clientCognito = new CognitoIdentityProviderClient({ region: AWS_REGION });
+  const clientDynamodb = new DynamoDBService({ tableName: DYNAMO_DB_TABLE_NAME });
 
   const params: SignUpCommandInput = {
     ClientId: USER_POOL_CLIENT_ID, // @todo any possibility to use 'userPoolClient.id'?
@@ -32,15 +34,24 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
       { 
         Name: 'email',
         Value: email,
-     }
+      },
     ],
   };
 
   const command = new SignUpCommand(params);
 
   try {
-    const data = await client.send(command);
+    // Add user to cognito user pool
+    const data = await clientCognito.send(command);
     console.log(data);
+
+    // Create user in database
+    const user = await clientDynamodb.create({
+      pk: `${DBPrefix.User}${data.UserSub}`,
+      sk: `${DBPrefix.User}${data.UserSub}`,
+      email: email,
+      handle: data.UserSub,
+    });
 
     return new ApiResponse({
       statusCode: 201,
