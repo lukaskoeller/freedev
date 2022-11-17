@@ -1,8 +1,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
-import { HttpMethod, Microservice } from '../common/models';
+import { HttpMethod, ApiEndpoint } from '../common/models';
 import { UserPool } from "@pulumi/aws/cognito";
 import { userPoolClientId } from "../..";
+import { policyReadOnlyDynamodb, policyReadWriteDynamodb } from '../common/policies/index';
 
 export type CreateApiArgs = {
   /**
@@ -32,41 +33,49 @@ export const createApi = (args: CreateApiArgs) => {
   /**
    * @todo Iterate through openapi.json and create new Microservice.
    */
-  const signUpEndpoint = new Microservice({
-    name: 'sign-up',
+  const signUpEndpoint = new ApiEndpoint('sign-up', {
     path: '/sign-up',
     httpMethod: HttpMethod.PUT,
     api,
   });
 
   /**
+   * Allow Lambda to execute dynamoDB operations
+   * @see https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#events-dynamodb-permissions
+   */
+  new aws.iam.RolePolicyAttachment('sign-up-lambda-role-attachment-dynamodb', {
+    role: signUpEndpoint.lambdaIamRole,
+    policyArn: policyReadWriteDynamodb.arn,
+  }, { parent: signUpEndpoint });
+
+  /**
    * Confirms sign up via a code sent through cognito and SES.
    */
-  const confirmSignUpEndpoint = new Microservice({
-    name: 'confirm-sign-up',
+  const confirmSignUpEndpoint = new ApiEndpoint('confirm-sign-up', {
     path: '/confirm-sign-up',
     httpMethod: HttpMethod.POST,
     api,
   });
 
-  // @todo change to {username}
-  const profile = new Microservice({
-    name: 'profile',
-    path: '/profile/{profileName}',
+  const userEndpoint = new ApiEndpoint('user', {
+    path: '/user/{username}',
     httpMethod: HttpMethod.GET,
     api,
     authorizerId,
   });
 
-  const signIn = new Microservice({
-    name: 'sign-in',
+  new aws.iam.RolePolicyAttachment('user-lambda-role-attachment-dynamodb', {
+    role: userEndpoint.lambdaIamRole,
+    policyArn: policyReadOnlyDynamodb.arn,
+  }, { parent: userEndpoint });
+
+  const signIn = new ApiEndpoint('sign-in', {
     path: '/sign-in',
     httpMethod: HttpMethod.POST,
     api,
   });
 
-  const refreshToken = new Microservice({
-    name: 'refresh-token',
+  const refreshToken = new ApiEndpoint('refresh-token', {
     path: '/refresh-token',
     httpMethod: HttpMethod.POST,
     api,
@@ -75,8 +84,7 @@ export const createApi = (args: CreateApiArgs) => {
   /**
    * Root of website (homepage). Path is '/' or 'https://freedev.app'.
    */
-  const rootEndpoint = new Microservice({
-    name: 'default',
+  const rootEndpoint = new ApiEndpoint('default', {
     path: '$default',
     api,
   });
