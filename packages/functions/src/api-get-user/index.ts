@@ -15,10 +15,12 @@ const verifier = CognitoJwtVerifier.create({
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   try {
     console.log({ event, context });
-    console.log('!!!/profile/{username}');
-    console.log(event?.['pathParameters']?.['username']);
+    console.log('!!!/profile/{handle}');
+    
+    const handle = event?.['pathParameters']?.['handle'];
+    console.log();
 
-    const token = event?.headers?.authorization;
+    const token = event?.headers?.authorization?.replace('Bearer ', '');
     console.log('TOKEN', token);
     
 
