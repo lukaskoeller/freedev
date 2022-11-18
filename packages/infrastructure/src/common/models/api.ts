@@ -27,6 +27,10 @@ export type ApiEndpointArgs = {
   httpMethod?: HttpMethod;
   api: aws.apigatewayv2.Api;
   authorizerId?: pulumi.Output<string>;
+  /**
+   * Path to function directory from `**\/functions/build/`
+   */
+  functionsPath: string;
 };
 
 export class ApiEndpoint extends pulumi.ComponentResource {
@@ -102,7 +106,7 @@ export class ApiEndpoint extends pulumi.ComponentResource {
 
     this.lambda = new aws.lambda.Function(name, {
       code: new pulumi.asset.AssetArchive({
-        '.': new pulumi.asset.FileArchive(`../functions/build/${name}`),
+        '.': new pulumi.asset.FileArchive(`../functions/build/${args.functionsPath}`),
       }),
       role: this.lambdaIamRole.arn,
       handler: "index.handler",
