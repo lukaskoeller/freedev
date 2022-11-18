@@ -35,6 +35,7 @@ export const createApi = (args: CreateApiArgs) => {
    */
   const signUpEndpoint = new ApiEndpoint('sign-up', {
     path: '/sign-up',
+    functionsPath: 'api-put-sign-up',
     httpMethod: HttpMethod.PUT,
     api,
   });
@@ -53,12 +54,14 @@ export const createApi = (args: CreateApiArgs) => {
    */
   const confirmSignUpEndpoint = new ApiEndpoint('confirm-sign-up', {
     path: '/confirm-sign-up',
+    functionsPath: 'api-post-confirm-sign-up',
     httpMethod: HttpMethod.POST,
     api,
   });
 
   const userEndpoint = new ApiEndpoint('user', {
-    path: '/user/{username}',
+    path: '/user/{handle}',
+    functionsPath: 'api-get-user',
     httpMethod: HttpMethod.GET,
     api,
     authorizerId,
@@ -71,12 +74,14 @@ export const createApi = (args: CreateApiArgs) => {
 
   const signIn = new ApiEndpoint('sign-in', {
     path: '/sign-in',
+    functionsPath: 'api-post-sign-in',
     httpMethod: HttpMethod.POST,
     api,
   });
 
   const refreshToken = new ApiEndpoint('refresh-token', {
     path: '/refresh-token',
+    functionsPath: 'api-post-refresh-token',
     httpMethod: HttpMethod.POST,
     api,
   });
@@ -86,6 +91,7 @@ export const createApi = (args: CreateApiArgs) => {
    */
   const rootEndpoint = new ApiEndpoint('default', {
     path: '$default',
+    functionsPath: 'api-default',
     api,
   });
 
