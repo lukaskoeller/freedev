@@ -2,8 +2,9 @@ import { APIGatewayEvent, Context } from "aws-lambda";
 import { DEFAULT_ERROR_MESSAGE } from "errors";
 import { ApiErrorResponse, ApiResponse } from "../common/utils";
 import { CognitoJwtVerifier } from "aws-jwt-verify";
-import { DBPrefix, DYNAMO_DB_TABLE_NAME, DYNAMO_DB_TABLE_NAME_INDEX, USER_POOL_CLIENT_ID, USER_POOL_ID } from "../common/constants";
+import { DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID, USER_POOL_ID } from "../common/constants";
 import { DynamoDBService } from "../common/services/dynamodb.services";
+import { User } from "../common/modules/user/user.entities";
 
 
 const verifier = CognitoJwtVerifier.create({
@@ -40,13 +41,11 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
 
     const clientDynamodb = new DynamoDBService({
       tableName: DYNAMO_DB_TABLE_NAME,
-      indexName: DYNAMO_DB_TABLE_NAME_INDEX,
     });
 
-    const user = await clientDynamodb.read({
-      pk: `${DBPrefix.User}${username}`,
-      sk: `${DBPrefix.User}${username}`,
-    });
+    const user = await clientDynamodb.read(
+      new User({ username }).keys()
+    );
 
     return new ApiResponse({
       statusCode: 200,
