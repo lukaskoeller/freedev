@@ -59,9 +59,9 @@ export const createApi = (args: CreateApiArgs) => {
     api,
   });
 
-  const userEndpoint = new ApiEndpoint('user', {
+  const userEndpoint = new ApiEndpoint('user-handle', {
     path: '/user/{handle}',
-    functionsPath: 'api-get-user',
+    functionsPath: 'api-get-user-handle',
     httpMethod: HttpMethod.GET,
     api,
     authorizerId,
