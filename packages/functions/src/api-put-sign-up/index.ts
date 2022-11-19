@@ -5,9 +5,10 @@ import {
   SignUpCommand,
   SignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
-import { ApiErrorResponse, ApiResponse, NoBodyException } from "../common/utils";
-import { AWS_REGION, DBPrefix, DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID } from "../common/constants";
+import { ApiErrorResponse, ApiResponse, InternalErrorException, NoBodyException } from "../common/utils";
+import { AWS_REGION, DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID } from "../common/constants";
 import { DynamoDBService } from "../common/services/dynamodb.services";
+import { User } from "../common/modules/user/user.entities";
 
 export type SignUpBody = {
   email: string;
@@ -45,13 +46,19 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
     const data = await clientCognito.send(command);
     console.log(data);
 
-    // Create user in database
-    const user = await clientDynamodb.create({
-      pk: `${DBPrefix.User}${data.UserSub}`,
-      sk: `${DBPrefix.User}${data.UserSub}`,
+    const username = data.UserSub;
+    if (!username) {
+      console.log('the username is not defined');
+      throw InternalErrorException;
+    }
+    
+    const user = new User({
+      username,
       email: email,
-      handle: data.UserSub,
+      handle: username,
     });
+    // Create user in database
+    const response = await clientDynamodb.create(user);
 
     return new ApiResponse({
       statusCode: 201,
