@@ -79,6 +79,6 @@ export class User extends Item {
   }
 
   get sk(): string {
-      return `${DBKeyPrefix.User}${this.username}`;
+    return `${DBKeyPrefix.User}${this.username}`;
   }
 }
