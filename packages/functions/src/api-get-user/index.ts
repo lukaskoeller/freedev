@@ -16,10 +16,6 @@ const verifier = CognitoJwtVerifier.create({
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   try {
     console.log({ event, context });
-    console.log('!!!/profile/{handle}');
-    
-    const handle = event?.['pathParameters']?.['handle'];
-    console.log();
 
     const token = event?.headers?.authorization?.replace('Bearer ', '');
     console.log('TOKEN', token);
@@ -43,13 +39,16 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
       tableName: DYNAMO_DB_TABLE_NAME,
     });
 
-    const user = await clientDynamodb.read(
-      new User({ username }).keys()
-    );
+    const userKeys = new User({ username }).keys();
+    console.log('USER_KEYS', userKeys);
+    
+    const user = await clientDynamodb.read(userKeys);
+    console.log('USER', user);
+    
 
     return new ApiResponse({
       statusCode: 200,
-      body: { message: 'Your user is in progress...' },
+      body: user,
     });
   } catch (error) {
     // @todo add throw Error as return
