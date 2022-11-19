@@ -59,9 +59,22 @@ export const createApi = (args: CreateApiArgs) => {
     api,
   });
 
-  const userEndpoint = new ApiEndpoint('user-handle', {
+  const userHandleEndpoint = new ApiEndpoint('user-handle', {
     path: '/user/{handle}',
     functionsPath: 'api-get-user-handle',
+    httpMethod: HttpMethod.GET,
+    api,
+    authorizerId,
+  });
+
+  new aws.iam.RolePolicyAttachment('user-handle-lambda-role-attachment-dynamodb', {
+    role: userHandleEndpoint.lambdaIamRole,
+    policyArn: policyReadOnlyDynamodb.arn,
+  }, { parent: userHandleEndpoint });
+
+  const userEndpoint = new ApiEndpoint('user', {
+    path: '/user',
+    functionsPath: 'api-get-user',
     httpMethod: HttpMethod.GET,
     api,
     authorizerId,
