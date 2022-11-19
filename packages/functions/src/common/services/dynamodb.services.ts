@@ -54,10 +54,12 @@ export class DynamoDBService {
   // Get an Amazon DynamoDB service client object.
   client = getClient();
 
-  async create<T extends Item>(item: T) {
+  async create<T extends Record<string, unknown>>(item: T) {
     const params: PutItemCommandInput = {
       TableName: this.tableName,
-      Item: marshall(item),
+      Item: marshall(item, {
+        removeUndefinedValues: true,
+      }),
       // Avoid replace items with create
       ConditionExpression: 'attribute_not_exists(pk)',
     };
