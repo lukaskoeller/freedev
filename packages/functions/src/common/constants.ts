@@ -22,6 +22,6 @@ export const DYNAMO_DB_TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:865039251033:t
  * DynamoDB Prefixes to determine data type
  * in a single table application.
  */
-export enum DBPrefix {
+export enum DBKeyPrefix {
   User = 'USER#',
 }
