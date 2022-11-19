@@ -4,6 +4,7 @@ import { ApiErrorResponse, ApiResponse } from "../common/utils";
 import { CognitoJwtVerifier } from "aws-jwt-verify";
 import { DYNAMO_DB_TABLE_NAME, DYNAMO_DB_TABLE_NAME_INDEX, USER_POOL_CLIENT_ID, USER_POOL_ID } from "../common/constants";
 import { DynamoDBService } from "../common/services/dynamodb.services";
+import { User } from "../common/modules/user/user.entities";
 
 
 const verifier = CognitoJwtVerifier.create({
@@ -15,41 +16,36 @@ const verifier = CognitoJwtVerifier.create({
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   try {
     console.log({ event, context });
-    console.log('!!!/profile/{handle}');
     
     const handle = event?.['pathParameters']?.['handle'];
-    console.log();
+    console.log('HANDLE', handle);
 
-    const token = event?.headers?.authorization?.replace('Bearer ', '');
-    console.log('TOKEN', token);
-    
-
-    if (!token) {
+    if (!handle) {
       throw new ApiErrorResponse({
-        statusCode: 401,
+        statusCode: 400,
         body: {
-          status: 401,
-          message: 'Unable to get the user information you requested. Please ensure that you are signed in and try again.',
-          debugMessage: 'No access token was provided in the `headers.authorization`. Make sure it is added during fetch.'
+          status: 400,
+          message: 'No handle was provided. Make sure the path is as follows: **/user/{handle}.',
+          debugMessage: 'Make sure the link includes the handle of the user.'
         },
       })
     }
-
-    const payload = await verifier.verify(token);
-    const username = payload.username;
 
     const clientDynamodb = new DynamoDBService({
       tableName: DYNAMO_DB_TABLE_NAME,
       indexName: DYNAMO_DB_TABLE_NAME_INDEX,
     });
 
-    const user = await clientDynamodb.read({
-      pk: username,
+    const user = new User({ username: handle });
+    const response = await clientDynamodb.read({
+      pk: user.pk,
     });
+    console.log('USER', user);
+    
 
     return new ApiResponse({
       statusCode: 200,
-      body: { message: 'Your user is in progress...' },
+      body: response,
     });
   } catch (error) {
     // @todo add throw Error as return
