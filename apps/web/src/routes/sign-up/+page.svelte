@@ -100,7 +100,6 @@
               label="Password"
               error={formErrors?.get('password')}
             ></fd-input>
-            <fd-switch name="terms">I agree with the terms & conditions.</fd-switch>
             <fd-button
               type="submit"
               status={isSubmitting ? 'loading' : undefined}
