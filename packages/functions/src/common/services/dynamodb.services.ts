@@ -1,7 +1,41 @@
-import { AttributeValue, DynamoDBClient, GetItemCommand, GetItemCommandInput, InternalServerError, PutItemCommand, PutItemCommandInput } from "@aws-sdk/client-dynamodb";
-import { marshall } from "@aws-sdk/util-dynamodb";
+import {
+  DynamoDBClient,
+  GetItemCommand,
+  GetItemCommandInput,
+  InternalServerError,
+  PutItemCommand,
+  PutItemCommandInput,
+} from "@aws-sdk/client-dynamodb";
+import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { AWS_REGION } from "../constants";
-import { ApiErrorResponse, InternalErrorException } from "../utils";
+import { Item } from "../modules/base.entities";
+
+let client: DynamoDBClient;
+
+export const getClient = (): DynamoDBClient => {
+    if (client) return client;
+
+    client = new DynamoDBClient({
+      region: AWS_REGION,
+    })
+    return client;
+};
+
+// @todo NEXT how to get generic class?
+export type Constructor<T> = new (...args: any[]) => T;
+
+export type ReadItem = {
+  /**
+   * Partition Key (Hash Key)
+   */
+  pk: string,
+  /**
+   * Sort Key (Range Key)
+   * Required when DynamoDB Client did not
+   * provide `indexName`.
+   */
+  sk?: string,
+}
 
 export type DynamoDBServiceParams = {
   tableName: string;
@@ -17,10 +51,10 @@ export class DynamoDBService {
     this.indexName = parameters.indexName;
   }
 
-  // Create an Amazon DynamoDB service client object.
-  client = new DynamoDBClient({ region: AWS_REGION });
+  // Get an Amazon DynamoDB service client object.
+  client = getClient();
 
-  async create(item: Record<string, unknown>) {
+  async create<T extends Item>(item: T) {
     const params: PutItemCommandInput = {
       TableName: this.tableName,
       Item: marshall(item),
@@ -38,13 +72,14 @@ export class DynamoDBService {
     }
   }
 
-  async read(item: { pk: string, sk: string }) {
+  // @todo Better solution for conditional adding object props?
+  async read(item: ReadItem) {
     const params: GetItemCommandInput = {
       TableName: this.tableName,
       ...this.indexName ? { IndexName: this.indexName } : {},
       Key: marshall({
         pk: item.pk,
-        sk: item.sk,
+        ...item?.sk ? { sk: item.sk } : {},
       }),
     };
 
@@ -52,6 +87,12 @@ export class DynamoDBService {
       const command = new GetItemCommand(params);
       const response = await this.client.send(command);
       console.log("Success - item read", response);
+      const item = response.Item;
+      if (item === undefined) {
+        return undefined;
+      }
+      return unmarshall(item);
+
     } catch (error) {
       console.log("GetItemCommand Error", error.stack);
       throw InternalServerError;
