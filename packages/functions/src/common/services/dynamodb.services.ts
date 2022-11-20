@@ -10,6 +10,11 @@ import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { AWS_REGION } from "../constants";
 import { Item } from "../modules/base.entities";
 
+const mapToObj = <T extends Item>(classInstance: T) => ({
+  ...classInstance,
+  ...classInstance.keys(),
+});
+
 let client: DynamoDBClient;
 
 export const getClient = (): DynamoDBClient => {
@@ -54,12 +59,13 @@ export class DynamoDBService {
   // Get an Amazon DynamoDB service client object.
   client = getClient();
 
-  async create<T extends Record<string, unknown>>(item: T) {
+  async create<T extends Item>(item: T) {
     const params: PutItemCommandInput = {
       TableName: this.tableName,
-      Item: marshall(item, {
-        removeUndefinedValues: true,
-      }),
+      Item: marshall(
+        mapToObj(item), 
+        { removeUndefinedValues: true }
+      ),
       // Avoid replace items with create
       ConditionExpression: 'attribute_not_exists(pk)',
     };
