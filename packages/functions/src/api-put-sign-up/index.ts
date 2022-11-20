@@ -59,10 +59,7 @@ export const handler = async (event: APIGatewayProxyEventV2, context: Context) =
     });
     // Create user in database
     // @todo NEXT create helper fn
-    const response = await clientDynamodb.create({
-      ...user,
-      ...user.keys(),
-    });
+    const response = await clientDynamodb.create(user);
 
     return new ApiResponse({
       statusCode: 201,
