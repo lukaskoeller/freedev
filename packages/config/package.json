@@ -9,11 +9,11 @@
     "breakpoints.json"
   ],
   "dependencies": {
-    "eslint-config-next": "^12.3.2",
+    "eslint-config-next": "^12.3.3",
     "eslint-config-prettier": "^8.5.0",
     "postcss-import": "^15.0.0",
-    "postcss-preset-env": "^7.8.2",
+    "postcss-preset-env": "^7.8.3",
     "postcss-reporter": "^7.0.5",
-    "stylelint": "^14.14.1"
+    "stylelint": "^14.15.0"
   }
 }

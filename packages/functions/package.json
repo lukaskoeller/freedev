@@ -8,10 +8,10 @@
     "build:esbuild": "node ./scripts/build.js"
   },
   "dependencies": {
-    "@aws-sdk/client-cognito-identity-provider": "^3.204.0",
-    "@aws-sdk/client-dynamodb": "^3.208.0",
-    "@aws-sdk/client-ssm": "^3.205.0",
-    "@aws-sdk/util-dynamodb": "^3.209.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.215.0",
+    "@aws-sdk/client-dynamodb": "^3.215.0",
+    "@aws-sdk/client-ssm": "^3.215.0",
+    "@aws-sdk/util-dynamodb": "^3.215.0",
     "@types/aws-lambda": "^8.10.108",
     "aws-jwt-verify": "^3.2.0",
     "errors": "^0.0.0"
