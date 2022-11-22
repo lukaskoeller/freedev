@@ -21,6 +21,14 @@
 </footer>
 
 <style lang="postcss">
+	:global(body) {
+		/* Compensate for fixed navigation bar's height */
+		padding-bottom: var(--size-10);
+
+		@media (--tablet) {
+			padding-bottom: 0;
+		}
+		}
 	.logoWrapper {
 		display: grid;
 		place-items: center;
