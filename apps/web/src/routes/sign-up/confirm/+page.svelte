@@ -26,7 +26,7 @@
 	<title>Confirm your sign up</title>
 </svelte:head>
 
-<FormContainer heading="Let's confirm 📨">
+<FormContainer heading="Let's confirm! 📨">
   <div class="fd-stack">
     <p>
       Wir haben dir einen Link an <strong>{email}</strong> geschickt.
