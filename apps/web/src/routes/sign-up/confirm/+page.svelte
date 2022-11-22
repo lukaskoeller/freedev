@@ -8,6 +8,7 @@
 	import { onMount } from "svelte";
 	import { invalidateAll } from "$app/navigation";
 	import { notifications } from "$lib/toast/notifications";
+	import FormContainer from "../FormContainer.svelte";
 
 
   onMount(async () => {
@@ -25,62 +26,56 @@
 	<title>Confirm your sign up</title>
 </svelte:head>
 
-<section>
-  <Container>
-    <Container size={Size.Xs}>
-      <div class="fd-stack">
-        <h1>Wohooo!</h1>
-        <h2>E-Mail bestätigen</h2>
-        <p>
-          Wir haben dir einen Link an <strong>{email}</strong> geschickt.
-          Mit einem Klick bestätigst du deine Email.
-        </p>
-        <form
-          method="POST"
-          use:enhance={(props) => {
-            const { form } = props;
-            
-            isSubmitting = true;
-            return async (args) => {
-              console.log({ args });
-              const { result, update } = args;
-              switch (result.type) {
-                case 'success':
-                  notifications.success(result.data.message);
-                  invalidateAll();
-                  break;
-                case 'error':
-                  notifications.error('Something went wrong');
-                  // await applyAction(result);
-                  form.reset();
-                  // invalidateAll();
-                  break;
-                case 'invalid':
-                  notifications.warning(result.data.message);
-                  // form.reset();
-                  invalidateAll();
-                  await applyAction(result);
-                  break;
-                default:
-                  notifications.info('This is a default message');
-                  form.reset();
-                  invalidateAll();
-                  await applyAction(result);
-                  update();
-              }
-              isSubmitting = false;
-            };
-          }}
-        >
-          <SplitInput ariaInvalid={form && form?.statusCode !== 200} />
-          <input type="text" name="username" hidden value={username}>
-          {#if form?.statusCode === 200}
-            <p>{form.body.data.message}</p>
-          {/if}
-        </form>
-        <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
-        <fd-button>Erneut senden</fd-button>
-      </div>
-    </Container>
-  </Container>
-</section>
+<FormContainer heading="Let's confirm 📨">
+  <div class="fd-stack">
+    <p>
+      Wir haben dir einen Link an <strong>{email}</strong> geschickt.
+      Mit einem Klick bestätigst du deine Email.
+    </p>
+    <form
+      method="POST"
+      use:enhance={(props) => {
+        const { form } = props;
+        
+        isSubmitting = true;
+        return async (args) => {
+          console.log({ args });
+          const { result, update } = args;
+          switch (result.type) {
+            case 'success':
+              notifications.success(result.data.message);
+              invalidateAll();
+              break;
+            case 'error':
+              notifications.error('Something went wrong');
+              // await applyAction(result);
+              form.reset();
+              // invalidateAll();
+              break;
+            case 'invalid':
+              notifications.warning(result.data.message);
+              // form.reset();
+              invalidateAll();
+              await applyAction(result);
+              break;
+            default:
+              notifications.info('This is a default message');
+              form.reset();
+              invalidateAll();
+              await applyAction(result);
+              update();
+          }
+          isSubmitting = false;
+        };
+      }}
+    >
+      <SplitInput ariaInvalid={form && form?.statusCode !== 200} />
+      <input type="text" name="username" hidden value={username}>
+      {#if form?.statusCode === 200}
+        <p>{form.body.data.message}</p>
+      {/if}
+    </form>
+    <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
+    <fd-button>Erneut senden</fd-button>
+  </div>
+</FormContainer>
