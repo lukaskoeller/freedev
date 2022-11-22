@@ -28,6 +28,10 @@
     gap: var(--size-fluid-5);
   }
 
+  h1 {
+    font-size: clamp(var(--font-size-6), 4vw, var(--font-size-7));
+  }
+
   .footer {
     inline-size: 100%;
     border-start-start-radius: var(--radius-3);
