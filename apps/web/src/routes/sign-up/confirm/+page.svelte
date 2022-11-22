@@ -20,13 +20,15 @@
 
   $: username = $page.url.searchParams.get('username');
   $: email = $page.url.searchParams.get('email');
+
+  const heading: string = 'Let\'s confirm! 📨';
 </script>
 
 <svelte:head>
-	<title>Confirm your sign up</title>
+	<title>Sign Up / {heading}</title>
 </svelte:head>
 
-<FormContainer heading="Let's confirm! 📨">
+<FormContainer heading={heading}>
   <div class="fd-stack">
     <p>
       Wir haben dir einen Link an <strong>{email}</strong> geschickt.
@@ -76,6 +78,11 @@
       {/if}
     </form>
     <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
-    <fd-button>Erneut senden</fd-button>
   </div>
+  <fd-button
+    slot="footer"
+    expand
+  >
+    Email App öffnen
+  </fd-button>
 </FormContainer>

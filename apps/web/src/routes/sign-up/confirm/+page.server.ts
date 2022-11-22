@@ -1,5 +1,5 @@
 import { api } from "$lib/common/utils/api.utils";
-import { invalid, type Actions } from "@sveltejs/kit";
+import { invalid, redirect, type Actions } from "@sveltejs/kit";
 
 export const actions: Actions = {
   default: async ({ request, fetch }) => {
@@ -8,6 +8,9 @@ export const actions: Actions = {
     
     const confirmationCode = form.get('confirmationCode');
     const username = form.get('username');
+
+    // @todo TEMPORARY Remove
+    throw redirect(301, '/sign-up/name');
   
     const response = await api({
       fetch,
