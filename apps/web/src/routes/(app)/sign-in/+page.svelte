@@ -29,9 +29,6 @@
           use:enhance={(props) => {
             isSubmitting = true;
             const { form, data, cancel } = props;
-              for (const [key, value] of data.entries()) {
-                console.log(`${key}: ${value}`); 
-              }
             form.dispatchEvent(new CustomEvent('submitting'));
             const email = data.get('email');
             const password = data.get('password');
