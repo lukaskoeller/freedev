@@ -162,6 +162,9 @@ export class Button extends FormControlMixin(LitElement) {
   expand: boolean = false;
 
   @property()
+  form?: string;
+
+  @property()
   href?: string;
 
   @property()
@@ -195,6 +198,7 @@ export class Button extends FormControlMixin(LitElement) {
           name=${ifDefined(!this.isLink ? this.name : undefined)}
           value=${ifDefined(!this.isLink ? this.value : undefined)}
           type=${ifDefined(!this.isLink ? this.type : undefined)}
+          form=${ifDefined(!this.isLink ? this.form : undefined)}
           ?disabled=${!this.isLink ? this.disabled : undefined}
         ></button>
       `, this);
@@ -213,6 +217,7 @@ export class Button extends FormControlMixin(LitElement) {
         name=${ifDefined(!this.isLink ? this.name : undefined)}
         value=${ifDefined(!this.isLink ? this.value : undefined)}
         type=${ifDefined(!this.isLink ? this.type : undefined)}
+        form=${ifDefined(!this.isLink ? this.form : undefined)}
         ?disabled=${ifDefined(!this.isLink ? this.disabled : undefined)}
         href=${ifDefined(this.isLink ? this.href : undefined)}
         target=${ifDefined(this.isLink ? this.target : undefined)}
