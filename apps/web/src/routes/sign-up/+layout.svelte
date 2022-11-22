@@ -5,14 +5,24 @@
   });
 </script>
 
-<header>
-	<a href="/">
-		<fd-logo />
-	</a>
-</header>
-<slot></slot>
+<section>
+  <header>
+    <a href="/">
+      <fd-logo />
+    </a>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+</section>
 
 <style lang="postcss">
+  section {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-block-size: 100vh;
+  }
+
   header {
     display: grid;
 		place-items: center;
@@ -21,5 +31,10 @@
     @media (--tablet) {
       padding-block: var(--size-3);
     }
+  }
+
+  main {
+    display: grid;
+    align-items: end;
   }
 </style>
