@@ -1,27 +1,36 @@
 .fd-stack {
+  --_fd-stack-gap: var(--fd-stack-gap, var(--size-3));
+  --_fd-stack-justify-items: var(--fd-stack-justify-items, stretch);
+
   display: grid;
-  gap: var(--fd-stack-gap, var(--size-3));
-  justify-items: var(--fd-stack-justify-items, stretch);
+  gap: var(--_fd-stack-gap);
+  justify-items: var(--_fd-stack-justify-items);
 }
 
 .fd-ram-grid {
+  --_fd-ram-grid-gap-row: var(--fd-ram-grid-gap-row, var(--_fd-ram-grid-gap));
+  --_fd-ram-grid-gap-column: var(--fd-ram-grid-gap-column, var(--_fd-ram-grid-gap));
+  --_fd-ram-grid-gap: var(--fd-ram-grid-gap, var(--size-fluid-2));
+  --_fd-ram-grid-min-width: var(--fd-ram-grid-min-width, 150px);
+
+
   display: grid;
-  row-gap: var(--fd-ram-grid-gap-row, var(--fd-ram-grid-gap, var(--size-fluid-2)));
-  column-gap: var(--fd-ram-grid-gap-column, var(--fd-ram-grid-gap, var(--size-fluid-2)));
+  row-gap: var(--_fd-ram-grid-gap-row);
+  column-gap: var(--_fd-ram-grid-gap-column);
   grid-template-columns:
     repeat(
       auto-fit,
-      minmax(min(var(--fd-ram-grid-min-width, 150px), 100%), 1fr)
+      minmax(min(var(--_fd-ram-grid-min-width), 100%), 1fr)
     );
 }
 
 .fd-card {
-  --fd-card-background-color: var(--color-surface-1);
-  --fd-card-color: var(--text-1);
-  --fd-card-border-color: var(--color-border);
-  --fd-card-shadow: var(--shadow-3);
-  --fd-card-padding-inline: var(--size-3);
-  --fd-card-padding-block: var(--size-7);
+  --_fd-card-background-color: var(--fd-card-background-color, var(--color-surface-1));
+  --_fd-card-color: var(--fd-card-color, var(--text-1));
+  --_fd-card-border-color: var(--fd-card-border-color, var(--color-border));
+  --_fd-card-shadow: var(--fd-card-shadow, var(--shadow-3));
+  --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-3));
+  --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-7));
 
   &[data-variant="inverted"] {
     --fd-card-background-color: var(--color-surface-2-inverted);
@@ -33,19 +42,19 @@
   inline-size: 100%;
   display: inline-block;
   box-sizing: border-box;
-  padding-inline: var(--fd-card-padding-inline);
-  padding-block: var(--fd-card-padding-block);
-  color: var(--fd-card-color);
+  padding-inline: var(--_fd-card-padding-inline);
+  padding-block: var(--_fd-card-padding-block);
+  color: var(--_fd-card-color);
 
   appearance: none;
-  border: 1px solid var(--fd-card-border-color);
+  border: 1px solid var(--_fd-card-border-color);
 
-  background-color: var(--fd-card-background-color);
+  background-color: var(--_fd-card-background-color);
   border-radius: var(--radius-conditional-3);
-  box-shadow: var(--fd-card-shadow);
+  box-shadow: var(--_fd-card-shadow);
 
   @media (--small-desktop) {
-    --fd-card-padding-inline: var(--size-9);
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-9));
   }
 }
 
