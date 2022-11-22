@@ -36,5 +36,9 @@
   main {
     display: grid;
     align-items: end;
+
+    @media (--tablet) {
+      align-items: center;
+    }
   }
 </style>
