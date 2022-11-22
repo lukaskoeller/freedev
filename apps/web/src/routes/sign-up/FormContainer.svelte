@@ -39,8 +39,9 @@
     position: sticky;
     bottom: 0;
     /* padding-inline: var(--global-spacing); */
-		padding-block: calc(var(--global-spacing) / 2);
+		padding-block-start: var(--size-fluid-4);
+		padding-block-end: calc(var(--global-spacing) / 2);
 
-    backdrop-filter: blur(16px);
+    /* backdrop-filter: blur(16px); */
   }
 </style>
