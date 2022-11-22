@@ -2279,48 +2279,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
-          "name": "VisuallyHidden",
-          "slots": [
-            {
-              "description": "The visually hidden content.",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-visually-hidden",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "VisuallyHidden",
-          "declaration": {
-            "name": "VisuallyHidden",
-            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-visually-hidden",
-          "declaration": {
-            "name": "VisuallyHidden",
-            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/mixins/formControlMixin.ts",
       "declarations": [
         {
@@ -2506,6 +2464,48 @@
       "path": "src/mixins/formdata-event-polyfill.ts",
       "declarations": [],
       "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
+          "name": "VisuallyHidden",
+          "slots": [
+            {
+              "description": "The visually hidden content.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-visually-hidden",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VisuallyHidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-visually-hidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
+          }
+        }
+      ]
     },
     {
       "kind": "javascript-module",
@@ -3338,6 +3338,107 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-form/fd-form.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Extended form element to allow cross-browser form participation of custom elements",
+          "name": "Form",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-form-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-form-padding-inline"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_formdata",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Form",
+          "declaration": {
+            "name": "Form",
+            "module": "types/fd-form/fd-form.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-form/fd-form.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-form/fd-form.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-form/fd-form.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-container/fd-container.d.ts",
       "declarations": [
         {
@@ -3446,107 +3547,6 @@
           "declaration": {
             "name": "Primary",
             "module": "types/fd-container/fd-container.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-form/fd-form.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Extended form element to allow cross-browser form participation of custom elements",
-          "name": "Form",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-form-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-form-padding-inline"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "_formdata",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "any"
-                  }
-                }
-              ]
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-form",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Form",
-          "declaration": {
-            "name": "Form",
-            "module": "types/fd-form/fd-form.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-form/fd-form.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-form/fd-form.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-form/fd-form.stories.d.ts"
           }
         }
       ]
@@ -3669,94 +3669,6 @@
           "declaration": {
             "name": "GalleryWithLargeBoxes",
             "module": "types/fd-gallery/fd-gallery.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-gallery-item/fd-gallery-item.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "GalleryItem",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding of gallery",
-              "name": "--padding"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items",
-              "name": "--gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Contains the content of the item",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery-item",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GalleryItem",
-          "declaration": {
-            "name": "GalleryItem",
-            "module": "types/fd-gallery-item/fd-gallery-item.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-gallery-item/fd-gallery-item.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
           }
         }
       ]
@@ -3981,6 +3893,94 @@
           "declaration": {
             "name": "CustomSize",
             "module": "types/fd-icon/fd-icon.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery-item/fd-gallery-item.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "GalleryItem",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding of gallery",
+              "name": "--padding"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items",
+              "name": "--gap"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Contains the content of the item",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GalleryItem",
+          "declaration": {
+            "name": "GalleryItem",
+            "module": "types/fd-gallery-item/fd-gallery-item.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-gallery-item/fd-gallery-item.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-gallery-item/fd-gallery-item.stories.d.ts"
           }
         }
       ]
