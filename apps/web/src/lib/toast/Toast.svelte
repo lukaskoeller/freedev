@@ -17,7 +17,7 @@
   data-variant="inverted"
   transition:fly={{ y: 30 }}
 >
-  {#if $$slots.before || type}
+  {#if $$slots.before || type}
     <div class="before">
       <slot name="before">
         {#if type === NotificationType.Success}

@@ -18,6 +18,10 @@ export type Notification = {
   message: string;
 };
 
+/**
+ * @todo Disable timeout for errors
+ * @todo Enable possibility to close Toast via Button
+ */
 const NOTIFICATION_TIMEOUT = 3000; // 3 sec
 
 const createNotificationStore = () => {
