@@ -13,9 +13,11 @@
         <div>
           <slot></slot>
         </div>
-        <div class="footer">
-          <slot name="footer"></slot>
-        </div>
+        {#if $$slots.footer}
+          <div class="footer">
+            <slot name="footer"></slot>
+          </div>
+        {/if}
       </div>
     </div>
   </Container>
