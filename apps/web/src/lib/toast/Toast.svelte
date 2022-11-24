@@ -12,7 +12,7 @@
   export let type: NotificationType = NotificationType.Default;
 </script>
 
-<div
+<output
   class="toast fd-card"
   data-variant="inverted"
   transition:fly={{ y: 30 }}
@@ -57,7 +57,7 @@
       <Icon size={Size.Xs}>{@html timesSolidSvg}</Icon>
     </slot>
   </div>
-</div>
+</output>
 
 <style lang="postcss">
   .toast {
