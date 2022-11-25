@@ -65,3 +65,72 @@
   font-size: 0.875rem;
   color: var(--_fd-info-text-color);
 }
+
+.fd-checkbox-button {
+  position: relative;
+  display: inline-grid;
+  justify-items: center;
+  grid-template: "main main" 1fr / 1fr;
+
+  & > div {
+    grid-area: main;
+    pointer-events: none;
+    padding-block: var(--size-2);
+    padding-inline: var(--size-4);
+  }
+  
+  & > input[type="checkbox"] {
+    display: block;
+    grid-area: main;
+    inline-size: 100%;
+    block-size: 100%;
+    appearance: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--surface-2);
+    border-radius: var(--radius-2);
+
+    &:checked {
+      background-color: var(--surface-2-inverted);
+
+      & + div {
+        color: var(--text-1-inverted);
+      }
+    }
+  }
+}
+
+.fd-radio-button {
+  position: relative;
+  display: inline-grid;
+  grid: "radio label" auto
+        / auto 1fr;
+  gap: var(--size-2);
+  justify-items: center;
+  align-items: center;
+  padding-block: var(--size-2);
+  padding-inline: var(--size-3);
+  background-color: var(--surface-2);
+  border-radius: var(--radius-2);
+
+  & > div {
+    grid-area: label;
+    pointer-events: none;
+  }
+  
+  & > input[type="radio"] {
+    accent-color: var(--color-link);
+    background-color: var(--surface-2);
+    grid-area: radio;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.fd-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2);
+}
