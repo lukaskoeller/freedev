@@ -7,6 +7,18 @@
   justify-items: var(--_fd-stack-justify-items);
 }
 
+.fd-label, fieldset > legend {
+  --_fd-label-color: var(--fd-label-color, var(--primary-color-5));
+  --_fd-label-text-transform: var(--fd-label-text-transform, uppercase);
+  --_fd-label-font-weight: var(--fd-label-font-weight, var(--font-weight-6));
+  --_fd-label-font-size: var(--fd-label-font-size, var(--font-size-1));
+
+  font-weight: var(--_fd-label-font-weight);
+  font-size: var(--_fd-label-font-size);
+  text-transform: var(--_fd-label-text-transform);
+  color: var(--_fd-label-color);
+}
+
 .fd-ram-grid {
   --_fd-ram-grid-gap-row: var(--fd-ram-grid-gap-row, var(--_fd-ram-grid-gap));
   --_fd-ram-grid-gap-column: var(--fd-ram-grid-gap-column, var(--_fd-ram-grid-gap));
@@ -72,13 +84,16 @@
   justify-items: center;
   grid-template: "main main" 1fr / 1fr;
 
-  & > div {
+  & > .label {
     grid-area: main;
     pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: var(--size-2);
     padding-block: var(--size-2);
-    padding-inline: var(--size-4);
+    padding-inline: var(--size-3);
   }
-  
+
   & > input[type="checkbox"] {
     display: block;
     grid-area: main;
@@ -129,7 +144,11 @@
   }
 }
 
-.fd-checkbox-group {
+fieldset:focus-within {
+  border-color: var(--color-link);
+}
+
+.fd-input-group {
   display: flex;
   flex-wrap: wrap;
   gap: var(--size-2);
