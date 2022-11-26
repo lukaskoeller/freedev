@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import CheckboxButton from "$lib/checkboxbutton/CheckboxButton.svelte";
+	import Fieldset from "$lib/fieldset/Fieldset.svelte";
+	import RadioButton from "$lib/radiobutton/RadioButton.svelte";
+import { onMount } from "svelte";
 	import FormContainer from "../FormContainer.svelte";
 
   onMount(async () => {
@@ -7,6 +10,7 @@
   });
 
   const heading: string = 'What are your conditions?';
+  let capacity: string;
 </script>
 
 <svelte:head>
@@ -31,12 +35,58 @@
         label="Available From"
         required
       ></fd-input>
-      <fd-input
-        name="capacity"
-        type="text"
-        label="Capacity"
-        required
-      ></fd-input>
+      <Fieldset legend="Capacity">
+        <div class="fd-input-group">
+          <RadioButton>
+            <input
+              type="radio"
+              name="test"
+              id="sixteen"
+              value="16h/week"
+              bind:group={capacity}
+            >
+            <svelte:fragment slot="label">16h/week</svelte:fragment>
+          </RadioButton>
+          <RadioButton>
+            <input
+              type="radio"
+              name="test"
+              id="thirty"
+              value="30h/week"
+              bind:group={capacity}
+            >
+            <svelte:fragment slot="label">30h/week</svelte:fragment>
+          </RadioButton>
+          <RadioButton>
+            <input
+              type="radio"
+              name="test"
+              id="forty"
+              value="40h/week"
+              bind:group={capacity}
+            >
+            <svelte:fragment slot="label">40h/week</svelte:fragment>
+          </RadioButton>
+          <RadioButton>
+            <input
+              type="radio"
+              name="test"
+              id="fifty"
+              value="custom"
+              bind:group={capacity}
+            >
+            <svelte:fragment slot="label">Custom</svelte:fragment>
+          </RadioButton>
+        </div>
+        {#if capacity === 'custom'}
+          <fd-input
+            name="customCapacity"
+            type="number"
+            label="Custom Capacity"
+            required
+          ></fd-input>
+        {/if}
+      </Fieldset>
     </div> 
   </form>
   <fd-button
