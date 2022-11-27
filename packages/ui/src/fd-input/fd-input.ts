@@ -1,6 +1,6 @@
-import { css, LitElement } from 'lit'
+import { css, LitElement, render } from 'lit'
 import { html } from 'lit/static-html.js';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { labelStyles } from '../fd-label/fd-label.style';
 import { FormControlMixin } from '../mixins/formControlMixin';
 import { captionStyles, errorStyles } from '../styles/shared';
@@ -44,6 +44,14 @@ export class Input extends FormControlMixin(LitElement) {
         row-gap: calc(var(--size-1) / 2);
       }
 
+      /**
+       * Hide options from light dom.
+       * Will be copied and put into a datalist element.
+       */
+       slot:not([name])::slotted(*) {
+        display: none;
+      }
+
       input {
         position: relative;
         min-width: 0;
@@ -70,8 +78,14 @@ export class Input extends FormControlMixin(LitElement) {
     `
   ];
 
+  @queryAssignedElements({ selector: '*' })
+  _listOptions!: Array<HTMLOptionElement>;
+
   @property({ type: String })
   label!: string;
+
+  @property({ type: String })
+  list?: string;
 
   @property({ type: String, reflect: true })
   placeholder?: string;
@@ -83,6 +97,7 @@ export class Input extends FormControlMixin(LitElement) {
   error?: string;
 
   render() {
+    console.log(this._listOptions);
     return html`
       <label for="input" class="label" part="label">
         <slot name="label">${this.label}</slot>
@@ -92,6 +107,7 @@ export class Input extends FormControlMixin(LitElement) {
         type=${this.type}
         name=${ifDefined(this.name)}
         value=${ifDefined(this.value)}
+        list=${ifDefined(this.list)}
         placeholder=${this.placeholder ?? this.label}
         ?disabled=${this.disabled}
         @input=${this.onInput}
@@ -108,6 +124,19 @@ export class Input extends FormControlMixin(LitElement) {
           ${this.error}
         </slot>
       </div>
+      <slot>
+        <!-- Will be display:none -->
+      </slot>
+      ${this.list
+        ? html`
+          <datalist id=${this.list} slot="datalist">
+            ${this._listOptions?.map((option) => html`
+              <option value=${option.value}></option>
+            `)}
+          </datalist>
+        `
+        : null
+      }
     `;
   }
 }
