@@ -62,7 +62,7 @@ export const FormControlMixin =
             }
           });
 
-          if (this.form) {
+          if (this.form && typeof this.form === 'object') {
             this.form.addEventListener('formdata', this.boundOnSubmit);
           }
       }
