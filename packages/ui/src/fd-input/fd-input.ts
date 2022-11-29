@@ -97,7 +97,6 @@ export class Input extends FormControlMixin(LitElement) {
   error?: string;
 
   render() {
-    console.log(this._listOptions);
     return html`
       <label for="input" class="label" part="label">
         <slot name="label">${this.label}</slot>
