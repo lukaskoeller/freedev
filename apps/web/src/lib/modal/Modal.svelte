@@ -52,12 +52,14 @@
 
 <style lang="postcss">
   dialog {
-    --_dialog-padding-inline: var(--dialog-padding-inline, var(--global-spacing));
+    --_dialog-padding-inline: var(
+      --dialog-padding-inline,
+      min(var(--_fd-card-padding-inline), var(--size-6))
+    );
+    --_dialog-padding-block: var(--dialog-padding-block, var(--size-3));
     --_dialog-margin-inline: var(--dialog-margin-inline, var(--size-2));
 
     display: grid;
-    background: var(--surface-2);
-    color: var(--text-1);
     max-inline-size: calc(
       min(100%, var(--size-content-3))
       - (var(--_dialog-margin-inline) * 2)
@@ -73,7 +75,6 @@
     border-radius: var(--radius-3);
     border-end-end-radius: 0;
     border-end-start-radius: 0;
-    box-shadow: var(--shadow-6);
     z-index: var(--layer-important);
     overflow: hidden;
     transition: opacity .5s var(--ease-3);
@@ -83,16 +84,14 @@
       opacity: 0;
     }
 
-    @media (--tablet) {
-      --_dialog-padding-inline: var(--dialog-padding-inline, var(--size-5));
-    }
-
     &::backdrop {
       transition: backdrop-filter .5s ease;
       backdrop-filter: blur(25px);
     }
 
     @media (--large-mobile) {
+      --_dialog-padding-block: var(--dialog-padding-block, var(--size-5));
+
       margin: auto;
       border-radius: var(--radius-3);
       
@@ -108,19 +107,33 @@
     grid-template-rows: auto 1fr auto;
     align-items: start;
     justify-items: stretch;
+
+    & > * {
+      padding-inline: var(--_dialog-padding-inline);
+    }
   }
 
   header {
     display: flex;
     gap: var(--size-3);
     justify-content: space-between;
-    align-items: flex-start;
-    padding-block: var(--size-3);
+    align-items: center;
+    padding-block: var(--_dialog-padding-block);
     padding-inline: var(--_dialog-padding-inline);
+    /* border-bottom: var(--border-size-1) solid var(--color-border); */
+  }
+
+  :global(.heading :--heading) {
+    font-size: var(--font-size-4);
+
+    @media (--large-mobile) {
+      font-size: var(--font-size-5);
+    }
   }
 
   .main {
     padding-inline: var(--_dialog-padding-inline);
+    padding-block: var(--_dialog-padding-block);
   }
 
   footer {
