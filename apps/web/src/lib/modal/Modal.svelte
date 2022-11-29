@@ -39,14 +39,21 @@
       <div class="heading">
         <slot name="heading"></slot>
       </div>
-      <fd-button variant="icon" size={Size.Sm}>
+      <fd-button
+        type="submit"
+        variant="icon"
+        size={Size.Sm}>
         <Icon size={Size.Sm}>{@html svgTimesSolid}</Icon>
       </fd-button>
     </header>
     <div class="main">
       <slot></slot>
     </div>
-    <footer>Close</footer>
+    <footer>
+      <slot name="footer">
+        <fd-button type="button">Close</fd-button>
+      </slot>
+    </footer>
   </form>
 </dialog>
 
