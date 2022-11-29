@@ -33,9 +33,9 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-color: var(--color-on-primary);
       --fd-button-color--hover: var(--color-on-primary);
       
-      --fd-button-padding-inline: var(--size-6);
-      --fd-button-block-size: calc(var(--size-6) + var(--size-3));
       --fd-button-font-size: var(--font-size-1);
+      --fd-button-padding-inline: var(--size-6);
+      --fd-button-block-size: calc(var(--size-6) + var(--fd-button-font-size));
       --fd-button-line-height: var(--font-lineheight-5);
 
       --fd-button-width: fit-content;
@@ -97,11 +97,16 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-color: var(--primary-color-5);
       --fd-button-color--hover: var(--primary-color-4);
     }
-    
+
     :is(button, a)[data-size="sm"] {
       --fd-button-padding-inline: var(--size-3);
       --fd-button-block-size: var(--size-7);
       --fd-button-font-size: var(--font-size-0);
+    }
+
+    :is(button, a)[data-variant="icon"] {
+      --fd-button-padding-inline: 0;
+      inline-size: var(--fd-button-block-size);
     }
 
     :is(button, a)[data-status="loading"] > [name="status"] {
@@ -150,7 +155,7 @@ export class Button extends FormControlMixin(LitElement) {
   private isLink: boolean = false;
 
   @property()
-  variant: "default" | "light" | "stealth" = "default";
+  variant: "default" | "light" | "stealth" | "icon" = "default";
 
   @property()
   size?: Size.Sm;
