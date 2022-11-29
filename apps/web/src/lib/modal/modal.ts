@@ -57,7 +57,7 @@ export const lightDismiss = ({ target: dialog }) => {
     dialog.close('dismiss');
 };
 
-export const dialogClose = async ({ target:dialog }) => {
+export const dialogClose = async ({ target: dialog }) => {
   dialog.setAttribute('inert', '');
   dialog.dispatchEvent(dialogClosingEvent);
 
