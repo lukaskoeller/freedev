@@ -2,6 +2,7 @@
 	import Icon from '$lib/icon/Icon.svelte';
   import { onMount } from 'svelte';
   import svgTimesSolid from 'assets/icons/times-solid.svg?raw';
+	import { Size } from 'types';
 
   export let id: string;
   let dialogElement: HTMLDialogElement;
@@ -38,8 +39,8 @@
       <div class="heading">
         <slot name="heading"></slot>
       </div>
-      <fd-button>
-        <Icon>{@html svgTimesSolid}</Icon>
+      <fd-button variant="icon" size={Size.Sm}>
+        <Icon size={Size.Sm}>{@html svgTimesSolid}</Icon>
       </fd-button>
     </header>
     <div class="main">
