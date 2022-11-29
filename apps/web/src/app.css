@@ -65,8 +65,12 @@
   border-radius: var(--radius-conditional-3);
   box-shadow: var(--_fd-card-shadow);
 
+  @media (--large-mobile) {
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-6));
+  }
+
   @media (--small-desktop) {
-    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-9));
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-8));
   }
 }
 
