@@ -151,6 +151,19 @@
     justify-content: space-between;
     align-items: flex-start;
     padding-inline: var(--_dialog-padding-inline);
-    padding-block: var(--size-3);
+    padding-block-start: var(--size-3);
+    padding-block-end: calc(var(--size-5) + env(safe-area-inset-bottom));
+    border-top: var(--border-size-1) solid var(--_fd-card-border-color);
+  }
+
+  :global(footer > menu) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-3);
+    padding-inline-start: 0;
+
+    &:only-child {
+      margin-inline-start: auto;
+    }
   }
 </style>
