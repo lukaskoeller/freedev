@@ -64,15 +64,16 @@
       min(var(--_fd-card-padding-inline), var(--size-6))
     );
     --_dialog-padding-block: var(--dialog-padding-block, var(--size-3));
-    --_dialog-margin-inline: var(--dialog-margin-inline, var(--size-2));
+    --_dialog-margin-inline: var(--dialog-margin-inline, 0);
 
     display: grid;
     max-inline-size: calc(
       min(100%, var(--size-content-3))
       - (var(--_dialog-margin-inline) * 2)
     );
-    max-block-size: min(80vh, 100%);
-    max-block-size: min(80dvb, 100%);
+    max-block-size: min(84vh, 100%);
+    max-block-size: min(84dvb, 100%);
+    block-size: auto;
     margin: auto;
     margin-inline: var(--_dialog-margin-inline);
     margin-block-end: 0;
