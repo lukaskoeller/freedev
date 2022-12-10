@@ -472,7 +472,6 @@
           >
             Find more
           </fd-button>
-          <p>{stacks}</p>
           <Modal id="Skills">
             <h2 slot="heading">Your Stack</h2>
             <div class="fd-stack">
