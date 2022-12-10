@@ -167,6 +167,9 @@ export class Button extends FormControlMixin(LitElement) {
   expand: boolean = false;
 
   @property()
+  autofocus: boolean = false;
+
+  @property()
   form?: string;
 
   @property()
