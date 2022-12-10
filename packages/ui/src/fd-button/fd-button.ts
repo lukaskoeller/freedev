@@ -163,7 +163,7 @@ export class Button extends FormControlMixin(LitElement) {
   @property()
   status?: Status;
 
-  @property()
+  @property({ reflect: true })
   expand: boolean = false;
 
   @property()
