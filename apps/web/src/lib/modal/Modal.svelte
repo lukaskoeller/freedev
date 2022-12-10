@@ -49,11 +49,11 @@
     <div class="main">
       <slot></slot>
     </div>
-    <footer>
-      <slot name="footer">
-        <fd-button type="button">Close</fd-button>
-      </slot>
-    </footer>
+    {#if $$slots.footer}
+      <footer>
+        <slot name="footer"></slot>
+      </footer>
+    {/if}
   </form>
 </dialog>
 
