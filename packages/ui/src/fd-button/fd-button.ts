@@ -199,7 +199,7 @@ export class Button extends FormControlMixin(LitElement) {
   _proxyItems!: Array<HTMLButtonElement>;
 
   updated() {
-    if (this.type === "submit") {
+    if (this.type === "submit" || this.type === "button") {
       render(html`
         <button
           slot="proxy"
@@ -207,6 +207,7 @@ export class Button extends FormControlMixin(LitElement) {
           value=${ifDefined(!this.isLink ? this.value : undefined)}
           type=${ifDefined(!this.isLink ? this.type : undefined)}
           form=${ifDefined(!this.isLink ? this.form : undefined)}
+          ?autofocus=${this.autofocus}
           ?disabled=${!this.isLink ? this.disabled : undefined}
         >
           <slot></slot>
@@ -224,6 +225,7 @@ export class Button extends FormControlMixin(LitElement) {
         data-size=${this.size}
         data-status=${this.status}
         ?aria-busy=${this.status === Status.Loading}
+        ?autofocus=${this.autofocus}
         name=${ifDefined(!this.isLink ? this.name : undefined)}
         value=${ifDefined(!this.isLink ? this.value : undefined)}
         type=${ifDefined(!this.isLink ? this.type : undefined)}
