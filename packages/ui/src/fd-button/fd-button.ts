@@ -189,7 +189,7 @@ export class Button extends FormControlMixin(LitElement) {
     return this.isLink ? literal`a` : literal`button`;
   }
 
-  private onClick() {
+  private _onClick() {
     if (this.type === "submit") {
       (this._proxyItems[0] as HTMLButtonElement).click();
     }
@@ -230,7 +230,7 @@ export class Button extends FormControlMixin(LitElement) {
         href=${ifDefined(this.isLink ? this.href : undefined)}
         target=${ifDefined(this.isLink ? this.target : undefined)}
         ?download=${ifDefined(this.isLink ? this.download : undefined)}
-        @click=${this.onClick}
+        @click=${this._onClick}
       >
         <slot></slot>
         <slot name="status">
