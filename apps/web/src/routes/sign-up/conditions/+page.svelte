@@ -36,56 +36,58 @@ import { onMount } from "svelte";
         required
       ></fd-input>
       <Fieldset legend="Capacity">
-        <div class="fd-input-group">
-          <RadioButton>
-            <input
-              type="radio"
-              name="test"
-              id="sixteen"
-              value="16h/week"
-              bind:group={capacity}
-            >
-            <svelte:fragment slot="label">16h/week</svelte:fragment>
-          </RadioButton>
-          <RadioButton>
-            <input
-              type="radio"
-              name="test"
-              id="thirty"
-              value="30h/week"
-              bind:group={capacity}
-            >
-            <svelte:fragment slot="label">30h/week</svelte:fragment>
-          </RadioButton>
-          <RadioButton>
-            <input
-              type="radio"
-              name="test"
-              id="forty"
-              value="40h/week"
-              bind:group={capacity}
-            >
-            <svelte:fragment slot="label">40h/week</svelte:fragment>
-          </RadioButton>
-          <RadioButton>
-            <input
-              type="radio"
-              name="test"
-              id="fifty"
-              value="custom"
-              bind:group={capacity}
-            >
-            <svelte:fragment slot="label">Custom</svelte:fragment>
-          </RadioButton>
+        <div class="fd-stack">
+          <div class="fd-input-group">
+            <RadioButton>
+              <input
+                type="radio"
+                name="test"
+                id="sixteen"
+                value="16h/week"
+                bind:group={capacity}
+              >
+              <svelte:fragment slot="label">16h/week</svelte:fragment>
+            </RadioButton>
+            <RadioButton>
+              <input
+                type="radio"
+                name="test"
+                id="thirty"
+                value="30h/week"
+                bind:group={capacity}
+              >
+              <svelte:fragment slot="label">30h/week</svelte:fragment>
+            </RadioButton>
+            <RadioButton>
+              <input
+                type="radio"
+                name="test"
+                id="forty"
+                value="40h/week"
+                bind:group={capacity}
+              >
+              <svelte:fragment slot="label">40h/week</svelte:fragment>
+            </RadioButton>
+            <RadioButton>
+              <input
+                type="radio"
+                name="test"
+                id="fifty"
+                value="custom"
+                bind:group={capacity}
+              >
+              <svelte:fragment slot="label">Custom</svelte:fragment>
+            </RadioButton>
+          </div>
+          {#if capacity === 'custom'}
+            <fd-input
+              name="customCapacity"
+              type="number"
+              label="Custom Capacity"
+              required
+            ></fd-input>
+          {/if}
         </div>
-        {#if capacity === 'custom'}
-          <fd-input
-            name="customCapacity"
-            type="number"
-            label="Custom Capacity"
-            required
-          ></fd-input>
-        {/if}
       </Fieldset>
     </div> 
   </form>
