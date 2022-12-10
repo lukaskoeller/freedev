@@ -31,6 +31,7 @@
 <dialog
   {id}
   class="fd-card"
+  autofocus
   inert
   bind:this={dialogElement}
 >

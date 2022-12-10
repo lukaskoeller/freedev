@@ -9,7 +9,7 @@ const dialogOpenedEvent  = new Event('opened')
 const dialogRemovedEvent = new Event('removed')
 
 // track opening
-export const dialogAttrObserver = new MutationObserver((mutations, observer) => {
+export const dialogAttrObserver = new MutationObserver((mutations) => {
   mutations.forEach(async mutation => {
     if (mutation.attributeName === 'open') {
       const dialog = mutation.target as HTMLDialogElement;
@@ -21,6 +21,8 @@ export const dialogAttrObserver = new MutationObserver((mutations, observer) => 
 
       // set focus
       const focusTarget = dialog.querySelector('[autofocus]') as HTMLDialogElement;
+      console.log(focusTarget);
+      
       focusTarget
         ? focusTarget.focus()
         : dialog.querySelector('button').focus();
@@ -33,7 +35,7 @@ export const dialogAttrObserver = new MutationObserver((mutations, observer) => 
 });
 
 // track deletion
-export const dialogDeleteObserver = new MutationObserver((mutations, observer) => {
+export const dialogDeleteObserver = new MutationObserver((mutations) => {
   mutations.forEach(mutation => {
     mutation.removedNodes.forEach(removedNode => {
       if (removedNode.nodeName === 'DIALOG') {
