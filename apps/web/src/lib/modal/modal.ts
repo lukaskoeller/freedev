@@ -21,8 +21,6 @@ export const dialogAttrObserver = new MutationObserver((mutations) => {
 
       // set focus
       const focusTarget = dialog.querySelector('[autofocus]') as HTMLDialogElement;
-      console.log(focusTarget);
-      
       focusTarget
         ? focusTarget.focus()
         : dialog.querySelector('button').focus();
