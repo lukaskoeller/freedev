@@ -99,6 +99,7 @@
 
     @media (--large-mobile) {
       --_dialog-padding-block: var(--dialog-padding-block, var(--size-5));
+      --_dialog-margin-inline: var(--dialog-margin-inline, var(--size-2));
 
       margin: auto;
       border-radius: var(--radius-3);
@@ -115,8 +116,11 @@
     grid-template-rows: auto 1fr auto;
     align-items: start;
     justify-items: stretch;
+    block-size: 100%;
+    min-block-size: 0;
 
     & > * {
+      min-block-size: 0;
       padding-inline: var(--_dialog-padding-inline);
     }
   }
