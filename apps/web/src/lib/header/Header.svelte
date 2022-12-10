@@ -54,6 +54,7 @@
 <style lang="postcss">
 	header {
 		position: fixed;
+		z-index: var(--layer-5);
 		bottom: 0;
 		left: 0;
 
@@ -61,7 +62,11 @@
 		display: flex;
 		justify-content: space-between;
 		padding-inline: var(--global-spacing);
-		padding-block: calc(var(--global-spacing) / 2);
+		padding-block-start: calc(var(--global-spacing) / 2);
+		padding-block-end: calc(
+			var(--global-spacing) / 2
+			+ env(safe-area-inset-bottom)
+		);
 
 		/* background-color: var(--neutral-color-base); */
 		/* background-color: hsl(252deg 28% 93% / 60%); */
