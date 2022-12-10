@@ -25,9 +25,9 @@ export const FormControlMixin =
       private boundOnSubmit = this.onSubmit.bind(this);
       private _form: HTMLFormElement | null = null;
 
-      @property({type: String}) name?: string;
-      @property({type: String}) value?: string = '';
-      @property({type: Boolean}) disabled: boolean = false;
+      @property({ type: String }) name?: string;
+      @property({ type: String }) value?: string = '';
+      @property({ type: Boolean }) disabled: boolean = false;
 
       protected get form(): HTMLFormElement | null { 
         if (this.hasAttribute("form")) {
