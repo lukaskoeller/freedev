@@ -44,6 +44,20 @@ export const FormControlMixin =
         this._form = form;
       }
 
+      emit(name: string, options?: CustomEventInit) {
+        const event = new CustomEvent(name, {
+          bubbles: true,
+          cancelable: false,
+          composed: true,
+          detail: {},
+          ...options
+        });
+    
+        this.dispatchEvent(event);
+    
+        return event;
+      }
+
       onInput(e: InputEvent) {
         const target = e.target as HTMLInputElement
         this.value = target.value;
