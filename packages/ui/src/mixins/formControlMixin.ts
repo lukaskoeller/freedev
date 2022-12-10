@@ -61,6 +61,7 @@ export const FormControlMixin =
       onInput(e: InputEvent) {
         const target = e.target as HTMLInputElement
         this.value = target.value;
+        this.emit('fd-input');
       }
 
       /**
