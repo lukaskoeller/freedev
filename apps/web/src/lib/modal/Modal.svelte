@@ -142,6 +142,15 @@
   .main {
     padding-inline: var(--_dialog-padding-inline);
     padding-block: var(--_dialog-padding-block);
+    overflow-y: auto;
+    block-size: 100%;
+
+    &:last-child {
+      padding-block-end: calc(
+        var(--_dialog-padding-block) * 1.5
+        + env(safe-area-inset-bottom)
+      );
+    }
   }
 
   footer {
