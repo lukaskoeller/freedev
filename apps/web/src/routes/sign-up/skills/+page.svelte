@@ -38,6 +38,10 @@
   import svgStripe from 'assets/icons/stripe.svg?raw';
   import svgTailwindcss from 'assets/icons/tailwindcss.svg?raw';
   import svgVuedotjs from 'assets/icons/vuedotjs.svg?raw';
+  import svgFigma from 'assets/icons/figma.svg?raw';
+  import svgGoogletagmanager from 'assets/icons/googletagmanager.svg?raw';
+  import svgGoogleAnalytics from 'assets/icons/googleanalytics.svg?raw';
+  import svgJiraSoftware from 'assets/icons/jirasoftware.svg?raw';
 	import Modal from "$lib/modal/Modal.svelte";
 
   onMount(async () => {
@@ -50,7 +54,14 @@
 
   const heading: string = 'What do you rock at?';
 
-  const LANGUAGES = [
+  type Language = {
+    id: string;
+    name: string;
+    file?: string;
+    label: string;
+  }
+
+  const LANGUAGES: Language[] = [
     {
       id: 'javascript',
       name: 'javascript',
@@ -373,6 +384,40 @@
     },
   ];
 
+  type Tool = {
+    id: string;
+    name: string;
+    file?: string;
+    label: string;
+  }
+
+  const TOOLS: Tool[] = [
+    {
+      id: 'figma',
+      name: 'figma',
+      file: svgFigma,
+      label: 'Figma',
+    },
+    {
+      id: 'googleanalytics',
+      name: 'googleanalytics',
+      file: svgGoogleAnalytics,
+      label: 'Google Analytics',
+    },
+    {
+      id: 'googletagmanager',
+      name: 'googletagmanager',
+      file: svgGoogletagmanager,
+      label: 'Google Tag Manager',
+    },
+    {
+      id: 'jirasoftware',
+      name: 'jirasoftware',
+      file: svgJiraSoftware,
+      label: 'Jira',
+    },
+  ];
+
   $: sortBySelectedLanguages = (stackA: Stack, stackB: Stack): number => {
     const stackHasLanguage = (stack: Stack) => {
       const mergedArr = [...stack.language, ...languages];
@@ -467,6 +512,7 @@
           </div>
           <fd-button
             type="button"
+            variant="stealth"
             on:click={() => window.Skills.showModal()}
             on:keypress={() => window.Skills.showModal()}
           >
@@ -513,12 +559,26 @@
           </Modal>
         </div>
       </Fieldset>
-      <fd-input
-        name="tools"
-        type="text"
-        label="Tools"
-        required
-      ></fd-input>
+      <Fieldset legend="Tools & More">
+        <div class="fd-input-group">
+          {#each TOOLS as { id, name, file, label } ({ id })}
+            <CheckboxButton {id}>
+              <input
+                type="checkbox"
+                {name}
+                value={name}
+                bind:group={stacks}
+              >
+              <svelte:fragment slot="label">
+                {#if file}
+                  <fd-icon {file} size="inline"></fd-icon>
+                {/if}
+                {label}
+              </svelte:fragment>
+            </CheckboxButton>
+          {/each}
+        </div>
+      </Fieldset>
     </div> 
   </form>
   <fd-button
