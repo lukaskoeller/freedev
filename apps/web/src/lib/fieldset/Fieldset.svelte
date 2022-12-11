@@ -9,7 +9,7 @@
 </fieldset>
 
 <style lang="postcss">
-  fieldset {
+  fieldset[data-variant="light"] {
     padding-inline: 0;
     border: 0;
   }

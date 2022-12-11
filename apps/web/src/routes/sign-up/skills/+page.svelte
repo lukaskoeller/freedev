@@ -470,7 +470,7 @@
     method="POST"
   >
     <div class="fd-stack">
-      <Fieldset legend="Languages">
+      <Fieldset variant="light" legend="Languages">
         <div class="fd-input-group">
           {#each LANGUAGES as { id, name, file, label } ({ id })}
             <CheckboxButton {id}>
@@ -490,7 +490,7 @@
           {/each}
         </div>
       </Fieldset>
-      <Fieldset legend="Application & Data">
+      <Fieldset variant="light" legend="Application & Data">
         <div class="fd-stack">
           <div class="fd-input-group">
             {#each stacksInQuikView as { id, name, file, label } ({ id })}
@@ -512,7 +512,7 @@
           </div>
           <fd-button
             type="button"
-            variant="stealth"
+            variant="light"
             on:click={() => window.Skills.showModal()}
             on:keypress={() => window.Skills.showModal()}
           >
@@ -559,7 +559,7 @@
           </Modal>
         </div>
       </Fieldset>
-      <Fieldset legend="Tools & More">
+      <Fieldset variant="light" legend="Tools & More">
         <div class="fd-input-group">
           {#each TOOLS as { id, name, file, label } ({ id })}
             <CheckboxButton {id}>
