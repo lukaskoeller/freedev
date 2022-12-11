@@ -54,6 +54,8 @@
 
   const heading: string = 'What do you rock at?';
 
+  const MAX_ITEMS_SHOWN = 9;
+
   type Language = {
     id: string;
     name: string;
@@ -440,7 +442,7 @@
     .sort((stackA, stackB) => sortByPopularity(stackA, stackB))
     .sort((stackA, stackB) => sortBySelectedLanguages(stackA, stackB))
 
-  $: baseStacks = allStacks.slice(0, 15);
+  $: baseStacks = allStacks.slice(0, MAX_ITEMS_SHOWN);
 
   $: filteredStacks = searchQuery ? allStacks.filter((stack) => {
     console.log(stack.label.toLowerCase(), searchQuery.toLowerCase());
@@ -513,6 +515,7 @@
           <fd-button
             type="button"
             variant="light"
+            style="justify-self: end;"
             on:click={() => window.Skills.showModal()}
             on:keypress={() => window.Skills.showModal()}
           >
