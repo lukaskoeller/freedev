@@ -42,7 +42,8 @@
       </div>
       <fd-button
         type="submit"
-        variant="icon"
+        variant="monotone"
+        icon
         size={Size.Sm}>
         <Icon size={Size.Sm}>{@html svgTimesSolid}</Icon>
       </fd-button>
