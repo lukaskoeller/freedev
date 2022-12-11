@@ -1,8 +1,16 @@
 <script lang="ts">
   export let legend: string;
+  export let variant: 'light' = undefined;
 </script>
 
-<fieldset>
+<fieldset data-variant={variant}>
   <legend>{legend}</legend>
   <slot></slot>
 </fieldset>
+
+<style lang="postcss">
+  fieldset {
+    padding-inline: 0;
+    border: 0;
+  }
+</style>
