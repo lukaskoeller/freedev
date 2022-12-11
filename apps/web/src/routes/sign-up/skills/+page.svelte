@@ -427,7 +427,7 @@
     <div class="fd-stack">
       <Fieldset legend="Languages">
         <div class="fd-input-group">
-          {#each LANGUAGES as { id, name, file, label }}
+          {#each LANGUAGES as { id, name, file, label } ({ id })}
             <CheckboxButton {id}>
               <input
                 type="checkbox"
@@ -448,7 +448,7 @@
       <Fieldset legend="Application & Data">
         <div class="fd-stack">
           <div class="fd-input-group">
-            {#each stacksInQuikView as { id, name, file, label }}
+            {#each stacksInQuikView as { id, name, file, label } ({ id })}
               <CheckboxButton {id}>
                 <input
                   type="checkbox"
@@ -484,12 +484,12 @@
                 required
                 on:fd-input={handleSearchInput}
               >
-                {#each STACKS as { name }}
+                {#each STACKS as { name } ({ name })}
                   <option value={name}>
                 {/each}
               </fd-input>
               <div class="fd-input-group">
-                {#each filteredStacks as { id, name, file, label }}
+                {#each filteredStacks as { id, name, file, label } ({ name })}
                   <CheckboxButton {id}>
                     <input
                       type="checkbox"
