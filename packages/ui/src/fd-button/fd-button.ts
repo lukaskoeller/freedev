@@ -130,6 +130,19 @@ export class Button extends FormControlMixin(LitElement) {
       }
     }
 
+    :is(button, a)[data-expand] {
+      --fd-button-width: 100%;
+    }
+
+    :is(button, a)[data-icon] {
+      --fd-button-padding-inline: 0;
+      --fd-button-width: var(--fd-button-block-size);
+    }
+
+    :host([disabled]) {
+      pointer-events: none;
+    }
+
     :is(button, a)[data-status="loading"] > [name="status"] > fd-icon {
       animation: var(--animation-spin);
       animation-duration: 1.1s;
