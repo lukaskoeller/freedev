@@ -85,17 +85,18 @@ export class Button extends FormControlMixin(LitElement) {
     }
     
     :is(button, a)[data-variant="light"] {
-      --fd-button-background-color: var(--light-color-base);
-      --fd-button-background-color--hover: var(--light-color-base);
-      --fd-button-color: var(--primary-color-base);
-      --fd-button-color--hover: var(--primary-color-5);
+      --fd-button-background-color: transparent;
+      --fd-button-background-color--hover: transparent;
+      --fd-button-color: var(--text-1);
+      --fd-button-color--hover: var(--text-1);
+      outline: var(--border-size-1) solid var(--color-border-inverted);
     }
     
     :is(button, a)[data-variant="stealth"] {
       --fd-button-background-color: transparent;
       --fd-button-background-color--hover: transparent;
-      --fd-button-color: var(--primary-color-5);
-      --fd-button-color--hover: var(--primary-color-4);
+      --fd-button-color: var(--text-1);
+      --fd-button-color--hover: var(--text-1);
     }
 
     :is(button, a)[data-size="sm"] {
