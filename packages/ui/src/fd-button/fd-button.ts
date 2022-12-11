@@ -105,11 +105,6 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-font-size: var(--font-size-0);
     }
 
-    :is(button, a)[data-variant="icon"] {
-      --fd-button-padding-inline: 0;
-      inline-size: var(--fd-button-block-size);
-    }
-
     :is(button, a)[data-status="loading"] > [name="status"] {
       --fd-icon-size: 1.75em;
       display: inline-flex;
@@ -177,10 +172,13 @@ export class Button extends FormControlMixin(LitElement) {
   @property()
   status?: Status;
 
-  @property({ reflect: true })
+  @property({ type: Boolean, reflect: true })
   expand: boolean = false;
 
-  @property()
+  @property({ type: Boolean, reflect: true })
+  icon: boolean = false;
+
+  @property({ type: Boolean, reflect: true })
   autofocus: boolean = false;
 
   @property()
@@ -192,7 +190,7 @@ export class Button extends FormControlMixin(LitElement) {
   @property()
   target?: "_self" | "_blank" | "_parent" | "_top" = "_self";
 
-  @property()
+  @property({ type: Boolean, reflect: true })
   download?: boolean = false;
 
   @property()
@@ -235,6 +233,8 @@ export class Button extends FormControlMixin(LitElement) {
       <slot name="proxy"></slot>
       <${this.getTag()}
         part="button"
+        ?data-icon=${this.icon}
+        ?data-expand=${this.expand}
         data-variant=${this.variant}
         data-size=${this.size}
         data-status=${this.status}
