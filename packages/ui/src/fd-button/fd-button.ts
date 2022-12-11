@@ -32,6 +32,7 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-background-color--hover: var(--color-link-hover);
       --fd-button-color: var(--color-on-primary);
       --fd-button-color--hover: var(--color-on-primary);
+      --fd-button-border-color: var(--color-link);
       
       --fd-button-font-size: var(--font-size-1);
       --fd-button-padding-inline: var(--size-6);
@@ -39,14 +40,6 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-line-height: var(--font-lineheight-5);
 
       --fd-button-width: fit-content;
-    }
-
-    :host([disabled]) {
-      pointer-events: none;
-    }
-
-    :host([expand]) {
-      --fd-button-width: 100%;
     }
 
     :is(button, a) {
@@ -89,9 +82,16 @@ export class Button extends FormControlMixin(LitElement) {
       --fd-button-background-color--hover: transparent;
       --fd-button-color: var(--text-1);
       --fd-button-color--hover: var(--text-1);
-      outline: var(--border-size-1) solid var(--color-border-inverted);
+      outline: var(--border-size-1) solid var(--fd-button-border-color);
     }
     
+    :is(button, a)[data-variant="monotone"] {
+      --fd-button-background-color: var(--color-surface-2);
+      --fd-button-background-color--hover: var(--color-surface-2);
+      --fd-button-color: var(--color-link);
+      --fd-button-color--hover: var(--color-link);
+    }
+
     :is(button, a)[data-variant="stealth"] {
       --fd-button-background-color: transparent;
       --fd-button-background-color--hover: transparent;
