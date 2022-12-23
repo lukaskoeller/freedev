@@ -16,6 +16,14 @@ export const createDatabase = () => {
         name: 'handle',
         type: 'S',
       },
+      {
+        name: 'gsi1pk',
+        type: 'S',
+      },
+      {
+        name: 'gsi1sk',
+        type: 'S',
+      },
       // Not indexed anywhere. Thus, not used.
       // (Not used in secondary index or similar).
       // {
@@ -29,13 +37,23 @@ export const createDatabase = () => {
     ],
     hashKey: 'pk',
     rangeKey: 'sk',
-    globalSecondaryIndexes: [{
-      name: "handle-index",
-      projectionType: "ALL",
-      hashKey: "handle",
-      readCapacity: 1,
-      writeCapacity: 1,
-    }],
+    globalSecondaryIndexes: [
+      {
+        name: "handle-index",
+        projectionType: "ALL",
+        hashKey: "handle",
+        readCapacity: 1,
+        writeCapacity: 1,
+      },
+      {
+        name: "gsi1-index",
+        projectionType: "ALL",
+        hashKey: "gsi1pk",
+        rangeKey: "gsi1sk",
+        readCapacity: 1,
+        writeCapacity: 1,
+      },
+    ],
     billingMode: 'PROVISIONED',
     // @todo Necessary to adjust?
     readCapacity: 1,
