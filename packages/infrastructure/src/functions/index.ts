@@ -3,7 +3,7 @@ import * as aws from "@pulumi/aws";
 import { HttpMethod, ApiEndpoint } from '../common/models';
 import { UserPool } from "@pulumi/aws/cognito";
 import { userPoolClientId } from "../..";
-import { policyReadOnlyDynamodb, policyReadWriteDynamodb } from '../common/policies/index';
+import { policyReadOnlyDynamodb, policyReadWriteDynamodb, policyWriteDynamodb } from '../common/policies/index';
 
 export type CreateApiArgs = {
   /**
@@ -84,6 +84,19 @@ export const createApi = (args: CreateApiArgs) => {
     role: userEndpoint.lambdaIamRole,
     policyArn: policyReadOnlyDynamodb.arn,
   }, { parent: userEndpoint });
+
+  const userPutEndpoint = new ApiEndpoint('api-put-user', {
+    path: '/user',
+    functionsPath: 'api-put-user',
+    httpMethod: HttpMethod.PUT,
+    api,
+    authorizerId,
+  });
+
+  new aws.iam.RolePolicyAttachment('api-put-user-lambda-role-attachment-dynamodb', {
+    role: userPutEndpoint.lambdaIamRole,
+    policyArn: policyWriteDynamodb.arn,
+  }, { parent: userPutEndpoint });
 
   const signIn = new ApiEndpoint('sign-in', {
     path: '/sign-in',
