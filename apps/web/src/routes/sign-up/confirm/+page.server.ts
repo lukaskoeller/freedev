@@ -10,7 +10,7 @@ export const actions: Actions = {
     const username = form.get('username');
 
     // @todo TEMPORARY Remove
-    throw redirect(301, '/sign-up/name');
+    throw redirect(301, '/sign-up/signin');
   
     const response = await api({
       fetch,
@@ -28,7 +28,7 @@ export const actions: Actions = {
     }
 
     if (body?.statusCode === 400) {
-      return invalid(400, { message: body?.message ?? 'We could not confirm your account. That mifht happened due to a wrong code. Try to enter it again.' });
+      return invalid(400, { message: body?.message ?? 'We could not confirm your account. That might happened due to a wrong code. Try to enter it again.' });
     }
 
     return { message: body?.message ?? 'Successfully confirmed your account 🥳' }
