@@ -445,8 +445,6 @@
   $: baseStacks = allStacks.slice(0, MAX_ITEMS_SHOWN);
 
   $: filteredStacks = searchQuery ? allStacks.filter((stack) => {
-    console.log(stack.label.toLowerCase(), searchQuery.toLowerCase());
-
     return stack.label.toLowerCase().includes(searchQuery.toLowerCase())
   }) : allStacks;
 
