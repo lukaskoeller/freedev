@@ -19,6 +19,188 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/index.d.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-button/fd-button"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-card/fd-card"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-gallery/fd-gallery"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-gallery-item/fd-gallery-item"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-label/fd-label"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-section/fd-section"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-input/fd-input"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-logo/fd-logo"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-icon/fd-icon"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-container/fd-container"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-hr/fd-hr"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-stack/fd-stack"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./fd-switch/fd-switch"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/my-element.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An example element.",
+          "name": "MyElement",
+          "cssParts": [
+            {
+              "description": "The button",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name to say \"Hello\" to."
+            },
+            {
+              "kind": "field",
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "description": "The number of times the button has been clicked."
+            },
+            {
+              "kind": "field",
+              "name": "_onClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "foo",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "my-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MyElement",
+          "declaration": {
+            "name": "MyElement",
+            "module": "types/my-element.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/index.ts",
       "declarations": [],
       "exports": [
@@ -227,2626 +409,6 @@
           "declaration": {
             "name": "MyElement",
             "module": "src/my-element.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/index.d.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-button/fd-button"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-card/fd-card"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-gallery/fd-gallery"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-gallery-item/fd-gallery-item"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-label/fd-label"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-section/fd-section"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-input/fd-input"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-logo/fd-logo"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-icon/fd-icon"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-container/fd-container"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-hr/fd-hr"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-stack/fd-stack"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "./fd-switch/fd-switch"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/my-element.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An example element.",
-          "name": "MyElement",
-          "cssParts": [
-            {
-              "description": "The button",
-              "name": "button"
-            }
-          ],
-          "slots": [
-            {
-              "description": "This element has a slot",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "description": "The name to say \"Hello\" to."
-            },
-            {
-              "kind": "field",
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "description": "The number of times the button has been clicked."
-            },
-            {
-              "kind": "field",
-              "name": "_onClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "foo",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "my-element",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "MyElement",
-          "declaration": {
-            "name": "MyElement",
-            "module": "types/my-element.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/controllers/event-controller.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "EventController",
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "ReactiveControllerHost & Element"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "Event[\"type\"]"
-              },
-              "default": "type"
-            },
-            {
-              "kind": "field",
-              "name": "onEvent",
-              "type": {
-                "text": "(event: EventType) => void"
-              },
-              "default": "method"
-            },
-            {
-              "kind": "method",
-              "name": "hostConnected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "hostDisconnected"
-            }
-          ]
-        },
-        {
-          "kind": "function",
-          "name": "addListener",
-          "parameters": [
-            {
-              "name": "host",
-              "type": {
-                "text": "ReactiveControllerHost & Element"
-              }
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "Event[\"type\"]"
-              }
-            },
-            {
-              "name": "method",
-              "type": {
-                "text": "(event: EventType) => void"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "EventController",
-          "declaration": {
-            "name": "EventController",
-            "module": "src/controllers/event-controller.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "addListener",
-          "declaration": {
-            "name": "addListener",
-            "module": "src/controllers/event-controller.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/controllers/observer-controller.ts",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "observe",
-          "parameters": [
-            {
-              "name": "propertyName",
-              "type": {
-                "text": "string"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "observe",
-          "declaration": {
-            "name": "observe",
-            "module": "src/controllers/observer-controller.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/controllers/slot-controller.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "SlotController",
-          "members": [
-            {
-              "kind": "method",
-              "name": "hostConnected"
-            },
-            {
-              "kind": "method",
-              "name": "hostDisconnected"
-            },
-            {
-              "kind": "field",
-              "name": "hasContent"
-            },
-            {
-              "kind": "field",
-              "name": "content"
-            },
-            {
-              "kind": "field",
-              "name": "handleSlotChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "onChange",
-              "privacy": "protected",
-              "parameters": [
-                {
-                  "name": "_e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "host",
-              "default": "host"
-            },
-            {
-              "kind": "field",
-              "name": "slotName",
-              "default": "slotName"
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "SlotController",
-          "declaration": {
-            "name": "SlotController",
-            "module": "src/controllers/slot-controller.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-button/fd-button.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An example element.",
-          "name": "Button",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the background-color",
-              "name": "--fd-button-background-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the background-color hover state",
-              "name": "--fd-button-background-color--host"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the text color",
-              "name": "--fd-button-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the text color hover state",
-              "name": "--fd-button-color--hover"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The button",
-              "name": "button"
-            }
-          ],
-          "slots": [
-            {
-              "description": "This element has a slot",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "statusIcon",
-              "parameters": [
-                {
-                  "name": "status",
-                  "type": {
-                    "text": "Status | undefined"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "isLink",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"light\" | \"stealth\""
-              },
-              "default": "\"default\"",
-              "attribute": "variant"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size.Sm | undefined"
-              },
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "Status | undefined"
-              },
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "expand",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "expand"
-            },
-            {
-              "kind": "field",
-              "name": "href",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "href"
-            },
-            {
-              "kind": "field",
-              "name": "target",
-              "type": {
-                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
-              },
-              "default": "\"_self\"",
-              "attribute": "target"
-            },
-            {
-              "kind": "field",
-              "name": "download",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "attribute": "download"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "HTMLButtonElement[\"type\"] | undefined"
-              },
-              "default": "'submit'",
-              "attribute": "type"
-            },
-            {
-              "kind": "method",
-              "name": "getTag",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "onClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_proxyItems",
-              "type": {
-                "text": "Array<HTMLButtonElement>"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"light\" | \"stealth\""
-              },
-              "default": "\"default\"",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "Size.Sm | undefined"
-              },
-              "fieldName": "size"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "Status | undefined"
-              },
-              "fieldName": "status"
-            },
-            {
-              "name": "expand",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "expand"
-            },
-            {
-              "name": "href",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "href"
-            },
-            {
-              "name": "target",
-              "type": {
-                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
-              },
-              "default": "\"_self\"",
-              "fieldName": "target"
-            },
-            {
-              "name": "download",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "fieldName": "download"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "HTMLButtonElement[\"type\"] | undefined"
-              },
-              "default": "'submit'",
-              "fieldName": "type"
-            }
-          ],
-          "mixins": [
-            {
-              "name": "FormControlMixin",
-              "module": "/src/mixins/formControlMixin"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Button",
-          "declaration": {
-            "name": "Button",
-            "module": "src/fd-button/fd-button.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-button",
-          "declaration": {
-            "name": "Button",
-            "module": "src/fd-button/fd-button.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-avatar/fd-avatar.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An Avatar component.",
-          "name": "Avatar",
-          "cssProperties": [
-            {
-              "description": "Adjusts the background color",
-              "name": "--fd-avatar-background-color"
-            },
-            {
-              "description": "Adjusts the font color",
-              "name": "--fd-avatar-color"
-            },
-            {
-              "description": "Adjusts the border color",
-              "name": "--fd-avatar-border-color"
-            },
-            {
-              "description": "Sets the size of the avatar",
-              "name": "--fd-avatar-size"
-            },
-            {
-              "description": "Sets the border radius. Default is round",
-              "name": "--fd-avatar-border-radius"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Avatar's div",
-              "name": "Avatar"
-            }
-          ],
-          "slots": [
-            {
-              "description": "element has a slot",
-              "name": "This"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "img",
-              "type": {
-                "text": "HTMLImageElement|null"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Exclude<Size, Size.Xxl> | undefined"
-              },
-              "attribute": "size"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "name"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "Exclude<Size, Size.Xxl> | undefined"
-              },
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-avatar",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Avatar",
-          "declaration": {
-            "name": "Avatar",
-            "module": "src/fd-avatar/fd-avatar.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-avatar",
-          "declaration": {
-            "name": "Avatar",
-            "module": "src/fd-avatar/fd-avatar.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-card/fd-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A classic Card component.",
-          "name": "Card",
-          "cssProperties": [
-            {
-              "description": "Adjusts the background color",
-              "name": "--fd-card-background-color"
-            },
-            {
-              "description": "Adjusts the font color",
-              "name": "--fd-card-color"
-            },
-            {
-              "description": "Sets the Card's shadow",
-              "name": "--fd-card-shadow"
-            },
-            {
-              "description": "Sets the inline padding",
-              "name": "--fd-card-padding-inline"
-            },
-            {
-              "description": "Sets the block padding",
-              "name": "--fd-card-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Card's div",
-              "name": "card"
-            }
-          ],
-          "slots": [
-            {
-              "description": "element has a slot",
-              "name": "This"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "attribute": "variant"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\""
-              },
-              "default": "\"default\"",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-card",
-          "declaration": {
-            "name": "Card",
-            "module": "src/fd-card/fd-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-container/fd-container.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "General wrapper providing basic inline and block padding",
-          "name": "Container",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-end"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Container's section",
-              "name": "container"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content of the container",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size"
-              },
-              "description": "Sets the width according to given value and disables padding inline",
-              "attribute": "size"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "Size"
-              },
-              "description": "Sets the width according to given value and disables padding inline",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-container",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Container",
-          "declaration": {
-            "name": "Container",
-            "module": "src/fd-container/fd-container.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-container",
-          "declaration": {
-            "name": "Container",
-            "module": "src/fd-container/fd-container.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-form/fd-form.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Extended form element to allow cross-browser form participation of custom elements",
-          "name": "Form",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-form-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-form-padding-inline"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "_formdata",
-              "parameters": [
-                {
-                  "name": "e"
-                }
-              ]
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-form",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Form",
-          "declaration": {
-            "name": "Form",
-            "module": "src/fd-form/fd-form.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-form",
-          "declaration": {
-            "name": "Form",
-            "module": "src/fd-form/fd-form.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-gallery/fd-gallery.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "Gallery",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items and padding-inline",
-              "name": "--fd-gallery-gap"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts block padding of gallery",
-              "name": "--fd-gallery-padding-block"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-gallery-padding-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-gallery-padding-inline-end"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-gallery-padding-inline"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Must only contain <fd-gallery-item> components",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Gallery",
-          "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-gallery",
-          "declaration": {
-            "name": "Gallery",
-            "module": "src/fd-gallery/fd-gallery.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-gallery-item/fd-gallery-item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
-          "name": "GalleryItem",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding of gallery",
-              "name": "--padding"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts gap between items",
-              "name": "--gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Contains the content of the item",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-gallery-item",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "GalleryItem",
-          "declaration": {
-            "name": "GalleryItem",
-            "module": "src/fd-gallery-item/fd-gallery-item.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-gallery-item",
-          "declaration": {
-            "name": "GalleryItem",
-            "module": "src/fd-gallery-item/fd-gallery-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-hr/fd-hr.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Horizontal rule (divider)",
-          "name": "Hr",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-hr-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-hr-padding-inline"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-hr",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Hr",
-          "declaration": {
-            "name": "Hr",
-            "module": "src/fd-hr/fd-hr.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-hr",
-          "declaration": {
-            "name": "Hr",
-            "module": "src/fd-hr/fd-hr.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-icon/fd-icon.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Generalized section component",
-          "name": "Icon",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the inline and block size",
-              "name": "--fd-icon-size"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the fill color and defaults to currentcolor",
-              "name": "--fd-icon-fill"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets transform translate on the Y axis. Used to align with text. For more @see https://css-tricks.com/improving-icons-for-ui-elements-with-typographic-alignment-and-scale/",
-              "name": "--fd-offset"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "file",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the size of the icon based on a enum value.",
-              "attribute": "file"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Exclude<Size, Size.Xxl> | 'inline' | undefined"
-              },
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "svg",
-              "type": {
-                "text": "SVGSVGElement|null"
-              },
-              "privacy": "private"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "file",
-              "type": {
-                "text": "string"
-              },
-              "description": "Sets the size of the icon based on a enum value.",
-              "fieldName": "file"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "Exclude<Size, Size.Xxl> | 'inline' | undefined"
-              },
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-icon",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Icon",
-          "declaration": {
-            "name": "Icon",
-            "module": "src/fd-icon/fd-icon.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-icon",
-          "declaration": {
-            "name": "Icon",
-            "module": "src/fd-icon/fd-icon.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-input/fd-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Input component for text",
-          "name": "Input",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-input-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-input-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-input-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-input-font-size"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Assigned to the <label> element",
-              "name": "label"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "placeholder",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "HTMLInputElement[\"type\"]"
-              },
-              "default": "'text'",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "error",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "error"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "label"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "HTMLInputElement[\"type\"]"
-              },
-              "default": "'text'",
-              "fieldName": "type"
-            },
-            {
-              "name": "error",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "error"
-            }
-          ],
-          "mixins": [
-            {
-              "name": "FormControlMixin",
-              "module": "/src/mixins/formControlMixin"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-input",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Input",
-          "declaration": {
-            "name": "Input",
-            "module": "src/fd-input/fd-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-input",
-          "declaration": {
-            "name": "Input",
-            "module": "src/fd-input/fd-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-label/fd-label.style.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "labelStyles",
-          "default": "css`\n  :host {\n    --fd-label-color: var(--primary-color-5);\n    --fd-label-text-transform: uppercase;\n    --fd-label-font-weight: var(--font-weight-6);\n    --fd-label-font-size: var(--font-size-1);\n  }\n\n  .label {\n    font-weight: var(--fd-label-font-weight);\n    font-size: var(--fd-label-font-size);\n    text-transform: var(--fd-label-text-transform);\n    color: var(--fd-label-color);\n  }\n`"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "labelStyles",
-          "declaration": {
-            "name": "labelStyles",
-            "module": "src/fd-label/fd-label.style.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-label/fd-label.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Label component for inputs or as usual div or span",
-          "name": "Label",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-label-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-label-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "as",
-              "type": {
-                "text": "LabelTags"
-              },
-              "attribute": "as"
-            },
-            {
-              "kind": "field",
-              "name": "for",
-              "type": {
-                "text": "string"
-              },
-              "default": "'input'",
-              "attribute": "for"
-            },
-            {
-              "kind": "method",
-              "name": "getTag",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "as",
-                  "type": {
-                    "text": "LabelTags"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "as",
-              "type": {
-                "text": "LabelTags"
-              },
-              "fieldName": "as"
-            },
-            {
-              "name": "for",
-              "type": {
-                "text": "string"
-              },
-              "default": "'input'",
-              "fieldName": "for"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-label",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Label",
-          "declaration": {
-            "name": "Label",
-            "module": "src/fd-label/fd-label.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-label",
-          "declaration": {
-            "name": "Label",
-            "module": "src/fd-label/fd-label.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-logo/fd-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Logo component",
-          "name": "Logo",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the logo image",
-              "name": "--fd-logo-fill-logo"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the logo text",
-              "name": "--fd-logo-fill-text"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the width of the logo",
-              "name": "--fd-logo-inline-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Logo",
-          "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-logo",
-          "declaration": {
-            "name": "Logo",
-            "module": "src/fd-logo/fd-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-progress-circle/fd-progress-circle.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Progress Circle Component e.g. used for a \"complete profile\" card.",
-          "name": "ProgressCircle",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the circle",
-              "name": "--fd-progress-circle-fill-active"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the fill color of the progress circle",
-              "name": "--fd-progress-circle-fill-inactive"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Size of the circle",
-              "name": "--fd-progress-circle-inline-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "totalSteps",
-              "type": {
-                "text": "number"
-              },
-              "default": "10",
-              "attribute": "totalSteps",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "progress",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "attribute": "progress",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_radius",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "protected",
-              "default": "60",
-              "attribute": "_radius"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"inverted\""
-              },
-              "default": "\"default\"",
-              "attribute": "variant"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "totalSteps",
-              "type": {
-                "text": "number"
-              },
-              "default": "10",
-              "fieldName": "totalSteps"
-            },
-            {
-              "name": "progress",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "fieldName": "progress"
-            },
-            {
-              "name": "_radius",
-              "type": {
-                "text": "number"
-              },
-              "default": "60",
-              "fieldName": "_radius"
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"inverted\""
-              },
-              "default": "\"default\"",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-progress-circle",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ProgressCircle",
-          "declaration": {
-            "name": "ProgressCircle",
-            "module": "src/fd-progress-circle/fd-progress-circle.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-progress-circle",
-          "declaration": {
-            "name": "ProgressCircle",
-            "module": "src/fd-progress-circle/fd-progress-circle.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-section/fd-section.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Generalized section component",
-          "name": "Section",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-inline"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-inline-end"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-section-padding-block"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content of the section",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "actionSlot",
-              "default": "new SlotController(this, 'actions')"
-            },
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "heading"
-            },
-            {
-              "kind": "field",
-              "name": "fullWidth",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "attribute": "fullWidth"
-            },
-            {
-              "kind": "field",
-              "name": "hasBorder",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "attribute": "hasBorder"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "heading"
-            },
-            {
-              "name": "fullWidth",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "fieldName": "fullWidth"
-            },
-            {
-              "name": "hasBorder",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "fieldName": "hasBorder"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-section",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Section",
-          "declaration": {
-            "name": "Section",
-            "module": "src/fd-section/fd-section.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-section",
-          "declaration": {
-            "name": "Section",
-            "module": "src/fd-section/fd-section.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-stack/fd-stack.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Vertical Stack using gaps in between",
-          "name": "Stack",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-stack-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-stack-padding-inline"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-stack",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Stack",
-          "declaration": {
-            "name": "Stack",
-            "module": "src/fd-stack/fd-stack.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-stack",
-          "declaration": {
-            "name": "Stack",
-            "module": "src/fd-stack/fd-stack.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-switch/fd-switch.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Switch component for text",
-          "name": "Switch",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-switch-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-switch-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-switch-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-switch-font-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "checked",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "onCheckbox",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "InputEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "checked"
-            }
-          ],
-          "mixins": [
-            {
-              "name": "FormControlMixin",
-              "module": "/src/mixins/formControlMixin"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-switch",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Switch",
-          "declaration": {
-            "name": "Switch",
-            "module": "src/fd-switch/fd-switch.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-switch",
-          "declaration": {
-            "name": "Switch",
-            "module": "src/fd-switch/fd-switch.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
-          "name": "VisuallyHidden",
-          "slots": [
-            {
-              "description": "The visually hidden content.",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-visually-hidden",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "VisuallyHidden",
-          "declaration": {
-            "name": "VisuallyHidden",
-            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-visually-hidden",
-          "declaration": {
-            "name": "VisuallyHidden",
-            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/mixins/formControlMixin.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "FormControlMixinInterface",
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean | undefined"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "onInput",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "InputEvent"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "kind": "mixin",
-          "description": "",
-          "name": "FormControlMixin",
-          "members": [
-            {
-              "kind": "field",
-              "name": "boundOnSubmit",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_form",
-              "type": {
-                "text": "HTMLFormElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string | undefined"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "form",
-              "type": {
-                "text": "HTMLFormElement | null"
-              },
-              "privacy": "protected"
-            },
-            {
-              "kind": "method",
-              "name": "onInput",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "InputEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "onSubmit",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "FormDataEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "name"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string | undefined"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            }
-          ],
-          "parameters": [
-            {
-              "name": "superClass",
-              "type": {
-                "text": "T"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "FormControlMixinInterface",
-          "declaration": {
-            "name": "FormControlMixinInterface",
-            "module": "src/mixins/formControlMixin.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "FormControlMixin",
-          "declaration": {
-            "name": "FormControlMixin",
-            "module": "src/mixins/formControlMixin.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/mixins/formdata-event-polyfill.ts",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/styles/shared.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "errorStyles",
-          "default": "css`\n  .fd-error {\n    margin-block-start: var(--size-1);\n    color: var(--color-status-error);\n  }\n`"
-        },
-        {
-          "kind": "variable",
-          "name": "captionStyles",
-          "default": "css`\n  .fd-caption {\n    font-size: var(--font-size-0);\n    line-height: var(--font-lineheight-1);\n  }\n`"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "errorStyles",
-          "declaration": {
-            "name": "errorStyles",
-            "module": "src/styles/shared.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "captionStyles",
-          "declaration": {
-            "name": "captionStyles",
-            "module": "src/styles/shared.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-button/fd-button.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An example element.",
-          "name": "Button",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the background-color",
-              "name": "--fd-button-background-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the background-color hover state",
-              "name": "--fd-button-background-color--host"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the text color",
-              "name": "--fd-button-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts the text color hover state",
-              "name": "--fd-button-color--hover"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The button",
-              "name": "button"
-            }
-          ],
-          "slots": [
-            {
-              "description": "This element has a slot",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "statusIcon",
-              "return": {
-                "type": {
-                  "text": "import(\"lit-html\").TemplateResult<2 | 1> | null"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "status",
-                  "type": {
-                    "text": "Status | undefined"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "isLink",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "\"default\" | \"light\" | \"stealth\""
-              }
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size.Sm | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "Status | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "expand",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "href",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "target",
-              "type": {
-                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "download",
-              "type": {
-                "text": "boolean | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "HTMLButtonElement[\"type\"] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "getTag",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "onClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_proxyItems",
-              "type": {
-                "text": "Array<HTMLButtonElement>"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "Button_base",
-            "module": "types/fd-button/fd-button.d.ts"
-          },
-          "tagName": "fd-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Button",
-          "declaration": {
-            "name": "Button",
-            "module": "types/fd-button/fd-button.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-button/fd-button.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "VariantPrimary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        },
-        {
-          "kind": "variable",
-          "name": "VariantLight",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "VariantStealth",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "SizeSm",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "StatusLoading",
-          "type": {
-            "text": "Story"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "WithHref",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Expand",
-          "type": {
-            "text": "Story"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Submit",
-          "type": {
-            "text": "Story"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantPrimary",
-          "declaration": {
-            "name": "VariantPrimary",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantLight",
-          "declaration": {
-            "name": "VariantLight",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "VariantStealth",
-          "declaration": {
-            "name": "VariantStealth",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "SizeSm",
-          "declaration": {
-            "name": "SizeSm",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "StatusLoading",
-          "declaration": {
-            "name": "StatusLoading",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "WithHref",
-          "declaration": {
-            "name": "WithHref",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Expand",
-          "declaration": {
-            "name": "Expand",
-            "module": "types/fd-button/fd-button.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Submit",
-          "declaration": {
-            "name": "Submit",
-            "module": "types/fd-button/fd-button.stories.d.ts"
           }
         }
       ]
@@ -3073,6 +635,481 @@
           "declaration": {
             "name": "SlotController",
             "module": "types/controllers/slot-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-button/fd-button.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An example element.",
+          "name": "Button",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the background-color",
+              "name": "--fd-button-background-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the background-color hover state",
+              "name": "--fd-button-background-color--host"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color",
+              "name": "--fd-button-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color hover state",
+              "name": "--fd-button-color--hover"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The button",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "statusIcon",
+              "return": {
+                "type": {
+                  "text": "import(\"lit-html\").TemplateResult<2 | 1> | null"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "status",
+                  "type": {
+                    "text": "Status | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "isLink",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"light\" | \"stealth\""
+              }
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size.Sm | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "Status | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "expand",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "download",
+              "type": {
+                "text": "boolean | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "HTMLButtonElement[\"type\"] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "getTag",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "onClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_proxyItems",
+              "type": {
+                "text": "Array<HTMLButtonElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "Button_base",
+            "module": "types/fd-button/fd-button.d.ts"
+          },
+          "tagName": "fd-button",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Button",
+          "declaration": {
+            "name": "Button",
+            "module": "types/fd-button/fd-button.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-button/fd-button.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "VariantPrimary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        },
+        {
+          "kind": "variable",
+          "name": "VariantLight",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "VariantStealth",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "SizeSm",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "StatusLoading",
+          "type": {
+            "text": "Story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "WithHref",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Expand",
+          "type": {
+            "text": "Story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Submit",
+          "type": {
+            "text": "Story"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VariantPrimary",
+          "declaration": {
+            "name": "VariantPrimary",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VariantLight",
+          "declaration": {
+            "name": "VariantLight",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "VariantStealth",
+          "declaration": {
+            "name": "VariantStealth",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SizeSm",
+          "declaration": {
+            "name": "SizeSm",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "StatusLoading",
+          "declaration": {
+            "name": "StatusLoading",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "WithHref",
+          "declaration": {
+            "name": "WithHref",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Expand",
+          "declaration": {
+            "name": "Expand",
+            "module": "types/fd-button/fd-button.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Submit",
+          "declaration": {
+            "name": "Submit",
+            "module": "types/fd-button/fd-button.stories.d.ts"
           }
         }
       ]
@@ -3649,6 +1686,89 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Horizontal rule (divider)",
+          "name": "Hr",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-hr-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-hr-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-hr",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Hr",
+          "declaration": {
+            "name": "Hr",
+            "module": "types/fd-hr/fd-hr.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-hr/fd-hr.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-hr/fd-hr.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-icon/fd-icon.d.ts",
       "declarations": [
         {
@@ -3790,89 +1910,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Horizontal rule (divider)",
-          "name": "Hr",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts margin inline start",
-              "name": "--fd-hr-margin-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts padding inline",
-              "name": "--fd-hr-padding-inline"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-hr",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Hr",
-          "declaration": {
-            "name": "Hr",
-            "module": "types/fd-hr/fd-hr.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-hr/fd-hr.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-hr/fd-hr.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "types/fd-input/fd-input.d.ts",
       "declarations": [
         {
@@ -3949,6 +1986,134 @@
               "type": {
                 "text": "string | undefined"
               }
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
             }
           ],
           "superclass": {
@@ -3956,7 +2121,44 @@
             "module": "types/fd-input/fd-input.d.ts"
           },
           "tagName": "fd-input",
-          "customElement": true
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -4035,120 +2237,6 @@
           "declaration": {
             "name": "OutsideForm",
             "module": "types/fd-input/fd-input.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-container/fd-container.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "General wrapper providing basic inline and block padding",
-          "name": "Container",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-end"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Container's section",
-              "name": "container"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content of the container",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size"
-              },
-              "description": "Sets the width according to given value and disables padding inline"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-container",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Container",
-          "declaration": {
-            "name": "Container",
-            "module": "types/fd-container/fd-container.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-container/fd-container.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-container/fd-container.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-container/fd-container.stories.d.ts"
           }
         }
       ]
@@ -4295,6 +2383,120 @@
           "declaration": {
             "name": "labelStyles",
             "module": "types/fd-label/fd-label.style.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-container/fd-container.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "General wrapper providing basic inline and block padding",
+          "name": "Container",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Container's section",
+              "name": "container"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content of the container",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size"
+              },
+              "description": "Sets the width according to given value and disables padding inline"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-container",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Container",
+          "declaration": {
+            "name": "Container",
+            "module": "types/fd-container/fd-container.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-container/fd-container.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-container/fd-container.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-container/fd-container.stories.d.ts"
           }
         }
       ]
@@ -4556,6 +2758,287 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-switch/fd-switch.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switch component for text",
+          "name": "Switch",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-switch-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-switch-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "onCheckbox",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "Switch_base",
+            "module": "types/fd-switch/fd-switch.d.ts"
+          },
+          "tagName": "fd-switch",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "types/fd-switch/fd-switch.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-switch/fd-switch.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-switch/fd-switch.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-switch/fd-switch.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-stack/fd-stack.d.ts",
       "declarations": [
         {
@@ -4633,122 +3116,6 @@
           "declaration": {
             "name": "Primary",
             "module": "types/fd-stack/fd-stack.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-switch/fd-switch.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Switch component for text",
-          "name": "Switch",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-switch-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-switch-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-switch-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-switch-font-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "onCheckbox",
-              "privacy": "private"
-            }
-          ],
-          "superclass": {
-            "name": "Switch_base",
-            "module": "types/fd-switch/fd-switch.d.ts"
-          },
-          "tagName": "fd-switch",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Switch",
-          "declaration": {
-            "name": "Switch",
-            "module": "types/fd-switch/fd-switch.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-switch/fd-switch.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-switch/fd-switch.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-switch/fd-switch.stories.d.ts"
           }
         }
       ]
@@ -5124,6 +3491,2710 @@
           "declaration": {
             "name": "captionStyles",
             "module": "types/styles/shared.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-avatar/fd-avatar.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An Avatar component.",
+          "name": "Avatar",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-avatar-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-avatar-color"
+            },
+            {
+              "description": "Adjusts the border color",
+              "name": "--fd-avatar-border-color"
+            },
+            {
+              "description": "Sets the size of the avatar",
+              "name": "--fd-avatar-size"
+            },
+            {
+              "description": "Sets the border radius. Default is round",
+              "name": "--fd-avatar-border-radius"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Avatar's div",
+              "name": "Avatar"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "img",
+              "type": {
+                "text": "HTMLImageElement|null"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Exclude<Size, Size.Xxl> | undefined"
+              },
+              "attribute": "size"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "name"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "Exclude<Size, Size.Xxl> | undefined"
+              },
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-avatar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Avatar",
+          "declaration": {
+            "name": "Avatar",
+            "module": "src/fd-avatar/fd-avatar.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-avatar",
+          "declaration": {
+            "name": "Avatar",
+            "module": "src/fd-avatar/fd-avatar.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-button/fd-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An example element.",
+          "name": "Button",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the background-color",
+              "name": "--fd-button-background-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the background-color hover state",
+              "name": "--fd-button-background-color--host"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color",
+              "name": "--fd-button-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the text color hover state",
+              "name": "--fd-button-color--hover"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The button",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "statusIcon",
+              "parameters": [
+                {
+                  "name": "status",
+                  "type": {
+                    "text": "Status | undefined"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "isLink",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"light\" | \"stealth\" | \"icon\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size.Sm | undefined"
+              },
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "Status | undefined"
+              },
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "expand",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "expand",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "autofocus",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
+              "attribute": "form",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
+              },
+              "default": "\"_self\"",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "download",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "download",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "HTMLButtonElement[\"type\"] | undefined"
+              },
+              "default": "'submit'",
+              "attribute": "type"
+            },
+            {
+              "kind": "method",
+              "name": "getTag",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_onClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_proxyItems",
+              "type": {
+                "text": "Array<HTMLButtonElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"light\" | \"stealth\" | \"icon\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "Size.Sm | undefined"
+              },
+              "fieldName": "size"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "Status | undefined"
+              },
+              "fieldName": "status"
+            },
+            {
+              "name": "expand",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "expand"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "icon"
+            },
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "autofocus"
+            },
+            {
+              "name": "form",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "form"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "href"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "\"_self\" | \"_blank\" | \"_parent\" | \"_top\" | undefined"
+              },
+              "default": "\"_self\"",
+              "fieldName": "target"
+            },
+            {
+              "name": "download",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "download"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "HTMLButtonElement[\"type\"] | undefined"
+              },
+              "default": "'submit'",
+              "fieldName": "type"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "module": "/src/mixins/formControlMixin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Button",
+          "declaration": {
+            "name": "Button",
+            "module": "src/fd-button/fd-button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-button",
+          "declaration": {
+            "name": "Button",
+            "module": "src/fd-button/fd-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-card/fd-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A classic Card component.",
+          "name": "Card",
+          "cssProperties": [
+            {
+              "description": "Adjusts the background color",
+              "name": "--fd-card-background-color"
+            },
+            {
+              "description": "Adjusts the font color",
+              "name": "--fd-card-color"
+            },
+            {
+              "description": "Sets the Card's shadow",
+              "name": "--fd-card-shadow"
+            },
+            {
+              "description": "Sets the inline padding",
+              "name": "--fd-card-padding-inline"
+            },
+            {
+              "description": "Sets the block padding",
+              "name": "--fd-card-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Card's div",
+              "name": "card"
+            }
+          ],
+          "slots": [
+            {
+              "description": "element has a slot",
+              "name": "This"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-card",
+          "declaration": {
+            "name": "Card",
+            "module": "src/fd-card/fd-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-container/fd-container.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "General wrapper providing basic inline and block padding",
+          "name": "Container",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Container's section",
+              "name": "container"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content of the container",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size"
+              },
+              "description": "Sets the width according to given value and disables padding inline",
+              "attribute": "size"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "Size"
+              },
+              "description": "Sets the width according to given value and disables padding inline",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-container",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Container",
+          "declaration": {
+            "name": "Container",
+            "module": "src/fd-container/fd-container.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-container",
+          "declaration": {
+            "name": "Container",
+            "module": "src/fd-container/fd-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-gallery/fd-gallery.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "Gallery",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items and padding-inline",
+              "name": "--fd-gallery-gap"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts block padding of gallery",
+              "name": "--fd-gallery-padding-block"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-gallery-padding-inline"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Must only contain <fd-gallery-item> components",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-gallery",
+          "declaration": {
+            "name": "Gallery",
+            "module": "src/fd-gallery/fd-gallery.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-form/fd-form.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Extended form element to allow cross-browser form participation of custom elements",
+          "name": "Form",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-form-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-form-padding-inline"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "_formdata",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Form",
+          "declaration": {
+            "name": "Form",
+            "module": "src/fd-form/fd-form.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-form",
+          "declaration": {
+            "name": "Form",
+            "module": "src/fd-form/fd-form.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-gallery-item/fd-gallery-item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays its items in a horizontal stack and enables scrolling\nif items overflow its container.",
+          "name": "GalleryItem",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding of gallery",
+              "name": "--padding"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts gap between items",
+              "name": "--gap"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Contains the content of the item",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-gallery-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GalleryItem",
+          "declaration": {
+            "name": "GalleryItem",
+            "module": "src/fd-gallery-item/fd-gallery-item.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-gallery-item",
+          "declaration": {
+            "name": "GalleryItem",
+            "module": "src/fd-gallery-item/fd-gallery-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-icon/fd-icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Generalized section component",
+          "name": "Icon",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the inline and block size",
+              "name": "--fd-icon-size"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the fill color and defaults to currentcolor",
+              "name": "--fd-icon-fill"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets transform translate on the Y axis. Used to align with text. For more @see https://css-tricks.com/improving-icons-for-ui-elements-with-typographic-alignment-and-scale/",
+              "name": "--fd-offset"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "file",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the size of the icon based on a enum value.",
+              "attribute": "file"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Exclude<Size, Size.Xxl> | 'inline' | undefined"
+              },
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "svg",
+              "type": {
+                "text": "SVGSVGElement|null"
+              },
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "file",
+              "type": {
+                "text": "string"
+              },
+              "description": "Sets the size of the icon based on a enum value.",
+              "fieldName": "file"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "Exclude<Size, Size.Xxl> | 'inline' | undefined"
+              },
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "src/fd-icon/fd-icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-icon",
+          "declaration": {
+            "name": "Icon",
+            "module": "src/fd-icon/fd-icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-hr/fd-hr.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Horizontal rule (divider)",
+          "name": "Hr",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-hr-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-hr-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-hr",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Hr",
+          "declaration": {
+            "name": "Hr",
+            "module": "src/fd-hr/fd-hr.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-hr",
+          "declaration": {
+            "name": "Hr",
+            "module": "src/fd-hr/fd-hr.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-input/fd-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Input component for text",
+          "name": "Input",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-input-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-input-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-input-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-input-font-size"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Assigned to the <label> element",
+              "name": "label"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "_listOptions",
+              "type": {
+                "text": "Array<HTMLOptionElement>"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "list"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "placeholder",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "HTMLInputElement[\"type\"]"
+              },
+              "default": "'text'",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "error"
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "label"
+            },
+            {
+              "name": "list",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "list"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "HTMLInputElement[\"type\"]"
+              },
+              "default": "'text'",
+              "fieldName": "type"
+            },
+            {
+              "name": "error",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "error"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "module": "/src/mixins/formControlMixin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Input",
+          "declaration": {
+            "name": "Input",
+            "module": "src/fd-input/fd-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-input",
+          "declaration": {
+            "name": "Input",
+            "module": "src/fd-input/fd-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-label/fd-label.style.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "labelStyles",
+          "default": "css`\n  :host {\n    --fd-label-color: var(--primary-color-5);\n    --fd-label-text-transform: uppercase;\n    --fd-label-font-weight: var(--font-weight-6);\n    --fd-label-font-size: var(--font-size-1);\n  }\n\n  .label {\n    font-weight: var(--fd-label-font-weight);\n    font-size: var(--fd-label-font-size);\n    text-transform: var(--fd-label-text-transform);\n    color: var(--fd-label-color);\n  }\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "labelStyles",
+          "declaration": {
+            "name": "labelStyles",
+            "module": "src/fd-label/fd-label.style.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-label/fd-label.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Label component for inputs or as usual div or span",
+          "name": "Label",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-label-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-label-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "LabelTags"
+              },
+              "attribute": "as"
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "type": {
+                "text": "string"
+              },
+              "default": "'input'",
+              "attribute": "for"
+            },
+            {
+              "kind": "method",
+              "name": "getTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "as",
+                  "type": {
+                    "text": "LabelTags"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "as",
+              "type": {
+                "text": "LabelTags"
+              },
+              "fieldName": "as"
+            },
+            {
+              "name": "for",
+              "type": {
+                "text": "string"
+              },
+              "default": "'input'",
+              "fieldName": "for"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-label",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "src/fd-label/fd-label.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-label",
+          "declaration": {
+            "name": "Label",
+            "module": "src/fd-label/fd-label.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-logo/fd-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component",
+          "name": "Logo",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo image",
+              "name": "--fd-logo-fill-logo"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the logo text",
+              "name": "--fd-logo-fill-text"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the width of the logo",
+              "name": "--fd-logo-inline-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-logo",
+          "declaration": {
+            "name": "Logo",
+            "module": "src/fd-logo/fd-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-progress-circle/fd-progress-circle.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Progress Circle Component e.g. used for a \"complete profile\" card.",
+          "name": "ProgressCircle",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the circle",
+              "name": "--fd-progress-circle-fill-active"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts the fill color of the progress circle",
+              "name": "--fd-progress-circle-fill-inactive"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the circle",
+              "name": "--fd-progress-circle-inline-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "attribute": "totalSteps",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "attribute": "progress",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "protected",
+              "default": "60",
+              "attribute": "_radius"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "attribute": "variant"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "totalSteps",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "fieldName": "totalSteps"
+            },
+            {
+              "name": "progress",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "fieldName": "progress"
+            },
+            {
+              "name": "_radius",
+              "type": {
+                "text": "number"
+              },
+              "default": "60",
+              "fieldName": "_radius"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"default\" | \"inverted\""
+              },
+              "default": "\"default\"",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-progress-circle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ProgressCircle",
+          "declaration": {
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-progress-circle",
+          "declaration": {
+            "name": "ProgressCircle",
+            "module": "src/fd-progress-circle/fd-progress-circle.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-section/fd-section.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Generalized section component",
+          "name": "Section",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-section-padding-block"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content of the section",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "actionSlot",
+              "default": "new SlotController(this, 'actions')"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "fullWidth",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "fullWidth"
+            },
+            {
+              "kind": "field",
+              "name": "hasBorder",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "hasBorder"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "heading"
+            },
+            {
+              "name": "fullWidth",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "fullWidth"
+            },
+            {
+              "name": "hasBorder",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "hasBorder"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-section",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Section",
+          "declaration": {
+            "name": "Section",
+            "module": "src/fd-section/fd-section.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-section",
+          "declaration": {
+            "name": "Section",
+            "module": "src/fd-section/fd-section.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-switch/fd-switch.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Switch component for text",
+          "name": "Switch",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-switch-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-switch-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-switch-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "onCheckbox",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "attribute": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "FormControlMixin",
+                "module": "src/mixins/formControlMixin.ts"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FormControlMixin",
+              "module": "/src/mixins/formControlMixin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-switch",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "src/fd-switch/fd-switch.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-switch",
+          "declaration": {
+            "name": "Switch",
+            "module": "src/fd-switch/fd-switch.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-stack/fd-stack.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Vertical Stack using gaps in between",
+          "name": "Stack",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts margin inline start",
+              "name": "--fd-stack-margin-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts padding inline",
+              "name": "--fd-stack-padding-inline"
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-stack",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Stack",
+          "declaration": {
+            "name": "Stack",
+            "module": "src/fd-stack/fd-stack.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-stack",
+          "declaration": {
+            "name": "Stack",
+            "module": "src/fd-stack/fd-stack.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
+          "name": "VisuallyHidden",
+          "slots": [
+            {
+              "description": "The visually hidden content.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-visually-hidden",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VisuallyHidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-visually-hidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/mixins/formControlMixin.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FormControlMixinInterface",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "FormControlMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "boundOnSubmit",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "emit",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "CustomEventInit"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onInput",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "InputEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FormDataEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass",
+              "type": {
+                "text": "T"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FormControlMixinInterface",
+          "declaration": {
+            "name": "FormControlMixinInterface",
+            "module": "src/mixins/formControlMixin.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FormControlMixin",
+          "declaration": {
+            "name": "FormControlMixin",
+            "module": "src/mixins/formControlMixin.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/mixins/formdata-event-polyfill.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/styles/shared.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "errorStyles",
+          "default": "css`\n  .fd-error {\n    margin-block-start: var(--size-1);\n    color: var(--color-status-error);\n  }\n`"
+        },
+        {
+          "kind": "variable",
+          "name": "captionStyles",
+          "default": "css`\n  .fd-caption {\n    font-size: var(--font-size-0);\n    line-height: var(--font-lineheight-1);\n  }\n`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "errorStyles",
+          "declaration": {
+            "name": "errorStyles",
+            "module": "src/styles/shared.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "captionStyles",
+          "declaration": {
+            "name": "captionStyles",
+            "module": "src/styles/shared.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/controllers/event-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "EventController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost & Element"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "Event[\"type\"]"
+              },
+              "default": "type"
+            },
+            {
+              "kind": "field",
+              "name": "onEvent",
+              "type": {
+                "text": "(event: EventType) => void"
+              },
+              "default": "method"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "addListener",
+          "parameters": [
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost & Element"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "Event[\"type\"]"
+              }
+            },
+            {
+              "name": "method",
+              "type": {
+                "text": "(event: EventType) => void"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "EventController",
+          "declaration": {
+            "name": "EventController",
+            "module": "src/controllers/event-controller.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "addListener",
+          "declaration": {
+            "name": "addListener",
+            "module": "src/controllers/event-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/controllers/observer-controller.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "observe",
+          "parameters": [
+            {
+              "name": "propertyName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observe",
+          "declaration": {
+            "name": "observe",
+            "module": "src/controllers/observer-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/controllers/slot-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "field",
+              "name": "hasContent"
+            },
+            {
+              "kind": "field",
+              "name": "content"
+            },
+            {
+              "kind": "field",
+              "name": "handleSlotChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "onChange",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "_e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "slotName",
+              "default": "slotName"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SlotController",
+          "declaration": {
+            "name": "SlotController",
+            "module": "src/controllers/slot-controller.ts"
           }
         }
       ]
