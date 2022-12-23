@@ -5,6 +5,8 @@ import {
   InternalServerError,
   PutItemCommand,
   PutItemCommandInput,
+  UpdateItemCommand,
+  UpdateItemCommandInput,
 } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { AWS_REGION } from "../constants";
@@ -30,6 +32,18 @@ export const getClient = (): DynamoDBClient => {
 export type Constructor<T> = new (...args: any[]) => T;
 
 export type ReadItem = {
+  /**
+   * Partition Key (Hash Key)
+   */
+  pk: string,
+  /**
+   * Sort Key (Range Key)
+   * Required when DynamoDB Client did not
+   * provide `indexName`.
+   */
+  sk?: string,
+}
+export type UpdateItem = {
   /**
    * Partition Key (Hash Key)
    */
@@ -103,6 +117,47 @@ export class DynamoDBService {
 
     } catch (error) {
       console.log("GetItemCommand Error", error.stack);
+      throw InternalServerError;
+    }
+  }
+
+  async update(item: UpdateItem & Record<string, unknown>) {
+    const { pk, sk, ...input } = item;
+    const itemKeys = Object.keys(input);
+    const params: UpdateItemCommandInput = {
+      TableName: this.tableName,
+      ...this.indexName ? { IndexName: this.indexName } : {},
+      Key: marshall({
+        pk,
+        ...sk ? { sk } : {},
+      }),
+      ConditionExpression: "attribute_exists(pk)",
+      UpdateExpression: `SET ${itemKeys.map((_k, index) => `#field${index} = :value${index}`)
+      .join(', ')}`,
+      ExpressionAttributeNames: itemKeys.reduce(
+        (accumulator, a, index) => ({
+            ...accumulator,
+            [`#field${index}`]: a,
+        }),
+        {},
+      ),
+      ExpressionAttributeValues: marshall(
+        itemKeys.reduce(
+            (accumulator, b, index) => ({
+                ...accumulator,
+                [`:value${index}`]: item[b],
+            }),
+            {},
+        ), { removeUndefinedValues: true }
+      ),
+    };
+
+    try {
+      const command = new UpdateItemCommand(params);
+      const response = await this.client.send(command);
+      console.log("Success - item updated", response);
+    } catch (error) {
+      console.log("UpdateItemCommand Error", error.stack);
       throw InternalServerError;
     }
   }
