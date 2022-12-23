@@ -1,3 +1,4 @@
+import { ONLY_NUMBER_ERROR_MESSAGE } from 'errors';
 import isEmail from 'validator/lib/isEmail';
 import type { ValidationError, AnySchema } from 'yup';
 
@@ -9,16 +10,16 @@ export type ValidateReturn<ErrorsType> = {
 
 export type FieldErrors = Map<string, string>;
 
-export type SignUpData = {
-  email: string | FormDataEntryValue;
-  password: string | FormDataEntryValue;
-};
+// @todo missing types. See global.d.ts
+// addMethod(string, 'stringNumber', function stringNumber() {
+//   return this.matches(/^\d+$/, ONLY_NUMBER_ERROR_MESSAGE)
+// });
 
-export const validateAgainstSchema = (
+export const validateAgainstSchema = <TData>(
   /** Yup Validation Schema */
   schema: AnySchema,
   /** Data to be validated against the schema */
-  data: SignUpData
+  data: TData
 ): ValidateReturn<ValidationError> => {
   try {
     schema.validateSync(data, { abortEarly: false });
