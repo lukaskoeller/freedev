@@ -19,6 +19,16 @@
   color: var(--_fd-label-color);
 }
 
+.fd-caption {
+  font-size: var(--font-size-0);
+  line-height: var(--font-lineheight-1);
+}
+
+.fd-error {
+  margin-block-start: var(--size-1);
+  color: var(--color-status-error);
+}
+
 .fd-ram-grid {
   --_fd-ram-grid-gap-row: var(--fd-ram-grid-gap-row, var(--_fd-ram-grid-gap));
   --_fd-ram-grid-gap-column: var(--fd-ram-grid-gap-column, var(--_fd-ram-grid-gap));
