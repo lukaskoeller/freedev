@@ -2,8 +2,6 @@ import { REQUIRED_ERROR_MESSAGE } from "errors";
 import { validateAgainstSchema, validateIsEmail, validatePassword } from "validations";
 import { object, string } from "yup";
 
-export type FieldErrors = Map<string, string>;
-
 export type SignUpData = {
   email: string | FormDataEntryValue;
   password: string | FormDataEntryValue;
