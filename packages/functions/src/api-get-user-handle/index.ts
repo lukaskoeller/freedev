@@ -36,12 +36,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
       indexName: DYNAMO_DB_TABLE_NAME_INDEX,
     });
 
-    const user = new User({ username: handle });
-    const response = await clientDynamodb.read({
-      pk: user.pk,
-    });
-    console.log('USER', user);
-    
+    const response = await clientDynamodb.read({ handle });
 
     return new ApiResponse({
       statusCode: 200,
