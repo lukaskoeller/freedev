@@ -5,7 +5,10 @@
   "scripts": {
     "build": "npm run build:esbuild",
     "build:sam": "sam build",
-    "build:esbuild": "node ./scripts/build.js"
+    "build:esbuild": "node ./scripts/build.js",
+    "test": "npm run test:unit",
+    "test:unit": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.234.0",
@@ -19,6 +22,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.14.54",
-    "tiny-glob": "^0.2.9"
+    "tiny-glob": "^0.2.9",
+    "vitest": "^0.26.2"
   }
 }
