@@ -43,14 +43,24 @@
   import svgGoogleAnalytics from 'assets/icons/googleanalytics.svg?raw';
   import svgJiraSoftware from 'assets/icons/jirasoftware.svg?raw';
 	import Modal from "$lib/modal/Modal.svelte";
+	import { applyAction, enhance } from "$app/forms";
+	import type { FieldErrors } from "validations";
+	import { invalidateAll } from "$app/navigation";
+	import { notifications } from "$lib/toast/notifications";
+	import { validate } from "./_validations";
+	import InputGroup from "$lib/inputgroup/InputGroup.svelte";
 
   onMount(async () => {
     await import('ui');
   });
 
   let languages: string[] = [];
-  let stacks: string[] = [];
+  let technologies: string[] = [];
+  let tools: string[] = [];
   let searchQuery: string;
+
+  let formErrors: undefined | FieldErrors;
+  let isSubmitting: boolean = false;
 
   const heading: string = 'What do you rock at?';
 
@@ -184,7 +194,7 @@
     BusinessTools = 'Business Tools',
   }
 
-  type Stack = {
+  type Technology = {
     id: string;
     name: string;
     file: string;
@@ -194,7 +204,7 @@
     popularity: number;
   }
 
-  const STACKS: Stack[] = [
+  const TECHNOLOGIES: Technology[] = [
     {
       id: 'aws',
       name: 'aws',
@@ -420,38 +430,38 @@
     },
   ];
 
-  $: sortBySelectedLanguages = (stackA: Stack, stackB: Stack): number => {
-    const stackHasLanguage = (stack: Stack) => {
-      const mergedArr = [...stack.language, ...languages];
+  $: sortBySelectedLanguages = (technologyA: Technology, technologyB: Technology): number => {
+    const technologyHasLanguage = (technology: Technology) => {
+      const mergedArr = [...technology.language, ...languages];
       
       return mergedArr.length !== new Set(mergedArr).size; 
     };
 
-    if (stackHasLanguage(stackA) === stackHasLanguage(stackB)) return 0;
+    if (technologyHasLanguage(technologyA) === technologyHasLanguage(technologyB)) return 0;
     if (
-      stackHasLanguage(stackA) === true && stackHasLanguage(stackB) === false
+      technologyHasLanguage(technologyA) === true && technologyHasLanguage(technologyB) === false
     ) return - 1; // sort a before b  
     else return 1;
   };
 
-  const sortByPopularity = (stackA: Stack, stackB: Stack): number => (
-    stackB.popularity - stackA.popularity
+  const sortByPopularity = (technologyA: Technology, technologyB: Technology): number => (
+    technologyB.popularity - technologyA.popularity
   );
 
-  $: allStacks = STACKS
-    .sort((stackA, stackB) => sortByPopularity(stackA, stackB))
-    .sort((stackA, stackB) => sortBySelectedLanguages(stackA, stackB))
+  $: allTechnologies = TECHNOLOGIES
+    .sort((technologyA, technologyB) => sortByPopularity(technologyA, technologyB))
+    .sort((technologyA, technologyB) => sortBySelectedLanguages(technologyA, technologyB))
 
-  $: baseStacks = allStacks.slice(0, MAX_ITEMS_SHOWN);
+  $: baseTechnologies = allTechnologies.slice(0, MAX_ITEMS_SHOWN);
 
-  $: filteredStacks = searchQuery ? allStacks.filter((stack) => {
-    return stack.label.toLowerCase().includes(searchQuery.toLowerCase())
-  }) : allStacks;
+  $: filteredTechnologies = searchQuery ? allTechnologies.filter((technology) => {
+    return technology.label.toLowerCase().includes(searchQuery.toLowerCase())
+  }) : allTechnologies;
 
-  $: selectedStacks = STACKS.filter((stack) => stacks.includes(stack.name));
-  $: stacksInQuikView = [...new Map(
-    [...baseStacks, ...selectedStacks]
-      .map((stack) => [stack.name, stack])
+  $: selectedTechnologies = TECHNOLOGIES.filter((technology) => technologies.includes(technology.name));
+  $: technologysInQuikView = [...new Map(
+    [...baseTechnologies, ...selectedTechnologies]
+      .map((technology) => [technology.name, technology])
   ).values()];
 
   const handleSearchInput = (e: InputEvent) => {
@@ -468,10 +478,60 @@
   <form
     id="sign-up-skills"
     method="POST"
+    use:enhance={(props) => {
+      isSubmitting = true;
+      const { form, data, cancel } = props;
+      form.dispatchEvent(new CustomEvent('submitting'));
+
+      const formData = {
+        languages,
+        technologies,
+        tools,
+      };
+      console.log(formData);
+      
+      const { isValid, fields } = validate(formData);
+      console.log('fields', fields);
+      
+
+      if (!isValid) {
+        cancel();
+        formErrors = fields;
+        isSubmitting = false;
+        return;
+      }
+
+      return async (args) => {
+        console.log({ args });
+        const { result, update } = args;
+        switch (result.type) {
+          case 'success':
+            invalidateAll();
+            break;
+          case 'error':
+            notifications.error('Something went wrong 😢');
+            form.reset();
+            // invalidateAll();
+            break;
+          case 'invalid':
+            notifications.warning(result.data.message);
+            // form.reset();
+            invalidateAll();
+            await applyAction(result);
+            break;
+          default:
+            form.reset();
+            invalidateAll();
+            await applyAction(result);
+            update();
+        }
+        isSubmitting = false;
+      }
+    }}
   >
     <div class="fd-stack">
       <Fieldset variant="light" legend="Languages">
-        <div class="fd-input-group">
+        <InputGroup text={formErrors?.get('languages')}>
           {#each LANGUAGES as { id, name, file, label } ({ id })}
             <CheckboxButton {id}>
               <input
@@ -488,18 +548,18 @@
               </svelte:fragment>
             </CheckboxButton>
           {/each}
-        </div>
+        </InputGroup>
       </Fieldset>
       <Fieldset variant="light" legend="Application & Data">
         <div class="fd-stack">
-          <div class="fd-input-group">
-            {#each stacksInQuikView as { id, name, file, label } ({ id })}
+          <InputGroup text={formErrors?.get('technologies')}>
+            {#each technologysInQuikView as { id, name, file, label } ({ id })}
               <CheckboxButton {id}>
                 <input
                   type="checkbox"
                   {name}
                   value={name}
-                  bind:group={stacks}
+                  bind:group={technologies}
                 >
                 <svelte:fragment slot="label">
                   {#if file}
@@ -509,7 +569,7 @@
                 </svelte:fragment>
               </CheckboxButton>
             {/each}
-          </div>
+          </InputGroup>
           <fd-button
             type="button"
             variant="light"
@@ -523,26 +583,26 @@
             <h2 slot="heading">Your Stack</h2>
             <div class="fd-stack">
               <fd-input
-                name="stack"
+                name="technology"
                 placeholder="Search all..."
-                list="stack-list"
+                list="technology-list"
                 type="search"
                 label="Search"
                 required
                 on:fd-input={handleSearchInput}
               >
-                {#each STACKS as { name } ({ name })}
+                {#each TECHNOLOGIES as { name } ({ name })}
                   <option value={name}>
                 {/each}
               </fd-input>
               <div class="fd-input-group">
-                {#each filteredStacks as { id, name, file, label } ({ name })}
+                {#each filteredTechnologies as { id, name, file, label } ({ name })}
                   <CheckboxButton {id}>
                     <input
                       type="checkbox"
                       {name}
                       value={name}
-                      bind:group={stacks}
+                      bind:group={technologies}
                     >
                     <svelte:fragment slot="label">
                       {#if file}
@@ -568,7 +628,7 @@
                 type="checkbox"
                 {name}
                 value={name}
-                bind:group={stacks}
+                bind:group={tools}
               >
               <svelte:fragment slot="label">
                 {#if file}
