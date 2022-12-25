@@ -106,7 +106,7 @@
             <RadioButton>
               <input
                 type="radio"
-                name="capactiy"
+                name="capacity"
                 id="sixteen"
                 value="16"
                 bind:group={capacity}
@@ -116,7 +116,7 @@
             <RadioButton>
               <input
                 type="radio"
-                name="capactiy"
+                name="capacity"
                 id="thirty"
                 value="30"
                 bind:group={capacity}
@@ -126,7 +126,7 @@
             <RadioButton>
               <input
                 type="radio"
-                name="capactiy"
+                name="capacity"
                 id="forty"
                 value="40"
                 bind:group={capacity}
@@ -136,7 +136,7 @@
             <RadioButton>
               <input
                 type="radio"
-                name="capactiy"
+                name="capacity"
                 id="custom"
                 value="custom"
                 bind:group={capacity}
@@ -144,7 +144,7 @@
               <svelte:fragment slot="label">Custom</svelte:fragment>
             </RadioButton>
           </InputGroup>
-          {#if capacity === 'custom'}
+          {#if capacity === 'custom' || formErrors?.get('customCapacity')}
             <fd-input
               name="customCapacity"
               type="number"
