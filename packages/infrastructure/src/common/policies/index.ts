@@ -1,6 +1,10 @@
 import * as aws from "@pulumi/aws";
 import { DYNAMO_DB_TABLE_ARN } from "../../../../functions/src/common/constants";
 
+/**
+ * More information:
+ * @see https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/iam-policy-specific-table-indexes.html
+ */
 export const policyWriteDynamodb = new aws.iam.Policy("iam-policy-write-dynamodb", {
   path: "/",
   description: "Provides write access to DynamoDB and DynamoDB Streams",
@@ -94,20 +98,26 @@ export const policyReadOnlyDynamodb = new aws.iam.Policy("iam-policy-read-only-d
     "Version": "2012-10-17",
     "Statement": [
       {
-          "Sid": "ReadWriteTable",
+          "Sid": "ReadTable",
           "Effect": "Allow",
           "Action": [
               "dynamodb:BatchGetItem",
               "dynamodb:GetItem",
               "dynamodb:Query",
           ],
-          "Resource": DYNAMO_DB_TABLE_ARN,
+          "Resource": [
+            DYNAMO_DB_TABLE_ARN,
+            `${DYNAMO_DB_TABLE_ARN}/index/*`,
+          ]
       },
       {
           "Sid": "GetStreamRecords",
           "Effect": "Allow",
           "Action": "dynamodb:GetRecords",
-          "Resource": DYNAMO_DB_TABLE_ARN,
+          "Resource": [
+            DYNAMO_DB_TABLE_ARN,
+            `${DYNAMO_DB_TABLE_ARN}/index/*`,
+          ]
       },
       {
           "Sid": "WriteLogStreamsAndGroups",
@@ -116,13 +126,19 @@ export const policyReadOnlyDynamodb = new aws.iam.Policy("iam-policy-read-only-d
               "logs:CreateLogStream",
               "logs:PutLogEvents"
           ],
-          "Resource": DYNAMO_DB_TABLE_ARN,
+          "Resource": [
+            DYNAMO_DB_TABLE_ARN,
+            `${DYNAMO_DB_TABLE_ARN}/index/*`,
+          ]
       },
       {
           "Sid": "CreateLogGroup",
           "Effect": "Allow",
           "Action": "logs:CreateLogGroup",
-          "Resource": DYNAMO_DB_TABLE_ARN,
+          "Resource": [
+            DYNAMO_DB_TABLE_ARN,
+            `${DYNAMO_DB_TABLE_ARN}/index/*`,
+          ]
       }
     ]
   },
