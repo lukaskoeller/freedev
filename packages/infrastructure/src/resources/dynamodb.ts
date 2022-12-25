@@ -39,7 +39,7 @@ export const createDatabase = () => {
     rangeKey: 'sk',
     globalSecondaryIndexes: [
       {
-        name: "handle-index",
+        name: "handle-index", // DYNAMO_DB_TABLE_NAME_INDEX
         projectionType: "ALL",
         hashKey: "handle",
         readCapacity: 1,
