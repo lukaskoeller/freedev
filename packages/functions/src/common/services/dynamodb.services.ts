@@ -5,6 +5,8 @@ import {
   InternalServerError,
   PutItemCommand,
   PutItemCommandInput,
+  QueryCommand,
+  QueryCommandInput,
   UpdateItemCommand,
   UpdateItemCommandInput,
 } from "@aws-sdk/client-dynamodb";
@@ -38,10 +40,8 @@ export type ReadItem = {
   pk: string,
   /**
    * Sort Key (Range Key)
-   * Required when DynamoDB Client did not
-   * provide `indexName`.
    */
-  sk?: string,
+  sk: string,
 }
 export type UpdateItem = {
   /**
@@ -95,15 +95,54 @@ export class DynamoDBService {
   }
 
   // @todo Better solution for conditional adding object props?
-  async read(item: ReadItem) {
+  async read(item: Record<string, unknown>) {
+    if (this?.indexName) {
+      const entries = Object.entries(item);
+      const [[key, value]] = entries;
+      const params: QueryCommandInput = {
+        TableName: this.tableName,
+        IndexName: this.indexName,
+        ...entries.length === 1
+          ? {
+            KeyConditionExpression: `#${key} = :${key}`,
+            ExpressionAttributeNames: {
+                [`#${key}`]: key
+            },
+            ExpressionAttributeValues: {
+                [`:${key}`]: marshall(value)
+            }
+          } : item,
+      };
+      console.log('params', params);
+      
+
+      try {
+        const command = new QueryCommand(params);
+        const response = await this.client.send(command);
+        console.log("Success - items read", response);
+        const items = response?.Items;
+        if (items === undefined) {
+          return undefined;
+        }
+        if (items.length === 1) {
+          return unmarshall(items[0]);
+        }
+        return items.map((item) => unmarshall(item));
+  
+      } catch (error) {
+        console.log("QueryCommand Error", error.stack);
+        throw InternalServerError;
+      }
+    }
+
     const params: GetItemCommandInput = {
       TableName: this.tableName,
-      ...this.indexName ? { IndexName: this.indexName } : {},
       Key: marshall({
         pk: item.pk,
-        ...item?.sk ? { sk: item.sk } : {},
+        sk: item.sk,
       }),
     };
+    console.log('params', params);
 
     try {
       const command = new GetItemCommand(params);
