@@ -1,10 +1,11 @@
+import { TOKEN_NAME } from "$lib/common/constants";
 import { api } from "$lib/common/utils/api.utils";
 import { invalid, redirect, type Actions } from "@sveltejs/kit";
 import { validate } from "./_validations";
 
 export const actions: Actions = {
   default: async ({ request, cookies }) => {
-    const token = cookies.get('token');
+    const token = cookies.get(TOKEN_NAME);
     const form = await request.formData();
     const handle = form.get('handle');
     const firstName = form.get('firstName');
