@@ -1,5 +1,5 @@
 import * as aws from "@pulumi/aws";
-import { DYNAMO_DB_TABLE_ARN } from "../../../../functions/src/common/constants";
+import { DYNAMO_DB_TABLE_ARN } from "@freedev/constants";
 
 /**
  * More information:
