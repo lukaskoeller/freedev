@@ -1,7 +1,6 @@
 <script lang="ts">
-	// import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores'
+	import { page } from '$app/stores';
 	import bellSolid from 'assets/icons/bell-solid.svg?raw';
 	import cogSolid from 'assets/icons/cog-solid.svg?raw';
 	import paperPlaneSolid from 'assets/icons/paper-plane-solid.svg?raw';
@@ -16,7 +15,7 @@
 		<fd-logo />
 	</a>
 	<nav>
-		{#if $page.data.user?.isAuthenticated}
+		{#if $page.data.session?.user}
 			<a href="/profile">
 				<fd-icon file={userCircleSolid} size="lg" />
 				<span>Profile</span>
