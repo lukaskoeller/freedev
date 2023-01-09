@@ -1,4 +1,4 @@
-import { DBKeyPrefix } from "../../constants";
+import { DBKeyPrefix } from "@freedev/constants";
 import { Item } from "../base.entities";
 
 export enum CapacityUnit {
