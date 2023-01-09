@@ -1,6 +1,7 @@
 import { api } from "$lib/common/utils/api.utils";
 import { dev } from '$app/environment';
-import { invalid, type Cookies } from "@sveltejs/kit";
+import { error, type Cookies } from "@sveltejs/kit";
+import { TOKEN_NAME } from "$lib/common/constants";
 
 export type NewDeviceMetadata = {
   DeviceGroupKey: string;
@@ -43,16 +44,16 @@ export const signInServer = async (
     });
 
     if (body?.statusCode === 500) {
-      return invalid(500, { message: body?.message });
+      return error(500, { message: body?.message });
     }
 
     if (body?.statusCode === 400) {
-      return invalid(400, { message: body?.message });
+      return error(400, { message: body?.message });
     }
 
     const authResult = body.AuthenticationResult as AuthenticationResult;
 
-    cookies.set('token', authResult.AccessToken, {
+    cookies.set(TOKEN_NAME, authResult.AccessToken, {
       // send cookie for every page
       path: '/',
       // server side only cookie so you can't use `document.cookie`
