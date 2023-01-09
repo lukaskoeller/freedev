@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { signOut } from "@auth/sveltekit/client";
 	import Header from '$lib/header/Header.svelte';
 	import { onMount } from 'svelte';
+	import Container from "$lib/container/Container.svelte";
+	import { Size } from "types";
 	onMount(async () => {
     await import('ui');
   });
@@ -17,16 +20,18 @@
 	<slot />
 </main>
 <footer>
-	<!-- <p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p> -->
+	<Container>
+		<fd-button on:click={() => signOut()}>Sign Out</fd-button>
+	</Container>
 </footer>
 
 <style lang="postcss">
 	:global(body) {
 		/* Compensate for fixed navigation bar's height */
-		padding-bottom: var(--size-10);
+		padding-block-end: var(--size-10);
 
 		@media (--tablet) {
-			padding-bottom: 0;
+			padding-block-end: 0;
 		}
 		}
 	.logoWrapper {
@@ -37,5 +42,13 @@
 		@media (--tablet) {
 			display: none;
 		}
+	}
+
+	footer {
+		display: flex;
+	}
+
+	footer fd-button {
+		margin-inline-start: auto;
 	}
 </style>
