@@ -6,7 +6,7 @@ import {
   SignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
 import { ApiErrorResponse, ApiResponse, InternalErrorException, NoBodyException } from "../common/utils";
-import { AWS_REGION, DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID } from "../common/constants";
+import { AWS_REGION, DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID } from "@freedev/constants";
 import { DynamoDBService } from "../common/services/dynamodb.services";
 import { User } from "../common/modules/user/user.entities";
 

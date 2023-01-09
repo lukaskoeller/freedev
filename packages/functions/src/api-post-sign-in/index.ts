@@ -7,7 +7,7 @@ import {
   InitiateAuthCommandInput,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { ApiErrorResponse, ApiResponse, InternalErrorException, NoBodyException } from "../common/utils";
-import { AWS_REGION, USER_POOL_CLIENT_ID } from "../common/constants";
+import { AWS_REGION, USER_POOL_CLIENT_ID } from "@freedev/constants";
 
 export type SignInBody = {
   email: string;

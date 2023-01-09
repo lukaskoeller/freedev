@@ -2,7 +2,7 @@ import { APIGatewayEvent, Context } from "aws-lambda";
 import { DEFAULT_ERROR_MESSAGE } from "errors";
 import { ApiErrorResponse, ApiResponse } from "../common/utils";
 import { CognitoJwtVerifier } from "aws-jwt-verify";
-import { DYNAMO_DB_TABLE_NAME, DYNAMO_DB_TABLE_NAME_INDEX, USER_POOL_CLIENT_ID, USER_POOL_ID } from "../common/constants";
+import { DYNAMO_DB_TABLE_NAME, DYNAMO_DB_TABLE_NAME_INDEX, USER_POOL_CLIENT_ID, USER_POOL_ID } from "@freedev/constants";
 import { DynamoDBService } from "../common/services/dynamodb.services";
 import { User } from "../common/modules/user/user.entities";
 

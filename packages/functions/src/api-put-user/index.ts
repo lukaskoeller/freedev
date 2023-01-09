@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Context } from "aws-lambda";
 import { DEFAULT_ERROR_MESSAGE } from "errors";
 import { ApiErrorResponse, ApiResponse, NoBodyException } from "../common/utils";
-import { DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID, USER_POOL_ID } from "../common/constants";
+import { DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID, USER_POOL_ID } from "@freedev/constants";
 import { CognitoJwtVerifier } from "aws-jwt-verify";
 import { User } from "../common/modules/user/user.entities";
 import { ItemKey } from "../common/modules/base.entities";
@@ -22,7 +22,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   }
 
   const token = event?.headers?.authorization?.replace('Bearer ', '');
-  console.log('TOKEN', token);
+  console.log('token', token);
 
   if (!token) {
     throw new ApiErrorResponse({

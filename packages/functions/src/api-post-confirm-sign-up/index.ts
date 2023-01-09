@@ -6,7 +6,7 @@ import {
   ConfirmSignUpCommandInput
 } from "@aws-sdk/client-cognito-identity-provider";
 import { ApiErrorResponse, ApiResponse, NoBodyException } from "../common/utils";
-import { AWS_REGION, USER_POOL_CLIENT_ID } from "../common/constants";
+import { AWS_REGION, USER_POOL_CLIENT_ID } from "@freedev/constants";
 
 // @todo use for body schema validation https://github.com/colinhacks/zod
 export type ConfirmSignUpBody = {
