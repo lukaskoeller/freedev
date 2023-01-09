@@ -95,8 +95,8 @@ export class Button extends FormControlMixin(LitElement) {
     :is(button, a)[data-variant="stealth"] {
       --fd-button-background-color: transparent;
       --fd-button-background-color--hover: transparent;
-      --fd-button-color: var(--text-1);
-      --fd-button-color--hover: var(--text-1);
+      --fd-button-color: var(--color-primary-base);
+      --fd-button-color--hover: var(--color-primary-base);
     }
 
     :is(button, a)[data-size="sm"] {
