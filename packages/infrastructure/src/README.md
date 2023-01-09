@@ -4,6 +4,5 @@
 ./common/models - *.model.ts (class Exception blueprint)
 ./common/repositories - *.repository.ts (...)
 ./common/utils - *.utils.ts
-./common/constants.ts
 ./common/error.ts - error presets object (using e.g. via a model)
 ```
