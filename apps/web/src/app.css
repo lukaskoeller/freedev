@@ -1,3 +1,9 @@
+code {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+
 .fd-stack {
   --_fd-stack-gap: var(--fd-stack-gap, var(--size-3));
   --_fd-stack-justify-items: var(--fd-stack-justify-items, stretch);
@@ -53,6 +59,11 @@
   --_fd-card-shadow: var(--fd-card-shadow, var(--shadow-3));
   --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-3));
   --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-7));
+
+  &[data-size="sm"] {
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-5));
+    --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-3));
+  }
 
   &[data-variant="inverted"] {
     --fd-card-background-color: var(--color-surface-2-inverted);
