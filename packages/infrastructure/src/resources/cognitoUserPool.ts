@@ -64,12 +64,33 @@ export const createUserPoolAndClient = () => {
       'ALLOW_REFRESH_TOKEN_AUTH',
     ],
     preventUserExistenceErrors: 'ENABLED',
+    /** Below, used for https://authjs.dev/reference/oauth-providers/cognito */
+    generateSecret: true,
+    supportedIdentityProviders: ["COGNITO"],
+    allowedOauthFlowsUserPoolClient: true,
+    allowedOauthFlows: ['code'],
+    allowedOauthScopes: [
+      'email',
+      'openid',
+      'profile',
+    ],
+    callbackUrls: [
+      'https://freedev.app/auth/callback/cognito',
+      'http://localhost:3000/auth/callback/cognito',
+    ],
   });
 
   const userPoolEndpoint = userPool.endpoint;
 
+  /** Domain needed for https://authjs.dev/reference/oauth-providers/cognito */
+  const main = new aws.cognito.UserPoolDomain("main", {
+    domain: "freedev",
+    userPoolId: userPool.id,
+  });
+
   return {
     userPoolClientId: userPoolClient.id,
     userPoolEndpoint,
+    clientSecret: userPoolClient.clientSecret,
   }
 }
