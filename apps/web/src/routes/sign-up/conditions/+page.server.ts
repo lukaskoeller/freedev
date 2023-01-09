@@ -4,7 +4,7 @@ import { validate } from "./_validations";
 
 export const actions: Actions = {
   default: async ({ request, cookies }) => {
-    const token = cookies.get('token');
+    const token = cookies.get(TOKEN_NAME);
     const form = await request.formData();
     const hourlyRate = form.get('hourlyRate');
     const availableFrom = form.get('availableFrom');
