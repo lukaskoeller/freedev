@@ -1,9 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  onMount(async () => {
-    await import('ui');
-  });
-
   export let heading: string;
   export let isEndAligned: boolean = false;
 </script>
@@ -12,7 +7,9 @@
   <div class="header">
     {#if heading}
       <h2>{heading}</h2>
-      <fd-label>Read More</fd-label>
+      {#if $$slots.actions}
+        <slot name="actions"></slot>
+      {/if}
     {/if}
   </div>
   <div class="slot">
@@ -46,7 +43,7 @@
   h2 {
     font-size: var(--font-size-fluid-2);
     font-weight: var(--font-weight-5);
-    color: var(--primary-color-base);
+    color: var(--color-primary-base);
   }
 
   fd-label {
