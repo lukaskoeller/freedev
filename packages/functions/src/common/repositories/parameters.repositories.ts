@@ -2,7 +2,7 @@
 
 import { SSMClient, GetParameterCommand } from "@aws-sdk/client-ssm";
 import { INTERNAL_ERROR_MESSAGE } from "errors";
-import { AWS_REGION } from "../constants";
+import { AWS_REGION } from "@freedev/constants";
 import { ApiErrorResponse, InternalErrorException } from "../utils";
 
 /**
