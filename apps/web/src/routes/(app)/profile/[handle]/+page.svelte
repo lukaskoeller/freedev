@@ -1,11 +1,24 @@
 <script lang="ts">
+	import Container from '$lib/container/Container.svelte';
+	import Section from '$lib/section/Section.svelte';
 	import { onMount } from 'svelte';
+	import { Size } from 'types';
 	import type { PageData } from './$types';
+	import svgReact from 'assets/icons/react.svg?raw';
+
   onMount(async () => {
     await import('ui');
   });
 
   export let data: PageData;
+	const {
+		firstName,
+		lastName,
+		handle,
+		hourlyRate,
+		availableFrom,
+		capacity,
+	} = data;
 </script>
 
 <svelte:head>
@@ -17,8 +30,8 @@
 		<div class="avatar"></div>
 		<div class="base-info">
 			<div class="base-title">
-				<h4>Lukas Köller</h4>
-				<div>{data.email}</div>
+				<h4>{`${firstName} ${lastName}`}</h4>
+				<div>/{handle}</div>
 			</div>
 			<fd-button>Scedule</fd-button>
 		</div>
@@ -27,11 +40,11 @@
 		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="kpi">
 				<fd-label as="div">Hourly Rate</fd-label>
-				<span>123 €</span>
+				<span>{parseFloat(hourlyRate).toLocaleString(undefined, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })}</span>
 			</fd-gallery-item>
 			<fd-gallery-item class="kpi">
 				<fd-label as="div">Available From</fd-label>
-				<span>Feb 12</span>
+				<span>{new Date(availableFrom).toLocaleDateString([], { day: 'numeric', month: 'short' })}</span>
 			</fd-gallery-item>
 			<fd-gallery-item class="kpi">
 				<fd-label as="div">Projects</fd-label>
@@ -43,10 +56,53 @@
 			</fd-gallery-item>
 			<fd-gallery-item class="kpi">
 				<fd-label as="div">Capacity</fd-label>
-				<span>30h/week</span>
+				<span>{capacity}h/week</span>
 			</fd-gallery-item>
 		</fd-gallery>
 	</fd-section>
+	<Section heading="Skills">
+		<div slot="actions">
+			<fd-button variant="stealth" size="sm">Read More</fd-button>
+		</div>
+		<div class="skills-container">
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				React
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				Svelte
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				React Router
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				Deno
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				Go
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				HTML5
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				CSS3
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				Redux Saga
+			</div>
+			<div class="fd-card skills-card" data-size="sm">
+				<fd-icon file={svgReact}></fd-icon>
+				Gatsby
+			</div>
+		</div>
+	</Section>
 	<fd-section heading="About Me">
 		<div slot="actions">
 			<fd-button size="sm">Edit</fd-button>
@@ -54,8 +110,7 @@
 		</div>
 		<p>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-			ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-			dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			ut labore et dolore magna aliquyam erat, sed diam voluptua.
 		</p>
 	</fd-section>
 	<fd-section heading="Projects" fullWidth={true}>
@@ -72,6 +127,9 @@
 </section>
 
 <style lang="postcss">
+	.box {
+		max-inline-size: var(--size-content-3);
+	}
 	.header {
 		display: flex;
 		gap: var(--size-7);
@@ -100,7 +158,7 @@
 
 	.avatar {
 		--size: min(100px, 40vw);
-		aspect-ration: 1/1;
+		aspect-ratio: 1/1;
 		inline-size: var(--size);
 		block-size: var(--size);
 		border-radius: 100%;
@@ -125,6 +183,22 @@
 			font-size: var(--font-size-4);
 			color: var(--color-primary-base);
 		}
+	}
+
+	.skills-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--size-fluid-1);
+	}
+
+	.skills-card {
+		inline-size: auto;
+		display: flex;
+		align-items: center;
+		gap: var(--size-3);
+		/* --fd-card-background-color: var(--color-surface-2); */
+		font-weight: var(--font-weight-6);
+		font-size: var(--font-size-2);
 	}
 
 	.project-preview {
