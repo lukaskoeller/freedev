@@ -11,7 +11,7 @@ import {
   UpdateItemCommandInput,
 } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
-import { AWS_REGION } from "../constants";
+import { AWS_REGION } from "@freedev/constants";
 import { Item } from "../modules/base.entities";
 
 const mapToObj = <T extends Item>(classInstance: T) => ({
