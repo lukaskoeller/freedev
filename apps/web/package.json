@@ -37,8 +37,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@auth/core": "^0.2.5",
-    "@auth/sveltekit": "^0.1.12",
+    "@auth/core": "^0.3.0",
+    "@auth/sveltekit": "^0.2.0",
     "@fontsource/fira-mono": "^4.5.10",
     "@lit-labs/ssr": "^2.3.0",
     "@lukeed/uuid": "^2.0.0",
