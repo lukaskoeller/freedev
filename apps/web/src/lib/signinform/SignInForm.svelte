@@ -37,7 +37,6 @@
     }
 
     return async (args) => {
-      console.log({ args });
       const { result, update } = args;
       switch (result.type) {
         case 'success':
