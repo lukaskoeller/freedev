@@ -9,7 +9,7 @@ export const AWS_REGION = 'eu-central-1';
  * Copy saved in `web/.env`.
  * @deprecated use package `@freedev/constants` instead`
  */
-export const USER_POOL_CLIENT_ID = '43em4pbfrtrng5cvjriuq5gd96';
+export const USER_POOL_CLIENT_ID = 'l676voiseqvtmtgpk9fl0mi5d';
 /**
  * Cognito User Pool ID
  * @deprecated use package `@freedev/constants` instead`
