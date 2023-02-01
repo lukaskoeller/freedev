@@ -22,49 +22,49 @@ export const signInServer = async (
   cookies: Cookies
 ) => {
   const form = await request.formData();
-    console.log('FORM', form);
+  console.log('FORM', form);
 
-    const email = form.get('email');
-    const password = form.get('password');
-  
-    const response = await api({
-      fetch,
-      method: 'POST',
-      resource: 'sign-in',
-      data: {
-        email,
-        password,
-      },
-    });
-    const body = await response.json();
+  const email = form.get('email');
+  const password = form.get('password');
 
-    console.log({
-      response,
-      body,
-    });
+  const response = await api({
+    fetch,
+    method: 'POST',
+    resource: 'sign-in',
+    data: {
+      email,
+      password,
+    },
+  });
+  const body = await response.json();
 
-    if (body?.statusCode === 500) {
-      return error(500, { message: body?.message });
-    }
+  console.log({
+    response,
+    body,
+  });
 
-    if (body?.statusCode === 400) {
-      return error(400, { message: body?.message });
-    }
+  if (body?.statusCode === 500) {
+    return error(500, { message: body?.message });
+  }
 
-    const authResult = body.AuthenticationResult as AuthenticationResult;
+  if (body?.statusCode === 400) {
+    return error(400, { message: body?.message });
+  }
 
-    cookies.set(TOKEN_NAME, authResult.AccessToken, {
-      // send cookie for every page
-      path: '/',
-      // server side only cookie so you can't use `document.cookie`
-      httpOnly: true,
-      // only requests from same site can send cookies
-      // https://developer.mozilla.org/en-US/docs/Glossary/CSRF
-      sameSite: 'strict',
-      // only sent over HTTPS in production
-      // @todo use different variable? see https://vitejs.dev/guide/env-and-mode.html
-      secure: !dev,
-      // set cookie to expire after a month
-      maxAge: authResult.ExpiresIn,
-    });
+  const authResult = body.AuthenticationResult as AuthenticationResult;
+
+  cookies.set(TOKEN_NAME, authResult.AccessToken, {
+    // send cookie for every page
+    path: '/',
+    // server side only cookie so you can't use `document.cookie`
+    httpOnly: true,
+    // only requests from same site can send cookies
+    // https://developer.mozilla.org/en-US/docs/Glossary/CSRF
+    sameSite: 'strict',
+    // only sent over HTTPS in production
+    // @todo use different variable? see https://vitejs.dev/guide/env-and-mode.html
+    secure: !dev,
+    // set cookie to expire after a month
+    maxAge: authResult.ExpiresIn,
+  });
 }
