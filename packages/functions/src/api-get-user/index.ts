@@ -18,8 +18,6 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     console.log({ event, context });
 
     const token = event?.headers?.authorization?.replace('Bearer ', '');
-    console.log(TOKEN_NAME, token);
-    
 
     if (!token) {
       throw new ApiErrorResponse({
