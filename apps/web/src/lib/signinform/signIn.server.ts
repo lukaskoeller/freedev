@@ -22,7 +22,6 @@ export const signInServer = async (
   cookies: Cookies
 ) => {
   const form = await request.formData();
-  console.log('FORM', form);
 
   const email = form.get('email');
   const password = form.get('password');
@@ -37,11 +36,6 @@ export const signInServer = async (
     },
   });
   const body = await response.json();
-
-  console.log({
-    response,
-    body,
-  });
 
   if (body?.statusCode === 500) {
     return error(500, { message: body?.message });
