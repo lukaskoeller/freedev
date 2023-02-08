@@ -1,4 +1,4 @@
-<fd-card class="card" style="--fd-card-padding-inline: var(--size-3);">
+<div class="fd-card">
   <div class="fd-stack">
     <div class="header">
       <div class="avatar"></div>
@@ -7,28 +7,30 @@
           <h4 class="title">Lukas Köller</h4>
           <div class="profession">React Frontend Developer</div>
         </div>
-        <fd-button>View</fd-button>
+        <button class="fd-button">View</button>
       </div>
     </div>
     <div class="key-info">
       <div>
-        <fd-label as="div">Hourly Rate</fd-label>
+        <div class="fd-label">Hourly Rate</div>
         <span>123 €</span>
       </div>
       <div>
-        <fd-label as="div">Available From</fd-label>
+        <div class="fd-label">Available From</div>
         <span>Feb 12</span>
       </div>
       <div>
-        <fd-label as="div">Capacity</fd-label>
+        <div class="fd-label">Capacity</div>
 				  <span>30h/week</span>
       </div>
     </div>
   </div>
-</fd-card>
+</div>
 
 <style lang="postcss">
-  fd-card::part(card) {
+  .fd-card {
+    --fd-card-padding-inline: var(--size-3);
+
     inline-size: min(calc(var(--size-9) * 6), calc(100vw - 2 * var(--size-3)));
   }
 
@@ -60,7 +62,7 @@
     color: var(--text-2);
   }
 
-  fd-button {
+  .fd-button {
     justify-self: end;
   }
 
@@ -72,7 +74,7 @@
     min-width: 0;
   }
 
-  fd-label {
+  .fd-label {
     --fd-label-font-size: var(--font-size-0);
     --fd-label-color: var(--text-2);
   }
