@@ -5,6 +5,7 @@
 	import cogSolid from 'assets/icons/cog-solid.svg?raw';
 	import paperPlaneSolid from 'assets/icons/paper-plane-solid.svg?raw';
 	import userCircleSolid from 'assets/icons/user-circle-solid.svg?raw';
+	import Logo from '$lib/logo/Logo.svelte';
   onMount(async () => {
     await import('ui');
   });
@@ -12,7 +13,7 @@
 
 <header>
 	<a href="/">
-		<fd-logo />
+		<Logo />
 	</a>
 	<nav>
 		{#if $page.data.session?.user}
@@ -33,19 +34,19 @@
 				<span>Settings</span>
 			</a>
 		{:else}
-			<fd-button
-				as="a"
+			<a
+				class="fd-button"
 				href="/sign-in"
-				variant="light"
+				data-variant="light"
 			>
 				Sign In
-			</fd-button>
-			<fd-button
-				as="a"
+			</a>
+			<a
+				class="fd-button"
 				href="/sign-up"
 			>
 				Sign Up
-			</fd-button>
+			</a>
 		{/if}
 	</nav>
 </header>
@@ -90,6 +91,7 @@
 		display: flex;
 		inline-size: 100%;
 		justify-content: space-around;
+		align-items: flex-start;
 		gap: var(--size-fluid-3);
 
 		@media (--tablet) {
