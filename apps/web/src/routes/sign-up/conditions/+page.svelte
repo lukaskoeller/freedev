@@ -3,16 +3,13 @@
 	import { invalidateAll } from "$app/navigation";
 	import Fieldset from "$lib/fieldset/Fieldset.svelte";
 	import InputGroup from "$lib/inputgroup/InputGroup.svelte";
+	import InputWrapper from "$lib/inputwrapper/InputWrapper.svelte";
 	import RadioButton from "$lib/radiobutton/RadioButton.svelte";
 	import { notifications } from "$lib/toast/notifications";
   import { onMount } from "svelte";
 	import type { FieldErrors } from "validations";
 	import FormContainer from "../FormContainer.svelte";
 	import { validate } from "./_validations";
-
-  onMount(async () => {
-    await import('ui');
-  });
 
   const heading: string = 'What are your conditions?';
   let capacity: string;
@@ -69,12 +66,6 @@
             form.reset();
             // invalidateAll();
             break;
-          case 'invalid':
-            notifications.warning(result.data.message);
-            // form.reset();
-            invalidateAll();
-            await applyAction(result);
-            break;
           default:
             form.reset();
             invalidateAll();
@@ -86,20 +77,24 @@
     }}
   >
     <div class="fd-stack">
-      <fd-input
-        name="hourlyRate"
-        type="number"
-        label="Hourly Rate"
-        required
-        error={formErrors?.get('hourlyRate')}
-      ></fd-input>
-      <fd-input
-        name="availableFrom"
-        type="date"
-        label="Available From"
-        required
-        error={formErrors?.get('availableFrom')}
-      ></fd-input>
+      <InputWrapper id="hourlyRate" text={formErrors?.get('hourlyRate')}>
+        <svelte:fragment slot="label">Hourly Rate</svelte:fragment>
+        <input
+          class="fd-input"
+          name="hourlyRate"
+          type="number"
+          required
+        />
+      </InputWrapper>
+      <InputWrapper id="availableFrom" text={formErrors?.get('availableFrom')}>
+        <svelte:fragment slot="label">Available From</svelte:fragment>
+        <input
+          class="fd-input"
+          name="availableFrom"
+          type="date"
+          required
+        />
+      </InputWrapper>
       <Fieldset legend="Capacity">
         <div class="fd-stack">
           <InputGroup text={formErrors?.get('capacity')}>
@@ -145,23 +140,26 @@
             </RadioButton>
           </InputGroup>
           {#if capacity === 'custom' || formErrors?.get('customCapacity')}
-            <fd-input
+          <InputWrapper id="customCapacity" text={formErrors?.get('customCapacity')}>
+            <svelte:fragment slot="label">Custom Capacity</svelte:fragment>
+            <input
+              class="fd-input"
               name="customCapacity"
               type="number"
-              label="Custom Capacity"
               required
-              error={formErrors?.get('customCapacity')}
-            ></fd-input>
+            />
+          </InputWrapper>
           {/if}
         </div>
       </Fieldset>
     </div> 
   </form>
-  <fd-button
+  <button
+    class="fd-button"
     slot="footer"
     form="sign-up-conditions"
-    expand
+    data-expand
   >
     Continue
-  </fd-button>
+  </button>
 </FormContainer>
