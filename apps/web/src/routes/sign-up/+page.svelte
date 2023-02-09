@@ -6,9 +6,11 @@
 	import { Size } from 'types';
   import { page } from '$app/stores';
 	import { notifications } from '$lib/toast/notifications';
-	import { validate, type FieldErrors } from './_validations';
+	import { validate } from './_validations';
 	import { invalidateAll } from '$app/navigation';
 	import FormContainer from './FormContainer.svelte';
+	import type { FieldErrors } from 'validations';
+	import InputWrapper from '$lib/inputwrapper/InputWrapper.svelte';
 
   onMount(async () => {
     await import('ui');
@@ -85,31 +87,37 @@
     }}
   >
     <div class="fd-stack">
-      <fd-input
-        name="email"
-        type="email"
-        label="E-Mail"
-        required
-        error={formErrors?.get('email')}
-      ></fd-input>
-      <fd-input
-        name="password"
-        type="password"
-        label="Password"
-        error={formErrors?.get('password')}
-      ></fd-input>
+      <InputWrapper id="email" text={formErrors?.get('email')}>
+        <svelte:fragment slot="label">E-Mail</svelte:fragment>
+        <input
+          class="fd-input"
+          name="email"
+          type="email"
+          placeholder="E-Mail"
+          required
+        >
+      </InputWrapper>
+      <InputWrapper id="password" text={formErrors?.get('password')}>
+        <svelte:fragment slot="label">Password</svelte:fragment>
+        <input
+          class="fd-input"
+          name="password"
+          type="password"
+          placeholder="Passwort"
+        >
+      </InputWrapper>
       <!-- Submit in slot=footer -->
     </div>
   </form>
   <div slot="footer">
-    <fd-button
-      expand
+    <button
+      class="fd-button"
+      data-expand
       type="submit"
-      status={isSubmitting ? 'loading' : undefined}
       form="sign-up"
     >
       Submit
-    </fd-button>
+    </button>
   </div>  
   <!-- <Toast message="Successfully signed up!">
     <div slot="before">
