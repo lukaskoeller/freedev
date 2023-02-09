@@ -1,19 +1,11 @@
 <script lang="ts">
-	import Container from "$lib/container/Container.svelte";
   import { page } from '$app/stores';
-	import { Size } from "types";
   import type { ActionData } from './$types';
 	import { applyAction, enhance } from "$app/forms";
 	import SplitInput from "$lib/splitinput/SplitInput.svelte";
-	import { onMount } from "svelte";
 	import { invalidateAll } from "$app/navigation";
 	import { notifications } from "$lib/toast/notifications";
 	import FormContainer from "../FormContainer.svelte";
-
-
-  onMount(async () => {
-    await import('ui');
-  });
 
   export let form: ActionData;
   let isSubmitting: boolean = false;
@@ -54,12 +46,6 @@
               form.reset();
               // invalidateAll();
               break;
-            case 'invalid':
-              notifications.warning(result.data.message);
-              // form.reset();
-              invalidateAll();
-              await applyAction(result);
-              break;
             default:
               notifications.info('This is a default message');
               form.reset();
@@ -79,10 +65,11 @@
     </form>
     <p>Nichts bekommen? Schau mal in deinen Spam-Ordner.</p>
   </div>
-  <fd-button
+  <button
+    class="fd-button"
     slot="footer"
-    expand
+    data-expand
   >
     Email App öffnen
-  </fd-button>
+  </button>
 </FormContainer>
