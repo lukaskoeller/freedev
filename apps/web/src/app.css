@@ -232,6 +232,36 @@ code {
   } */
 }
 
+input:is(.fd-input, :-webkit-autofill) {
+  --_fd-input-background-color: var(--fd-input-background-color, var(--color-surface-2));
+  --_fd-input-text-transform: uppercase;
+  --_fd-input-font-weight: var(--fd-input-font-weight, var(--font-weight-6));
+  --_fd-input-font-size: var(--fd-input-font-size, var(--font-size-0));
+  --_fd-input-border-color: var(--fd-input-border-color, var(--color-border));
+
+  position: relative;
+  min-width: 0;
+  border: var(--border-size-1) solid var(--_fd-input-border-color);
+  border-radius: var(--radius-2);
+  background-color: var(--_fd-input-background-color);
+  padding-inline: var(--size-4);
+  padding-block: var(--size-3);
+
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-5);
+  font-size: var(--font-size-1);
+  color: var(--primary-color-base);
+
+  &[aria-invalid="true"] {
+    --_fd-input-border-color: var(--fd-input-border-color, var(--color-status-error));
+    border: var(--border-size-1) solid var(--_fd-input-border-color);
+  }
+
+  &::placeholder {
+    color: var(--color-accent-6);
+  }
+}
+
 .fd-checkbox-button {
   position: relative;
   display: inline-grid;
