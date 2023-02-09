@@ -45,12 +45,6 @@
           form.reset();
           // invalidateAll();
           break;
-        case 'invalid':
-          notifications.warning(result.data.message);
-          // form.reset();
-          invalidateAll();
-          await applyAction(result);
-          break;
         default:
           form.reset();
           invalidateAll();
