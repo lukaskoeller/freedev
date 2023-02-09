@@ -49,10 +49,8 @@
 	import { notifications } from "$lib/toast/notifications";
 	import { validate } from "./_validations";
 	import InputGroup from "$lib/inputgroup/InputGroup.svelte";
-
-  onMount(async () => {
-    await import('ui');
-  });
+	import Icon from "$lib/icon/Icon.svelte";
+	import InputWrapper from "$lib/inputwrapper/InputWrapper.svelte";
 
   let languages: string[] = [];
   let technologies: string[] = [];
@@ -536,7 +534,9 @@
               >
               <svelte:fragment slot="label">
                 {#if file}
-                  <fd-icon {file} size="inline"></fd-icon>
+                  <Icon size="inline">
+                    {@html file}                    
+                  </Icon>
                 {/if}
                 {label}
               </svelte:fragment>
@@ -557,38 +557,45 @@
                 >
                 <svelte:fragment slot="label">
                   {#if file}
-                    <fd-icon {file} size="inline"></fd-icon>
+                    <Icon size="inline">
+                      {@html file}
+                    </Icon>
                   {/if}
                   {label}
                 </svelte:fragment>
               </CheckboxButton>
             {/each}
           </InputGroup>
-          <fd-button
+          <button
+            class="fd-button"
             type="button"
-            variant="light"
+            data-variant="light"
             style="justify-self: end;"
             on:click={() => window.Skills.showModal()}
             on:keypress={() => window.Skills.showModal()}
           >
             Find more
-          </fd-button>
+          </button>
           <Modal id="Skills">
             <h2 slot="heading">Your Stack</h2>
             <div class="fd-stack">
-              <fd-input
-                name="technology"
-                placeholder="Search all..."
-                list="technology-list"
-                type="search"
-                label="Search"
-                required
-                on:fd-input={handleSearchInput}
-              >
+              <InputWrapper id="technology">
+                <svelte:fragment slot="label">Search</svelte:fragment>
+                <input
+                  class="fd-input"
+                  name="technology"
+                  placeholder="Search all..."
+                  list="technology-list"
+                  type="search"
+                  required
+                  on:input={handleSearchInput}
+                />
+              </InputWrapper>
+              <datalist id="technology-list">
                 {#each TECHNOLOGIES as { name } ({ name })}
                   <option value={name}>
                 {/each}
-              </fd-input>
+              </datalist>
               <div class="fd-input-group">
                 {#each filteredTechnologies as { id, name, file, label } ({ name })}
                   <CheckboxButton {id}>
@@ -600,7 +607,9 @@
                     >
                     <svelte:fragment slot="label">
                       {#if file}
-                        <fd-icon {file} size="inline"></fd-icon>
+                        <Icon size="inline">
+                          {@html file}
+                        </Icon>
                       {/if}
                       {label}
                     </svelte:fragment>
@@ -609,7 +618,7 @@
               </div>
             </div>
             <menu slot="footer">
-              <fd-button type="submit">Add</fd-button>
+              <button class="fd-button" type="submit">Add</button>
             </menu>
           </Modal>
         </div>
@@ -626,7 +635,9 @@
               >
               <svelte:fragment slot="label">
                 {#if file}
-                  <fd-icon {file} size="inline"></fd-icon>
+                  <Icon size="inline">
+                    {@html file}
+                  </Icon>
                 {/if}
                 {label}
               </svelte:fragment>
@@ -636,11 +647,12 @@
       </Fieldset>
     </div> 
   </form>
-  <fd-button
+  <button
+    class="fd-button"
     slot="footer"
     form="sign-up-skills"
-    expand
+    data-expand
   >
     Go to profile
-  </fd-button>
+  </button>
 </FormContainer>
