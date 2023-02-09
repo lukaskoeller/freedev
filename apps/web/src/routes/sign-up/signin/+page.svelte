@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SignInForm from "$lib/signinform/SignInForm.svelte";
-import FormContainer from "../FormContainer.svelte";
-
+  import FormContainer from "../FormContainer.svelte";
 
   const heading: string = 'Seat belts on!';
 </script>
