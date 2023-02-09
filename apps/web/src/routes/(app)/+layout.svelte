@@ -1,19 +1,16 @@
 <script lang="ts">
 	import { signOut } from "@auth/sveltekit/client";
 	import Header from '$lib/header/Header.svelte';
-	import { onMount } from 'svelte';
 	import Container from "$lib/container/Container.svelte";
-	import { Size } from "types";
-	onMount(async () => {
-    await import('ui');
-  });
+
+	import Logo from "$lib/logo/Logo.svelte";
 </script>
 
 
 <Header />
 <div class="logoWrapper">
 	<a href="/">
-		<fd-logo />
+		<Logo />
 	</a>
 </div>
 <main>
@@ -21,7 +18,7 @@
 </main>
 <footer>
 	<Container>
-		<fd-button on:click={() => signOut()}>Sign Out</fd-button>
+		<button class="fd-button" on:click={() => signOut()}>Sign Out</button>
 	</Container>
 </footer>
 
