@@ -1,15 +1,11 @@
 <script lang="ts">
 	import { applyAction, enhance } from "$app/forms";
 	import { invalidateAll } from "$app/navigation";
+	import InputWrapper from "$lib/inputwrapper/InputWrapper.svelte";
 	import { notifications } from "$lib/toast/notifications";
-	import { onMount } from "svelte";
 	import type { FieldErrors } from "validations";
 	import FormContainer from "../FormContainer.svelte";
 	import { validate } from "./_validations";
-
-  onMount(async () => {
-    await import('ui');
-  });
 
   const heading: string = 'What should we call you?';
 
@@ -60,12 +56,6 @@
             form.reset();
             // invalidateAll();
             break;
-          case 'invalid':
-            notifications.warning(result.data.message);
-            // form.reset();
-            invalidateAll();
-            await applyAction(result);
-            break;
           default:
             form.reset();
             invalidateAll();
@@ -77,34 +67,41 @@
     }}
   >
     <div class="fd-stack">
-      <fd-input
-        name="handle"
-        type="text"
-        label="handle"
-        required
-        error={formErrors?.get('handle')}
-      ></fd-input>
-      <fd-input
-        name="firstName"
-        type="text"
-        label="First Name"
-        required
-        error={formErrors?.get('firstName')}
-      ></fd-input>
-      <fd-input
-        name="lastName"
-        type="text"
-        label="Last Name"
-        required
-        error={formErrors?.get('lastName')}
-      ></fd-input>
+      <InputWrapper id="handle" text={formErrors?.get('handle')}>
+        <svelte:fragment slot="label">handle</svelte:fragment>
+        <input
+          class="fd-input"
+          name="handle"
+          type="text"
+          required
+        />
+      </InputWrapper>
+      <InputWrapper id="firstName" text={formErrors?.get('firstName')}>
+        <svelte:fragment slot="label">First Name</svelte:fragment>
+        <input
+          class="fd-input"
+          name="firstName"
+          type="text"
+          required
+        />
+      </InputWrapper>
+      <InputWrapper id="lastName" text={formErrors?.get('lastName')}>
+        <svelte:fragment slot="label">Last Name</svelte:fragment>
+        <input
+          class="fd-input"
+          name="lastName"
+          type="text"
+          required
+        />
+      </InputWrapper>
     </div> 
   </form>
-  <fd-button
+  <button
+    class="fd-button"
     slot="footer"
     form="sign-up-name"
-    expand
+    data-expand
   >
     Continue
-  </fd-button>
+  </button>
 </FormContainer>
