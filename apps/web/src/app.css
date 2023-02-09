@@ -52,6 +52,38 @@ code {
     );
 }
 
+.fd-gallery {
+  --_fd-gallery-gap: var(--fd-gallery-gap, var(--size-6));
+  --_fd-gallery-padding-block: var(--fd-gallery-padding-block, 0);
+
+  display: flex;
+  gap: calc(var(--_fd-gallery-gap) / 2);
+  margin: 0;
+  max-inline-size: 100%;
+  block-size: var(--fd-gallery-size, auto);
+  padding-inline-start: var(--fd-gallery-padding-inline-start, var(--fd-gallery-padding-inline, var(--_fd-gallery-gap, var(var(--fd-gallery-gap)))));
+  padding-inline-end: var(--fd-gallery-padding-inline-end, var(--fd-gallery-padding-inline, var(--_fd-gallery-gap, var(--fd-gallery-gap))));
+  padding-block-start: calc(var(--fd-gallery-padding-block) / 2);
+  padding-block-end: calc(var(--fd-gallery-padding-block) / 2);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scroll-padding-left: var(--_fd-gallery-gap);
+  scroll-padding-right: var(--_fd-gallery-gap);
+  scroll-padding-inline: var(--_fd-gallery-gap);
+  list-style: none;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+
+  & > * {
+    display: inline-block;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
 .fd-card {
   --_fd-card-background-color: var(--fd-card-background-color, var(--color-surface-1));
   --_fd-card-color: var(--fd-card-color, var(--text-1));
