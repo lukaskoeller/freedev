@@ -135,6 +135,103 @@ code {
   color: var(--_fd-info-text-color);
 }
 
+.fd-button {
+  --_fd-button-background-color: var(--fd-button-background-color, var(--color-link));
+  --_fd-button-background-color--hover: var(--fd-button-background-color--hover, var(--color-link-hover));
+  --_fd-button-color: var(--fd-button-color, var(--color-on-primary));
+  --_fd-button-color--hover: var(--fd-button-color--hover, var(--color-on-primary));
+  --_fd-button-border-color: var(--fd-button-border-color, var(--color-link));
+  
+  --_fd-button-font-size: var(--fd-button-font-size, var(--font-size-1));
+  --_fd-button-padding-inline: var(--fd-button-padding-inline, var(--size-6));
+  --_fd-button-block-size: var(--fd-button-block-size, calc(var(--size-6) + var(--_fd-button-font-size)));
+  --_fd-button-line-height: var(--fd-button-line-height, var(--font-lineheight-5));
+
+  --_fd-button-width: var(--fd-button-width, fit-content);
+
+  position: relative;
+  box-sizing: inherit;
+  inline-size: var(--_fd-button-width, fit-content);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);      
+
+  margin: 0;
+  padding: 0;
+  min-block-size: var(--_fd-button-block-size);
+  padding-inline: var(--_fd-button-padding-inline);
+
+  font-weight: var(--font-weight-6);
+  font-size: var(--_fd-button-font-size);
+  line-height: var(--_fd-button-line-height);
+  text-align: center;
+  color: var(--_fd-button-color);
+
+  appearance: none;
+  border: none;
+  text-decoration: none;
+
+  background-color: var(--_fd-button-background-color);
+  border-radius: var(--radius-round);
+  overflow: hidden;
+  
+  touch-action: manipulation;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--_fd-button-background-color--hover);
+    color: var(--_fd-button-color--hover);
+  }
+
+  &[data-variant="light"] {
+    --_fd-button-background-color: var(--fd-button-background-color, transparent);
+    --_fd-button-background-color--hover: var(--fd-button-background-color--hover, transparent);
+    --_fd-button-color: var(--fd-button-color, var(--text-1));
+    --_fd-button-color--hover: var(--fd-button-color--hover, var(--text-1));
+    outline: var(--border-size-1) solid var(--_fd-button-border-color);
+  }
+
+  &[data-variant="monotone"] {
+    --_fd-button-background-color: var(--fd-button-background-color, var(--color-surface-2));
+    --_fd-button-background-color--hover: var(--fd-button-background-color--hover, var(--color-surface-2));
+    --_fd-button-color: var(--fd-button-color, var(--color-link));
+    --_fd-button-color--hover: var(--fd-button-color--hover, var(--color-link));
+  }
+
+  &[data-variant="stealth"] {
+    --_fd-button-background-color: var(--fd-button-background-color, transparent);
+    --_fd-button-background-color--hover: var(--fd-button-background-color--hover, transparent);
+    --_fd-button-color: var(--fd-button-color, var(--color-primary-base));
+    --_fd-button-color--hover: var(--fd-button-color--hover, var(--color-primary-base));
+  }
+
+  &[data-size="sm"] {
+    --_fd-button-padding-inline: var(--fd-button-padding-inline, var(--size-3));
+    --_fd-button-block-size: var(--fd-button-block-size, var(--size-7));
+    --_fd-button-font-size: var(--fd-button-font-size, var(--font-size-0));
+  }
+
+  &[data-expand] {
+    --_fd-button-width: var(--fd-button-width, 100%);
+  }
+
+  &[data-icon] {
+    --_fd-button-padding-inline: var(--fd-button-padding-inline, 0);
+    --_fd-button-width: var(--fd-button-width, var(--fd-button-block-size));
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  /* @todo how to handle loading state? */
+  /* &[data-status="loading"] > [name="status"] > fd-icon {
+    animation: var(--animation-spin);
+    animation-duration: 1.1s;
+  } */
+}
+
 .fd-checkbox-button {
   position: relative;
   display: inline-grid;
