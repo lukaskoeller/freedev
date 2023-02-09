@@ -4,7 +4,6 @@
 	import FeatureSection from '$lib/featuresection/FeatureSection.svelte';
 	import ProfileCard from '$lib/profilecard/ProfileCard.svelte';
 	import SearchBar from '$lib/searchbar/SearchBar.svelte';
-  import { onMount } from 'svelte';
 	import { Size } from 'types';
   import atWorkImage from '$lib/assets/images/woman-at-work.jpg';
   import workOfficeImage from '$lib/assets/images/work-office.jpeg';
@@ -14,10 +13,6 @@
   import veoliaLogo from '$lib/assets/images/veolia-logo.png';
   import bookingLogo from '$lib/assets/images/booking-logo.png';
   import braveLogo from '$lib/assets/images/brave-logo.png';
-
-  onMount(async () => {
-    await import('ui');
-  });
 </script>
 
 <svelte:head>
@@ -45,26 +40,26 @@
     </Container>
   </Container>
   <Container style="--fd-container-padding-inline: 0px;">
-    <fd-gallery style="--fd-gallery-gap: var(--size-fluid-2);">
-			<fd-gallery-item>
+    <ul class="fd-gallery" style="--fd-gallery-gap: var(--size-fluid-2);">
+			<li>
         <ProfileCard></ProfileCard>
-      </fd-gallery-item>
-			<fd-gallery-item>
+      </li>
+			<li>
         <ProfileCard></ProfileCard>
-      </fd-gallery-item>
-			<fd-gallery-item>
+      </li>
+			<li>
         <ProfileCard></ProfileCard>
-      </fd-gallery-item>
-			<fd-gallery-item>
+      </li>
+			<li>
         <ProfileCard></ProfileCard>
-      </fd-gallery-item>
-			<fd-gallery-item>
+      </li>
+			<li>
         <ProfileCard></ProfileCard>
-      </fd-gallery-item>
-			<fd-gallery-item>
+      </li>
+			<li>
         <ProfileCard></ProfileCard>
-      </fd-gallery-item>
-		</fd-gallery>
+      </li>
+		</ul>
   </Container>
   <Container>
     <Container size={Size.Lg}>
@@ -128,7 +123,7 @@
     </Container>
   </Container>
   <Container>
-    <fd-button href="/sign-up">Sign Up</fd-button>
+    <a class="fd-button" href="/sign-up">Sign Up</a>
   </Container>
 </section>
 
