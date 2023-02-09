@@ -10,7 +10,7 @@
     'inline': '1em',
   };
 
-  export let size: Size = Size.Md;
+  export let size: keyof typeof SizeMap = Size.Md;
 </script>
 
 <div style={`--size: ${SizeMap[size]}`}>
