@@ -1,13 +1,10 @@
 <script lang="ts">
   import { applyAction, enhance } from "$app/forms";
 	import { invalidateAll } from "$app/navigation";
+	import InputWrapper from "$lib/inputwrapper/InputWrapper.svelte";
 	import { notifications } from "$lib/toast/notifications";
-	import { onMount } from "svelte";
 	import type { FieldErrors } from "validations";
 	import { validate } from "./_validations";
-  onMount(async () => {
-    await import('ui');
-  });
 
   let formErrors: undefined | FieldErrors;
   let isSubmitting: boolean = false;
@@ -65,23 +62,28 @@
   }}
 >
   <div class="fd-stack">
-    <fd-input
-      name="email"
-      type="email"
-      label="E-Mail"
-      required
-      error={formErrors?.get('email')}
-    ></fd-input>
-    <fd-input
-      name="password"
-      type="password"
-      label="Password"
-      error={formErrors?.get('password')}
-    ></fd-input>
-    <fd-button
+    <InputWrapper id="email" text={formErrors?.get('email')}>
+      <svelte:fragment slot="label">E-Mail</svelte:fragment>
+      <input
+        class="fd-input"
+        name="email"
+        type="email"
+        required
+      />
+    </InputWrapper>
+    <InputWrapper id="password" text={formErrors?.get('password')}>
+      <svelte:fragment slot="label">Password</svelte:fragment>
+      <input
+        class="fd-input"
+        name="password"
+        type="password"
+      />
+    </InputWrapper>
+    <button
+      class="fd-button"
       type="submit"
-      status={isSubmitting ? 'loading' : undefined}
-      expand
-    >Sign In</fd-button>
+      data-status={isSubmitting ? 'loading' : undefined}
+      data-expand
+    >Sign In</button>
   </div>
 </form>
