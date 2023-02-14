@@ -35,6 +35,6 @@
 
   div :global(svg) {
     fill: var(--fd-icon-fill, currentColor);
-    stroke: var(--fd-icon-fill, currentColor);
+    stroke-width: 0;
   }
 </style>
