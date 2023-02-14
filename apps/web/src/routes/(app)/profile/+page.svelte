@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Section from '$lib/section/Section.svelte';
 import { onMount } from 'svelte';
+	import { Size } from 'types';
 	import type { PageData } from './$types';
   onMount(async () => {
     await import('ui');
@@ -21,37 +22,37 @@ import { onMount } from 'svelte';
 				<h4>Lukas Köller</h4>
 				<div>{data.email}</div>
 			</div>
-			<fd-button>Scedule</fd-button>
+			<button class="fd-button">Scedule</button>
 		</div>
 	</div>
 	<Section fullWidth={true} hasBorder={true}>
 		<ul class="fd-gallery" style="--fd-gallery-gap: var(--_fd-section-padding-inline)">
 			<li class="kpi">
-				<fd-label as="div">Hourly Rate</fd-label>
+				<div class="fd-label">Hourly Rate</div>
 				<span>123 €</span>
 			</li>
 			<li class="kpi">
-				<fd-label as="div">Available From</fd-label>
+				<div class="fd-label">Available From</div>
 				<span>Feb 12</span>
 			</li>
 			<li class="kpi">
-				<fd-label as="div">Projects</fd-label>
+				<div class="fd-label">Projects</div>
 				<span>42</span>
 			</li>
 			<li class="kpi">
-				<fd-label as="div">Happiness</fd-label>
+				<div class="fd-label">Happiness</div>
 				<span>4.3 (27)</span>
 			</li>
 			<li class="kpi">
-				<fd-label as="div">Capacity</fd-label>
+				<div class="fd-label">Capacity</div>
 				<span>30h/week</span>
 			</li>
 		</ul>
 	</Section>
 	<Section heading="About Me">
 		<div slot="actions">
-			<fd-button size="sm">Edit</fd-button>
-			<fd-button size="sm">Read More</fd-button>
+			<button class="fd-button" data-size={Size.Sm}>Edit</button>
+			<button class="fd-button" data-size={Size.Sm}>Read More</button>
 		</div>
 		<p>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
@@ -60,15 +61,15 @@ import { onMount } from 'svelte';
 		</p>
 	</Section>
 	<Section heading="Projects" fullWidth={true}>
-		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-		</fd-gallery>
+		<ul class="fd-gallery" style="--fd-gallery-gap: var(--_fd-section-padding-inline)">
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+		</ul>
 	</Section>
 </section>
 
