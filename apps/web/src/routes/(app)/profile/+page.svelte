@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import Section from '$lib/section/Section.svelte';
+import { onMount } from 'svelte';
 	import type { PageData } from './$types';
   onMount(async () => {
     await import('ui');
@@ -23,31 +24,31 @@
 			<fd-button>Scedule</fd-button>
 		</div>
 	</div>
-	<fd-section class="separator" fullWidth={true} hasBorder={true}>
-		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
-			<fd-gallery-item class="kpi">
+	<Section fullWidth={true} hasBorder={true}>
+		<ul class="fd-gallery" style="--fd-gallery-gap: var(--_fd-section-padding-inline)">
+			<li class="kpi">
 				<fd-label as="div">Hourly Rate</fd-label>
 				<span>123 €</span>
-			</fd-gallery-item>
-			<fd-gallery-item class="kpi">
+			</li>
+			<li class="kpi">
 				<fd-label as="div">Available From</fd-label>
 				<span>Feb 12</span>
-			</fd-gallery-item>
-			<fd-gallery-item class="kpi">
+			</li>
+			<li class="kpi">
 				<fd-label as="div">Projects</fd-label>
 				<span>42</span>
-			</fd-gallery-item>
-			<fd-gallery-item class="kpi">
+			</li>
+			<li class="kpi">
 				<fd-label as="div">Happiness</fd-label>
 				<span>4.3 (27)</span>
-			</fd-gallery-item>
-			<fd-gallery-item class="kpi">
+			</li>
+			<li class="kpi">
 				<fd-label as="div">Capacity</fd-label>
 				<span>30h/week</span>
-			</fd-gallery-item>
-		</fd-gallery>
-	</fd-section>
-	<fd-section heading="About Me">
+			</li>
+		</ul>
+	</Section>
+	<Section heading="About Me">
 		<div slot="actions">
 			<fd-button size="sm">Edit</fd-button>
 			<fd-button size="sm">Read More</fd-button>
@@ -57,8 +58,8 @@
 			ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
 			dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</p>
-	</fd-section>
-	<fd-section heading="Projects" fullWidth={true}>
+	</Section>
+	<Section heading="Projects" fullWidth={true}>
 		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
@@ -68,7 +69,7 @@
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 			<fd-gallery-item class="project-preview"></fd-gallery-item>
 		</fd-gallery>
-	</fd-section>
+	</Section>
 </section>
 
 <style lang="postcss">
@@ -112,7 +113,7 @@
 		gap: var(--size-2);
 	}
 
-	fd-gallery {
+	.fd-gallery {
 		& .kpi {
 			text-align: center;
 		}
