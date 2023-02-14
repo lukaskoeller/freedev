@@ -1,7 +1,6 @@
 <script lang="ts">
   import Container from '$lib/container/Container.svelte';
   import { applyAction, enhance } from '$app/forms';
-  import { onMount } from 'svelte';
 	import { Size } from 'types';
 	import { notifications } from '$lib/toast/notifications';
 	import { validate, type FieldErrors } from './_validations';
@@ -56,6 +55,7 @@
                 name="password"
                 type="password"
                 placeholder="Password"
+                required
               />
             </InputWrapper>
             <button
