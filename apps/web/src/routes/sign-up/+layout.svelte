@@ -1,14 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	onMount(async () => {
-    await import('ui');
-  });
+	import Logo from '$lib/logo/Logo.svelte';
 </script>
 
 <section>
   <header>
     <a href="/">
-      <fd-logo />
+      <Logo />
     </a>
   </header>
   <main>

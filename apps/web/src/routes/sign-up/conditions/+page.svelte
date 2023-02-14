@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { applyAction, enhance } from "$app/forms";
+  import type { PageData } from './$types';
 	import { invalidateAll } from "$app/navigation";
 	import Fieldset from "$lib/fieldset/Fieldset.svelte";
 	import InputGroup from "$lib/inputgroup/InputGroup.svelte";
@@ -14,6 +15,9 @@
   const heading: string = 'What are your conditions?';
   let capacity: string;
 
+  export let data: PageData;
+  console.log({ data });
+  
   let formErrors: undefined | FieldErrors;
   let isSubmitting: boolean = false;
 </script>
@@ -62,7 +66,7 @@
             invalidateAll();
             break;
           case 'error':
-            notifications.error('Something went wrong 😢');
+            notifications.error(result.error.message);
             form.reset();
             // invalidateAll();
             break;

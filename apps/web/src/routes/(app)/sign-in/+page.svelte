@@ -6,10 +6,9 @@
 	import { notifications } from '$lib/toast/notifications';
 	import { validate, type FieldErrors } from './_validations';
 	import { invalidateAll } from '$app/navigation';
-
-  onMount(async () => {
-    await import('ui');
-  });
+  import { signIn } from "@auth/sveltekit/client";
+  import { page } from "$app/stores"
+	import InputWrapper from '$lib/inputwrapper/InputWrapper.svelte';
 
   let formErrors: undefined | FieldErrors;
   let isSubmitting: boolean = false;
@@ -24,77 +23,48 @@
     <Container size={Size.Xs}>
       <div class="fd-stack">
         <h1>Sign In</h1>
+        <code>{JSON.stringify($page.data, null, 2)}</code>
         <form
-          method="POST"
-          use:enhance={(props) => {
-            isSubmitting = true;
-            const { form, data, cancel } = props;
-            form.dispatchEvent(new CustomEvent('submitting'));
-            const email = data.get('email');
-            const password = data.get('password');
-
-            const formData = {
-              email,
+          on:submit={(e) => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const username = formData.get('email');
+            const password = formData.get('password');
+            const data = {
+              username,
               password,
             };
-            
-            const { isValid, fields } = validate(formData);
-
-            if (!isValid) {
-              cancel();
-              formErrors = fields;
-              isSubmitting = false;
-              return;
-            }
-
-            return async (args) => {
-              console.log({ args });
-              const { result, update } = args;
-              switch (result.type) {
-                case 'success':
-                  invalidateAll();
-                  break;
-                case 'error':
-                  notifications.error(result.error.message);
-                  // await applyAction(result);
-                  form.reset();
-                  // invalidateAll();
-                  break;
-                case 'invalid':
-                  notifications.warning(result.data.message);
-                  // form.reset();
-                  invalidateAll();
-                  await applyAction(result);
-                  break;
-                default:
-                  form.reset();
-                  invalidateAll();
-                  await applyAction(result);
-                  update();
-              }
-              isSubmitting = false;
-            }
+            signIn('credentials', data);
           }}
         >
           <div class="fd-stack">
-            <fd-input
-              name="email"
-              type="email"
-              label="E-Mail"
-              required
-              error={formErrors?.get('email')}
-            ></fd-input>
-            <fd-input
-              name="password"
-              type="password"
-              label="Password"
-              error={formErrors?.get('password')}
-            ></fd-input>
-            <fd-button
+            <InputWrapper id="email" text={formErrors?.get('email')}>
+              <svelte:fragment slot="label">E-Mail</svelte:fragment>
+              <input
+                class="fd-input"
+                name="email"
+                type="email"
+                placeholder="E-Mail"
+                required
+              />
+            </InputWrapper>
+            <InputWrapper id="password" text={formErrors?.get('password')}>
+              <svelte:fragment slot="label">Password</svelte:fragment>
+              <input
+                class="fd-input"
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+            </InputWrapper>
+            <button
+              class="fd-button"
               type="submit"
-              status={isSubmitting ? 'loading' : undefined}
-              expand
-            >Sign In</fd-button>
+              data-status={isSubmitting ? 'loading' : undefined}
+              data-expand
+            >Sign In</button>
+            <a href="/auth/signin" class="buttonPrimary">Sign in</a>
           </div>
         </form>
       </div>

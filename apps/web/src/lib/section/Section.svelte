@@ -1,9 +1,13 @@
 <script lang="ts">
   export let heading: string;
+  export let fullWidth: boolean = false;
   export let isEndAligned: boolean = false;
 </script>
 
-<section data-is-end-aligned={isEndAligned}>
+<section
+  data-is-end-aligned={isEndAligned}
+  data-full-width={fullWidth}
+>
   <div class="header">
     {#if heading}
       <h2>{heading}</h2>
@@ -24,12 +28,17 @@
     grid-template-columns: minmax(0, 1fr);
     padding-block: var(--global-spacing);
 
-    --padding-inline-default: var(--padding-inline, var(--global-spacing));
+    --_fd-section-padding-inline: var(--padding-inline, var(--global-spacing));
 
     &[data-is-end-aligned="true"] {
       --padding-inline-end: 0;
     }
   }
+
+  section[data-full-width="true"] {
+      --_fd-section-padding-inline-start: 0;
+      --_fd-section-padding-inline-end: 0;
+    }
 
   .header {
     inline-size: 100%;
@@ -37,7 +46,7 @@
     justify-content: space-between;
     align-items: baseline;
 
-    padding-inline: var(--padding-inline-default);
+    padding-inline: var(--_fd-section-padding-inline);
   }
 
   h2 {
@@ -46,12 +55,26 @@
     color: var(--color-primary-base);
   }
 
-  fd-label {
-    --fd-label-font-size: var(--font-size-fluid-0);
-  }
-
   .slot {
-    padding-inline-start: var(--padding-inline-start, var(--padding-inline-default));
-    padding-inline-end: var(--padding-inline-end, var(--padding-inline-default));
+    padding-inline-start: var(
+      --fd-section-padding-inline-start,
+      var(
+        --_fd-section-padding-inline-start,
+        var(
+          --fd-section-padding-inline,
+          var(--_fd-section-padding-inline)
+        )
+      )
+    );
+    padding-inline-end: var(
+      --fd-section-padding-inline-end,
+      var(
+        --_fd-section-padding-inline-end,
+        var(
+          --fd-section-padding-inline,
+          var(--_fd-section-padding-inline)
+        )
+      )
+    );
   }
 </style>

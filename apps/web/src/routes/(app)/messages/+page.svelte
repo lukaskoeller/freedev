@@ -1,17 +1,14 @@
-<script lang="ts">
-import { onMount } from 'svelte';
-  onMount(async () => {
-    await import('ui');
-  });
-</script>
+<script>
+	import Container from "$lib/container/Container.svelte";
 
+</script>
 <svelte:head>
 	<title>Messages</title>
 </svelte:head>
 
 <section>
   <h1>Messages</h1>
-  <fd-container>
-    <fd-button href="/">Home</fd-button>
-  </fd-container>
+  <Container>
+    <a class="fd-button" href="/">Home</a>
+  </Container>
 </section>

@@ -5,6 +5,7 @@
 	import { Size } from 'types';
 	import type { PageData } from './$types';
 	import svgReact from 'assets/icons/react.svg?raw';
+	import Icon from '$lib/icon/Icon.svelte';
 
   onMount(async () => {
     await import('ui');
@@ -33,7 +34,7 @@
 				<h4>{`${firstName} ${lastName}`}</h4>
 				<div>/{handle}</div>
 			</div>
-			<fd-button>Scedule</fd-button>
+			<button class="fd-button">Scedule</button>
 		</div>
 	</div>
 	<fd-section class="separator" fullWidth={true} hasBorder={true}>
@@ -66,35 +67,51 @@
 		</div>
 		<div class="skills-container">
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				React
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				Svelte
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				React Router
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				Deno
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				Go
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				HTML5
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				CSS3
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
+				<Icon>
+					{@html svgReact}
+				</Icon>
 				Redux Saga
 			</div>
 			<div class="fd-card skills-card" data-size="sm">
@@ -103,27 +120,30 @@
 			</div>
 		</div>
 	</Section>
-	<fd-section heading="About Me">
+	<Section heading="About Me">
 		<div slot="actions">
-			<fd-button size="sm">Edit</fd-button>
-			<fd-button size="sm">Read More</fd-button>
+			<button class="fd-button" data-size="sm">Edit</button>
+			<button class="fd-button" data-size="sm">Read More</button>
 		</div>
 		<p>
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 			ut labore et dolore magna aliquyam erat, sed diam voluptua.
 		</p>
-	</fd-section>
-	<fd-section heading="Projects" fullWidth={true}>
-		<fd-gallery style="--fd-gallery-gap: var(--fd-section-padding-inline)">
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-			<fd-gallery-item class="project-preview"></fd-gallery-item>
-		</fd-gallery>
-	</fd-section>
+	</Section>
+	<Section heading="Projects" fullWidth={true}>
+		<ul
+			class="fd-gallery"
+			style="--fd-gallery-gap: var(--fd-section-padding-inline)"
+		>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+			<li class="project-preview"></li>
+		</ul>
+	</Section>
 </section>
 
 <style lang="postcss">

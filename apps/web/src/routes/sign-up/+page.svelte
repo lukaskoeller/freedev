@@ -1,9 +1,6 @@
 <script lang="ts">
-  import Container from '$lib/container/Container.svelte';
   import { applyAction, enhance } from '$app/forms';
   import type { ActionData } from './$types';
-  import { onMount } from 'svelte';
-	import { Size } from 'types';
   import { page } from '$app/stores';
 	import { notifications } from '$lib/toast/notifications';
 	import { validate } from './_validations';
@@ -11,10 +8,6 @@
 	import FormContainer from './FormContainer.svelte';
 	import type { FieldErrors } from 'validations';
 	import InputWrapper from '$lib/inputwrapper/InputWrapper.svelte';
-
-  onMount(async () => {
-    await import('ui');
-  });
 
   let formErrors: undefined | FieldErrors;
   let isSubmitting: boolean = false;
@@ -69,12 +62,6 @@
             // await applyAction(result);
             form.reset();
             // invalidateAll();
-            break;
-          case 'invalid':
-            notifications.warning(result.data.message);
-            // form.reset();
-            invalidateAll();
-            await applyAction(result);
             break;
           default:
             form.reset();

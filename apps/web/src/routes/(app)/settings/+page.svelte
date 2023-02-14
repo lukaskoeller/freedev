@@ -1,8 +1,12 @@
 <script lang="ts">
+	import Container from '$lib/container/Container.svelte';
+	import Icon from '$lib/icon/Icon.svelte';
+	import InputWrapper from '$lib/inputwrapper/InputWrapper.svelte';
 	import SettingsItem from '$lib/settingsitem/SettingsItem.svelte';
 import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 	import svgUserCircleSolid from 'assets/icons/user-circle-solid.svg?raw';
 	import { onMount } from 'svelte';
+	import { Size } from 'types';
 		onMount(async () => {
 			await import('ui');
 		});
@@ -12,18 +16,20 @@ import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 	<title>Settings</title>
 </svelte:head>
 
-<fd-container>
+<Container>
 	<h1>Settings</h1>
-</fd-container>
-<fd-container>
+</Container>
+<Container>
 	<fieldset>
 		<legend>
 			Account
 		</legend>
-		<fd-card>
-			<fd-stack>
+		<div class="fd-card">
+			<div class="fd-stack">
 				<SettingsItem>
-					<fd-icon slot="icon" size="xl" file={svgAtSolid} />
+					<Icon slot="icon" size={Size.Xl}>
+						{@html svgAtSolid}
+					</Icon>
 					<div slot="input">
 						<fd-switch name="stayLoggedIn">
 							<fd-label>Angemeldet bleiben</fd-label>
@@ -31,15 +37,21 @@ import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 					</div>
 				</SettingsItem>
 				<SettingsItem>
-					<fd-icon slot="icon" size="xl" file={svgAtSolid} />
-					<fd-input slot="input" type="email" label="E-Mail" placeholder="example@mail.de"></fd-input>
+					<Icon slot="icon" size={Size.Xl}>
+						{@html svgAtSolid}
+					</Icon>
+					<InputWrapper id="email">
+						<svelte:fragment slot="label">E-Mail</svelte:fragment>
+						<input class="fd-input" slot="input" type="email" placeholder="example@mail.de" />
+					</InputWrapper>
 				</SettingsItem>
-			</fd-stack>
-		</fd-card>
+			</div>
+		</div>
 	</fieldset>
-</fd-container>
+</Container>
 
 <style lang="postcss">
+	/* @todo add class to Container and replace */
 	::part(container) {
 		display: grid;
 		justify-items: center;
@@ -55,7 +67,7 @@ import svgAtSolid from 'assets/icons/at-solid.svg?raw';
 		color: var(--primary-color-h2);
 	}
 
-	fd-input {
+	input {
 		inline-size: 100%;
 	}
 </style>

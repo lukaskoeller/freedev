@@ -8,7 +8,6 @@
   let dialogElement: HTMLDialogElement;
 
   onMount(async () => {
-    await import('ui');
     const {
       dialogAttrObserver,
       dialogDeleteObserver,
@@ -40,13 +39,14 @@
       <div class="heading">
         <slot name="heading"></slot>
       </div>
-      <fd-button
+      <button
+        class="fd-button"
         type="submit"
-        variant="monotone"
-        icon
-        size={Size.Sm}>
+        data-variant="monotone"
+        data-icon
+        data-size={Size.Sm}>
         <Icon size={Size.Sm}>{@html svgTimesSolid}</Icon>
-      </fd-button>
+      </button>
     </header>
     <div class="main">
       <slot></slot>

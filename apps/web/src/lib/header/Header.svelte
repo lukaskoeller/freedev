@@ -6,9 +6,8 @@
 	import paperPlaneSolid from 'assets/icons/paper-plane-solid.svg?raw';
 	import userCircleSolid from 'assets/icons/user-circle-solid.svg?raw';
 	import Logo from '$lib/logo/Logo.svelte';
-  onMount(async () => {
-    await import('ui');
-  });
+	import Icon from '$lib/icon/Icon.svelte';
+	import { Size } from 'types';
 </script>
 
 <header>
@@ -18,19 +17,27 @@
 	<nav>
 		{#if $page.data.session?.user}
 			<a href="/profile">
-				<fd-icon file={userCircleSolid} size="lg" />
+				<Icon size={Size.Lg}>
+					{@html userCircleSolid}
+				</Icon>
 				<span>Profile</span>
 			</a>
 			<a href="/messages">
-				<fd-icon file={paperPlaneSolid} size="lg" />
+				<Icon size={Size.Lg}>
+					{@html paperPlaneSolid}
+				</Icon>
 				<span>Messages</span>
 			</a>
 			<a href="/notifications">
-				<fd-icon file={bellSolid} size="lg" />
+				<Icon size={Size.Lg}>
+					{@html bellSolid}
+				</Icon>
 				<span>Notifications</span>
 			</a>
 			<a href="/settings">
-				<fd-icon file={cogSolid} size="lg" />
+				<Icon size={Size.Lg}>
+					{@html cogSolid}
+				</Icon>
 				<span>Settings</span>
 			</a>
 		{:else}
