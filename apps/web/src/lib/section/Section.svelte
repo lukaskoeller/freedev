@@ -1,11 +1,12 @@
 <script lang="ts">
-  export let heading: string;
+  export let heading: string = null;
   export let fullWidth: boolean = false;
   export let isEndAligned: boolean = false;
   export let hasBorder: boolean = false;
 </script>
 
 <section
+  class="fd-section"
   data-is-end-aligned={isEndAligned}
   data-full-width={fullWidth}
 >
@@ -26,16 +27,26 @@
 </section>
 
 <style lang="postcss">
+  :global(.fd-section) {
+    --_fd-section-padding-inline: var(
+      --fd-section-padding-inline,
+      var(--global-spacing)
+    );
+  }
+
+  .fd-hr {
+    --fd-hr-padding-inline: var(--_fd-section-padding-inline);
+    --fd-hr-margin-inline-start: var(--_fd-section-padding-inline);
+  }
+
   section {
     display: grid;
     gap: var(--size-3);
     grid-template-columns: minmax(0, 1fr);
     padding-block: var(--global-spacing);
 
-    --_fd-section-padding-inline: var(--padding-inline, var(--global-spacing));
-
     &[data-is-end-aligned="true"] {
-      --padding-inline-end: 0;
+      --fd-section-padding-inline-end: 0;
     }
   }
 
