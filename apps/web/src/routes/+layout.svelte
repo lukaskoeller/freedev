@@ -18,7 +18,7 @@
 		background-position: center 0%;
 
 		@media (--tablet) {
-			background-position: center 20%;
+			background-position: center 12vh;
 		}
 	}
 </style>
