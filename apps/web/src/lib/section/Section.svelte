@@ -2,12 +2,16 @@
   export let heading: string;
   export let fullWidth: boolean = false;
   export let isEndAligned: boolean = false;
+  export let hasBorder: boolean = false;
 </script>
 
 <section
   data-is-end-aligned={isEndAligned}
   data-full-width={fullWidth}
 >
+  {#if hasBorder}
+    <hr class="fd-hr" />
+  {/if}
   <div class="header">
     {#if heading}
       <h2>{heading}</h2>
