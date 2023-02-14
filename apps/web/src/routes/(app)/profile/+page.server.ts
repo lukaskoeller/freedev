@@ -5,7 +5,6 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ cookies, request, fetch }) => {
 
   const { accessToken: token } = await getAccessToken(cookies);
-  console.log({ token });
   
   
   const response = await api({
