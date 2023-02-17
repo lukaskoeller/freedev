@@ -41,6 +41,11 @@ code {
 .fd-error {
   margin-block-start: var(--size-1);
   color: var(--color-status-error);
+
+  &:empty {
+    display: none;
+  }
+}
 }
 
 .fd-ram-grid {
