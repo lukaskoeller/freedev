@@ -4,6 +4,14 @@ code {
   white-space: pre;
 }
 
+:is(.visually-hidden, .sr-only) {
+  all: unset;
+  pointer-events: none;
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
+}
+
 .fd-stack {
   --_fd-stack-gap: var(--fd-stack-gap, var(--size-3));
   --_fd-stack-justify-items: var(--fd-stack-justify-items, stretch);
