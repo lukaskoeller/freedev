@@ -543,6 +543,18 @@
             </CheckboxButton>
           {/each}
         </InputGroup>
+        <select
+          class="visually-hidden"
+          inert
+          aria-hidden
+          name="languages"
+          bind:value={languages}
+          multiple
+        >
+          {#each LANGUAGES as { id, name } ({ id })}
+            <option>{name}</option>
+          {/each}
+        </select>
       </Fieldset>
       <Fieldset variant="light" legend="Application & Data">
         <div class="fd-stack">
@@ -566,6 +578,18 @@
               </CheckboxButton>
             {/each}
           </InputGroup>
+          <select
+            class="visually-hidden"
+            inert
+            aria-hidden
+            name="technologies"
+            bind:value={technologies}
+            multiple
+          >
+            {#each TECHNOLOGIES as { id, name } ({ id })}
+              <option>{name}</option>
+            {/each}
+          </select>
           <button
             class="fd-button"
             type="button"
@@ -587,7 +611,6 @@
                   placeholder="Search all..."
                   list="technology-list"
                   type="search"
-                  required
                   on:input={handleSearchInput}
                 />
               </InputWrapper>
@@ -624,7 +647,7 @@
         </div>
       </Fieldset>
       <Fieldset variant="light" legend="Tools & More">
-        <div class="fd-input-group">
+        <InputGroup text={formErrors?.get('tools')}>
           {#each TOOLS as { id, name, file, label } ({ id })}
             <CheckboxButton {id}>
               <input
@@ -643,7 +666,19 @@
               </svelte:fragment>
             </CheckboxButton>
           {/each}
-        </div>
+        </InputGroup>
+        <select
+          class="visually-hidden"
+          inert
+          aria-hidden
+          name="tools"
+          bind:value={tools}
+          multiple
+        >
+          {#each TOOLS as { id, name } ({ id })}
+            <option>{name}</option>
+          {/each}
+        </select>
       </Fieldset>
     </div> 
   </form>
