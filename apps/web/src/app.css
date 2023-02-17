@@ -83,8 +83,26 @@ code {
   margin: 0;
   max-inline-size: 100%;
   block-size: var(--fd-gallery-size, auto);
-  padding-inline-start: var(--fd-gallery-padding-inline-start, var(--fd-gallery-padding-inline, var(--_fd-gallery-gap, var(var(--fd-gallery-gap)))));
-  padding-inline-end: var(--fd-gallery-padding-inline-end, var(--fd-gallery-padding-inline, var(--_fd-gallery-gap, var(--fd-gallery-gap))));
+  padding-inline-start: var(
+    --fd-gallery-padding-inline-start,
+    var(
+      --fd-gallery-padding-inline,
+      var(
+        --_fd-gallery-gap,
+        var(--fd-gallery-gap)
+      )
+    )
+  );
+  padding-inline-end: var(
+    --fd-gallery-padding-inline-end,
+    var(
+      --fd-gallery-padding-inline,
+      var(
+        --_fd-gallery-gap,
+        var(--fd-gallery-gap)
+      )
+    )
+  );
   padding-block-start: calc(var(--fd-gallery-padding-block) / 2);
   padding-block-end: calc(var(--fd-gallery-padding-block) / 2);
   overflow-x: auto;
