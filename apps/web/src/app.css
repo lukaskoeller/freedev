@@ -46,6 +46,15 @@ code {
     display: none;
   }
 }
+
+.fd-hr {
+  display: block;
+  inline-size: calc(100% - var(--fd-hr-padding-inline, 0));
+  margin: 0;
+  border-left: 0;
+  border-top: 1px solid;
+  border-color: var(--color-border);
+  margin-inline-start: var(--fd-hr-margin-inline-start, 0);
 }
 
 .fd-ram-grid {
