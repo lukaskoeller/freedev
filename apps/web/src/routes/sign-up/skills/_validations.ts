@@ -13,7 +13,7 @@ const validationSchema = object().shape({
     .of(string())
     .min(1)
     .required(REQUIRED_ERROR_MESSAGE),
-  application: array()
+  technologies: array()
     .of(string())
     .min(1)
     .required(REQUIRED_ERROR_MESSAGE),
