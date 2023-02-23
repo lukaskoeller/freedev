@@ -1,5 +1,5 @@
 import { api } from "$lib/common/utils/api.utils";
-import { invalid, redirect, type Actions } from "@sveltejs/kit";
+import { error, redirect, type Actions } from "@sveltejs/kit";
 
 export const actions: Actions = {
   default: async ({ request, fetch }) => {
@@ -10,7 +10,7 @@ export const actions: Actions = {
     const username = form.get('username');
 
     // @todo TEMPORARY Remove
-    throw redirect(301, '/sign-up/signin');
+    // throw redirect(301, '/sign-up/signin');
   
     const response = await api({
       fetch,
@@ -24,13 +24,14 @@ export const actions: Actions = {
     const body = await response.json();
 
     if (body?.statusCode === 500) {
-      return invalid(500, { message: body?.message ?? 'We could not confirm your account' });
+      return error(500, { message: body?.message ?? 'We could not confirm your account' });
     }
 
     if (body?.statusCode === 400) {
-      return invalid(400, { message: body?.message ?? 'We could not confirm your account. That might happened due to a wrong code. Try to enter it again.' });
+      return error(400, { message: body?.message ?? 'We could not confirm your account. That might happened due to a wrong code. Try to enter it again.' });
     }
 
-    return { message: body?.message ?? 'Successfully confirmed your account 🥳' }
+    // return { message: body?.message ?? 'Successfully confirmed your account 🥳' }
+    throw redirect(301, '/sign-up/signin');
   },
 };
