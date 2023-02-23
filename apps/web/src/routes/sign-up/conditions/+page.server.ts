@@ -1,10 +1,12 @@
 import { api } from "$lib/common/utils/api.utils";
+import { getAccessToken } from "$lib/common/utils/auth.utils";
 import { error, redirect, type Actions } from "@sveltejs/kit";
 import { validate } from "./_validations";
 
 export const actions: Actions = {
   default: async ({ request, cookies }) => {
-    const token = cookies.get(TOKEN_NAME);
+    // const token = cookies.get(TOKEN_NAME);
+    const { accessToken: token } = await getAccessToken(cookies);
     const form = await request.formData();
     const hourlyRate = form.get('hourlyRate');
     const availableFrom = form.get('availableFrom');
@@ -17,6 +19,13 @@ export const actions: Actions = {
       capacity,
       customCapacity,
     };
+    console.log(token);
+    
+
+    const { isValid } = validate(data);
+    if (!isValid) {
+      return error(400, { message: 'Something about your submitted data is wrong. Check any error messages. Please adjust and try again.' });
+    }
 
     const cleanedData = {
       hourlyRate,
@@ -25,7 +34,7 @@ export const actions: Actions = {
         ? customCapacity
         : capacity,
     }
-    console.log(data);
+
     const response = await api({
       fetch,
       method: 'PUT',
@@ -33,27 +42,11 @@ export const actions: Actions = {
       data: cleanedData,
       token,
     });
-    console.log(response);
-    const body = {};
 
-    if (body?.message === 'Unauthorized') {
-      return redirect(301, '/sign-in');
+    if (response.status === 200) {
+      throw redirect(301, '/sign-up/skills');
     }
 
-    if (body?.statusCode === 500) {
-      return error(500, { message: body?.message ?? 'We could not update the user. Please try again. If the problem persists, contact customer service.' });
-    }
-
-    if (body?.statusCode === 400) {
-      return error(400, { message: body?.message ?? 'We could not update the user.' });
-    }
-
-    const { isValid } = validate(data);
-    if (!isValid) {
-      return error(400, { message: 'Something about your submitted data is wrong. Check any error messages. Please adjust and try again.' });
-    }
-
-    // @todo TEMPORARY Remove
-    throw redirect(301, '/sign-up/skills');
+    return error(400, { message: 'We could not update your account due to a technical issue on our end. Please try connecting again. If the issue keeps happening, contact Customer Care.' });
   },
 };
