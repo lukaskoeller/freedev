@@ -98,6 +98,19 @@ export const createApi = (args: CreateApiArgs) => {
     policyArn: policyWriteDynamodb.arn,
   }, { parent: userPutEndpoint });
 
+  const skillsPutEndpoint = new ApiEndpoint('api-put-skills', {
+    path: '/user/skills',
+    functionsPath: 'api-put-skills',
+    httpMethod: HttpMethod.PUT,
+    api,
+    authorizerId,
+  });
+
+  new aws.iam.RolePolicyAttachment('api-put-skills-lambda-role-attachment-dynamodb', {
+    role: skillsPutEndpoint.lambdaIamRole,
+    policyArn: policyWriteDynamodb.arn,
+  }, { parent: skillsPutEndpoint });
+
   const signIn = new ApiEndpoint('sign-in', {
     path: '/sign-in',
     functionsPath: 'api-post-sign-in',
