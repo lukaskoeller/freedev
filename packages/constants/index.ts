@@ -24,4 +24,5 @@ export const DYNAMO_DB_TABLE_ARN = 'arn:aws:dynamodb:eu-central-1:865039251033:t
  */
 export enum DBKeyPrefix {
   User = 'USER#',
+  Skill = 'SKILL#',
 }
