@@ -10,14 +10,13 @@ import {
   UpdateItemCommand,
   UpdateItemCommandInput,
 } from "@aws-sdk/client-dynamodb";
+import {
+  BatchWriteCommand,
+  BatchWriteCommandInput,
+} from "@aws-sdk/lib-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { AWS_REGION } from "@freedev/constants";
 import { Item } from "../modules/base.entities";
-
-const mapToObj = <T extends Item>(classInstance: T) => ({
-  ...classInstance,
-  ...classInstance.keys(),
-});
 
 let client: DynamoDBClient;
 
@@ -73,11 +72,11 @@ export class DynamoDBService {
   // Get an Amazon DynamoDB service client object.
   client = getClient();
 
-  async create<T extends Item>(item: T) {
+  async create<T extends Record<string, unknown>>(item: T) {
     const params: PutItemCommandInput = {
       TableName: this.tableName,
       Item: marshall(
-        mapToObj(item), 
+        item, 
         { removeUndefinedValues: true }
       ),
       // Avoid replace items with create
@@ -90,6 +89,30 @@ export class DynamoDBService {
       console.log("Success - item added", response);
     } catch (error) {
       console.log("PutItemCommand Error", error.stack);
+      throw InternalServerError;
+    }
+  }
+
+  async createBatch<T extends Record<string, unknown>[]>(items: T) {
+    const params: BatchWriteCommandInput = {
+      RequestItems: {
+        [this.tableName]: items.map(item => {
+          return {
+            PutRequest: { Item: unmarshall(marshall(
+              item, 
+              { removeUndefinedValues: true }
+            )) }
+          };
+        })
+      }
+    };
+
+    try {
+      const command = new BatchWriteCommand(params);
+      const response = await this.client.send(command);
+      console.log("Success - items added", response);
+    } catch (error) {
+      console.log("BatchWriteCommand Error", error.stack);
       throw InternalServerError;
     }
   }
