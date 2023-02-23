@@ -12,4 +12,5 @@ export abstract class Item {
       sk: this.sk,
     };
   }
+  abstract toItem(): Record<string, unknown>
 }
