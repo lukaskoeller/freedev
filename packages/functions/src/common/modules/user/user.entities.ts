@@ -81,4 +81,19 @@ export class User extends Item {
   get sk(): string {
     return `${DBKeyPrefix.User}${this.username}`;
   }
+
+  toItem() {
+    return {
+      ...this.keys(),
+      handle: this.handle,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      hourlyRate: this.hourlyRate,
+      capacity: this.capacity,
+      projectsCount: this.projectsCount,
+      happiness: this.happiness,
+      about: this.about,
+    }
+  }
 }
