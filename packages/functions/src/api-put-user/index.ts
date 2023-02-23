@@ -44,6 +44,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
   
   const clientDynamodb = new DynamoDBService({ tableName: DYNAMO_DB_TABLE_NAME });
 
+  // @todo refactor to be input from only one, not userKeys and body
   const input: PutUserBody & ItemKey = {
     ...userKeys,
     ...body,
