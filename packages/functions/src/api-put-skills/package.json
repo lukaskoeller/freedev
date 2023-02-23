@@ -1,0 +1,16 @@
+{
+  "name": "functions-api-put-skills",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.131.0",
+    "@aws-sdk/client-dynamodb": "^3.208.0",
+    "@aws-sdk/util-dynamodb": "^3.209.0",
+    "@types/aws-lambda": "^8.10.101",
+    "aws-jwt-verify": "^3.2.0",
+    "errors": "*",
+    "types": "*",
+    "zod": "^3.20.6",
+    "zod-validation-error": "^0.3.1"
+  }
+}
