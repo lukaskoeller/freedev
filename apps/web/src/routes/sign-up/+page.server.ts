@@ -21,7 +21,7 @@ export const actions: Actions = {
     }
 
     // @todo TEMPORARY Remove
-    throw redirect(301, `/sign-up/confirm?username=123456789&email=l***@p***`);
+    // throw redirect(301, `/sign-up/confirm?username=123456789&email=l***@p***`);
 
     const response = await api({
       fetch,
