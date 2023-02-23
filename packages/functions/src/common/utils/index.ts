@@ -1,4 +1,6 @@
 import { INTERNAL_ERROR_MESSAGE } from "errors";
+import { ZodError } from "zod";
+import { fromZodError } from 'zod-validation-error';
 
 export const serialize = <BodyType extends Record<string, any>>(object: BodyType): string => (
   JSON.stringify(object, null, 2)
@@ -58,6 +60,15 @@ export const NoBodyException = new ApiErrorResponse({
     status: 400,
     message: 'Expected a body but did not receive one.',
     debugMessage: 'Check if client side validations are applied and body is passed in the api request',
+  }
+});
+
+export const SchemaException = (zodError: ZodError) => new ApiErrorResponse({
+  statusCode: 400,
+  body: {
+    status: 400,
+    message: fromZodError(zodError).message,
+    debugMessage: JSON.stringify(zodError),
   }
 });
 
