@@ -1,6 +1,6 @@
 import { TOKEN_NAME } from "$lib/common/constants";
 import { api } from "$lib/common/utils/api.utils";
-import { invalid, redirect, type Actions } from "@sveltejs/kit";
+import { error, redirect, type Actions } from "@sveltejs/kit";
 import { validate } from "./_validations";
 
 export const actions: Actions = {
@@ -15,8 +15,13 @@ export const actions: Actions = {
       handle,
       firstName,
       lastName,
+    };
+
+    const { isValid } = validate(data);
+    if (!isValid) {
+      return error(400, { message: 'Something about your submitted data is wrong. Check any error messages. Please adjust and try again.' });
     }
-    console.log(data);
+
     const response = await api({
       fetch,
       method: 'PUT',
@@ -25,27 +30,25 @@ export const actions: Actions = {
       token,
     });
     console.log(response);
-    const body = {};
 
-    if (body?.message === 'Unauthorized') {
-      return redirect(301, '/sign-in');
-    }
+    // if (body?.message === 'Unauthorized') {
+    //   return redirect(301, '/sign-in');
+    // }
 
-    if (body?.statusCode === 500) {
-      return invalid(500, { message: body?.message ?? 'We could not update the user. Please try again. If the problem persists, contact customer service.' });
-    }
+    // if (body?.statusCode === 500) {
+    //   return error(500, { message: body?.message ?? 'We could not update the user. Please try again. If the problem persists, contact customer service.' });
+    // }
 
-    if (body?.statusCode === 400) {
-      return invalid(400, { message: body?.message ?? 'We could not update the user.' });
-    }
-
-    const { isValid } = validate(data);
-    if (!isValid) {
-      return invalid(400, { message: 'Something about your submitted data is wrong. Check any error messages. Please adjust and try again.' });
-    }
+    // if (body?.statusCode === 400) {
+    //   return error(400, { message: body?.message ?? 'We could not update the user.' });
+    // }
     
     
     // @todo TEMPORARY Remove
-    throw redirect(301, '/sign-up/conditions');
+    if (response.status === 200) {
+      throw redirect(301, '/sign-up/conditions');
+    }
+
+    return error(400, { message: 'We could not update your account due to a technical issue on our end. Please try connecting again. If the issue keeps happening, contact Customer Care.' });
   },
 };
