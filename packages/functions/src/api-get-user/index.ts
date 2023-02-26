@@ -40,7 +40,7 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     const userKeys = new User({ username }).keys();
     console.log('USER_KEYS', userKeys);
     
-    const user = await clientDynamodb.read(userKeys);
+    const user = await clientDynamodb.read({ pk: userKeys.pk });
     console.log('USER', user);
     
 
