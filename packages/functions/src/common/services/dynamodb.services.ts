@@ -119,12 +119,12 @@ export class DynamoDBService {
 
   // @todo Better solution for conditional adding object props?
   async read(item: Record<string, unknown>) {
-    if (this?.indexName) {
+    if (Object.entries(item).length === 1) {
       const entries = Object.entries(item);
       const [[key, value]] = entries;
       const params: QueryCommandInput = {
         TableName: this.tableName,
-        IndexName: this.indexName,
+        ...this.indexName ? { IndexName: this.indexName } : {},
         ...entries.length === 1
           ? {
             KeyConditionExpression: `#${key} = :${key}`,
@@ -137,7 +137,6 @@ export class DynamoDBService {
           } : item,
       };
       console.log('params', params);
-      
 
       try {
         const command = new QueryCommand(params);
