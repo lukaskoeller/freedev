@@ -12,7 +12,7 @@ export type ApiParams = {
 	 * The path to the endpoint.
 	 */
 	resource: string,
-	data?: Record<string, unknown>,
+	data?: Record<string, unknown> | Record<string, unknown>[],
 	/**
 	 * The access token to make authorized requests.
 	 * Sets a `Authorization` property in `headers`.
