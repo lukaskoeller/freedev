@@ -1,3 +1,4 @@
+import { api } from "$lib/common/utils/api.utils";
 import { getAccessToken } from "$lib/common/utils/auth.utils";
 import { redirect, type Actions } from "@sveltejs/kit";
 
@@ -7,19 +8,38 @@ export const actions: Actions = {
     const form = await request.formData();
     console.log(form);
 
-    const languages = form.getAll('languages');
-    const technologies = form.getAll('technologies');
-    const tools = form.getAll('tools');
+    const language = form.getAll('languages');
+    const technology = form.getAll('technologies');
+    const tool = form.getAll('tools');
 
-    const data = {
-      languages,
-      technologies,
-      tools,
+    const rawData = {
+      language,
+      technology,
+      tool,
     };
 
-    console.log(data);
+    const data = Object.entries(rawData).flatMap(([key, value]) => {
+      return Array.isArray(value)
+        ? value.map((val: string) => ({
+          category: key,
+          skill: val,
+        })) : ({
+          category: key,
+          skill: value,
+        })
+    });
 
-    // @todo TEMPORARY Remove
-    // throw redirect(301, '/profile');
+    console.log(data);
+    const response = await api({
+      fetch,
+      method: 'PUT',
+      resource: 'user/skills',
+      data,
+      token,
+    });
+
+    if (response.status === 200) {
+      throw redirect(301, '/profile');
+    }
   },
 };
