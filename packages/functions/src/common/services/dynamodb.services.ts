@@ -163,7 +163,7 @@ export class DynamoDBService {
       Key: marshall({
         pk: item.pk,
         sk: item.sk,
-      }),
+      }, { removeUndefinedValues: true }),
     };
     console.log('params', params);
 
