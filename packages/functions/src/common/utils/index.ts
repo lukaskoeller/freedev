@@ -1,3 +1,4 @@
+import { DBKeyPrefix } from "@freedev/constants";
 import { INTERNAL_ERROR_MESSAGE } from "errors";
 import { ZodError } from "zod";
 import { fromZodError } from 'zod-validation-error';
@@ -82,3 +83,48 @@ export const InternalErrorException = new ApiErrorResponse({
     message: INTERNAL_ERROR_MESSAGE,
   },
 });
+
+/**
+ * Maps the result of a DynamoDB query to an object to be returned
+ * as api response
+ * @param items 
+ * @param map
+ * 
+ * @example
+ * ```ts
+ * mapItemstoObject(
+ *  userQueryResult,
+ *  {
+ *    skills: DBKeyPrefix.Skill,
+ *    projects: DBKeyPrefix.Project,
+ *  }
+ * )
+ * ``` 
+ */
+export const mapItemstoObject = (
+  items: {
+    sk: string;
+    [key: string]: unknown;
+  }[] | unknown,
+  map: Record<string, DBKeyPrefix>,
+) => {
+  if (!Array.isArray(items)) throw new Error(`Expected "items" to be an array but is "${typeof items}"`);
+
+  return items.reduce((acc, item) => {
+    for (const [mapKey, mapVal] of Object.entries(map)) {
+      if (item?.sk?.startsWith(mapVal)) {
+        acc[mapKey] = [
+          ...(acc?.[mapKey] ?? []),
+          item,
+        ]
+        return acc;
+      }
+    }
+
+    return {
+      ...acc,
+      ...item,
+    };
+  }, {});
+
+};
