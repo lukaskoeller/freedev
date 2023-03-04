@@ -11,7 +11,7 @@
 </script>
 
 <header>
-	<a href="/">
+	<a href="/" class="logo-link">
 		<Logo />
 	</a>
 	<nav>
@@ -76,17 +76,23 @@
 		);
 
 		/* background-color: var(--neutral-color-base); */
-		/* background-color: hsl(252deg 28% 93% / 60%); */
 		backdrop-filter: blur(16px);
 		/* box-shadow: var(--shadow-5); */
+		
+		background-color: hsla(252deg 28% 93% / 8%);
+
+		@media (--OSdark) {
+			background-color: hsla(252deg 28% 1% / 8%);
+		}
 
 		@media (--tablet) {
 			backdrop-filter: none;
+			background-color: transparent;
 			position: relative;
 		}
 	}
 
-	fd-logo {
+	.logo-link {
 		display: none;
 
 		@media (--tablet) {
