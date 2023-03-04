@@ -17,6 +17,7 @@
     "@open-wc/form-control": "^0.2.4",
     "config": "^0.0.0",
     "lit": "^2.5.0",
+    "open-props": "^1.5.5",
     "types": "^0.0.0"
   },
   "devDependencies": {
