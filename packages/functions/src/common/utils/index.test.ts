@@ -1,0 +1,133 @@
+import { DBKeyPrefix } from '@freedev/constants';
+import { describe, expect, test } from 'vitest';
+import { mapItemstoObject } from '.';
+import data from './mock.json';
+
+const EXPECTED = {
+  skills: [
+    {
+      category: 'language',
+      sk: 'SKILL#language#css3',
+      skill: 'css3',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603',
+    },
+    {
+      category: 'language',
+      sk: 'SKILL#language#html5',
+      skill: 'html5',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'language',
+      sk: 'SKILL#language#javascript',
+      skill: 'javascript',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'language',
+      sk: 'SKILL#language#typescript',
+      skill: 'typescript',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'library',
+      'proficiency': 3,
+      sk: 'SKILL#library#react',
+      skill: 'react',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#aws',
+      skill: 'aws',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#nodejs',
+      skill: 'nodejs',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#react',
+      skill: 'react',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#reactrouter',
+      skill: 'reactrouter',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#redux',
+      skill: 'redux',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#storybook',
+      skill: 'storybook',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#strapi',
+      skill: 'strapi',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'technology',
+      sk: 'SKILL#technology#vue',
+      skill: 'vue',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'tool',
+      sk: 'SKILL#tool#figma',
+      skill: 'figma',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'tool',
+      sk: 'SKILL#tool#googleanalytics',
+      skill: 'googleanalytics',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'tool',
+      sk: 'SKILL#tool#googletagmanager',
+      skill: 'googletagmanager',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+    {
+      category: 'tool',
+      sk: 'SKILL#tool#jirasoftware',
+      skill: 'jirasoftware',
+      pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603'
+    },
+  ],
+  handle: 'lukaskoeller',
+  capacity: '31',
+  hourlyRate: '121',
+  lastName: 'Köller',
+  sk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603',
+  username: 'c532c76c-75a5-43a8-a588-b68bd4676603',
+  email: 'lukas.koeller@protonmail.com',
+  pk: 'USER#c532c76c-75a5-43a8-a588-b68bd4676603',
+  availableFrom: '2023-04-12',
+  firstName: 'Lukas',
+}
+
+describe('user', () => {
+  test('should create correct User from handle', () => {
+    const input = data;
+    expect(
+      mapItemstoObject(input, {
+        skills: DBKeyPrefix.Skill,
+      })
+    ).toStrictEqual(EXPECTED);
+  });
+});
