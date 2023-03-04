@@ -1,8 +1,8 @@
 import { APIGatewayEvent, Context } from "aws-lambda";
 import { DEFAULT_ERROR_MESSAGE } from "errors";
-import { ApiErrorResponse, ApiResponse } from "../common/utils";
+import { ApiErrorResponse, ApiResponse, mapItemstoObject } from "../common/utils";
 import { CognitoJwtVerifier } from "aws-jwt-verify";
-import { DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID, USER_POOL_ID } from "@freedev/constants";
+import { DBKeyPrefix, DYNAMO_DB_TABLE_NAME, USER_POOL_CLIENT_ID, USER_POOL_ID } from "@freedev/constants";
 import { DynamoDBService } from "../common/services/dynamodb.services";
 import { User } from "../common/modules/user/user.entities";
 
@@ -40,9 +40,13 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     const userKeys = new User({ username }).keys();
     console.log('USER_KEYS', userKeys);
     
-    const user = await clientDynamodb.read({ pk: userKeys.pk });
-    console.log('USER', user);
-    
+    const items = await clientDynamodb.read({ pk: userKeys.pk });
+    console.log('USER', items);
+
+    // @todo NEXT 
+    const user = mapItemstoObject(items, {
+      skills: DBKeyPrefix.Skill,
+    });
 
     return new ApiResponse({
       statusCode: 200,
