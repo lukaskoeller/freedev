@@ -6,12 +6,15 @@
 	import type { PageData } from './$types';
 	import svgReact from 'assets/icons/react.svg?raw';
 	import Icon from '$lib/icon/Icon.svelte';
+	import SkillCard from '$lib/skillcard/SkillCard.svelte';
 
   onMount(async () => {
     await import('ui');
   });
 
   export let data: PageData;
+	console.log(data);
+	
 	const {
 		firstName,
 		lastName,
@@ -63,61 +66,12 @@
 	</fd-section>
 	<Section heading="Skills">
 		<div slot="actions">
-			<fd-button variant="stealth" size="sm">Read More</fd-button>
+			<button class="fd-button" data-variant="stealth" data-size="sm">Read More</button>
 		</div>
-		<div class="skills-container">
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				React
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				Svelte
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				React Router
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				Deno
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				Go
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				HTML5
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				CSS3
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<Icon>
-					{@html svgReact}
-				</Icon>
-				Redux Saga
-			</div>
-			<div class="fd-card skills-card" data-size="sm">
-				<fd-icon file={svgReact}></fd-icon>
-				Gatsby
-			</div>
+		<div class="skills">
+			{#each data.skills as { skill, category }}
+				<SkillCard name={skill} {category} icon={svgReact} />
+			{/each}
 		</div>
 	</Section>
 	<Section heading="About Me">
@@ -205,20 +159,13 @@
 		}
 	}
 
-	.skills-container {
+	.skills {
+		--fd-ram-grid-repeat-count: auto-fill;
+
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--size-fluid-1);
-	}
-
-	.skills-card {
-		inline-size: auto;
-		display: flex;
-		align-items: center;
-		gap: var(--size-3);
-		/* --fd-card-background-color: var(--color-surface-2); */
-		font-weight: var(--font-weight-6);
-		font-size: var(--font-size-2);
+		/* align-items: stretch; */
 	}
 
 	.project-preview {
