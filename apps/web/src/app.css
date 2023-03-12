@@ -12,6 +12,56 @@ code {
   overflow: hidden;
 }
 
+.fd-card {
+  --_fd-card-background-color: var(--fd-card-background-color, var(--color-surface-1));
+  --_fd-card-color: var(--fd-card-color, var(--text-1));
+  --_fd-card-border-color: var(--fd-card-border-color, var(--color-border));
+  --_fd-card-shadow: var(--fd-card-shadow, var(--shadow-3));
+  --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-3));
+  --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-7));
+  --_fd-card-border-radius: var(--fd-card-border-radius, var(--radius-3));
+
+  &[data-size="xs"] {
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-4));
+    --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-2));
+    --_fd-card-border-radius: var(--fd-card-border-radius, var(--radius-2));
+  }
+
+  &[data-size="sm"] {
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-5));
+    --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-3));
+  }
+
+  &[data-variant="inverted"] {
+    --fd-card-background-color: var(--color-surface-2-inverted);
+    --fd-card-color: var(--text-1-inverted);
+    --fd-info-text-color: var(--text-2-inverted);
+    --fd-card-border-color: var(--color-border-inverted);
+  }
+
+  inline-size: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-inline: var(--_fd-card-padding-inline);
+  padding-block: var(--_fd-card-padding-block);
+  color: var(--_fd-card-color);
+
+  appearance: none;
+  border: 1px solid var(--_fd-card-border-color);
+
+  background-color: var(--_fd-card-background-color);
+  border-radius: var(--_fd-card-border-radius);
+  box-shadow: var(--_fd-card-shadow);
+
+  @media (--large-mobile) {
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-6));
+  }
+
+  @media (--small-desktop) {
+    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-8));
+  }
+}
+
 .fd-stack {
   --_fd-stack-gap: var(--fd-stack-gap, var(--size-3));
   --_fd-stack-justify-items: var(--fd-stack-justify-items, stretch);
@@ -62,6 +112,7 @@ code {
   --_fd-ram-grid-gap-column: var(--fd-ram-grid-gap-column, var(--_fd-ram-grid-gap));
   --_fd-ram-grid-gap: var(--fd-ram-grid-gap, var(--size-fluid-2));
   --_fd-ram-grid-min-width: var(--fd-ram-grid-min-width, 150px);
+  --_fd-ram-grid-repeat-count: var(--fd-ram-grid-repeat-count, auto-fit);
 
 
   display: grid;
@@ -69,7 +120,7 @@ code {
   column-gap: var(--_fd-ram-grid-gap-column);
   grid-template-columns:
     repeat(
-      auto-fit,
+      var(--_fd-ram-grid-repeat-count),
       minmax(min(var(--_fd-ram-grid-min-width), 100%), 1fr)
     );
 }
@@ -121,49 +172,6 @@ code {
     display: inline-block;
     scroll-snap-align: start;
     flex-shrink: 0;
-  }
-}
-
-.fd-card {
-  --_fd-card-background-color: var(--fd-card-background-color, var(--color-surface-1));
-  --_fd-card-color: var(--fd-card-color, var(--text-1));
-  --_fd-card-border-color: var(--fd-card-border-color, var(--color-border));
-  --_fd-card-shadow: var(--fd-card-shadow, var(--shadow-3));
-  --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-3));
-  --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-7));
-
-  &[data-size="sm"] {
-    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-5));
-    --_fd-card-padding-block: var(--fd-card-padding-block, var(--size-3));
-  }
-
-  &[data-variant="inverted"] {
-    --fd-card-background-color: var(--color-surface-2-inverted);
-    --fd-card-color: var(--text-1-inverted);
-    --fd-info-text-color: var(--text-2-inverted);
-    --fd-card-border-color: var(--color-border-inverted);
-  }
-
-  inline-size: 100%;
-  display: inline-block;
-  box-sizing: border-box;
-  padding-inline: var(--_fd-card-padding-inline);
-  padding-block: var(--_fd-card-padding-block);
-  color: var(--_fd-card-color);
-
-  appearance: none;
-  border: 1px solid var(--_fd-card-border-color);
-
-  background-color: var(--_fd-card-background-color);
-  border-radius: var(--radius-conditional-3);
-  box-shadow: var(--_fd-card-shadow);
-
-  @media (--large-mobile) {
-    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-6));
-  }
-
-  @media (--small-desktop) {
-    --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-8));
   }
 }
 
