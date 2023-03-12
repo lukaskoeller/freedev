@@ -1,53 +1,65 @@
-<script>
-
+<script lang="ts">
+	import { ALL_SKILLS } from "$lib/constants/skills";
 	import Icon from "$lib/icon/Icon.svelte";
-	import { Size } from "types";
 
-  export let name;
-  export let category;
-  export let icon;
+  export let items;
+  export let heading;
 
+  console.log(ALL_SKILLS);
 </script>
 
-<div class="fd-card card" data-size="sm">
-  <Icon size={Size.Xl}>
-    {@html icon}
-  </Icon>
-  <div class="caption">
-    <span class="name">{name}</span>
-    <span class="fd-info-text">{category}</span>
+<div class="fd-card card">
+  <div class="fd-stack">
+    <div class="header">
+      <h3>{heading}</h3>
+      {#if items.length > 12}
+        <button class="fd-button" data-size="sm" type="button">
+          View all
+        </button>
+      {/if}
+    </div>
+    <div class="body">
+      {#each items as item}
+        <div class="fd-radio-button">
+          {#if ALL_SKILLS[item.skill]?.file}
+            <Icon size="inline">
+                {@html ALL_SKILLS[item.skill].file}               
+            </Icon>
+          {/if}
+          {ALL_SKILLS[item.skill]?.label}
+        </div>
+      {/each}
+    </div>
   </div>
 </div>
 
 <style lang="postcss">
-	.card {
-		/* display: grid;
-		justify-items: center;
-		align-items: center; */
-    display: flex;
-    align-items: center;
-		inline-size: auto;
-		gap: var(--size-3);
-		/* --fd-card-background-color: var(--color-surface-2); */
-		font-weight: var(--font-weight-6);
-		font-size: var(--font-size-2);
-
-    & > svg {
-      flex: 1 1 auto;
+  .card {
+    --card-gap: var(--_fd-card-padding-inline);
+    
+    @media (--tablet) {
+      --card-gap: calc(
+        var(--_fd-card-padding-inline) / 1.5 
+      );
     }
-	}
 
-	.caption {
-		display: grid;
-		/* text-align: center; */
-	}
+    --fd-stack-gap: var(--card-gap);
 
-  .name {
-    display: block;
-    inline-size: 100%;
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */
+    padding-block-start: var(--card-gap);
+    /* inline-size: min(var(--size-15), 100%); */
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
   }
 
+  h3 {
+    font-size: var(--font-size-4);
+  }
+
+  .body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-2);
+  }
 </style>
