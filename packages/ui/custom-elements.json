@@ -2354,6 +2354,48 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
+          "name": "VisuallyHidden",
+          "slots": [
+            {
+              "description": "The visually hidden content.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-visually-hidden",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "VisuallyHidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fd-visually-hidden",
+          "declaration": {
+            "name": "VisuallyHidden",
+            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/mixins/formControlMixin.ts",
       "declarations": [
         {
@@ -2558,48 +2600,6 @@
       "path": "src/mixins/formdata-event-polyfill.ts",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/fd-visually-hidden/fd-visually-hidden.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Visually hidden is used when an element needs to be available to assistive technologies like screen readers, but be otherwise hidden.",
-          "name": "VisuallyHidden",
-          "slots": [
-            {
-              "description": "The visually hidden content.",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-visually-hidden",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "VisuallyHidden",
-          "declaration": {
-            "name": "VisuallyHidden",
-            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "fd-visually-hidden",
-          "declaration": {
-            "name": "VisuallyHidden",
-            "module": "src/fd-visually-hidden/fd-visually-hidden.ts"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",
@@ -2863,38 +2863,38 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-avatar/fd-avatar.d.ts",
+      "path": "types/fd-card/fd-card.d.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "An Avatar component.",
-          "name": "Avatar",
+          "description": "A classic Card component.",
+          "name": "Card",
           "cssProperties": [
             {
               "description": "Adjusts the background color",
-              "name": "--fd-avatar-background-color"
+              "name": "--fd-card-background-color"
             },
             {
               "description": "Adjusts the font color",
-              "name": "--fd-avatar-color"
+              "name": "--fd-card-color"
             },
             {
-              "description": "Adjusts the border color",
-              "name": "--fd-avatar-border-color"
+              "description": "Sets the Card's shadow",
+              "name": "--fd-card-shadow"
             },
             {
-              "description": "Sets the size of the avatar",
-              "name": "--fd-avatar-size"
+              "description": "Sets the inline padding",
+              "name": "--fd-card-padding-inline"
             },
             {
-              "description": "Sets the border radius. Default is round",
-              "name": "--fd-avatar-border-radius"
+              "description": "Sets the block padding",
+              "name": "--fd-card-padding-block"
             }
           ],
           "cssParts": [
             {
-              "description": "Styles the Avatar's div",
-              "name": "Avatar"
+              "description": "Styles the Card's div",
+              "name": "card"
             }
           ],
           "slots": [
@@ -2906,21 +2906,9 @@
           "members": [
             {
               "kind": "field",
-              "name": "name",
+              "name": "variant",
               "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "img",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size | undefined"
+                "text": "\"default\""
               }
             }
           ],
@@ -2928,24 +2916,24 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "fd-avatar",
+          "tagName": "fd-card",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Avatar",
+          "name": "Card",
           "declaration": {
-            "name": "Avatar",
-            "module": "types/fd-avatar/fd-avatar.d.ts"
+            "name": "Card",
+            "module": "types/fd-card/fd-card.d.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-avatar/fd-avatar.stories.d.ts",
+      "path": "types/fd-card/fd-card.stories.d.ts",
       "declarations": [
         {
           "kind": "variable",
@@ -2959,21 +2947,8 @@
           "name": "Primary",
           "type": {
             "text": "Story<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "WithImage",
-          "type": {
-            "text": "Story"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "AllSizes",
-          "type": {
-            "text": "Story"
-          }
+          },
+          "description": "Some documentation on this story"
         }
       ],
       "exports": [
@@ -2982,7 +2957,7 @@
           "name": "default",
           "declaration": {
             "name": "_default",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
+            "module": "types/fd-card/fd-card.stories.d.ts"
           }
         },
         {
@@ -2990,23 +2965,7 @@
           "name": "Primary",
           "declaration": {
             "name": "Primary",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "WithImage",
-          "declaration": {
-            "name": "WithImage",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AllSizes",
-          "declaration": {
-            "name": "AllSizes",
-            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
+            "module": "types/fd-card/fd-card.stories.d.ts"
           }
         }
       ]
@@ -3323,38 +3282,38 @@
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-card/fd-card.d.ts",
+      "path": "types/fd-avatar/fd-avatar.d.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "A classic Card component.",
-          "name": "Card",
+          "description": "An Avatar component.",
+          "name": "Avatar",
           "cssProperties": [
             {
               "description": "Adjusts the background color",
-              "name": "--fd-card-background-color"
+              "name": "--fd-avatar-background-color"
             },
             {
               "description": "Adjusts the font color",
-              "name": "--fd-card-color"
+              "name": "--fd-avatar-color"
             },
             {
-              "description": "Sets the Card's shadow",
-              "name": "--fd-card-shadow"
+              "description": "Adjusts the border color",
+              "name": "--fd-avatar-border-color"
             },
             {
-              "description": "Sets the inline padding",
-              "name": "--fd-card-padding-inline"
+              "description": "Sets the size of the avatar",
+              "name": "--fd-avatar-size"
             },
             {
-              "description": "Sets the block padding",
-              "name": "--fd-card-padding-block"
+              "description": "Sets the border radius. Default is round",
+              "name": "--fd-avatar-border-radius"
             }
           ],
           "cssParts": [
             {
-              "description": "Styles the Card's div",
-              "name": "card"
+              "description": "Styles the Avatar's div",
+              "name": "Avatar"
             }
           ],
           "slots": [
@@ -3366,9 +3325,21 @@
           "members": [
             {
               "kind": "field",
-              "name": "variant",
+              "name": "name",
               "type": {
-                "text": "\"default\""
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "img",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size | undefined"
               }
             }
           ],
@@ -3376,24 +3347,24 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "fd-card",
+          "tagName": "fd-avatar",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Card",
+          "name": "Avatar",
           "declaration": {
-            "name": "Card",
-            "module": "types/fd-card/fd-card.d.ts"
+            "name": "Avatar",
+            "module": "types/fd-avatar/fd-avatar.d.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "types/fd-card/fd-card.stories.d.ts",
+      "path": "types/fd-avatar/fd-avatar.stories.d.ts",
       "declarations": [
         {
           "kind": "variable",
@@ -3407,8 +3378,21 @@
           "name": "Primary",
           "type": {
             "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "WithImage",
+          "type": {
+            "text": "Story"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "AllSizes",
+          "type": {
+            "text": "Story"
+          }
         }
       ],
       "exports": [
@@ -3417,7 +3401,7 @@
           "name": "default",
           "declaration": {
             "name": "_default",
-            "module": "types/fd-card/fd-card.stories.d.ts"
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
           }
         },
         {
@@ -3425,121 +3409,23 @@
           "name": "Primary",
           "declaration": {
             "name": "Primary",
-            "module": "types/fd-card/fd-card.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-container/fd-container.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "General wrapper providing basic inline and block padding",
-          "name": "Container",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-start"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-inline-end"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "name": "--fd-container-padding-block"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Styles the Container's section",
-              "name": "container"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content of the container",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "Size"
-              },
-              "description": "Sets the width according to given value and disables padding inline"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-container",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Container",
-          "declaration": {
-            "name": "Container",
-            "module": "types/fd-container/fd-container.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-container/fd-container.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-container/fd-container.stories.d.ts"
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
           }
         },
         {
           "kind": "js",
-          "name": "Primary",
+          "name": "WithImage",
           "declaration": {
-            "name": "Primary",
-            "module": "types/fd-container/fd-container.stories.d.ts"
+            "name": "WithImage",
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AllSizes",
+          "declaration": {
+            "name": "AllSizes",
+            "module": "types/fd-avatar/fd-avatar.stories.d.ts"
           }
         }
       ]
@@ -3940,6 +3826,120 @@
     },
     {
       "kind": "javascript-module",
+      "path": "types/fd-container/fd-container.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "General wrapper providing basic inline and block padding",
+          "name": "Container",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-start"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-inline-end"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "name": "--fd-container-padding-block"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Styles the Container's section",
+              "name": "container"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content of the container",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "Size"
+              },
+              "description": "Sets the width according to given value and disables padding inline"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-container",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Container",
+          "declaration": {
+            "name": "Container",
+            "module": "types/fd-container/fd-container.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-container/fd-container.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-container/fd-container.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-container/fd-container.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "types/fd-icon/fd-icon.d.ts",
       "declarations": [
         {
@@ -4075,6 +4075,152 @@
           "declaration": {
             "name": "CustomSize",
             "module": "types/fd-icon/fd-icon.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-label/fd-label.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Label component for inputs or as usual div or span",
+          "name": "Label",
+          "cssProperties": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts text color",
+              "name": "--fd-label-color"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
+              "name": "--fd-label-text-transform"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font weight (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-weight"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Adjusts font size (see https://open-props.style/#typography)",
+              "name": "--fd-label-font-size"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text of label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "LabelTags"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "getTag",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fd-label",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Label",
+          "declaration": {
+            "name": "Label",
+            "module": "types/fd-label/fd-label.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-label/fd-label.stories.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "_default",
+          "type": {
+            "text": "Meta<import(\"@storybook/web-components\").Args>"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "Primary",
+          "type": {
+            "text": "Story<import(\"@storybook/web-components\").Args>"
+          },
+          "description": "Some documentation on this story"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "_default",
+            "module": "types/fd-label/fd-label.stories.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Primary",
+          "declaration": {
+            "name": "Primary",
+            "module": "types/fd-label/fd-label.stories.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "types/fd-label/fd-label.style.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "labelStyles",
+          "type": {
+            "text": "import(\"lit\").CSSResult"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "labelStyles",
+          "declaration": {
+            "name": "labelStyles",
+            "module": "types/fd-label/fd-label.style.d.ts"
           }
         }
       ]
@@ -4243,152 +4389,6 @@
           "declaration": {
             "name": "OutsideForm",
             "module": "types/fd-input/fd-input.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-label/fd-label.d.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Label component for inputs or as usual div or span",
-          "name": "Label",
-          "cssProperties": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts text color",
-              "name": "--fd-label-color"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts how text is transformed (see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)",
-              "name": "--fd-label-text-transform"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font weight (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-weight"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Adjusts font size (see https://open-props.style/#typography)",
-              "name": "--fd-label-font-size"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text of label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "as",
-              "type": {
-                "text": "LabelTags"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "for",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "getTag",
-              "privacy": "private"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "fd-label",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Label",
-          "declaration": {
-            "name": "Label",
-            "module": "types/fd-label/fd-label.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-label/fd-label.stories.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "_default",
-          "type": {
-            "text": "Meta<import(\"@storybook/web-components\").Args>"
-          }
-        },
-        {
-          "kind": "variable",
-          "name": "Primary",
-          "type": {
-            "text": "Story<import(\"@storybook/web-components\").Args>"
-          },
-          "description": "Some documentation on this story"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "_default",
-            "module": "types/fd-label/fd-label.stories.d.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Primary",
-          "declaration": {
-            "name": "Primary",
-            "module": "types/fd-label/fd-label.stories.d.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "types/fd-label/fd-label.style.d.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "labelStyles",
-          "type": {
-            "text": "import(\"lit\").CSSResult"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "labelStyles",
-          "declaration": {
-            "name": "labelStyles",
-            "module": "types/fd-label/fd-label.style.d.ts"
           }
         }
       ]
