@@ -14,5 +14,18 @@ export const load: PageServerLoad = async ({ cookies, request, fetch }) => {
   });
   const body = await response.json();
 
-  return body;
+  const { skills } = body;
+  const skillsByCategory = skills.reduce((acc, cur) => {
+    const category = cur.category;
+    if (!acc[category]) {
+        acc[category] = [];
+    }
+    acc[category].push(cur);
+    return acc;
+}, {});
+
+  return {
+    ...body,
+    skills: skillsByCategory,
+  };
 }
