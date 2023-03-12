@@ -1,11 +1,7 @@
 <script lang="ts">
-	import Container from '$lib/container/Container.svelte';
 	import Section from '$lib/section/Section.svelte';
 	import { onMount } from 'svelte';
-	import { Size } from 'types';
 	import type { PageData } from './$types';
-	import svgReact from 'assets/icons/react.svg?raw';
-	import Icon from '$lib/icon/Icon.svelte';
 	import SkillCard from '$lib/skillcard/SkillCard.svelte';
 
   onMount(async () => {
@@ -14,7 +10,7 @@
 
   export let data: PageData;
 	console.log(data);
-	
+
 	const {
 		firstName,
 		lastName,
@@ -68,9 +64,9 @@
 		<div slot="actions">
 			<button class="fd-button" data-variant="stealth" data-size="sm">Read More</button>
 		</div>
-		<div class="skills">
-			{#each data.skills as { skill, category }}
-				<SkillCard name={skill} {category} icon={svgReact} />
+		<div class="skills fd-ram-grid">
+			{#each Object.entries(data.skills) as [category, skills] (category)}
+				<SkillCard items={skills} heading={category} />
 			{/each}
 		</div>
 	</Section>
@@ -160,11 +156,11 @@
 	}
 
 	.skills {
-		--fd-ram-grid-repeat-count: auto-fill;
+		--fd-ram-grid-min-width: calc(var(--size-15) * 0.75);
 
-		display: flex;
+		/* display: flex;
 		flex-wrap: wrap;
-		gap: var(--size-fluid-1);
+		gap: var(--size-fluid-1); */
 		/* align-items: stretch; */
 	}
 
