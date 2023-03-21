@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "vite": "vite --port 6005",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "lint": "tsc",
     "dev": "start-storybook -p 6006 & custom-elements-manifest analyze",
     "build-storybook": "build-storybook"
   },
