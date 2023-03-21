@@ -4,14 +4,15 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies, request, fetch }) => {
 
-  const { accessToken: token } = await getAccessToken(cookies);
+  const authToken = await getAccessToken(cookies);
+  console.log(authToken);
   
   
   const response = await api({
     fetch,
     method: 'GET',
     resource: 'user',
-    token,
+    token: authToken?.accessToken,
   });
   const body = await response.json();
   console.log({ body });
