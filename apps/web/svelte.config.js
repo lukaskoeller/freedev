@@ -22,7 +22,9 @@ const config = {
     //   precompress: false
     // }),
 		adapter: adapter({
-      autoDeploy: false,
+      autoDeploy: true,
+			FQDN: 'freedev.app',
+			stackName: 'freedev-app'
     }),
 	}
 };
