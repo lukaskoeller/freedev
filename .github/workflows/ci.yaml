@@ -7,6 +7,8 @@ env:
   AWS_REGION: 'eu-central-1'
   # See AWS Console > {your-username} at the top right > Account ID
   AWS_ACCOUNT_ID: '865039251033'
+  # See https://authjs.dev/reference/sveltekit
+  AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
 permissions:
   id-token: write # This is required for requesting the JWT
   contents: read  # This is required for actions/checkout
