@@ -2,6 +2,8 @@
 // import adapter from '@yarbsemaj/adapter-lambda';
 import { adapter } from 'sveltekit-adapter-aws';
 import preprocess from 'svelte-preprocess';
+// @todo throws error due to .ts file
+// import { AWS_ROUTE_53_ZONE_NAME } from '@freedev/constants';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -24,7 +26,8 @@ const config = {
 		adapter: adapter({
       autoDeploy: true,
 			FQDN: 'freedev.app',
-			stackName: 'freedev-app'
+			stackName: 'freedev-app',
+			zoneName: 'freedev.app', // AWS_ROUTE_53_ZONE_NAME,
     }),
 	}
 };
