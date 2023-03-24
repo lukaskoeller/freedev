@@ -26,3 +26,5 @@ export enum DBKeyPrefix {
   User = 'USER#',
   Skill = 'SKILL#',
 }
+
+export const AWS_ROUTE_53_ZONE_NAME = 'freedev.app';
