@@ -1,5 +1,5 @@
 import * as aws from "@pulumi/aws";
-import { DYNAMO_DB_TABLE_ARN, STACK_NAME } from "@freedev/constants";
+import { DYNAMO_DB_TABLE_ARN, GITHUB_ACTIONS_ROLE_TO_ASSUME, ROLE_SESSION_NAME, STACK_NAME } from "@freedev/constants";
 import { AWS_ACCOUNT_ID } from "../../..";
 
 /**
@@ -177,7 +177,8 @@ export const policyCloudformationDefineStacks = new aws.iam.Policy('iam-policy-c
           "cloudformation:DescribeStacks"
         ],
         "Resource": [
-          `arn:aws:cloudformation:eu-central-1:${AWS_ACCOUNT_ID}:stack/*/*` // or stack/STACK_NAME/*
+          `arn:aws:cloudformation:eu-central-1:${AWS_ACCOUNT_ID}:stack/*/*`, // or stack/STACK_NAME/*
+          `arn:aws:sts::${AWS_ACCOUNT_ID}:assumed-role/${GITHUB_ACTIONS_ROLE_TO_ASSUME}/${ROLE_SESSION_NAME}`
         ]
       }
     ]
