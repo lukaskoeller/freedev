@@ -31,6 +31,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Bootstrap AWS environment
+        run: cdk bootstrap
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
