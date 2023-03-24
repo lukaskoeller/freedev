@@ -1,5 +1,6 @@
 import * as aws from "@pulumi/aws";
-import { DYNAMO_DB_TABLE_ARN } from "@freedev/constants";
+import { DYNAMO_DB_TABLE_ARN, STACK_NAME } from "@freedev/constants";
+import { AWS_ACCOUNT_ID } from "../../..";
 
 /**
  * More information:
@@ -143,3 +144,42 @@ export const policyReadOnlyDynamodb = new aws.iam.Policy("iam-policy-read-only-d
     ]
   },
 });
+
+// @todo Is it actually needed? if not delete, this and all usage
+export const policyGithubAssumeRoleWithWebIdentity = new aws.iam.Policy("iam-policy-github-assume-role-with-web-identity", {
+  path: "/",
+  description: "Provides access to web identity for GitHub Actions",
+  policy: {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+          "Sid": "RoleForGitHubActions",
+          "Effect": "Allow",
+          "Action": [
+            "sts:AssumeRoleWithWebIdentity"
+          ],
+          "Resource": `arn:aws:iam::${AWS_ACCOUNT_ID}:role/GitHubActionRole`
+        }
+    ]
+  },
+});
+
+export const policyCloudformationDefineStacks = new aws.iam.Policy('iam-policy-cloudformation-describe-stacks', {
+  path: "/",
+  description: "Provides access to describe cloudformation stacks",
+  policy: {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "AllowDescribeStacks",
+        "Effect": "Allow",
+        "Action": [
+          "cloudformation:DescribeStacks"
+        ],
+        "Resource": [
+          `arn:aws:cloudformation:eu-central-1:${AWS_ACCOUNT_ID}:stack/*/*` // or stack/STACK_NAME/*
+        ]
+      }
+    ]
+  },  
+})
