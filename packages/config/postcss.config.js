@@ -24,6 +24,9 @@ module.exports = {
       features: {
         'logical-properties-and-values': {
           dir: 'ltr'
+        },
+        'custom-properties': {
+          disableDeprecationNotice: true
         }
       }
     }),
