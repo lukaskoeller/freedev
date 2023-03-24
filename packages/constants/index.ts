@@ -29,4 +29,4 @@ export enum DBKeyPrefix {
 
 export const AWS_ROUTE_53_ZONE_NAME = 'freedev.app';
 
-export const STACK_NAME = 'freedev.app';
+export const STACK_NAME = 'freedev-app';

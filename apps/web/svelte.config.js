@@ -26,7 +26,7 @@ const config = {
 		adapter: adapter({
       autoDeploy: true,
 			FQDN: 'try.freedev.app',
-			stackName: 'freedev.app', // STACK_NAME
+			stackName: 'freedev-app', // STACK_NAME
 			zoneName: 'freedev.app', // AWS_ROUTE_53_ZONE_NAME,
     }),
 	}
