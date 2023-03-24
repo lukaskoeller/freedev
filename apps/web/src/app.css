@@ -53,11 +53,11 @@ code {
   border-radius: var(--_fd-card-border-radius);
   box-shadow: var(--_fd-card-shadow);
 
-  @media (--large-mobile) {
+  @media (--sm-n-above) {
     --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-6));
   }
 
-  @media (--small-desktop) {
+  @media (--lg-n-above) {
     --_fd-card-padding-inline: var(--fd-card-padding-inline, var(--size-8));
   }
 }

@@ -150,7 +150,7 @@
       -webkit-text-fill-color: transparent; */
     }
 
-    @media (--tablet) {
+    @media (--md-n-above) {
       aspect-ratio: 2.4/1;
     }
   }
@@ -163,7 +163,7 @@
     overflow: hidden;
     flex-wrap: wrap;
 
-    @media (--tablet) {
+    @media (--md-n-above) {
       gap: var(--size-9);
     }
   }

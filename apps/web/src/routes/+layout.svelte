@@ -17,7 +17,7 @@
 		background-repeat: no-repeat;
 		background-position: center 0%;
 
-		@media (--tablet) {
+		@media (--md-n-above) {
 			background-position: center 12vh;
 		}
 	}

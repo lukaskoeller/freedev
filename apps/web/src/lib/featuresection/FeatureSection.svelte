@@ -7,7 +7,7 @@
     --fd-ram-grid-min-width: var(--size-14);
     --fd-ram-grid-gap: var(--size-6);
 
-    @media (--tablet) {
+    @media (--md-n-above) {
       --fd-ram-grid-gap: var(--size-9);
     }
   }

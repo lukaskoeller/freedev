@@ -85,7 +85,7 @@
 			background-color: hsla(252deg 28% 1% / 8%);
 		}
 
-		@media (--tablet) {
+		@media (--md-n-above) {
 			backdrop-filter: none;
 			background-color: transparent;
 			position: relative;
@@ -95,7 +95,7 @@
 	.logo-link {
 		display: none;
 
-		@media (--tablet) {
+		@media (--md-n-above) {
 			display: block;
 		}
 	}
@@ -107,7 +107,7 @@
 		align-items: flex-start;
 		gap: var(--size-fluid-3);
 
-		@media (--tablet) {
+		@media (--md-n-above) {
 			inline-size: auto;
 			justify-content: normal;
 		}

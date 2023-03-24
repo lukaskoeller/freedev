@@ -99,7 +99,7 @@
       backdrop-filter: blur(25px);
     }
 
-    @media (--large-mobile) {
+    @media (--sm-n-above) {
       --_dialog-padding-block: var(--dialog-padding-block, var(--size-5));
       --_dialog-margin-inline: var(--dialog-margin-inline, var(--size-2));
 
@@ -140,7 +140,7 @@
   :global(.heading :--heading) {
     font-size: var(--font-size-4);
 
-    @media (--large-mobile) {
+    @media (--sm-n-above) {
       font-size: var(--font-size-5);
     }
   }

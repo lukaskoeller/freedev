@@ -15,7 +15,7 @@
     --_fd-container-padding-inline: var(--fd-container-padding-inline, var(--global-spacing));
     --_fd-container-padding-block: var(--fd-container-padding-block, var(--global-spacing));
 
-    @media (--tablet) {
+    @media (--md-n-above) {
       --_fd-container-padding-block: var(--fd-container-padding-block, calc(var(--global-spacing) / 2));
     }
 

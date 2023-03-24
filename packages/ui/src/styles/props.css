@@ -96,11 +96,11 @@
 
   --global-spacing: var(--size-3);
 
-  @media (--large-mobile) {
+  @media (--sm-n-above) {
     --global-spacing: var(--size-7);
   }
 
-  @media (--small-desktop) {
+  @media (--lg-n-above) {
     --global-spacing: var(--size-10);
   }
 }

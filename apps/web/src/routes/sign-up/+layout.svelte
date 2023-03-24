@@ -25,7 +25,7 @@
 		place-items: center;
 		padding-block: var(--size-2);
 
-    @media (--tablet) {
+    @media (--md-n-above) {
       padding-block: var(--size-3);
     }
   }
@@ -34,7 +34,7 @@
     display: grid;
     align-items: end;
 
-    @media (--tablet) {
+    @media (--md-n-above) {
       align-items: center;
     }
   }

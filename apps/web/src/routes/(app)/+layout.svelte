@@ -27,7 +27,7 @@
 		/* Compensate for fixed navigation bar's height */
 		padding-block-end: var(--size-10);
 
-		@media (--tablet) {
+		@media (--md-n-above) {
 			padding-block-end: 0;
 		}
 		}
@@ -36,7 +36,7 @@
 		place-items: center;
 		padding-block: var(--size-2);
 
-		@media (--tablet) {
+		@media (--md-n-above) {
 			display: none;
 		}
 	}
