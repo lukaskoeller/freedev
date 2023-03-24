@@ -5,8 +5,7 @@
   "license": "MIT",
   "files": [
     "eslint-preset.js",
-    "postcss.config.js",
-    "breakpoints.json"
+    "postcss.config.js"
   ],
   "dependencies": {
     "eslint-config-next": "^12.3.4",
