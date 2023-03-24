@@ -34,6 +34,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
+          # GITHUB_ACTIONS_ROLE_TO_ASSUME GitHubActionRole
           role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/GitHubActionRole
           role-session-name: serverless-workflows-deployment
           aws-region: ${{ env.AWS_REGION }}
