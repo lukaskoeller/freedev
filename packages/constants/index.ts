@@ -30,3 +30,5 @@ export enum DBKeyPrefix {
 export const AWS_ROUTE_53_ZONE_NAME = 'freedev.app';
 
 export const STACK_NAME = 'freedev-app';
+export const ROLE_SESSION_NAME = 'serverless-workflows-deployment';
+export const GITHUB_ACTIONS_ROLE_TO_ASSUME = 'GitHubActionRole';
