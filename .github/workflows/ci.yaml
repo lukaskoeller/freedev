@@ -31,10 +31,10 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
-      - name: Bootstrap AWS environment
-        run: |
-          npm install -g aws-cdk
-          cdk bootstrap aws://${{ env.AWS_ACCOUNT_ID }}/${{ env.AWS_REGION }}
+      # - name: Bootstrap AWS environment
+      #   run: |
+      #     npm install -g aws-cdk
+      #     cdk bootstrap aws://${{ env.AWS_ACCOUNT_ID }}/${{ env.AWS_REGION }}
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
