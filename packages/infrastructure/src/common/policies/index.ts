@@ -1,6 +1,11 @@
 import * as aws from "@pulumi/aws";
-import { DYNAMO_DB_TABLE_ARN, GITHUB_ACTIONS_ROLE_TO_ASSUME, ROLE_SESSION_NAME, STACK_NAME } from "@freedev/constants";
-import { AWS_ACCOUNT_ID } from "../../..";
+import {
+  DYNAMO_DB_TABLE_ARN,
+  GITHUB_ACTIONS_ROLE_TO_ASSUME,
+  ROLE_SESSION_NAME,
+  STACK_NAME,
+  AWS_ACCOUNT_ID,
+} from "@freedev/constants";
 
 /**
  * More information:
@@ -184,3 +189,23 @@ export const policyCloudformationDefineStacks = new aws.iam.Policy('iam-policy-c
     ]
   },  
 })
+
+export const policyGetSsmParameter = new aws.iam.Policy('iam-policy-get-ssm-parameter', {
+  path: "/",
+  description: "Provides capability to get SSM parameter",
+  policy: {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+          "Sid": "AllowSSMGetParameter",
+          "Effect": "Allow",
+          "Action": [
+              "ssm:GetParameter"
+          ],
+          "Resource": [
+              `arn:aws:ssm:eu-central-1:${AWS_ACCOUNT_ID}:parameter/cdk-bootstrap/hnb659fds/version`
+          ]
+      }
+    ]
+  }
+});
