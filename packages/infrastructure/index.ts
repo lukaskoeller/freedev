@@ -5,6 +5,8 @@ import { createDatabase, createUserPoolAndClient } from './src/resources';
 import { config, websiteS3 } from './src/resources/website'; // @todo temporary
 import { LambdaFunction, SSLCertificate, SSLCertificateValidation } from "./src/common/models";
 import { getDomainAndSubdomain } from "./src/common/utils";
+import { policyCloudformationDefineStacks, policyGetSsmParameter, policyGithubAssumeRoleWithWebIdentity } from "./src/common/policies";
+import { GITHUB_ACTIONS_ROLE_TO_ASSUME } from "@freedev/constants";
 
 /**
  * Cognito User Pool
@@ -30,6 +32,75 @@ export const databaseName = database.name;
 const eastRegion = new aws.Provider("east", {
   profile: aws.config.profile,
   region: "us-east-1", // Per AWS, ACM certificate must be in the us-east-1 region. Same for Lambda@edge
+});
+
+/**
+ * GitHub Actions
+ * 
+ * @see https://github.com/aws-actions/configure-aws-credentials
+ * @see https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
+ */
+const githubOICDProvider = new aws.iam.OpenIdConnectProvider("github-actions-open-id-connect-provider", {
+  clientIdLists: ["sts.amazonaws.com"],
+  // Retrieved via AWS Console. Add an Identity provider > Provider URL > Get Thumbprint
+  thumbprintLists: [
+    "6938fd4d98bab03faadb97b34396831e3780aea1",
+  ],
+  url: "https://token.actions.githubusercontent.com",
+});
+
+const webConfig = new pulumi.Config("web");
+export const AWS_ACCOUNT_ID = webConfig.require("accountId");
+
+const githubIamRole = new aws.iam.Role('github-actions-iam-role', {
+  name: GITHUB_ACTIONS_ROLE_TO_ASSUME, // Same as defined in `role-to-assume` in `.github/workflows/ci.yaml`.
+  assumeRolePolicy: `{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::${AWS_ACCOUNT_ID}:oidc-provider/token.actions.githubusercontent.com"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+              "StringEquals": {
+                "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+              },
+              "StringLike": {
+                "token.actions.githubusercontent.com:sub": "repo:lukaskoeller/freedev:*"
+              }
+            }
+        }
+    ]
+  }`,
+});
+
+// @todo delete if not used anymore (see policy definition)
+new aws.iam.RolePolicyAttachment('github-actions-role-attachment-web-identity', {
+  role: githubIamRole,
+  policyArn: policyGithubAssumeRoleWithWebIdentity.arn,
+});
+
+new aws.iam.RolePolicyAttachment('github-actions-role-attachment-route53-read-only', {
+  role: githubIamRole,
+  policyArn: aws.iam.ManagedPolicies.AmazonRoute53ReadOnlyAccess,
+});
+
+// @todo check if needed
+new aws.iam.RolePolicyAttachment('github-actions-role-attachment-cloudformation-describe-stacks', {
+  role: githubIamRole,
+  policyArn: policyCloudformationDefineStacks.arn,
+});
+
+new aws.iam.RolePolicyAttachment('github-actions-role-attachment-cloudformation-read', {
+  role: githubIamRole,
+  policyArn: aws.iam.ManagedPolicies.AWSCloudFormationReadOnlyAccess,
+});
+
+new aws.iam.RolePolicyAttachment('github-actions-role-attachment-ssm-parameter', {
+  role: githubIamRole,
+  policyArn: policyGetSsmParameter.arn,
 });
 
 // Equals 60sec * 10 = 600sec | 10min
@@ -79,50 +150,50 @@ if (config.certificateArn === undefined) {
 }
 
 // Generate Origin Access Identity to access the private s3 bucket.
-const originAccessIdentity = new aws.cloudfront.OriginAccessIdentity("originAccessIdentity", {
-  comment: "this is needed to setup s3 polices and make s3 not public.",
-});
+// const originAccessIdentity = new aws.cloudfront.OriginAccessIdentity("originAccessIdentity", {
+//   comment: "this is needed to setup s3 polices and make s3 not public.",
+// });
 
 /**
  * AWS S3
  * Static Website Hosting
  */
- const {
-  contentBucket,
-  logsBucket,
-} = websiteS3(originAccessIdentity);
+//  const {
+//   contentBucket,
+//   logsBucket,
+// } = websiteS3(originAccessIdentity);
 
 // if config.includeWWW include an alias for the www subdomain
-const distributionAliases = config.includeWWW ? [config.targetDomain, `www.${config.targetDomain}`] : [config.targetDomain];
+// const distributionAliases = config.includeWWW ? [config.targetDomain, `www.${config.targetDomain}`] : [config.targetDomain];
 
 /**
  * Creating Lambda@Edge that is associated with
  * the following cloudfront distribution
  */
-const edgeRouterLambda = new LambdaFunction('edge-router', {
-  region: eastRegion,
-  assumeRolePolicy: {
-    Version: "2012-10-17",
-    Statement: [
-      {
-          Action: "sts:AssumeRole",
-          Principal: aws.iam.Principals.LambdaPrincipal,
-          Effect: "Allow",
-      },
-      {
-          Action: "sts:AssumeRole",
-          Principal: aws.iam.Principals.EdgeLambdaPrincipal,
-          Effect: "Allow",
-      },
-    ],
-  },
-  policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
-  code: new pulumi.asset.AssetArchive({
-    '.': new pulumi.asset.FileArchive(`../../apps/web/build/edge`),
-  }),
-  handler: "router.handler",
-  publish: true,
-});
+// const edgeRouterLambda = new LambdaFunction('edge-router', {
+//   region: eastRegion,
+//   assumeRolePolicy: {
+//     Version: "2012-10-17",
+//     Statement: [
+//       {
+//           Action: "sts:AssumeRole",
+//           Principal: aws.iam.Principals.LambdaPrincipal,
+//           Effect: "Allow",
+//       },
+//       {
+//           Action: "sts:AssumeRole",
+//           Principal: aws.iam.Principals.EdgeLambdaPrincipal,
+//           Effect: "Allow",
+//       },
+//     ],
+//   },
+//   policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
+//   code: new pulumi.asset.AssetArchive({
+//     '.': new pulumi.asset.FileArchive(`../../apps/web/build/edge`),
+//   }),
+//   handler: "router.handler",
+//   publish: true,
+// });
 
 /**
  * Creating Lambda Function for SSR of the
@@ -133,164 +204,164 @@ const edgeRouterLambda = new LambdaFunction('edge-router', {
  * Invocation happens through http request via a direct url.
  */
 const ssrLambdaName =  'ssr-app'
-const ssrLambda = new LambdaFunction(ssrLambdaName, {
-  assumeRolePolicy: {
-    Version: "2012-10-17",
-    Statement: [
-      {
-          Action: "sts:AssumeRole",
-          Principal: aws.iam.Principals.LambdaPrincipal,
-          Effect: "Allow",
-      },
-    ],
-  },
-  policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
-  code: new pulumi.asset.AssetArchive({
-    '.': new pulumi.asset.FileArchive(`../../apps/web/build/server`),
-  }),
-  handler: "serverless.handler",
-});
+// const ssrLambda = new LambdaFunction(ssrLambdaName, {
+//   assumeRolePolicy: {
+//     Version: "2012-10-17",
+//     Statement: [
+//       {
+//           Action: "sts:AssumeRole",
+//           Principal: aws.iam.Principals.LambdaPrincipal,
+//           Effect: "Allow",
+//       },
+//     ],
+//   },
+//   policyArn: aws.iam.ManagedPolicies.AWSLambdaBasicExecutionRole,
+//   code: new pulumi.asset.AssetArchive({
+//     '.': new pulumi.asset.FileArchive(`../../apps/web/build/server`),
+//   }),
+//   handler: "serverless.handler",
+// });
 
-const ssrLambdaFunctionUrl = new aws.lambda.FunctionUrl(`${ssrLambdaName}-lambda-url`, {
-  functionName: ssrLambda.arn,
-  authorizationType: "NONE",
-});
+// const ssrLambdaFunctionUrl = new aws.lambda.FunctionUrl(`${ssrLambdaName}-lambda-url`, {
+//   functionName: ssrLambda.arn,
+//   authorizationType: "NONE",
+// });
 
-export const ssrLambdaUrl = ssrLambdaFunctionUrl.functionUrl;
+// export const ssrLambdaUrl = ssrLambdaFunctionUrl.functionUrl;
 
 // distributionArgs configures the CloudFront distribution. Relevant documentation:
 // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html
 // https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html
-const distributionArgs: aws.cloudfront.DistributionArgs = {
-    enabled: true,
-    // Alternate aliases the CloudFront distribution can be reached at, in addition to https://xxxx.cloudfront.net.
-    // Required if you want to access the distribution via config.targetDomain as well.
-    aliases: distributionAliases,
+// const distributionArgs: aws.cloudfront.DistributionArgs = {
+//     enabled: true,
+//     // Alternate aliases the CloudFront distribution can be reached at, in addition to https://xxxx.cloudfront.net.
+//     // Required if you want to access the distribution via config.targetDomain as well.
+//     aliases: distributionAliases,
 
-    // We only specify one origin for this distribution, the S3 content bucket.
-    origins: [
-        /**
-         * Only used if the only origin is S3, which is the case for static site hosting.
-         */
-        // {
-        //     originId: contentBucket.arn,
-        //     domainName: contentBucket.bucketDomainName,
-        //     s3OriginConfig: {
-        //         originAccessIdentity: originAccessIdentity.cloudfrontAccessIdentityPath,
-        //     },
-        //     /**
-        //      * Workaround for environment variables
-        //      * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
-        //      */
-        //     customHeaders: [{
-        //       // referenced in web/build/edge/router.js
-        //       name: 's3-host',
-        //       value: contentBucket.bucketDomainName,
-        //     }],
-        // },
-        {
-          originId: ssrLambda.arn,
-          domainName: ssrLambdaUrl.apply((url) => url.replace('https://', '').replace('/', '')),
-          customOriginConfig: {
-              httpPort: 80,
-              httpsPort: 443,
-              originProtocolPolicy: 'https-only',
-              originSslProtocols: ['TLSv1', 'TLSv1.1', 'TLSv1.2'], // @todo can list be narrowed down?
-          },
-          /**
-           * Workaround for environment variables
-           * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
-           */
-          customHeaders: [{
-            // referenced in web/build/edge/router.js
-            name: 's3-host',
-            value: contentBucket.bucketDomainName,
-          }],
-      },
-    ],
+//     // We only specify one origin for this distribution, the S3 content bucket.
+//     origins: [
+//         /**
+//          * Only used if the only origin is S3, which is the case for static site hosting.
+//          */
+//         // {
+//         //     originId: contentBucket.arn,
+//         //      : contentBucket.bucketDomainName,
+//         //     s3OriginConfig: {
+//         //         originAccessIdentity: originAccessIdentity.cloudfrontAccessIdentityPath,
+//         //     },
+//         //     /**
+//         //      * Workaround for environment variables
+//         //      * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
+//         //      */
+//         //     customHeaders: [{
+//         //       // referenced in web/build/edge/router.js
+//         //       name: 's3-host',
+//         //       value: contentBucket.bucketDomainName,
+//         //     }],
+//         // },
+//         {
+//           originId: ssrLambda.arn,
+//           domainName: ssrLambdaUrl.apply((url) => url.replace('https://', '').replace('/', '')),
+//           customOriginConfig: {
+//               httpPort: 80,
+//               httpsPort: 443,
+//               originProtocolPolicy: 'https-only',
+//               originSslProtocols: ['TLSv1', 'TLSv1.1', 'TLSv1.2'], // @todo can list be narrowed down?
+//           },
+//           /**
+//            * Workaround for environment variables
+//            * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
+//            */
+//           customHeaders: [{
+//             // referenced in web/build/edge/router.js
+//             name: 's3-host',
+//             value: contentBucket.bucketDomainName,
+//           }],
+//       },
+//     ],
 
-    comment: contentBucket.bucketDomainName,
+//     comment: contentBucket.bucketDomainName,
 
-    // defaultRootObject: "index.html",
+//     // defaultRootObject: "index.html",
 
-    // A CloudFront distribution can configure different cache behaviors based on the request path.
-    // Here we just specify a single, default cache behavior which is just read-only requests to S3.
-    /**
-     * Only used if the only origin is S3, which is the case for static site hosting.
-     */
-    // defaultCacheBehavior: {
-    //     targetOriginId: contentBucket.arn,
+//     // A CloudFront distribution can configure different cache behaviors based on the request path.
+//     // Here we just specify a single, default cache behavior which is just read-only requests to S3.
+//     /**
+//      * Only used if the only origin is S3, which is the case for static site hosting.
+//      */
+//     // defaultCacheBehavior: {
+//     //     targetOriginId: contentBucket.arn,
 
-    //     viewerProtocolPolicy: "redirect-to-https",
-    //     allowedMethods: ["GET", "HEAD", "OPTIONS"],
-    //     cachedMethods: ["GET", "HEAD", "OPTIONS"],
+//     //     viewerProtocolPolicy: "redirect-to-https",
+//     //     allowedMethods: ["GET", "HEAD", "OPTIONS"],
+//     //     cachedMethods: ["GET", "HEAD", "OPTIONS"],
 
-    //     forwardedValues: {
-    //         cookies: { forward: "none" },
-    //         queryString: false,
-    //     },
+//     //     forwardedValues: {
+//     //         cookies: { forward: "none" },
+//     //         queryString: false,
+//     //     },
 
-    //     minTtl: 0,
-    //     defaultTtl: tenMinutes,
-    //     maxTtl: tenMinutes,
+//     //     minTtl: 0,
+//     //     defaultTtl: tenMinutes,
+//     //     maxTtl: tenMinutes,
 
-    //     lambdaFunctionAssociations: [{
-    //       eventType: 'origin-request',
-    //       lambdaArn: edgeRouterLambdaArn,
-    //     }],
-    // },
-    defaultCacheBehavior: {
-      targetOriginId: ssrLambda.arn,
+//     //     lambdaFunctionAssociations: [{
+//     //       eventType: 'origin-request',
+//     //       lambdaArn: edgeRouterLambdaArn,
+//     //     }],
+//     // },
+//     defaultCacheBehavior: {
+//       targetOriginId: ssrLambda.arn,
 
-      viewerProtocolPolicy: "redirect-to-https",
-      allowedMethods: ["GET", "HEAD", "OPTIONS", "DELETE", "PATCH", "POST", "PUT"],
-      cachedMethods: ["GET", "HEAD", "OPTIONS"],
+//       viewerProtocolPolicy: "redirect-to-https",
+//       allowedMethods: ["GET", "HEAD", "OPTIONS", "DELETE", "PATCH", "POST", "PUT"],
+//       cachedMethods: ["GET", "HEAD", "OPTIONS"],
 
-      forwardedValues: {
-          cookies: { forward: "all" },
-          queryString: true,
-      },
+//       forwardedValues: {
+//           cookies: { forward: "all" },
+//           queryString: true,
+//       },
 
-      minTtl: 0,
-      defaultTtl: tenMinutes,
-      maxTtl: tenMinutes,
+//       minTtl: 0,
+//       defaultTtl: tenMinutes,
+//       maxTtl: tenMinutes,
 
-      lambdaFunctionAssociations: [{
-        eventType: 'origin-request',
-        lambdaArn: edgeRouterLambda.arnVersion,
-      }],
-  },
+//       lambdaFunctionAssociations: [{
+//         eventType: 'origin-request',
+//         lambdaArn: edgeRouterLambda.arnVersion,
+//       }],
+//   },
 
-    // "All" is the most broad distribution, and also the most expensive.
-    // "100" is the least broad, and also the least expensive.
-    priceClass: "PriceClass_100",
+//     // "All" is the most broad distribution, and also the most expensive.
+//     // "100" is the least broad, and also the least expensive.
+//     priceClass: "PriceClass_100",
 
-    // You can customize error responses. When CloudFront receives an error from the origin (e.g. S3 or some other
-    // web service) it can return a different error code, and return the response for a different resource.
-    customErrorResponses: [
-        { errorCode: 404, responseCode: 404, responsePagePath: "/404.html" },
-    ],
+//     // You can customize error responses. When CloudFront receives an error from the origin (e.g. S3 or some other
+//     // web service) it can return a different error code, and return the response for a different resource.
+//     customErrorResponses: [
+//         { errorCode: 404, responseCode: 404, responsePagePath: "/404.html" },
+//     ],
 
-    restrictions: {
-        geoRestriction: {
-            restrictionType: "none",
-        },
-    },
+//     restrictions: {
+//         geoRestriction: {
+//             restrictionType: "none",
+//         },
+//     },
 
-    viewerCertificate: {
-        acmCertificateArn: certificateArn,  // Per AWS, ACM certificate must be in the us-east-1 region.
-        sslSupportMethod: "sni-only",
-    },
+//     viewerCertificate: {
+//         acmCertificateArn: certificateArn,  // Per AWS, ACM certificate must be in the us-east-1 region.
+//         sslSupportMethod: "sni-only",
+//     },
 
-    loggingConfig: {
-        bucket: logsBucket.bucketDomainName,
-        includeCookies: false,
-        prefix: `${config.targetDomain}/`,
-    },
-};
+//     loggingConfig: {
+//         bucket: logsBucket.bucketDomainName,
+//         includeCookies: false,
+//         prefix: `${config.targetDomain}/`,
+//     },
+// };
 
 // Creates a cloudfront web distribution
-const cdn = new aws.cloudfront.Distribution("cdn", distributionArgs, { dependsOn: contentBucket });
+// const cdn = new aws.cloudfront.Distribution("cdn", distributionArgs, { dependsOn: contentBucket });
 
 // Creates a new Route53 DNS record pointing the domain to the CloudFront distribution.
 function createAliasRecord(
@@ -334,15 +405,15 @@ function createWWWAliasRecord(
   });
 }
 
-const aRecord = createAliasRecord(config.targetDomain, cdn);
-if (config.includeWWW) {
-  const cnameRecord = createWWWAliasRecord(config.targetDomain, cdn);
-}
+// const aRecord = createAliasRecord(config.targetDomain, cdn);
+// if (config.includeWWW) {
+//   const cnameRecord = createWWWAliasRecord(config.targetDomain, cdn);
+// }
 
 // Export properties from this stack. This prints them at the end of `pulumi up` and
 // makes them easier to access from the pulumi.com.
-export const contentBucketUri = pulumi.interpolate`s3://${contentBucket.bucket}`;
-export const contentBucketWebsiteEndpoint = contentBucket.websiteEndpoint;
-export const contentBucketDomainName = contentBucket.bucketDomainName;
-export const cloudFrontDomain = cdn.domainName;
+// export const contentBucketUri = pulumi.interpolate`s3://${contentBucket.bucket}`;
+// export const contentBucketWebsiteEndpoint = contentBucket.websiteEndpoint;
+// export const contentBucketDomainName = contentBucket.bucketDomainName;
+// export const cloudFrontDomain = cdn.domainName;
 export const targetDomainEndpoint = `https://${config.targetDomain}/`;
