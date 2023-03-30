@@ -4,6 +4,10 @@
  */
 export const AWS_REGION = 'eu-central-1';
 /**
+ * AWS Account ID
+ */
+export const AWS_ACCOUNT_ID = '865039251033';
+/**
  * Cognito User Pool Client ID
  */
 export const USER_POOL_CLIENT_ID = 'l676voiseqvtmtgpk9fl0mi5d';
