@@ -1,7 +1,8 @@
 config:
-  aws:region: eu-central-1
   aws:profile: iac
-  aws:skipCredentialsValidation: true
-  web:targetDomain: freedev.app
+  aws:region: eu-central-1
+  aws:skipCredentialsValidation: "true"
+  web:accountId: "865039251033"
+  web:includeWWW: "true"
   web:pathToWebsiteContents: ../../apps/web/build
-  web:includeWWW: true
+  web:targetDomain: freedev.app
