@@ -31,11 +31,11 @@
   <Container>
     <Container size={Size.Md}>
       <div class="used-by">
-        <img class="used-by-item" src={bookingLogo} alt="xyz is using freedev">
-        <img class="used-by-item" src={netflixLogo} alt="xyz is using freedev">
-        <img class="used-by-item" src={braveLogo} alt="xyz is using freedev">
-        <img class="used-by-item" src={veoliaLogo} alt="xyz is using freedev">
-        <img class="used-by-item" src={redditLogo} alt="xyz is using freedev">
+        <img class="used-by-item" src={bookingLogo} width="80px" height="14px" alt="xyz is using freedev">
+        <img class="used-by-item" src={netflixLogo} width="80px" height="34px" alt="xyz is using freedev">
+        <img class="used-by-item" src={braveLogo} width="80px" height="25px" alt="xyz is using freedev">
+        <img class="used-by-item" src={veoliaLogo} width="80px" height="20px" alt="xyz is using freedev">
+        <img class="used-by-item" src={redditLogo} width="80px" height="37px" alt="xyz is using freedev">
       </div>
     </Container>
   </Container>
@@ -65,7 +65,7 @@
     <Container size={Size.Lg}>
       <FeatureSection>
         <figure>
-          <img src={atWorkImage} alt="Time management is easy with freedev">
+          <img src={atWorkImage} width="358" height="286" alt="Time management is easy with freedev">
         </figure>
         <div class="fd-stack">
           <h2>Alles auf einer Plattform. Alles in wenigen Minuten.</h2>
@@ -104,7 +104,7 @@
           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
         </div>
         <figure>
-          <img src={workOfficeImage} alt="freedev freelancer in office">
+          <img src={workOfficeImage} width="358" height="239" alt="freedev freelancer in office">
         </figure>
       </FeatureSection>
     </Container>
@@ -113,7 +113,7 @@
     <Container size={Size.Lg}>
       <FeatureSection>
         <figure>
-          <img src={lightImage} alt="freedev makes managing freelancers easy">
+          <img src={lightImage} width="358" height="239" alt="freedev makes managing freelancers easy">
         </figure>
         <div class="fd-stack">
           <h2>Alles auf einer Plattform. Alles in wenigen Minuten.</h2>
