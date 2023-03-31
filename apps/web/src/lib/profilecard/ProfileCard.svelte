@@ -4,7 +4,7 @@
       <div class="avatar"></div>
       <div class="info">
         <div>
-          <h4 class="title">Lukas Köller</h4>
+          <div class="title">Lukas Köller</div>
           <div class="profession">React Frontend Developer</div>
         </div>
         <button class="fd-button">View</button>
@@ -32,6 +32,11 @@
     --fd-card-padding-inline: var(--size-3);
 
     inline-size: min(calc(var(--size-9) * 6), calc(100vw - 2 * var(--size-3)));
+  }
+
+  .title {
+    font-weight: var(--font-weight-5);
+    font-size: var(--font-size-4);
   }
 
   .fd-stack {
