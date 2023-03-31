@@ -172,6 +172,7 @@ code {
     display: inline-block;
     scroll-snap-align: start;
     flex-shrink: 0;
+    padding-inline-start: 0;
   }
 }
 
