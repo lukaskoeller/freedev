@@ -11,7 +11,7 @@
 </script>
 
 <header>
-	<a href="/" class="logo-link">
+	<a href="/" class="logo-link" aria-label="Go to freedev home">
 		<Logo />
 	</a>
 	<nav>
