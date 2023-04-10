@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import { createApi } from './src/functions';
 import { createDatabase, createUserPoolAndClient } from './src/resources';
-import { config, websiteS3 } from './src/resources/website'; // @todo temporary
+// import { config, websiteS3 } from './src/resources/website'; // @todo temporary
 import { LambdaFunction, SSLCertificate, SSLCertificateValidation } from "./src/common/models";
 import { getDomainAndSubdomain } from "./src/common/utils";
 import { policyCloudformationDefineStacks, policyGetSsmParameter, policyGithubAssumeRoleWithWebIdentity } from "./src/common/policies";
