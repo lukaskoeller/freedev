@@ -45,7 +45,7 @@ export const validateAgainstSchema = <TData>(
 
 export const validateIsEmail = (str: string) => isEmail(str);
 
-// @todo duplicate of infrastructure/**/cognitoUserPool.ts */
+// @todo duplicate of @freedev/infrastructure/**/cognitoUserPool.ts */
 export const passwordPolicy = {
   minimumLength: 8,
   requireLowercase: true,
