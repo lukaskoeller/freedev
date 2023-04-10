@@ -1,0 +1,7 @@
+config:
+  aws:profile: iac
+  aws:region: eu-central-1
+  aws:skipCredentialsValidation: "true"
+  web:accountId: "865039251033"
+  web:includeWWW: "true"
+  web:targetDomain: freedev.app
