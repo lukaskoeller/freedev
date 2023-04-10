@@ -1,0 +1,9 @@
+{
+  "name": "@freedev/sveltekit-adapter",
+  "version": "0.0.0",
+  "main": "./src/index.js",
+  "type": "module",
+  "dependencies": {
+    "tsconfig": "^0.0.0"
+  }
+}
