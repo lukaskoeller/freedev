@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { ALL_SKILLS } from "$lib/constants/skills";
+	import { ALL_SKILLS_MAP, SKILL_NAME } from "$lib/constants/skills";
 	import Icon from "$lib/icon/Icon.svelte";
 
   export let items;
   export let heading;
 
-  console.log(ALL_SKILLS);
+  console.log(ALL_SKILLS_MAP);
 </script>
 
 <div class="fd-card card">
   <div class="fd-stack">
     <div class="header">
-      <h3>{heading}</h3>
+      <h3>{SKILL_NAME.get(heading) ?? heading}</h3>
       {#if items.length > 12}
         <button class="fd-button" data-size="sm" type="button">
           View all
@@ -21,12 +21,12 @@
     <div class="body">
       {#each items as item}
         <div class="fd-radio-button">
-          {#if ALL_SKILLS[item.skill]?.file}
+          {#if ALL_SKILLS_MAP[item.skill]?.file}
             <Icon size="inline">
-                {@html ALL_SKILLS[item.skill].file}               
+                {@html ALL_SKILLS_MAP[item.skill].file}               
             </Icon>
           {/if}
-          {ALL_SKILLS[item.skill]?.label}
+          {ALL_SKILLS_MAP[item.skill]?.label}
         </div>
       {/each}
     </div>
@@ -37,7 +37,7 @@
   .card {
     --card-gap: var(--_fd-card-padding-inline);
     
-    @media (--tablet) {
+    @media (--md-n-above) {
       --card-gap: calc(
         var(--_fd-card-padding-inline) / 1.5 
       );

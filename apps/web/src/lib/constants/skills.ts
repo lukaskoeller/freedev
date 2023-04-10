@@ -38,119 +38,150 @@ import svgGo from 'assets/icons/go.svg?raw';
   import svgGoogleAnalytics from 'assets/icons/googleanalytics.svg?raw';
   import svgJiraSoftware from 'assets/icons/jirasoftware.svg?raw';
 
-export type Language = {
-  id: string;
-  name: string;
-  file?: string;
-  label: string;
-}
+export type TLanguage = typeof LANGUAGES[number]
 
-export const LANGUAGES: Language[] = [
+export const LANGUAGES = [
   {
     id: 'javascript',
     name: 'javascript',
     file: svgJavascript,
     label: 'Javascript',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'html5',
     name: 'html5',
     file: svgHtml5,
     label: 'HTML5',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'css3',
     name: 'css3',
     file: svgCss3,
     label: 'CSS3',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'sql',
     name: 'sql',
     label: 'SQL',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'python',
     name: 'python',
     file: svgPython,
     label: 'Python',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'typescript',
     name: 'typescript',
     file: svgTypescript,
     label: 'Typescript',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'java',
     name: 'java',
     label: 'Java',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'c#',
     name: 'c#',
     label: 'C#',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'c++',
     name: 'c++',
     file: svgCplusplus,
     label: 'C++',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'php',
     name: 'php',
     file: svgPhp,
     label: 'PHP',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'c',
     name: 'c',
     label: 'C',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'go',
     name: 'go',
     file: svgGo,
     label: 'Go',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'rust',
     name: 'rust',
     file: svgRust,
     label: 'Rust',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'kotlin',
     name: 'kotlin',
     file: svgKotlin,
     label: 'Kotlin',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'dart',
     name: 'dart',
     file: svgDart,
     label: 'Dart',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'ruby',
     name: 'ruby', 
     file: svgRuby,
     label: 'Ruby',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'assembly',
     name: 'assembly',
     file: svgAssembly,
     label: 'Assembly',
+    category: 'language',
+    subcategory: 'language',
   },
   {
     id: 'swift',
     name: 'swift',
     file: svgSwift,
     label: 'Swift',
+    category: 'language',
+    subcategory: 'language',
   },
-];
+] as const;
 
 export enum TechCategory {
   CloudService = 'Cloud Computing Service',
@@ -166,23 +197,16 @@ export enum TechCategory {
   BusinessTools = 'Business Tools',
 }
 
-export type Technology = {
-  id: string;
-  name: string;
-  file: string;
-  label: string;
-  category: TechCategory;
-  language: string[];
-  popularity: number;
-}
+export type TTechnology = typeof TECHNOLOGIES[number];
 
-export const TECHNOLOGIES: Technology[] = [
+export const TECHNOLOGIES = [
   {
     id: 'aws',
     name: 'aws',
     file: svgAmazonaws,
     label: 'AWS',
-    category: TechCategory.CloudService,
+    catgegory: 'technology',
+    subcategory: TechCategory.CloudService,
     language: ['python', 'javascript', 'typescript', 'go', 'java'],
     popularity: 7222,
   },
@@ -191,7 +215,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'astro',
     file: svgAstro,
     label: 'Astro',
-    category: TechCategory.Framwork,
+    catgegory: 'technology',
+    subcategory: TechCategory.Framwork,
     language: ['javascript', 'typescript'],
     popularity: 23217,
   },
@@ -200,7 +225,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'bun',
     file: svgBun,
     label: 'Bun',
-    category: TechCategory.JSRuntime,
+    catgegory: 'technology',
+    subcategory: TechCategory.JSRuntime,
     language: ['javascript', 'typescript'],
     popularity: 36572,
   },
@@ -209,7 +235,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'contentful',
     file: svgContentful,
     label: 'Contentful',
-    category: TechCategory.CMS,
+    catgegory: 'technology',
+    subcategory: TechCategory.CMS,
     language: ['javascript', 'typescript', 'php', 'go', 'java'], // @todo add more
     popularity: 973,
   },
@@ -218,7 +245,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'deno',
     file: svgDeno,
     label: 'Deno',
-    category: TechCategory.JSRuntime,
+    catgegory: 'technology',
+    subcategory: TechCategory.JSRuntime,
     language: ['javascript', 'typescript'],
     popularity: 86752,
   },
@@ -227,7 +255,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'flutter',
     file: svgFlutter,
     label: 'Flutter',
-    category: TechCategory.SDK,
+    catgegory: 'technology',
+    subcategory: TechCategory.SDK,
     language: ['dart'],
     popularity: 147191,
   },
@@ -236,7 +265,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'mongodb',
     file: svgMongodb,
     label: 'MongoDB',
-    category: TechCategory.Database,
+    catgegory: 'technology',
+    subcategory: TechCategory.Database,
     language: ['javascript', 'typescript'],
     popularity: 22912,
   },
@@ -245,7 +275,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'mysql',
     file: svgMysql,
     label: 'MySQL',
-    category: TechCategory.Database,
+    catgegory: 'technology',
+    subcategory: TechCategory.Database,
     language: ['sql'],
     popularity: 17562,
   },
@@ -254,7 +285,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'nodejs',
     file: svgNodedotjs,
     label: 'Node.js',
-    category: TechCategory.JSRuntime,
+    catgegory: 'technology',
+    subcategory: TechCategory.JSRuntime,
     language: ['javascript', 'typescript'],
     popularity: 91980,
   },
@@ -263,7 +295,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'postgresql',
     file: svgPostgresql,
     label: 'PostgreSQL',
-    category: TechCategory.Database,
+    catgegory: 'technology',
+    subcategory: TechCategory.Database,
     language: ['sql'],
     popularity: 11436,
   },
@@ -272,7 +305,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'react',
     file: svgReact,
     label: 'React',
-    category: TechCategory.Framwork,
+    catgegory: 'technology',
+    subcategory: TechCategory.Framwork,
     language: ['javascript', 'typescript'],
     popularity: 198820,
   },
@@ -281,7 +315,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'reactrouter',
     file: svgReactrouter,
     label: 'React Router',
-    category: TechCategory.Library,
+    catgegory: 'technology',
+    subcategory: TechCategory.Library,
     language: ['javascript', 'typescript', 'react-native'],
     popularity: 48978,
   },
@@ -290,7 +325,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'redux',
     file: svgRedux,
     label: 'Redux',
-    category: TechCategory.Library,
+    catgegory: 'technology',
+    subcategory: TechCategory.Library,
     language: ['javascript', 'typescript'],
     popularity: 58965,
   },
@@ -299,7 +335,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'remix',
     file: svgRemix,
     label: 'Remix',
-    category: TechCategory.Framwork,
+    catgegory: 'technology',
+    subcategory: TechCategory.Framwork,
     language: ['javascript', 'typescript'],
     popularity: 21102,
   },
@@ -308,7 +345,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'solid',
     file: svgSolid,
     label: 'Solid',
-    category: TechCategory.Framwork,
+    catgegory: 'technology',
+    subcategory: TechCategory.Framwork,
     language: ['javascript', 'typescript'],
     popularity: 23965,
   },
@@ -317,7 +355,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'storyblok',
     file: svgStoryblok,
     label: 'Storyblok',
-    category: TechCategory.CMS,
+    catgegory: 'technology',
+    subcategory: TechCategory.CMS,
     language: ['javascript', 'typescript'],
     popularity: 296,
   },
@@ -326,7 +365,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'storybook',
     file: svgStorybook,
     label: 'Storybook',
-    category: TechCategory.Library,
+    catgegory: 'technology',
+    subcategory: TechCategory.Library,
     language: ['javascript', 'typescript'],
     popularity: 75418,
   },
@@ -335,7 +375,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'strapi',
     file: svgStrapi,
     label: 'Strapi',
-    category: TechCategory.CMS,
+    catgegory: 'technology',
+    subcategory: TechCategory.CMS,
     language: ['javascript', 'typescript'],
     popularity: 50437,
   },
@@ -344,7 +385,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'stripe',
     file: svgStripe,
     label: 'Stripe',
-    category: TechCategory.Payment,
+    catgegory: 'technology',
+    subcategory: TechCategory.Payment,
     language: ['javascript', 'typescript'],
     popularity: 3172,
   },
@@ -353,7 +395,8 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'tailwindcss',
     file: svgTailwindcss,
     label: 'tailwindcss',
-    category: TechCategory.Utilities,
+    catgegory: 'technology',
+    subcategory: TechCategory.Utilities,
     language: ['HTML5'],
     popularity: 62949,
   },
@@ -362,51 +405,72 @@ export const TECHNOLOGIES: Technology[] = [
     name: 'vue',
     file: svgVuedotjs,
     label: 'Vue',
-    category: TechCategory.Framwork,
+    catgegory: 'technology',
+    subcategory: TechCategory.Framwork,
     language: ['javascript', 'typescript'],
     popularity: 201135,
   },
-];
+] as const;
 
-export type Tool = {
-  id: string;
-  name: string;
-  file?: string;
-  label: string;
+export type TTool = typeof TOOLS[number];
+
+export enum ToolCategory {
+  Tracking = 'Tracking',
+  Design = 'Design',
+  TMS = 'Tag Management System',
+  ProjectManagement = 'Project Management',
 }
 
-export const TOOLS: Tool[] = [
+export const TOOLS = [
   {
     id: 'figma',
     name: 'figma',
     file: svgFigma,
     label: 'Figma',
+    category: 'tool',
+    subcategory: ToolCategory.Design,
   },
   {
     id: 'googleanalytics',
     name: 'googleanalytics',
     file: svgGoogleAnalytics,
     label: 'Google Analytics',
+    category: 'tool',
+    subcategory: ToolCategory.Tracking,
   },
   {
     id: 'googletagmanager',
     name: 'googletagmanager',
     file: svgGoogletagmanager,
     label: 'Google Tag Manager',
+    category: 'tool',
+    subcategory: ToolCategory.Tracking,
   },
   {
     id: 'jirasoftware',
     name: 'jirasoftware',
     file: svgJiraSoftware,
     label: 'Jira',
+    category: 'tool',
+    subcategory: ToolCategory.ProjectManagement,
   },
-];
+] as const;
+
+export type TSkill = TLanguage | TTechnology | TTool;
 
 export const ALL_SKILLS = [
   ...LANGUAGES,
   ...TECHNOLOGIES,
   ...TOOLS
-].reduce((acc, cur) => {
+];
+
+export const ALL_SKILLS_MAP = ALL_SKILLS.reduce((acc, cur) => {
   acc[cur.id] = cur;
   return acc;
-}, {});
+}, {}) as TSkill[];
+
+export const SKILL_NAME = new Map([
+  ['language', 'Languages'],
+  ['technology', 'Technologies'],
+  ['tool', 'Tools'],
+]);
