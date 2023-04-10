@@ -13,12 +13,12 @@ This turborepo uses [NPM](https://www.npmjs.com/) as a package manager. It inclu
 
 ### Apps and Packages
 
-- `web`: A [SvelteKit](https://kit.svelte.dev/) App as the web platform.
+- `@freedev/web`: A [SvelteKit](https://kit.svelte.dev/) App as the web platform.
 - `assets`: Storing static assets used across packages and apps.
 - `config`: `eslint` and `postcss` configurations.
 - `errors`: Handling errors via custom classes (e.g. network errors).
 - `functions`: Manages serverless functions (Lambdas).
-- `infrastructure`: AWS serverless cloud infrastructure using [Pulumi](https://www.pulumi.com/).
+- `@freedev/infrastructure`: AWS serverless cloud infrastructure using [Pulumi](https://www.pulumi.com/).
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo.
 - `types`: Shared Typescript types.
 - `ui`: A [Lit](https://lit.dev/) component library running [storybook](https://storybook.js.org/) and [vite](https://vitejs.dev/).
