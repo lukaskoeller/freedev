@@ -1,4 +1,4 @@
-import { decode } from "@auth/core/jwt";
+import { decode, type JWT } from "@auth/core/jwt";
 import { AUTH_SECRET } from "$env/static/private";
 import { TOKEN_NAME } from "../constants";
 import type { Cookies } from "@sveltejs/kit";
@@ -8,9 +8,9 @@ import type { Cookies } from "@sveltejs/kit";
  * @see https://github.com/nextauthjs/next-auth/discussions/5595#discussioncomment-4651584
  * @see https://github.com/xmlking/svelte-starter-kit/blob/main/src/lib/server/middleware/authjs-helper.ts
  */
-export const getAccessToken = async (cookies: Cookies, raw = false) => {
+export const getAccessToken = async (cookies: Cookies, raw = false): Promise<JWT> => {
   const token = cookies.get(TOKEN_NAME); // TOKEN_NAME = "next-auth.session-token"
-  if (raw) return token;
+  // if (raw) return token;
   return await decode({
     token,
     secret: AUTH_SECRET,
