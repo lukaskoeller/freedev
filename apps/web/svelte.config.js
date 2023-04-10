@@ -1,6 +1,7 @@
 // @todo @deprecated ? @yarbsemaj/adapter-lambda
 // import adapter from '@yarbsemaj/adapter-lambda';
-import { adapter } from 'sveltekit-adapter-aws';
+// import { adapter } from 'sveltekit-adapter-aws';
+import { adapter } from '@freedev/sveltekit-adapter';
 import preprocess from 'svelte-preprocess';
 // @todo throws error due to .ts file
 // import { AWS_ROUTE_53_ZONE_NAME, STACK_NAME } from '@freedev/constants';
