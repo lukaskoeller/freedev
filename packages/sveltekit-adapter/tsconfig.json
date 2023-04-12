@@ -11,9 +11,13 @@
       "pretty": true,
       "noFallthroughCasesInSwitch": true,
       "noImplicitReturns": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "moduleResolution": "node",
+      "forceConsistentCasingInFileNames": true
   },
   "files": [
-      "index.ts"
+      "index.js"
   ],
   "extends": "tsconfig/base.json"
 }
