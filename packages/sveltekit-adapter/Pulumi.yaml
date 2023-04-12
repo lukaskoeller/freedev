@@ -1,4 +1,4 @@
-name: infrastructure
+name: sveltekit-adapter-infrastructure
 runtime:
   name: nodejs
   options:
