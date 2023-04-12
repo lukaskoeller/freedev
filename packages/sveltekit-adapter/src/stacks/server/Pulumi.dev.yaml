@@ -1,0 +1,6 @@
+config:
+  aws:region: eu-central-1
+  sveltekit-adapter-server:memorySizeStr: undefined
+  sveltekit-adapter-server:optionsPath: /Users/lkoeller/Documents/priv/freedev/apps/web/build/options
+  sveltekit-adapter-server:projectPath: .env
+  sveltekit-adapter-server:serverPath: /Users/lkoeller/Documents/priv/freedev/apps/web/build/server
