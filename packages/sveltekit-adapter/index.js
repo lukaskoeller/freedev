@@ -289,13 +289,14 @@ async function deployServerStack({
   MEMORY_SIZE,
 }) {
   // Setup server stack.
-  const serverPath = join(__dirname, 'stacks', 'server')
+  const serverPath = join(__dirname, 'stacks', 'server');
   /** @type {import('@pulumi/pulumi/automation/index.js').LocalProgramArgs} */
   const serverArgs = {
     stackName: stackName,
     workDir: serverPath,
   };
 
+  console.log('enter serverStack', serverArgs);
   const serverStack = await LocalWorkspace.createOrSelectStack(
     serverArgs,
     {
@@ -304,6 +305,7 @@ async function deployServerStack({
       }
     },
   );
+  console.log('serverStack', serverStack);
 
   // Set the AWS region.
   await serverStack.setConfig("aws:region", { value: zoneName });
@@ -314,7 +316,6 @@ async function deployServerStack({
     optionsPath: { value: options_directory },
     memorySizeStr: { value: String(MEMORY_SIZE) },
   });
-
 
   const serverStackUpResult = await serverStack.up({
     onOutput: console.info,
