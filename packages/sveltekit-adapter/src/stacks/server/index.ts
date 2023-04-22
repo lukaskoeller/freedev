@@ -17,14 +17,14 @@ const memorySizeStr = pulumiConfig.get('memorySize')
 const allowedOriginsStr = pulumiConfig.get('allowedOrigins')
 
 /** @type {number} */
-let memorySize = 128
+let memorySize: number = 128
 
 if (memorySizeStr) {
   memorySize = Number(memorySizeStr)
 }
 
 /** @type {EnvironmentVariables} */
-let optionsEnv = {}
+let optionsEnv: any = {};
 
 if (allowedOriginsStr) {
   optionsEnv['ALLOWED_ORIGINS'] = allowedOriginsStr
