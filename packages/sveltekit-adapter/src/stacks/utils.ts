@@ -1,6 +1,6 @@
 import * as path from 'path'
 
-import { config, DotenvConfigOutput } from 'dotenv'
+import { config } from 'dotenv'
 import { assign, keys, pick } from 'lodash'
 
 /**
@@ -27,9 +27,9 @@ export function getEnvironment(projectPath) {
  * @property {() => string[]} getRegisteredNames
  */
 export class NameRegister {
-  static singleton;
-  _names = [];
-  constructor() {};
+  private static singleton: NameRegister
+  private _names: string[] = []
+  private constructor() {}
 
   /**
    * Get the instance of the NameRegister singleton.
@@ -48,7 +48,7 @@ export class NameRegister {
    * @returns {string} The registered name.
    * @throws {Error} If the name is not unique.
    */
-  registerName(name) {
+  registerName(name: string): string {
     if (this._names.includes(name)) {
       throw Error(`Resource name "${name}" already used`)
     }
