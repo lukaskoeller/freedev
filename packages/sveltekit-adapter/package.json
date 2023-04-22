@@ -2,9 +2,16 @@
   "name": "@freedev/sveltekit-adapter",
   "version": "0.0.0",
   "main": "./index.js",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "type": "module",
   "scripts": {
-    "build": "npm run clean && tsc --project tsconfig.build.json && npm run copy-files",
+    "build": "npm run clean && tsc --project tsconfig.json && npm run copy-files",
     "clean": "rimraf dist",
     "copy-files": "copyfiles src/stacks/* src/stacks/**/* package.json README.md dist"
   },
