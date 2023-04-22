@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "main": "./index.js",
   "type": "module",
+  "scripts": {
+    "build": "npm run clean && tsc --project tsconfig.build.json && npm run copy-files",
+    "clean": "rimraf dist",
+    "copy-files": "copyfiles src/stacks/* src/stacks/**/* package.json README.md dist"
+  },
   "dependencies": {
     "@pulumi/command": "^0.7.2",
     "@pulumi/pulumi": "^3.62.0",
@@ -10,6 +15,8 @@
     "tsconfig": "^0.0.0"
   },
   "devDependencies": {
-    "@types/folder-hash": "^4.0.2"
+    "@types/folder-hash": "^4.0.2",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.0"
   }
 }
