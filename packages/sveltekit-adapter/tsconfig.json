@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
       "outDir": "dist",
-      "target": "es2016",
-      "module": "es2020",
+      "target": "es2022",
+      "module": "es2022",
       "allowJs": false,
       "checkJs": false,
       "noEmit": false,
@@ -22,6 +22,12 @@
       "allowSyntheticDefaultImports": true,
       "typeRoots": ["./node_modules/@types"],
   },
-  "exclude": ["vitest.config.ts", "tests", "./src/stacks", "./src/functions"],
+  "exclude": [
+    "vitest.config.ts",
+    "tests",
+    "./src/stacks",
+    "./src/functions",
+    "dist",
+  ],
   "extends": "tsconfig/base.json"
 }
