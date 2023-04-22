@@ -13,7 +13,7 @@
   "scripts": {
     "build": "npm run clean && tsc --project tsconfig.json && npm run copy-files",
     "clean": "rimraf dist",
-    "copy-files": "copyfiles src/stacks/* src/stacks/**/* package.json README.md dist"
+    "copy-files": "copyfiles src/stacks/* src/stacks/**/* src/functions/** package.json README.md dist"
   },
   "dependencies": {
     "@pulumi/command": "^0.7.2",
