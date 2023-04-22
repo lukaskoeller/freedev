@@ -19,6 +19,20 @@ import {
 import esbuild from 'esbuild';
 import { LocalWorkspace } from '@pulumi/pulumi/automation/index.js'
 
+export type AWSAdapterProps = {
+  artifactPath?: string;
+  autoDeploy?: boolean;
+  iacPath?: string;
+  stackName?: string;
+  defaultHeaders?: string[];
+  extraHeaders?: string[];
+  esbuildOptions?: any;
+  FQDN?: string;
+  memorySize?: number;
+  region?: string;
+  env?: { [key: string]: string };
+}
+
 /**
  * @typedef {{
  *  artifactPath?: string;
@@ -43,7 +57,7 @@ console.log(__dirname);
  * Sveltekit adapter that is used in `svelte.config.js`.
  * @param {AWSAdapterProps} args
  */
-export const adapter = (args) => {
+export const adapter = (args: AWSAdapterProps) => {
   const {
     artifactPath = 'build',
     autoDeploy = false,
@@ -69,9 +83,9 @@ export const adapter = (args) => {
   return {
     name: '@freedev/adapter-aws-pulumi',
     /**
-     * @param {any} builder 
+     * @param {import('@sveltejs/kit').Builder} builder 
      */
-    async adapt(builder) {
+    async adapt(builder: import('@sveltejs/kit').Builder) {
       const {
         server_directory,
         static_directory,
@@ -147,11 +161,17 @@ export const adapter = (args) => {
   };
 }
 
+export type SiteProps = {
+  server_directory: string;
+  static_directory: string;
+  prerendered_directory: string;
+}
+
 /**
  * @typedef {{
- *  server_directory: string
- *  static_directory: string
- *  prerendered_directory: string
+ *  server_directory: string;
+ *  static_directory: string;
+ *  prerendered_directory: string;
  * }} SiteProps
  */
 
@@ -172,11 +192,11 @@ export const adapter = (args) => {
  * @returns {Promise<SiteProps>}
  */
 const buildServer = async (
-  builder,
-  artifactPath = 'build',
-  esbuildOptions = {},
-  __dirname,
-) => {
+  builder: import('@sveltejs/kit').Builder,
+  artifactPath: string = 'build',
+  esbuildOptions: any = {},
+  __dirname: string,
+): Promise<SiteProps> => {
   // Empty build directory
   emptyDirSync(artifactPath);
 
@@ -241,9 +261,9 @@ const buildServer = async (
  * @returns {Promise<string>} Location of files for the options handler
  */
 const buildOptions = async (
-  builder,
-  artifactPath = 'build',
-) => {
+  builder: import('@sveltejs/kit').Builder,
+  artifactPath: string = 'build',
+): Promise<string> => {
   const options_directory = resolve(artifactPath, 'options')
   if (!existsSync(options_directory)) {
     mkdirSync(options_directory, { recursive: true });
@@ -279,12 +299,12 @@ const buildOptions = async (
  * @param {string} optionsURL 
  */
 const buildRouter = (
-  builder,
-  artifactPath,
-  static_directory,
-  prerendered_directory,
-  serverURL,
-  optionsURL,
+  builder: import('@sveltejs/kit').Builder,
+  artifactPath: string,
+  static_directory: string,
+  prerendered_directory: string,
+  serverURL: string,
+  optionsURL: string,
 ) => {
   const edge_directory = resolve(artifactPath, 'edge');
   if (!existsSync(edge_directory)) {
@@ -320,11 +340,17 @@ const buildRouter = (
   return edge_directory;
 };
 
+export type GetAllFilesArgs = {
+  dirPath: string;
+  basePath?: string;
+  arrayOfFiles?: string[];
+}
+
 /**
  * @typedef {{
- *  dirPath: string
- *  basePath?: string
- *  arrayOfFiles?: string[]
+ *  dirPath: string;
+ *  basePath?: string;
+ *  arrayOfFiles?: string[];
  * }} GetAllFilesArgs
  * 
  * @param {GetAllFilesArgs} args 
@@ -334,7 +360,7 @@ const getAllFiles = function ({
   dirPath,
   basePath = dirPath,
   arrayOfFiles: baseFiles,
-}) {
+}: GetAllFilesArgs): Required<GetAllFilesArgs>["arrayOfFiles"] {
   let arrayOfFiles = baseFiles || [];
   const files = readdirSync(dirPath);
 
@@ -378,11 +404,25 @@ async function deployServerStack({
   server_directory,
   options_directory,
   memorySize,
-}) {
+}: {
+    __dirname: string;
+    stackName: Required<AWSAdapterProps>["stackName"];
+    region: Required<AWSAdapterProps>["region"];
+    server_directory: string;
+    options_directory: string;
+    memorySize?: AWSAdapterProps["memorySize"];
+  }): Promise<{
+  serverStack: import('@pulumi/pulumi/automation/index.js').Stack;
+  serverDomain: string;
+  optionsDomain: string;
+  serverArn: string;
+  optionsArn: string;
+  serverPath: string;
+}> {
   // Setup server stack.
   const serverPath = join(__dirname, 'stacks', 'server');
   /** @type {import('@pulumi/pulumi/automation/index.js').LocalProgramArgs} */
-  const serverArgs = {
+  const serverArgs: import('@pulumi/pulumi/automation/index.js').LocalProgramArgs = {
     stackName: stackName,
     workDir: serverPath,
   };
@@ -455,10 +495,24 @@ async function deployMainStack({
   extraHeaders,
   serverArn,
   optionsArn,
-}) {
+}: {
+    stackName: Required<AWSAdapterProps>["stackName"];
+    region: Required<AWSAdapterProps>["region"];
+    edge_directory: string;
+    static_directory: string;
+    prerendered_directory: string;
+    FQDN?: AWSAdapterProps["FQDN"];
+    defaultHeaders: Required<AWSAdapterProps>["defaultHeaders"];
+    extraHeaders: AWSAdapterProps["extraHeaders"];
+    serverArn: string;
+    optionsArn: string;
+  }): Promise<{
+  mainAllowedOrigins: string;
+  mainPath: string;
+}> {
   const mainPath = join(__dirname, 'stacks', 'main')
   /** @type {import('@pulumi/pulumi/automation/index.js').LocalProgramArgs} */
-  const mainArgs = {
+  const mainArgs: import('@pulumi/pulumi/automation/index.js').LocalProgramArgs = {
     stackName: stackName,
     workDir: mainPath,
   }
@@ -488,7 +542,7 @@ async function deployMainStack({
   }
 
   /** @type {string[]} */
-  let serverHeaders = [...defaultHeaders];
+  let serverHeaders: string[] = [...defaultHeaders];
 
   if (extraHeaders) {
     serverHeaders = serverHeaders.concat(extraHeaders)
@@ -522,7 +576,10 @@ async function deployMainStack({
 async function deployServerStackUpdate({
   serverStack,
   mainAllowedOrigins,
-}) {
+}: {
+    serverStack: import('@pulumi/pulumi/automation/index.js').Stack;
+    mainAllowedOrigins: string;
+  }) {
   let serverAllowedOrigins = '';
   const serverConfig = await serverStack.getAllConfig()
   
