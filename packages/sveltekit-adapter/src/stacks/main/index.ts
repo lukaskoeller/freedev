@@ -28,7 +28,7 @@ const iamForLambda = getLambdaRole()
 const routerHandler = buildRouter(iamForLambda, edgePath);
 
 /** @type {pulumi.Input<string> | undefined} */
-let certificateArn;
+let certificateArn: pulumi.Input<string> | undefined;
 
 
 if (FQDN) {
@@ -43,7 +43,7 @@ const distribution = buildCDN(
   bucket,
   serverHeaders,
   FQDN,
-  certificateArn
+  certificateArn,
 )
 
 if (FQDN) {

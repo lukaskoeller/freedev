@@ -215,8 +215,8 @@ export function buildCDN(
   routerFunction: aws.lambda.Function,
   bucket: aws.s3.Bucket,
   serverHeaders: string[],
-  FQDN: string,
-  certificateArn: pulumi.Input<string>,
+  FQDN?: string,
+  certificateArn?: pulumi.Input<string>,
 ): aws.cloudfront.Distribution {
   const defaultRequestPolicy = new aws.cloudfront.OriginRequestPolicy(
     registerName('DefaultRequestPolicy'),
