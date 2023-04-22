@@ -10,14 +10,14 @@ const nameRegister = NameRegister.getInstance()
  * @param {string} name 
  * @returns {string}
  */
-let registerName = (name) => nameRegister.registerName(name);
+let registerName = (name: string): string => nameRegister.registerName(name);
 
 /**
  * Gets an AWS IAM role for use with Lambda functions.
  * @function
  * @returns {aws.iam.Role}
  */
-export function getLambdaRole() {
+export function getLambdaRole(): aws.iam.Role {
   const iamForLambda = new aws.iam.Role(registerName('IamForLambda'), {
     assumeRolePolicy: `{
           "Version": "2012-10-17",
@@ -59,12 +59,12 @@ export function getLambdaRole() {
  * @returns {aws.lambda.FunctionUrl}
  */
 export function buildLambda(
-  name,
-  iamForLambda,
-  codePath,
-  environment,
-  memorySize,
-) {
+  name: string,
+  iamForLambda: aws.iam.Role,
+  codePath: string,
+  environment?: object,
+  memorySize?: number,
+): aws.lambda.FunctionUrl {
   const lambdaHandler = new aws.lambda.Function(registerName(name), {
     code: new pulumi.asset.FileArchive(codePath),
     role: iamForLambda.arn,

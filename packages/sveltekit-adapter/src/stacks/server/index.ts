@@ -9,6 +9,7 @@ import { getEnvironment } from '../utils'
 
 const pulumiConfig = new pulumi.Config()
 
+/** @type {string!} */
 const projectPath = pulumiConfig.get('projectPath')
 const serverPath = pulumiConfig.get('serverPath')
 const optionsPath = pulumiConfig.get('optionsPath')
@@ -30,12 +31,12 @@ if (allowedOriginsStr) {
 }
 
 const iamForLambda = getLambdaRole()
-const environment = getEnvironment(projectPath)
+const environment = getEnvironment(projectPath!)
 
 const serverURL = buildLambda(
   'LambdaServer',
   iamForLambda,
-  serverPath,
+  serverPath!,
   environment.parsed,
   memorySize
 )
@@ -43,7 +44,7 @@ const serverURL = buildLambda(
 const optionsURL = buildLambda(
   'LambdaOptions',
   iamForLambda,
-  optionsPath,
+  optionsPath!,
   optionsEnv
 )
 
