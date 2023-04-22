@@ -1,6 +1,6 @@
 import * as path from 'path'
 
-import { config } from 'dotenv'
+import { config, DotenvConfigOutput } from 'dotenv'
 import { assign, keys, pick } from 'lodash'
 
 /**
@@ -8,14 +8,14 @@ import { assign, keys, pick } from 'lodash'
  * @param {string} projectPath 
  * @returns {DotenvConfigOutput}
  */
-export function getEnvironment(projectPath) {
+export function getEnvironment(projectPath: string): DotenvConfigOutput {
   const dotenv = config({ path: path.join(projectPath, '.env') })
   const parsed = assign(
     {},
     dotenv.parsed,
     pick(process.env, keys(dotenv.parsed))
   )
-  return { parsed }
+  return { parsed } as DotenvConfigOutput
 }
 
 /**
