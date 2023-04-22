@@ -1,23 +1,27 @@
 {
   "compilerOptions": {
-      "outDir": "bin",
+      "outDir": "dist",
       "target": "es2016",
       "module": "es2020",
       "allowJs": true,
       "checkJs": true,
       "noEmit": true,
-      "sourceMap": true,
       "experimentalDecorators": true,
       "pretty": true,
-      "noFallthroughCasesInSwitch": true,
+      "noFallthroughCasesInSwitch": false,
       "noImplicitReturns": true,
       "esModuleInterop": true,
       "strict": true,
       "moduleResolution": "node",
-      "forceConsistentCasingInFileNames": true
+      "forceConsistentCasingInFileNames": true,
+      "strictNullChecks": true,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "inlineSourceMap": true,
+      "strictPropertyInitialization": false,
+      "allowSyntheticDefaultImports": true,
+      "typeRoots": ["./node_modules/@types"],
   },
-  "files": [
-      "index.js"
-  ],
+  "exclude": ["vitest.config.ts", "tests", "./src/stacks", "./src/functions"],
   "extends": "tsconfig/base.json"
 }
