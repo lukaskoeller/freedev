@@ -1,6 +1,0 @@
-name: sveltekit-adapter-infrastructure
-runtime:
-  name: nodejs
-  options:
-    typescript: false
-description: AWS infrastructure for a sveltekit app
