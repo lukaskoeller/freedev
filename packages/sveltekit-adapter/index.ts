@@ -1,1 +1,1 @@
-export { adapter } from './src/index';
+export { adapter } from './src/index.js';
