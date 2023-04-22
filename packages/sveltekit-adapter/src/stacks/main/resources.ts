@@ -14,7 +14,7 @@ const nameRegister = NameRegister.getInstance()
  * @param {string} name 
  * @returns {string}
  */
-let registerName = (name) => {
+let registerName = (name: string): string => {
   return nameRegister.registerName(name)
 }
 
@@ -23,7 +23,7 @@ const eastRegion = new aws.Provider(registerName('ProviderEast'), {
 })
 
 /** @returns {aws.iam.Role} */
-export function getLambdaRole() {
+export function getLambdaRole(): aws.iam.Role {
   const iamForLambda = new aws.iam.Role(registerName('IamForLambda'), {
     assumeRolePolicy: `{
           "Version": "2012-10-17",
@@ -62,9 +62,9 @@ export function getLambdaRole() {
  * @returns {aws.lambda.Function}
  */
 export function buildRouter(
-  iamForLambda,
-  routerPath,
-) {
+  iamForLambda: aws.iam.Role,
+  routerPath: string,
+): aws.lambda.Function {
   const routerHandler = new aws.lambda.Function(
     registerName('LambdaRouterFunctionHandler'),
     {
@@ -88,9 +88,9 @@ export function buildRouter(
  * @returns {pulumi.Output<string>}
  */
 export function validateCertificate(
-  FQDN,
-  domainName
-) {
+  FQDN: string,
+  domainName: string
+): pulumi.Output<string> {
   if (!FQDN.includes(domainName)) {
     throw new Error('FQDN must contain domainName')
   }
@@ -139,9 +139,9 @@ export function validateCertificate(
  * @returns {aws.s3.Bucket}
  */
 export function buildStatic(
-  staticPath,
-  prerenderedPath,
-) {
+  staticPath: string,
+  prerenderedPath: string,
+): aws.s3.Bucket {
   const bucket = new aws.s3.Bucket(registerName('StaticContentBucket'), {
     acl: 'private',
     forceDestroy: true,
@@ -157,7 +157,7 @@ export function buildStatic(
  * @param {string} dirPath 
  * @param {aws.s3.Bucket} bucket 
  */
-export function uploadStatic(dirPath, bucket) {
+export function uploadStatic(dirPath: string, bucket: aws.s3.Bucket) {
   /**
    * crawlDirectory recursive crawls the provided directory,
    * applying the provided function to every file it contains.
@@ -166,7 +166,7 @@ export function uploadStatic(dirPath, bucket) {
    * @param {string} dir 
    * @param {(_: string) => void} f 
    */
-  function crawlDirectory(dir, f) {
+  function crawlDirectory(dir: string, f: (_: string) => void) {
     const files = fs.readdirSync(dir)
     for (const file of files) {
       const filePath = path.join(dir, file)
@@ -184,7 +184,7 @@ export function uploadStatic(dirPath, bucket) {
   crawlDirectory(
     dirPath,
     /** @param {string} filePath */
-    (filePath) => {
+    (filePath: string) => {
       const relativeFilePath = filePath.replace(dirPath + path.sep, '')
       const posixFilePath = relativeFilePath.split(path.sep).join(path.posix.sep)
       const contentFile = new aws.s3.BucketObject(
@@ -212,12 +212,12 @@ export function uploadStatic(dirPath, bucket) {
  * @returns {aws.cloudfront.Distribution}
  */
 export function buildCDN(
-  routerFunction,
-  bucket,
-  serverHeaders,
-  FQDN,
-  certificateArn,
-) {
+  routerFunction: aws.lambda.Function,
+  bucket: aws.s3.Bucket,
+  serverHeaders: string[],
+  FQDN: string,
+  certificateArn: pulumi.Input<string>,
+): aws.cloudfront.Distribution {
   const defaultRequestPolicy = new aws.cloudfront.OriginRequestPolicy(
     registerName('DefaultRequestPolicy'),
     {
@@ -300,7 +300,7 @@ export function buildCDN(
           },
         ],
         originRequestPolicyId: defaultRequestPolicy.id,
-        cachePolicyId: optimizedCachePolicy.apply((policy) => policy.id),
+        cachePolicyId: optimizedCachePolicy.apply((policy) => /** @type {string!} */ policy.id!),
         targetOriginId: 'default',
       },
       restrictions: {
@@ -370,9 +370,9 @@ export function buildCDN(
  * @returns {aws.route53.Record}
  */
 export function createAliasRecord(
-  targetDomain,
-  distribution,
-) {
+  targetDomain: string,
+  distribution: aws.cloudfront.Distribution,
+): aws.route53.Record {
   const domainParts = exports.getDomainAndSubdomain(targetDomain)
   const hostedZoneId = aws.route53
     .getZone({ name: domainParts.parentDomain }, { async: true })
@@ -405,7 +405,10 @@ export function createAliasRecord(
  *  parentDomain: string
  * }}
  */
-export function getDomainAndSubdomain(domain) {
+export function getDomainAndSubdomain(domain: string): {
+  subdomain: string
+  parentDomain: string
+} {
   const parts = domain.split('.')
   if (parts.length < 2) {
     throw new Error(`No TLD found on ${domain}`)
@@ -430,10 +433,22 @@ export function getDomainAndSubdomain(domain) {
  * @param {string} prerenderedPath 
  */
 export function buildInvalidator(
-  distribution,
-  staticPath,
-  prerenderedPath,
+  distribution: aws.cloudfront.Distribution,
+  staticPath: string,
+  prerenderedPath: string,
 ) {
+  interface PathHashResourceInputs {
+    path: pulumi.Input<string>
+  }
+
+  interface PathHashInputs {
+    path: string
+  }
+
+  interface PathHashOutputs {
+    hash: string
+  }
+
   /**
    * @typedef {{
    *  path: pulumi.Input<string>
@@ -449,7 +464,7 @@ export function buildInvalidator(
    */
 
   /** @type {pulumi.dynamic.ResourceProvider} */
-  const pathHashProvider = {
+  const pathHashProvider: pulumi.dynamic.ResourceProvider = {
     /**
      * @param {PathHashInputs} inputs 
      * @returns {{
@@ -457,7 +472,7 @@ export function buildInvalidator(
      *  outs: { hash: string }
      * }}
      */
-    async create(inputs) {
+    async create(inputs: PathHashInputs) {
       const folderHash = await import('folder-hash')
       const pathHash = await folderHash.hashElement(inputs.path)
       return { id: inputs.path, outs: { hash: pathHash.toString() } }
@@ -470,12 +485,12 @@ export function buildInvalidator(
      * @returns {Promise<pulumi.dynamic.DiffResult>}
      */
     async diff(
-      id,
-      previousOutput,
-      news,
-    ) {
+      id: string,
+      previousOutput: PathHashOutputs,
+      news: PathHashInputs,
+    ): Promise<pulumi.dynamic.DiffResult> {
       /** @type {string[]} */
-      const replaces = []
+      const replaces: string[] = []
       let changes = true
 
       const oldHash = previousOutput.hash
@@ -499,7 +514,7 @@ export function buildInvalidator(
      * @param {PathHashInputs} news 
      * @returns 
      */
-    async update(id, olds, news) {
+    async update(id: any, olds: PathHashInputs, news: PathHashInputs) {
       const folderHash = await import('folder-hash')
       const pathHash = await folderHash.hashElement(news.path)
       return { outs: { hash: pathHash.toString() } }
@@ -512,15 +527,16 @@ export function buildInvalidator(
    * @property {pulumi.Output<string>} hash - The hashed output.
    */
   class PathHash extends pulumi.dynamic.Resource {
+    public readonly hash!: pulumi.Output<string>
     /**
      * @param {string} name - The name of the resource.
      * @param {PathHashResourceInputs} args - The arguments to configure the resource.
      * @param {pulumi.CustomResourceOptions} [opts] - Additional resource options.
      */
     constructor(
-      name,
-      args,
-      opts,
+      name: string,
+      args: PathHashResourceInputs,
+      opts?: pulumi.CustomResourceOptions,
     ) {
       super(pathHashProvider, name, { hash: undefined, ...args }, opts)
     }

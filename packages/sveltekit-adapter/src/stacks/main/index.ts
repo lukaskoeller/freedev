@@ -10,15 +10,12 @@ import {
   buildInvalidator,
 } from './resources'
 
-const pulumiConfig = new pulumi.Config()
-const edgePath = pulumiConfig.get('edgePath')
-const staticPath = pulumiConfig.get('staticPath')
-const prerenderedPath = pulumiConfig.get('prerenderedPath')
-const FQDN = pulumiConfig.get('FQDN')
-const serverHeadersStr = pulumiConfig.get('serverHeaders')
-
-const [_, zoneName, ...MLDs] = FQDN.split('.') || []
-const domainName = [zoneName, ...MLDs].join('.')
+const pulumiConfig = new pulumi.Config();
+const edgePath = pulumiConfig.get('edgePath') as string;
+const staticPath = pulumiConfig.get('staticPath') as string;
+const prerenderedPath = pulumiConfig.get('prerenderedPath') as string;
+const FQDN = pulumiConfig.get('FQDN') as string;
+const serverHeadersStr = pulumiConfig.get('serverHeaders');
 
 /** @type {string[]} */
 let serverHeaders = [];
@@ -35,6 +32,8 @@ let certificateArn;
 
 
 if (FQDN) {
+  const [_, zoneName, ...MLDs] = FQDN.split('.');
+  const domainName = [zoneName, ...MLDs].join('.');
   certificateArn = validateCertificate(FQDN, domainName);
 }
 
@@ -52,7 +51,7 @@ if (FQDN) {
 }
 
 /** @type {(string | pulumi.Output<string>)[]} */
-var getOrigins = [
+var getOrigins: (string | pulumi.Output<string>)[] = [
   pulumi.interpolate`https://${distribution.domainName}`,
 ]
 FQDN && getOrigins.push(`https://${FQDN}`)
