@@ -434,14 +434,12 @@ async function deployServerStack({
     workDir: serverPath,
   };
 
-  console.log('enter serverStack', serverArgs);
   const serverStack = await LocalWorkspace.createOrSelectStack(
     serverArgs,
     {
       envVars: IGNORE_VARS,
     },
   );
-  console.log('serverStack', serverStack);
 
   // Set the AWS region.
   await serverStack.setConfig("aws:region", { value: region });
@@ -457,7 +455,8 @@ async function deployServerStack({
   const serverStackUpResult = await serverStack.up({
     onOutput: console.info,
   });
-
+  console.log('serverStackUpResult', serverStackUpResult);
+  
   return {
     serverDomain: serverStackUpResult.outputs.serverDomain.value,
     optionsDomain: serverStackUpResult.outputs.optionsDomain.value,
