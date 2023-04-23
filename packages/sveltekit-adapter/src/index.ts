@@ -51,7 +51,6 @@ export type AWSAdapterProps = {
 
 const url = new URL('', import.meta.url);
 const __dirname = url.pathname.replace('/index.js', '');
-console.log(__dirname);
 
 /**
  * Sveltekit adapter that is used in `svelte.config.js`.
@@ -455,7 +454,6 @@ async function deployServerStack({
   const serverStackUpResult = await serverStack.up({
     onOutput: console.info,
   });
-  console.log('serverStackUpResult', serverStackUpResult);
   
   return {
     serverDomain: serverStackUpResult.outputs.serverDomain.value,
