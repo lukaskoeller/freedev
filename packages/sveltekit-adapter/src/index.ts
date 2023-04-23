@@ -444,7 +444,7 @@ async function deployServerStack({
   await serverStack.setConfig("aws:region", { value: region });
 
   await serverStack.setAllConfig({
-    projectPath: { value: '.env' },
+    projectPath: { value: process.cwd() },
     serverPath: { value: server_directory },
     optionsPath: { value: options_directory },
     memorySizeStr: { value: String(memorySize) },
