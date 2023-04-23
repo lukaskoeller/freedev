@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run clean && npm run tsc && npm run copy-files",
-    "tsc": "tsc",
+    "tsc": "tsc --project tsconfig.build.json",
     "clean": "rimraf dist",
     "copy-files": "copyfiles src/stacks/* src/stacks/**/* src/functions/** package.json README.md dist"
   },

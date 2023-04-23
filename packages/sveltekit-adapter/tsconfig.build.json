@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+  },
+  "exclude": ["vitest.config.ts", "tests", "stacks"],
+  "extends": "./tsconfig.json",
+}
