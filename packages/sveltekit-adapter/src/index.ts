@@ -161,6 +161,13 @@ export const adapter = (args: AWSAdapterProps) => {
   };
 }
 
+const IGNORE_VARS = {
+  // ignore the whole package directory
+  TS_NODE_IGNORE: '^(?!.*(sveltekit-adapter)).*',
+  TS_NODE_TYPE_CHECK: '0',
+  PULUMI_NODEJS_TRANSPILE_ONLY: 'true',
+}
+
 export type SiteProps = {
   server_directory: string;
   static_directory: string;
@@ -431,11 +438,7 @@ async function deployServerStack({
   const serverStack = await LocalWorkspace.createOrSelectStack(
     serverArgs,
     {
-      envVars: {
-        TS_NODE_IGNORE: '^(?!.*(@freedev/sveltekit-adapter)).*',
-        TS_NODE_TYPE_CHECK: '0',
-        PULUMI_NODEJS_TRANSPILE_ONLY: 'true',
-      }
+      envVars: IGNORE_VARS,
     },
   );
   console.log('serverStack', serverStack);
@@ -519,11 +522,7 @@ async function deployMainStack({
   const mainStack = await LocalWorkspace.createOrSelectStack(
     mainArgs,
     {
-      envVars: {
-        TS_NODE_IGNORE: '^(?!.*(@freedev/sveltekit-adapter)).*',
-        TS_NODE_TYPE_CHECK: '0',
-        PULUMI_NODEJS_TRANSPILE_ONLY: 'true',
-      }
+      envVars: IGNORE_VARS
     })
 
   // Set the AWS region.
