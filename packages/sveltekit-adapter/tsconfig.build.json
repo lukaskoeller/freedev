@@ -2,6 +2,11 @@
   "compilerOptions": {
     "outDir": "dist",
   },
-  "exclude": ["vitest.config.ts", "tests", "stacks"],
+  "exclude": [
+    "vitest.config.ts",
+    "tests",
+    "./src/stacks",
+    "./src/functions",
+  ],
   "extends": "./tsconfig.json",
 }
