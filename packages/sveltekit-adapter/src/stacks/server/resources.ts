@@ -72,11 +72,11 @@ export function buildLambda(
     runtime: 'nodejs18.x',
     timeout: 900,
     memorySize: memorySize,
-    environment: {
+    ...Object.keys(environment).length ? { environment: {
       variables: {
         ...environment,
       },
-    },
+    }} : {},
   })
 
   const lambdaURL = new aws.lambda.FunctionUrl(`${name}URL`, {
