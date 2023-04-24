@@ -99,19 +99,31 @@ export function validateCertificate(
     throw new Error('FQDN must contain domainName')
   }
 
+  const certificateConfig = {
+    domainName: FQDN,
+    validationMethod: 'DNS',
+    // @todo includeWWW config option?
+    subjectAlternativeNames: [
+      `www.${FQDN}`
+    ],
+  };
+
   const certificate = new aws.acm.Certificate(
     registerName('Certificate'),
-    {
-      domainName: FQDN,
-      validationMethod: 'DNS',
-    },
-    { provider: eastRegion }
+    certificateConfig,
+    { provider: eastRegion },
   )
-
-  const hostedZone = aws.route53.getZone({
+  
+  const hostedZone = new aws.route53.Zone(registerName('HostedZone'), {
     name: domainName,
-    privateZone: false,
-  })
+  });
+
+  // const hostedZone = aws.route53.getZone({
+  //   name: domainName,
+  //   privateZone: false,
+  // })
+
+  // @todo NEXT compare with infrastructure/common/models/certificate
 
   const validationRecord = new aws.route53.Record(
     registerName(`${FQDN}.validation`),
@@ -120,7 +132,8 @@ export function validateCertificate(
       records: [certificate.domainValidationOptions[0].resourceRecordValue],
       ttl: 60,
       type: certificate.domainValidationOptions[0].resourceRecordType,
-      zoneId: hostedZone.then((x) => x.zoneId),
+      // zoneId: hostedZone.then((x) => x.zoneId),
+      zoneId: hostedZone.id,
     }
   )
 
