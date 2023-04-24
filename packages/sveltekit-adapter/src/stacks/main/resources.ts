@@ -18,9 +18,13 @@ let registerName = (name: string): string => {
   return nameRegister.registerName(name)
 }
 
-const eastRegion = new aws.Provider(registerName('ProviderEast'), {
-  region: 'us-east-1',
-})
+/**
+ * US East Region Provider
+ */
+const eastRegion = new aws.Provider("ProviderEast", {
+  profile: aws.config.profile,
+  region: "us-east-1", // Per AWS, ACM certificate must be in the us-east-1 region. Same for Lambda@edge
+});
 
 /** @returns {aws.iam.Role} */
 export function getLambdaRole(): aws.iam.Role {
