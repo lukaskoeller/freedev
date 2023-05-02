@@ -337,7 +337,7 @@ export function buildCDN(
       description: 'Default Origin Access Control',
       name: 'CloudFrontOriginAccessControl',
       originAccessControlOriginType: 's3',
-      signingBehavior: 'always',
+      signingBehavior: 'no-override',
       signingProtocol: 'sigv4',
     }
   )
@@ -354,6 +354,7 @@ export function buildCDN(
     {
       enabled: true,
       origins: [
+        // @todo SSR lambda as second origin?
         {
           originId: 'default',
           domainName: bucket.bucketRegionalDomainName,
