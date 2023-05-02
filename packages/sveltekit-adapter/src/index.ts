@@ -442,6 +442,8 @@ async function deployServerStack({
 
   // Set the AWS region.
   await serverStack.setConfig("aws:region", { value: region });
+  await serverStack.setConfig("aws:profile", { value: 'iac' }); // @todo make configurable?
+  await serverStack.setConfig("aws:skipCredentialsValidation", { value: 'true' }); // @todo make configurable?
 
   await serverStack.setAllConfig({
     projectPath: { value: process.cwd() },
