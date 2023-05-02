@@ -296,7 +296,11 @@ const buildOptions = async (
 };
 
 /**
- * 
+ * Prepare lambda@edge origin router for deployment to AWS services
+ *
+ * Note that this function will forward the original Host header as
+ * 'X-Forwarded-Host' to the lambda URLs.
+ *
  * @param {import('@sveltejs/kit').Builder} builder Provided by [Sveltektit](https://kit.svelte.dev/docs/types#public-types-builder)
  * @param {string} artifactPath The path where to place to SvelteKit files
  * @param {string} static_directory 
