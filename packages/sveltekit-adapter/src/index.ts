@@ -530,6 +530,8 @@ async function deployMainStack({
 
   // Set the AWS region.
   await mainStack.setConfig("aws:region", { value: region });
+  await mainStack.setConfig("aws:profile", { value: 'iac' }); // @todo make configurable?
+  await mainStack.setConfig("aws:skipCredentialsValidation", { value: 'true' }); // @todo make configurable?
 
   await mainStack.setAllConfig({
     edgePath: { value: edge_directory },
