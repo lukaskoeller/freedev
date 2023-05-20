@@ -11,6 +11,7 @@ import {
   SSLCertificate,
   SSLCertificateValidation,
   createHostedZone,
+  createWWWAliasRecord,
 } from './resources';
 
 // Equals 60sec * 10 = 600sec | 10min
@@ -19,7 +20,7 @@ const tenMinutes = 600;
 /**
  * US East Region Provider
  */
-const eastRegion = new aws.Provider("ProviderEast", {
+export const eastRegion = new aws.Provider("ProviderEast", {
   profile: aws.config.profile,
   region: "us-east-1", // Per AWS, ACM certificate must be in the us-east-1 region. Same for Lambda@edge
 });
@@ -45,43 +46,45 @@ const routerHandler = buildRouter(iamForLambda, edgePath);
 let certificateArn: pulumi.Input<string> | undefined;
 
 
-if (FQDN) {
-  const [_, zoneName, ...MLDs] = FQDN.split('.');
-  const domainName = [zoneName, ...MLDs].join('.');
+const [_, zoneName, ...MLDs] = FQDN.split('.');
+const domainName = [zoneName, ...MLDs].join('.');
 
-  const hostedZone = createHostedZone({ FQDN });
-  const hostedZoneId = hostedZone.id;
+const hostedZone = createHostedZone({ FQDN, domainName });
+const hostedZoneId = hostedZone.id;
 
-  const { certificate } = new SSLCertificate('Certificate', {
-    targetDomain: domainName,
-    includeWWW: false, // @todo add to config? Get rid if FQDN is used?
-    region: eastRegion,
-  });
+const { certificate } = new SSLCertificate('Certificate', {
+  targetDomain: domainName,
+  includeWWW: true, // @todo add to config? Get rid if FQDN is used?
+  region: eastRegion,
+});
 
-  const {
-    certificateValidation,
-  } = new SSLCertificateValidation('CertificateValidation', {
-    certificate,
-    hostedZoneId,
-    ttl: tenMinutes,
-    includeWWW: false,  // @todo add to config? Get rid if FQDN is used?
-    region: eastRegion,
-  });
+const {
+  certificateValidation,
+} = new SSLCertificateValidation('CertificateValidation', {
+  certificate,
+  hostedZoneId,
+  ttl: tenMinutes,
+  includeWWW: true,  // @todo add to config? Get rid if FQDN is used?
+  region: eastRegion,
+});
 
-  certificateArn = certificateValidation.certificateArn;
-}
+certificateArn = certificateValidation.certificateArn;
 
 const bucket = buildStatic(staticPath, prerenderedPath);
-const distribution = buildCDN(
-  routerHandler,
+const distribution = buildCDN({
+  routerFunction: routerHandler,
   bucket,
   serverHeaders,
   FQDN,
+  domainName,
   certificateArn,
-)
+  includeWWW: true, // @todo add to config? Get rid if FQDN is used?
+}); // @todo include options { dependsOn: contentBucket } ?
 
-if (FQDN) {
-  createAliasRecord(FQDN, distribution)
+createAliasRecord(domainName, distribution);
+const includeWWW = true; // @todo add to config? Get rid if FQDN is used?
+if (includeWWW) {
+  const cnameRecord = createWWWAliasRecord(domainName, distribution);
 }
 
 /** @type {(string | pulumi.Output<string>)[]} */
