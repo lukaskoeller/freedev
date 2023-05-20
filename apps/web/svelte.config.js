@@ -1,6 +1,4 @@
-// @todo @deprecated ? @yarbsemaj/adapter-lambda
-// import adapter from '@yarbsemaj/adapter-lambda';
-// import { adapter } from 'sveltekit-adapter-aws';
+
 import { adapter } from '@freedev/sveltekit-adapter';
 import preprocess from 'svelte-preprocess';
 // @todo throws error due to .ts file
