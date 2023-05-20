@@ -7,6 +7,7 @@ import * as pulumi from '@pulumi/pulumi'
 import { local } from '@pulumi/command'
 
 import { NameRegister } from '../utils'
+import { eastRegion } from '.'
 
 const nameRegister = NameRegister.getInstance()
 /**
@@ -17,14 +18,6 @@ const nameRegister = NameRegister.getInstance()
 let registerName = (name: string): string => {
   return nameRegister.registerName(name)
 }
-
-/**
- * US East Region Provider
- */
-const eastRegion = new aws.Provider("ProviderEast", {
-  profile: aws.config.profile,
-  region: "us-east-1", // Per AWS, ACM certificate must be in the us-east-1 region. Same for Lambda@edge
-});
 
 /** @returns {aws.iam.Role} */
 export function getLambdaRole(): aws.iam.Role {
@@ -214,9 +207,9 @@ export class SSLCertificateValidation extends pulumi.ComponentResource {
   }
 }
 
-export const createHostedZone = ({ FQDN }: { FQDN: string }) => {
+export const createHostedZone = ({ FQDN, domainName }: { FQDN: string, domainName: string }) => {
   const hostedZone = new aws.route53.Zone(registerName('HostedZone'), {
-    name: FQDN,
+    name: domainName,
   });
 
   // const hostedZone = aws.route53.getZone({
@@ -299,20 +292,29 @@ export function uploadStatic(dirPath: string, bucket: aws.s3.Bucket) {
 
 /**
  * 
- * @param {aws.lambda.Function} routerFunction 
- * @param {aws.s3.Bucket} bucket 
- * @param {string[]} serverHeaders 
- * @param {string} [FQDN]
- * @param {pulumi.Input<string>} [certificateArn]
+ * @param {{
+ *  routerFunction: aws.lambda.Function,
+ *  bucket: aws.s3.Bucket,
+ *  serverHeaders: string[],
+ *  FQDN?: string,
+ *  domainName: string,
+ *  certificateArn?: pulumi.Input<string>,
+ *  includeWWW: boolean,
+ * }} args
  * @returns {aws.cloudfront.Distribution}
  */
-export function buildCDN(
-  routerFunction: aws.lambda.Function,
-  bucket: aws.s3.Bucket,
-  serverHeaders: string[],
-  FQDN?: string,
-  certificateArn?: pulumi.Input<string>,
-): aws.cloudfront.Distribution {
+export function buildCDN({
+  routerFunction,
+  bucket,
+  serverHeaders,
+  FQDN,
+  domainName,
+  certificateArn,
+  includeWWW,
+}): aws.cloudfront.Distribution {
+  // @todo if config.includeWWW include an alias for the www subdomain
+  const distributionAliases = includeWWW ? [domainName, FQDN] : [domainName];
+
   const defaultRequestPolicy = new aws.cloudfront.OriginRequestPolicy(
     registerName('DefaultRequestPolicy'),
     {
@@ -361,7 +363,7 @@ export function buildCDN(
           originAccessControlId: oac.id,
         },
       ],
-      aliases: FQDN ? [FQDN] : undefined,
+      aliases: distributionAliases,
       priceClass: 'PriceClass_100',
       viewerCertificate: FQDN
         ? {
@@ -486,6 +488,28 @@ export function createAliasRecord(
       },
     ],
   })
+}
+
+export function createWWWAliasRecord(
+  targetDomain: string,
+  distribution: aws.cloudfront.Distribution
+): aws.route53.Record {
+  const domainParts = getDomainAndSubdomain(targetDomain);
+  const hostedZoneId = aws.route53
+    .getZone({ name: domainParts.parentDomain }, { async: true })
+    .then(zone => zone.zoneId);
+  return new aws.route53.Record(`${targetDomain}-www-alias`, {
+    name: `www.${targetDomain}`,
+    zoneId: hostedZoneId,
+    type: "A",
+    aliases: [
+        {
+            name: distribution.domainName,
+            zoneId: distribution.hostedZoneId,
+            evaluateTargetHealth: true,
+        },
+    ],
+  });
 }
 
 // 
