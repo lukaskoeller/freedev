@@ -267,7 +267,7 @@ code {
 
   &[data-icon] {
     --_fd-button-padding-inline: var(--fd-button-padding-inline, 0);
-    --_fd-button-width: var(--fd-button-width, var(--fd-button-block-size));
+    --_fd-button-width: var(--fd-button-width, var(--_fd-button-block-size));
   }
 
   &:disabled {
