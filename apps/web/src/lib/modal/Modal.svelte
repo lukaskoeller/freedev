@@ -44,7 +44,8 @@
         type="submit"
         data-variant="monotone"
         data-icon
-        data-size={Size.Sm}>
+        data-size={Size.Sm}
+      >
         <Icon size={Size.Sm}>{@html svgTimesSolid}</Icon>
       </button>
     </header>
@@ -105,11 +106,17 @@
 
       margin: auto;
       border-radius: var(--radius-3);
-      
+    }
+
+    &[open] {
       @media (--motionOK) {
-        animation: var(--animation-slide-out-down) forwards;
-        animation-timing-function: var(--ease-squish-2);
+        animation: var(--animation-slide-in-up) forwards;
       }
+    }
+
+    @media (--motionOK) {
+      animation: var(--animation-slide-out-down) forwards;
+      animation-timing-function: var(--ease-squish-2);
     }
   }
 
