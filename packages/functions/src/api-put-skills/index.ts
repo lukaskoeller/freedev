@@ -15,11 +15,14 @@ const verifier = CognitoJwtVerifier.create({
 
 const bodySchema = z.array(
   z.object({
-    skill: z.string(),
+    name: z.string(),
     category: z.string(),
+    subcategory: z.string(),
     proficiency: z.number().optional(),
   })
 )
+
+type BodySchema = z.infer<typeof bodySchema>
 
 export const handler = async (event: APIGatewayEvent, context: Context) => {
   if (!event?.body) {
@@ -51,9 +54,15 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
 
   const payload = await verifier.verify(token);
   const username = payload.username;
-  const skills = body.map(({ skill, category, proficiency }) => new Skill({
-    skill,
+  const skills = (body as BodySchema).map(({
+    name,
     category,
+    subcategory,
+    proficiency,
+  }) => new Skill({
+    name,
+    category,
+    subcategory,
     proficiency,
     username,
   }).toItem());
