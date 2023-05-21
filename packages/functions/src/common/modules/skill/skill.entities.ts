@@ -8,12 +8,17 @@ export type SkillParams = {
    * Name of the skill.
    * @example React
    */
-  skill: string;
+  name: string;
   /**
    * Type of skill.
-   * @example Library, Language, Tool
+   * @example library, language, tool
    */
   category: string;
+  /**
+   * More specific type of skill.
+   * @example cloudComputingService, javaScriptRuntime, utilities
+   */
+  subcategory: string;
   /**
    * Popularity of the skill.
    * Can be either npm popularity, github stars
