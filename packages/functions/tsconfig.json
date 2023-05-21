@@ -1,0 +1,8 @@
+{
+  "exclude": [
+    "build",
+    ".turbo",
+    ".aws-sam"
+  ],
+  "extends": "tsconfig/base.json"
+}
