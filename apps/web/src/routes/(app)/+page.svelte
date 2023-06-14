@@ -8,11 +8,11 @@
   import atWorkImage from '$lib/assets/images/woman-at-work.jpg';
   import workOfficeImage from '$lib/assets/images/work-office.jpeg';
   import lightImage from '$lib/assets/images/light.jpg';
-  import netflixLogo from '$lib/assets/images/netflix-logo.png';
-  import redditLogo from '$lib/assets/images/reddit-logo.png';
-  import veoliaLogo from '$lib/assets/images/veolia-logo.png';
-  import bookingLogo from '$lib/assets/images/booking-logo.png';
-  import braveLogo from '$lib/assets/images/brave-logo.png';
+  // import netflixLogo from '$lib/assets/images/netflix-logo.png';
+  // import redditLogo from '$lib/assets/images/reddit-logo.png';
+  // import veoliaLogo from '$lib/assets/images/veolia-logo.png';
+  // import bookingLogo from '$lib/assets/images/booking-logo.png';
+  // import braveLogo from '$lib/assets/images/brave-logo.png';
 </script>
 
 <svelte:head>
@@ -31,11 +31,21 @@
   <Container>
     <Container size={Size.Md}>
       <div class="used-by">
-        <img class="used-by-item" src={bookingLogo} width="80px" height="14px" alt="xyz is using freedev">
-        <img class="used-by-item" src={netflixLogo} width="80px" height="34px" alt="xyz is using freedev">
-        <img class="used-by-item" src={braveLogo} width="80px" height="25px" alt="xyz is using freedev">
-        <img class="used-by-item" src={veoliaLogo} width="80px" height="20px" alt="xyz is using freedev">
-        <img class="used-by-item" src={redditLogo} width="80px" height="37px" alt="xyz is using freedev">
+        <div class="used-by-item" style="width: 80px; height: 40px; background: rgba(0,0,0,0.2); display: grid; place-items: center;" title="xyz is using freedev">
+          Logo
+        </div>
+        <div class="used-by-item" style="width: 80px; height: 40px; background: rgba(0,0,0,0.2); display: grid; place-items: center;" title="xyz is using freedev">
+          Logo
+        </div>
+        <div class="used-by-item" style="width: 80px; height: 40px; background: rgba(0,0,0,0.2); display: grid; place-items: center;" title="xyz is using freedev">
+          Logo
+        </div>
+        <div class="used-by-item" style="width: 80px; height: 40px; background: rgba(0,0,0,0.2); display: grid; place-items: center;" title="xyz is using freedev">
+          Logo
+        </div>
+        <div class="used-by-item" style="width: 80px; height: 40px; background: rgba(0,0,0,0.2); display: grid; place-items: center;" title="xyz is using freedev">
+          Logo
+        </div>
       </div>
     </Container>
   </Container>
