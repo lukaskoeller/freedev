@@ -93,7 +93,8 @@ var getOrigins: (string | pulumi.Output<string>)[] = [
 ]
 FQDN && getOrigins.push(`https://${FQDN}`)
 
-buildInvalidator(distribution, staticPath, prerenderedPath);
+// @todo not needed anymore?
+// buildInvalidator(distribution, staticPath, prerenderedPath);
 
 export const allowedOrigins = getOrigins
 export const appUrl = FQDN

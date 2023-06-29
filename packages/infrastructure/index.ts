@@ -229,139 +229,141 @@ const ssrLambdaName =  'ssr-app'
 
 // export const ssrLambdaUrl = ssrLambdaFunctionUrl.functionUrl;
 
+// 🔆🔆🔆🔆🔆🔆🔆🔆 @todo NEXT migrate Cloudfront Distr to buildCDN
+
 // distributionArgs configures the CloudFront distribution. Relevant documentation:
 // https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html
 // https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html
-// const distributionArgs: aws.cloudfront.DistributionArgs = {
-//     enabled: true,
-//     // Alternate aliases the CloudFront distribution can be reached at, in addition to https://xxxx.cloudfront.net.
-//     // Required if you want to access the distribution via config.targetDomain as well.
-//     aliases: distributionAliases,
+const distributionArgs: aws.cloudfront.DistributionArgs = {
+    enabled: true, // ✅
+    // Alternate aliases the CloudFront distribution can be reached at, in addition to https://xxxx.cloudfront.net.
+    // Required if you want to access the distribution via config.targetDomain as well.
+    aliases: distributionAliases, // ✅
 
-//     // We only specify one origin for this distribution, the S3 content bucket.
-//     origins: [
-//         /**
-//          * Only used if the only origin is S3, which is the case for static site hosting.
-//          */
-//         // {
-//         //     originId: contentBucket.arn,
-//         //      : contentBucket.bucketDomainName,
-//         //     s3OriginConfig: {
-//         //         originAccessIdentity: originAccessIdentity.cloudfrontAccessIdentityPath,
-//         //     },
-//         //     /**
-//         //      * Workaround for environment variables
-//         //      * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
-//         //      */
-//         //     customHeaders: [{
-//         //       // referenced in web/build/edge/router.js
-//         //       name: 's3-host',
-//         //       value: contentBucket.bucketDomainName,
-//         //     }],
-//         // },
-//         {
-//           originId: ssrLambda.arn,
-//           domainName: ssrLambdaUrl.apply((url) => url.replace('https://', '').replace('/', '')),
-//           customOriginConfig: {
-//               httpPort: 80,
-//               httpsPort: 443,
-//               originProtocolPolicy: 'https-only',
-//               originSslProtocols: ['TLSv1', 'TLSv1.1', 'TLSv1.2'], // @todo can list be narrowed down?
-//           },
-//           /**
-//            * Workaround for environment variables
-//            * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
-//            */
-//           customHeaders: [{
-//             // referenced in web/build/edge/router.js
-//             name: 's3-host',
-//             value: contentBucket.bucketDomainName,
-//           }],
-//       },
-//     ],
+    // We only specify one origin for this distribution, the S3 content bucket.
+    origins: [
+        /**
+         * Only used if the only origin is S3, which is the case for static site hosting.
+         */
+        // {
+        //     originId: contentBucket.arn,
+        //      : contentBucket.bucketDomainName,
+        //     s3OriginConfig: {
+        //         originAccessIdentity: originAccessIdentity.cloudfrontAccessIdentityPath,
+        //     },
+        //     /**
+        //      * Workaround for environment variables
+        //      * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
+        //      */
+        //     customHeaders: [{
+        //       // referenced in web/build/edge/router.js
+        //       name: 's3-host',
+        //       value: contentBucket.bucketDomainName,
+        //     }],
+        // },
+        {
+          originId: ssrLambda.arn,
+          domainName: ssrLambdaUrl.apply((url) => url.replace('https://', '').replace('/', '')),
+          customOriginConfig: {
+              httpPort: 80,
+              httpsPort: 443,
+              originProtocolPolicy: 'https-only',
+              originSslProtocols: ['TLSv1', 'TLSv1.1', 'TLSv1.2'], // @todo can list be narrowed down?
+          },
+          /**
+           * Workaround for environment variables
+           * @see https://stackoverflow.com/questions/54828808/aws-lambdaedge-nodejs-environment-variables-are-not-supported
+           */
+          customHeaders: [{
+            // referenced in web/build/edge/router.js
+            name: 's3-host',
+            value: contentBucket.bucketDomainName,
+          }],
+      },
+    ],
 
-//     comment: contentBucket.bucketDomainName,
+    comment: contentBucket.bucketDomainName, // 🔆🔆🔆
 
-//     // defaultRootObject: "index.html",
+    // defaultRootObject: "index.html",
 
-//     // A CloudFront distribution can configure different cache behaviors based on the request path.
-//     // Here we just specify a single, default cache behavior which is just read-only requests to S3.
-//     /**
-//      * Only used if the only origin is S3, which is the case for static site hosting.
-//      */
-//     // defaultCacheBehavior: {
-//     //     targetOriginId: contentBucket.arn,
+    // A CloudFront distribution can configure different cache behaviors based on the request path.
+    // Here we just specify a single, default cache behavior which is just read-only requests to S3.
+    /**
+     * Only used if the only origin is S3, which is the case for static site hosting.
+     */
+    // defaultCacheBehavior: {
+    //     targetOriginId: contentBucket.arn,
 
-//     //     viewerProtocolPolicy: "redirect-to-https",
-//     //     allowedMethods: ["GET", "HEAD", "OPTIONS"],
-//     //     cachedMethods: ["GET", "HEAD", "OPTIONS"],
+    //     viewerProtocolPolicy: "redirect-to-https",
+    //     allowedMethods: ["GET", "HEAD", "OPTIONS"],
+    //     cachedMethods: ["GET", "HEAD", "OPTIONS"],
 
-//     //     forwardedValues: {
-//     //         cookies: { forward: "none" },
-//     //         queryString: false,
-//     //     },
+    //     forwardedValues: {
+    //         cookies: { forward: "none" },
+    //         queryString: false,
+    //     },
 
-//     //     minTtl: 0,
-//     //     defaultTtl: tenMinutes,
-//     //     maxTtl: tenMinutes,
+    //     minTtl: 0,
+    //     defaultTtl: tenMinutes,
+    //     maxTtl: tenMinutes,
 
-//     //     lambdaFunctionAssociations: [{
-//     //       eventType: 'origin-request',
-//     //       lambdaArn: edgeRouterLambdaArn,
-//     //     }],
-//     // },
-//     defaultCacheBehavior: {
-//       targetOriginId: ssrLambda.arn,
+    //     lambdaFunctionAssociations: [{
+    //       eventType: 'origin-request',
+    //       lambdaArn: edgeRouterLambdaArn,
+    //     }],
+    // },
+    defaultCacheBehavior: {
+      targetOriginId: ssrLambda.arn,
 
-//       viewerProtocolPolicy: "redirect-to-https",
-//       allowedMethods: ["GET", "HEAD", "OPTIONS", "DELETE", "PATCH", "POST", "PUT"],
-//       cachedMethods: ["GET", "HEAD", "OPTIONS"],
+      viewerProtocolPolicy: "redirect-to-https",
+      allowedMethods: ["GET", "HEAD", "OPTIONS", "DELETE", "PATCH", "POST", "PUT"],
+      cachedMethods: ["GET", "HEAD", "OPTIONS"],
 
-//       forwardedValues: {
-//           cookies: { forward: "all" },
-//           queryString: true,
-//       },
+      forwardedValues: {
+          cookies: { forward: "all" },
+          queryString: true,
+      },
 
-//       minTtl: 0,
-//       defaultTtl: tenMinutes,
-//       maxTtl: tenMinutes,
+      minTtl: 0,
+      defaultTtl: tenMinutes,
+      maxTtl: tenMinutes,
 
-//       lambdaFunctionAssociations: [{
-//         eventType: 'origin-request',
-//         lambdaArn: edgeRouterLambda.arnVersion,
-//       }],
-//   },
+      lambdaFunctionAssociations: [{
+        eventType: 'origin-request',
+        lambdaArn: edgeRouterLambda.arnVersion,
+      }],
+  },
 
-//     // "All" is the most broad distribution, and also the most expensive.
-//     // "100" is the least broad, and also the least expensive.
-//     priceClass: "PriceClass_100",
+    // "All" is the most broad distribution, and also the most expensive.
+    // "100" is the least broad, and also the least expensive.
+    priceClass: "PriceClass_100",
 
-//     // You can customize error responses. When CloudFront receives an error from the origin (e.g. S3 or some other
-//     // web service) it can return a different error code, and return the response for a different resource.
-//     customErrorResponses: [
-//         { errorCode: 404, responseCode: 404, responsePagePath: "/404.html" },
-//     ],
+    // You can customize error responses. When CloudFront receives an error from the origin (e.g. S3 or some other
+    // web service) it can return a different error code, and return the response for a different resource.
+    customErrorResponses: [
+        { errorCode: 404, responseCode: 404, responsePagePath: "/404.html" },
+    ],
 
-//     restrictions: {
-//         geoRestriction: {
-//             restrictionType: "none",
-//         },
-//     },
+    restrictions: {
+        geoRestriction: {
+            restrictionType: "none",
+        },
+    },
 
-//     viewerCertificate: {
-//         acmCertificateArn: certificateArn,  // Per AWS, ACM certificate must be in the us-east-1 region.
-//         sslSupportMethod: "sni-only",
-//     },
+    viewerCertificate: {
+        acmCertificateArn: certificateArn,  // Per AWS, ACM certificate must be in the us-east-1 region.
+        sslSupportMethod: "sni-only",
+    },
 
-//     loggingConfig: {
-//         bucket: logsBucket.bucketDomainName,
-//         includeCookies: false,
-//         prefix: `${config.targetDomain}/`,
-//     },
-// };
+    loggingConfig: {
+        bucket: logsBucket.bucketDomainName,
+        includeCookies: false,
+        prefix: `${config.targetDomain}/`,
+    },
+};
 
 // Creates a cloudfront web distribution
-// const cdn = new aws.cloudfront.Distribution("cdn", distributionArgs, { dependsOn: contentBucket });
+const cdn = new aws.cloudfront.Distribution("cdn", distributionArgs, { dependsOn: contentBucket });
 
 // Creates a new Route53 DNS record pointing the domain to the CloudFront distribution.
 function createAliasRecord(

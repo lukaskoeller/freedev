@@ -365,15 +365,11 @@ export function buildCDN({
       ],
       aliases: distributionAliases,
       priceClass: 'PriceClass_100',
-      viewerCertificate: FQDN
-        ? {
-            // Per AWS, ACM certificate must be in the us-east-1 region.
-            acmCertificateArn: certificateArn,
-            sslSupportMethod: 'sni-only',
-          }
-        : {
-            cloudfrontDefaultCertificate: true,
-          },
+      viewerCertificate: {
+        // Per AWS, ACM certificate must be in the us-east-1 region.
+        acmCertificateArn: certificateArn,
+        sslSupportMethod: 'sni-only',
+      },
       defaultCacheBehavior: {
         compress: true,
         viewerProtocolPolicy: 'redirect-to-https',
